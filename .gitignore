@@ -1,3 +1,7 @@
 .claude/
 *.CR2
 ~$*
+
+# Large media — host on CDN
+assets/*.mp4
+assets/*.mov
