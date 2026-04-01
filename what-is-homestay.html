@@ -72,7 +72,7 @@ a{text-decoration:none;color:inherit}
 
 /* ══ HERO ══ */
 .hero{position:relative;height:68vh;min-height:480px;max-height:700px;display:flex;align-items:flex-end;overflow:hidden;background:var(--c-charcoal)}
-.hero-bg{position:absolute;inset:0;background:url('assets/host-2.jpg') center 40% / cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
+.hero-bg{position:absolute;inset:0;background:url('assets/about-3.jpg') center 35% / cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
 .hero-bg.loaded{transform:scale(1)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,30,28,0.82) 0%,rgba(26,30,28,0.45) 50%,rgba(26,30,28,0.1) 100%)}
 .hero-inner{position:relative;z-index:2;max-width:700px;padding-bottom:72px}
@@ -282,7 +282,7 @@ a{text-decoration:none;color:inherit}
   <div class="container">
     <div class="intro-grid">
       <div class="intro-img" data-reveal>
-        <img src="assets/host-1.jpg" alt="Host family welcoming a student">
+        <img src="assets/host-3.jpg" alt="Host family welcoming a student">
       </div>
       <div class="intro-content" data-reveal>
         <div class="section-label">The Basics</div>
@@ -408,7 +408,7 @@ a{text-decoration:none;color:inherit}
         </div>
       </div>
       <div class="included-img" data-reveal>
-        <img src="assets/about-experience.jpg" alt="Student in homestay">
+        <img src="assets/about-1.jpg" alt="Student in homestay">
       </div>
     </div>
   </div>
@@ -652,7 +652,7 @@ document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
 function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
 const heroBg = document.getElementById('heroBg');
-if (heroBg) { const img = new Image(); img.src = 'assets/host-2.jpg'; img.onload = () => heroBg.classList.add('loaded'); }
+if (heroBg) { const img = new Image(); img.src = 'assets/about-3.jpg'; img.onload = () => heroBg.classList.add('loaded'); }
 
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
