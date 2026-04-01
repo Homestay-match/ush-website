@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USH — Safe, Affordable Homestay for International Students</title>
+<meta name="description" content="Universal Student Housing connects international students with carefully screened host families near US universities. Trusted since 1998.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & TOKENS
+   ══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --c-cream: #FBF8F3;
+  --c-cream-dim: #F5F0E8;
+  --c-charcoal: #1A1E1C;
+  --c-text: #2C3330;
+  --c-text-light: #5F6B65;
+  --c-text-muted: #8A9590;
+  --c-teal: #6EB7A3;
+  --c-teal-dark: #5A9E8C;
+  --c-teal-light: #EDF7F4;
+  --c-teal-glow: #6EB7A3;
+  --c-orange: #D9A84E;
+  --c-orange-dark: #C4943F;
+  --c-orange-light: #FDF5E8;
+  --c-amber: #D4984A;
+  --c-amber-light: #FDF5EB;
+  --c-amber-glow: #E8AE5E;
+  --c-olive-dark: #4A5250;
+  --c-olive: #404846;
+  --c-white: #FFFFFF;
+  --c-border: rgba(44,51,48,0.08);
+  --c-border-strong: rgba(44,51,48,0.14);
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body: 'Work Sans', system-ui, sans-serif;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 50px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --max-w: 1200px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1080px){.container{padding:0 48px}}
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all 0.4s var(--ease-out)}
+.nav.scrolled{background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-white);transition:color 0.4s}
+.nav-logo svg{width:32px;height:32px}
+.nav.scrolled .nav-logo{color:var(--c-teal-dark)}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.85);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-white)}
+.nav.scrolled .nav-links a{color:var(--c-text)}
+.nav.scrolled .nav-links a:hover{color:var(--c-teal)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-family:var(--ff-body);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary{background:var(--c-orange);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,136,83,0.3)}
+.btn-secondary{background:var(--c-orange);color:var(--c-white)}
+.btn-secondary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,136,83,0.3)}
+.btn-outline{background:transparent;color:var(--c-white);border:1.5px solid rgba(255,255,255,0.7)}
+.btn-outline:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.8)}
+.btn-outline-dark{background:transparent;color:var(--c-orange);border:1.5px solid var(--c-orange)}
+.btn-outline-dark:hover{background:var(--c-orange);color:var(--c-white)}
+
+/* Mobile menu */
+.nav-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-white);transition:color 0.3s}
+.nav.scrolled .nav-mobile-btn{color:var(--c-text)}
+@media(min-width:900px){.nav-mobile-btn{display:none}}
+.mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:160px 0 100px;overflow:hidden;background:url('assets/hero-bg.jpg') center/cover no-repeat}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,51,48,0.45) 0%,rgba(44,51,48,0.4) 30%,rgba(44,51,48,0.68) 60%,rgba(44,51,48,0.88) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:6px 18px 6px 8px;margin-bottom:28px;font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.9)}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--c-orange);box-shadow:0 0 10px rgba(255,136,83,0.5)}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2.8rem,6.5vw,4.5rem);font-weight:700;color:var(--c-white);line-height:1.08;letter-spacing:-0.025em;margin-bottom:20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.hero p{font-size:clamp(1.05rem,2vw,1.3rem);color:rgba(255,255,255,0.9);line-height:1.65;max-width:600px;margin-bottom:36px;font-weight:500}
+.hero-rotate{display:block;position:relative;height:1.15em;overflow:hidden}
+.hero-rotate-line{display:block;position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateY(40%);transition:all 0.5s var(--ease-out)}
+.hero-rotate-line.active{opacity:1;transform:translateY(0)}
+.hero-rotate-line.exit{opacity:0;transform:translateY(-40%)}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:14px}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.15)}
+.hero-stat{text-align:left}
+.hero-stat .num{font-family:var(--ff-display);font-size:2.2rem;font-weight:700;color:var(--c-white)}
+.hero-stat .label{font-size:0.78rem;color:rgba(255,255,255,0.8);font-weight:400;margin-top:2px;letter-spacing:0.04em;text-transform:uppercase}
+@media(max-width:600px){
+  .hero{min-height:auto;padding:120px 0 60px}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+  .hero-stat .num{font-size:1.4rem}
+}
+
+/* Decorative orbs */
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.hero-orb-1{width:500px;height:500px;top:-100px;right:-150px;background:radial-gradient(circle,rgba(255,136,83,0.1),transparent 60%);filter:blur(60px);animation:orbFloat 10s ease-in-out infinite}
+.hero-orb-2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(110,183,163,0.08),transparent 60%);filter:blur(50px);animation:orbFloat 12s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}33%{transform:translate(20px,-15px)}66%{transform:translate(-15px,10px)}}
+
+/* ══════════════════════════════════════
+   MARQUEE (SCHOOLS)
+   ══════════════════════════════════════ */
+.schools-bar{padding:40px 0;border-bottom:1px solid var(--c-border);background:var(--c-white)}
+.schools-label{text-align:center;font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-text-light);margin-bottom:24px}
+.marquee-container{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marqueeScroll 30s linear infinite;align-items:center}
+.marquee-track span{font-size:0.92rem;font-weight:500;color:var(--c-text-light);opacity:0.6;flex-shrink:0}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════
+   SECTIONS SHARED
+   ══════════════════════════════════════ */
+.section{padding:100px 0}
+@media(max-width:768px){.section{padding:64px 0}}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
+.section-title{font-family:var(--ff-display);font-size:clamp(2.2rem,4.5vw,3.2rem);font-weight:600;line-height:1.12;letter-spacing:-0.02em;color:var(--c-charcoal);max-width:720px}
+.section-title em{font-style:italic;font-weight:400;color:var(--c-teal)}
+
+/* ══════════════════════════════════════
+   INTRO / VALUE PROPS
+   ══════════════════════════════════════ */
+.intro{background:var(--c-cream)}
+.intro-header{margin-bottom:56px}
+.intro-header p{font-size:1.15rem;color:var(--c-text-light);max-width:600px;margin-top:20px;line-height:1.7}
+.value-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.value-cards{grid-template-columns:1fr;gap:16px}}
+.value-card{background:var(--c-white);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);transition:all 0.4s var(--ease-out);position:relative;overflow:hidden}
+.value-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:transparent}
+.value-card-num{font-family:var(--ff-display);font-size:5rem;font-weight:700;color:var(--c-orange);opacity:0.08;position:absolute;top:-12px;right:16px;line-height:1;z-index:0}
+.value-card h3,.value-card p{position:relative;z-index:1}
+.value-card h3{font-family:var(--ff-display);font-size:1.35rem;font-weight:600;margin-bottom:12px;color:var(--c-charcoal);max-width:75%}
+.value-card p{font-size:1rem;color:var(--c-text-light);line-height:1.65}
+
+/* ══════════════════════════════════════
+   TRUSTED (DARK)
+   ══════════════════════════════════════ */
+.trusted{position:relative;overflow:hidden;color:var(--c-white);background:url('assets/trusted-bg.jpg') center/cover no-repeat}
+.trusted::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(44,51,48,0.88) 0%,rgba(44,51,48,0.65) 50%,rgba(44,51,48,0.35) 100%);z-index:1}
+.trusted-inner{position:relative;z-index:2;display:flex;flex-direction:column;gap:40px}
+@media(max-width:768px){.trusted-inner{gap:32px}}
+.trusted-text .section-label{color:var(--c-orange)}
+.trusted-text h2{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px}
+.trusted-text h2 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.trusted-text p{color:rgba(255,255,255,0.85);font-size:1.15rem;line-height:1.7;max-width:560px}
+.trusted-metrics{display:flex;gap:40px;flex-wrap:wrap}
+.trusted-metric{text-align:left;padding:0}
+.trusted-metric .num{font-family:var(--ff-display);font-size:2.6rem;font-weight:700;color:var(--c-white);display:block}
+.trusted-metric .label{font-size:0.78rem;color:rgba(255,255,255,0.65);margin-top:4px;text-transform:capitalize;letter-spacing:0.02em;font-style:italic}
+@media(max-width:500px){.trusted-metrics{gap:24px}.trusted-metric .num{font-size:1.6rem}}
+
+/* ══════════════════════════════════════
+   SAFETY
+   ══════════════════════════════════════ */
+.safety{background:var(--c-white)}
+.safety-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:768px){.safety-inner{grid-template-columns:1fr;gap:40px}}
+.safety-checks{margin-top:32px;display:flex;flex-direction:column;gap:16px}
+.safety-check{display:flex;gap:14px;align-items:flex-start}
+.safety-check-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.safety-check-icon svg{width:14px;height:14px;color:var(--c-teal)}
+.safety-check p{font-size:1.02rem;color:var(--c-text-light);line-height:1.6}
+.safety-visual{position:relative}
+.safety-img{width:100%;aspect-ratio:4/3;border-radius:var(--r-xl);background:linear-gradient(135deg,#e8ddd0,#d4c5b0);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.safety-img svg{width:120px;height:120px;color:var(--c-teal);opacity:0.2}
+.safety-quote{position:absolute;bottom:-24px;right:-16px;background:var(--c-cream);border-radius:var(--r-lg);padding:24px 28px;max-width:320px;box-shadow:var(--shadow-lg);border:1px solid var(--c-border)}
+@media(max-width:768px){.safety-quote{position:relative;bottom:auto;right:auto;margin-top:16px}}
+.safety-quote p{font-family:var(--ff-display);font-style:italic;font-size:0.88rem;color:var(--c-text);line-height:1.55}
+.safety-quote .author{font-family:var(--ff-body);font-style:normal;font-size:0.78rem;color:var(--c-text-light);margin-top:10px;font-weight:500}
+
+/* ══════════════════════════════════════
+   MEET THE HOSTS
+   ══════════════════════════════════════ */
+.hosts{background:var(--c-cream);overflow:hidden}
+.hosts-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+@media(max-width:768px){.hosts-inner{grid-template-columns:1fr;gap:40px}}
+.hosts-text .section-label{color:var(--c-orange)}
+.hosts-text h2{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px}
+.hosts-text h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.hosts-text p{color:var(--c-text-light);font-size:1.15rem;line-height:1.7;max-width:520px;margin-bottom:32px}
+.hosts-carousel{position:relative;overflow:hidden}
+.hosts-track-wrap{position:relative;overflow:hidden;border-radius:var(--r-xl);aspect-ratio:4/5}
+.hosts-track{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;transition:transform 0.5s cubic-bezier(.16,1,.3,1)}
+.host-slide{min-width:100%;width:100%;flex-shrink:0;position:relative;overflow:hidden}
+.host-slide img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+.host-slide-info{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%)}
+.host-slide-badge{display:inline-block;background:rgba(110,183,163,0.9);color:var(--c-white);font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:50px;margin-bottom:10px}
+.host-slide-name{font-family:var(--ff-display);font-size:1.3rem;font-weight:700;color:var(--c-white)}
+.host-slide-loc{font-size:0.82rem;color:rgba(255,255,255,0.8);margin-top:4px}
+.hosts-nav{display:flex;align-items:center;gap:16px;margin-top:24px;justify-content:center}
+.hosts-dots{display:flex;gap:8px;align-items:center}
+.hosts-dot{width:8px;height:8px;border-radius:50%;background:var(--c-border-strong);border:none;padding:0;cursor:pointer;transition:all 0.3s}
+.hosts-dot.active{width:24px;border-radius:4px;background:var(--c-teal)}
+.hosts-arrow{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--c-border-strong);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;color:var(--c-text-light)}
+.hosts-arrow:hover{border-color:var(--c-teal);color:var(--c-teal)}
+.hosts-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:24px;border-top:1px solid var(--c-border)}
+.hosts-arrows{display:flex;gap:10px}
+
+/* ══════════════════════════════════════
+   STEPS
+   ══════════════════════════════════════ */
+.steps{position:relative;overflow:hidden;background:url('assets/steps-bg.jpg') center/cover no-repeat fixed}
+.steps::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,51,48,0.82) 0%,rgba(44,51,48,0.78) 100%);z-index:0}
+.steps .container{position:relative;z-index:1}
+.steps-header{text-align:center;margin-bottom:56px}
+.steps .section-label{color:var(--c-orange)}
+.steps .section-title{color:var(--c-white)}
+.steps .section-title em{color:var(--c-orange)}
+.steps-header .section-title{margin:0 auto}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:768px){.steps-grid{grid-template-columns:1fr;gap:24px}}
+.step-card{text-align:center;padding:40px 28px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:var(--r-xl);border:1px solid rgba(255,255,255,0.3);transition:all 0.4s var(--ease-out)}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--c-teal),var(--c-teal-glow));color:var(--c-white);font-family:var(--ff-display);font-size:1.4rem;font-weight:700;margin-bottom:24px;box-shadow:0 8px 24px rgba(110,183,163,0.25)}
+.step-card h3{font-family:var(--ff-display);font-size:1.3rem;font-weight:600;margin-bottom:12px;color:var(--c-charcoal)}
+.step-card p{font-size:1rem;color:var(--c-text-light);line-height:1.65}
+.step-connector{display:none}
+@media(min-width:769px){
+  .steps-grid{position:relative}
+  .step-connector{display:block;position:absolute;top:76px;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,0.3) 0,rgba(255,255,255,0.3) 6px,transparent 6px,transparent 12px);z-index:0}
+  .step-connector-1{left:33.33%;width:calc(33.33% - 64px);margin-left:32px}
+  .step-connector-2{left:66.66%;width:calc(33.33% - 64px);margin-left:32px}
+  .step-card{position:relative;z-index:1}
+}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS
+   ══════════════════════════════════════ */
+.testimonials{background:var(--c-white)}
+.testimonials-header{text-align:center;margin-bottom:20px}
+.testimonials-header p{font-size:1.15rem;color:var(--c-text-light);max-width:600px;margin:16px auto 0;line-height:1.65}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+@media(max-width:768px){.testimonials-grid{grid-template-columns:1fr;gap:16px}}
+.testimonial-card{background:var(--c-cream);border-radius:var(--r-lg);padding:32px 28px;border:1px solid var(--c-border);display:flex;flex-direction:column}
+.testimonial-card .quote{font-size:0.92rem;color:var(--c-text);line-height:1.65;flex:1;font-style:italic;position:relative;padding-left:20px}
+.testimonial-card .quote::before{content:'\201C';font-family:var(--ff-display);font-size:3rem;color:var(--c-teal);opacity:0.2;position:absolute;top:-12px;left:-4px;line-height:1}
+.testimonial-author{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid var(--c-border)}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:var(--c-white);flex-shrink:0}
+.testimonial-author .name{font-weight:600;font-size:0.88rem;color:var(--c-charcoal)}
+.testimonial-author .origin{font-size:0.78rem;color:var(--c-text-light)}
+
+/* ══════════════════════════════════════
+   PRICING REGIONS
+   ══════════════════════════════════════ */
+.pricing{background:var(--c-cream)}
+.pricing-header{text-align:center;margin-bottom:48px}
+.pricing-header p{font-size:1rem;color:var(--c-text-light);max-width:520px;margin:16px auto 0}
+.regions{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+@media(max-width:900px){.regions{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.regions{grid-template-columns:repeat(2,1fr)}}
+.region-card{display:block;border-radius:var(--r-lg);overflow:hidden;text-align:center;transition:all 0.4s var(--ease-out);cursor:pointer;position:relative;text-decoration:none}
+.region-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.region-card-img{width:100%;aspect-ratio:3/2;overflow:hidden}
+.region-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease-out)}
+.region-card:hover .region-card-img img{transform:scale(1.06)}
+.region-card-body{padding:16px 12px 20px;background:var(--c-white);border:1px solid var(--c-border);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg)}
+.region-card h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin-bottom:4px}
+.region-card .price{font-size:0.82rem;color:var(--c-text-light)}
+.region-card .price strong{color:var(--c-orange);font-weight:700}
+.pricing-link{text-align:center;margin-top:32px}
+.pricing-link a{font-size:0.88rem;font-weight:600;color:var(--c-orange);display:inline-flex;align-items:center;gap:6px;transition:gap 0.3s}
+.pricing-link a:hover{gap:10px}
+
+/* ══════════════════════════════════════
+   CTA
+   ══════════════════════════════════════ */
+.cta{background:linear-gradient(170deg,#4A5250 0%,#404846 100%);color:var(--c-white);position:relative;overflow:hidden;padding:100px 0}
+.cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.cta-inner{text-align:center;position:relative;z-index:1}
+.cta .section-label{color:var(--c-orange)}
+.cta h2{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+.cta h2 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.cta p{font-size:1.05rem;color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 36px;line-height:1.65}
+.cta-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.cta-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,136,83,0.06),transparent 60%);filter:blur(80px);top:-200px;left:50%;transform:translateX(-50%);pointer-events:none}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer{background:#3A4240;color:rgba(255,255,255,0.7);padding:56px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-white);margin-bottom:12px}
+.footer-brand-desc{font-size:0.85rem;line-height:1.6;max-width:280px}
+.footer-col h4{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(255,255,255,0.75);margin-bottom:10px;transition:color 0.25s}
+.footer-col a:hover{color:var(--c-orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.78rem}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+.hero-stagger>*{opacity:0;transform:translateY(28px);animation:staggerIn 0.8s var(--ease-out) forwards}
+.hero-stagger>*:nth-child(1){animation-delay:.15s}
+.hero-stagger>*:nth-child(2){animation-delay:.3s}
+.hero-stagger>*:nth-child(3){animation-delay:.45s}
+.hero-stagger>*:nth-child(4){animation-delay:.6s}
+.hero-stagger>*:nth-child(5){animation-delay:.75s}
+.hero-stagger>*:nth-child(6){animation-delay:.9s}
+@keyframes staggerIn{to{opacity:1;transform:translateY(0)}}
+
+[data-reveal]{opacity:0;transform:translateY(32px);transition:all 0.7s var(--ease-out)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:480px){
+  .btn{padding:11px 22px;font-size:0.84rem}
+  .region-card{min-width:140px;padding:18px 20px}
+  .cta{padding:72px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="partners.html">Partners</a>
+      <a href="homestaymatch.html">HomestayMatch</a>
+      <a href="#">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="partners.html" onclick="closeMobileMenu()">Partners</a>
+  <a href="homestaymatch.html" onclick="closeMobileMenu()">HomestayMatch</a>
+  <a href="#" onclick="closeMobileMenu()">FAQ</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="#" class="btn btn-primary" onclick="closeMobileMenu()">Apply Now</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="container hero-content hero-stagger">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Trusted Since 1998 &mdash; 27+ Years Serving Students
+    </div>
+    <h1>Find the Perfect Homestay<br><em class="hero-rotate"><span class="hero-rotate-line active">that fits your needs</span><span class="hero-rotate-line">that feels like home</span><span class="hero-rotate-line">that feels like family</span><span class="hero-rotate-line">that's been personally verified</span></em></h1>
+    <p>USH connects international students with carefully selected, vetted host families near their school. Every home is verified in person, and we support you from move-in to move-out.</p>
+    <div class="hero-buttons">
+      <a href="apply.html" class="btn btn-secondary">Apply Now</a>
+      <a href="schools.html" class="btn btn-outline">Prices &amp; Schools</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num" data-count="27" data-suffix="+ Years">0</div>
+        <div class="label">of Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" data-count="270" data-suffix="+">0</div>
+        <div class="label">Partner Schools</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" data-count="14" data-suffix="k+">0</div>
+        <div class="label">Checked Host Families</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" data-count="130" data-suffix="+">0</div>
+        <div class="label">Student Nationalities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SCHOOLS MARQUEE ══════════ -->
+<div class="schools-bar">
+  <div class="schools-label">Partner Schools &amp; Universities Across the US</div>
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span>UCLA Extension</span><span>&bull;</span>
+      <span>Santa Monica College</span><span>&bull;</span>
+      <span>CSU Fullerton</span><span>&bull;</span>
+      <span>Pasadena City College</span><span>&bull;</span>
+      <span>Orange Coast College</span><span>&bull;</span>
+      <span>Glendale College</span><span>&bull;</span>
+      <span>Irvine Valley College</span><span>&bull;</span>
+      <span>Fullerton College</span><span>&bull;</span>
+      <span>Citrus College</span><span>&bull;</span>
+      <span>Arizona State University</span><span>&bull;</span>
+      <span>University of Miami</span><span>&bull;</span>
+      <span>UCLA Extension</span><span>&bull;</span>
+      <span>Santa Monica College</span><span>&bull;</span>
+      <span>CSU Fullerton</span><span>&bull;</span>
+      <span>Pasadena City College</span><span>&bull;</span>
+      <span>Orange Coast College</span><span>&bull;</span>
+      <span>Glendale College</span><span>&bull;</span>
+      <span>Irvine Valley College</span><span>&bull;</span>
+      <span>Fullerton College</span><span>&bull;</span>
+      <span>Citrus College</span><span>&bull;</span>
+      <span>Arizona State University</span><span>&bull;</span>
+      <span>University of Miami</span><span>&bull;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ VALUE PROPS ══════════ -->
+<section class="section intro">
+  <div class="container">
+    <div class="intro-header" data-reveal>
+      <div class="section-label">We Understand</div>
+      <h2 class="section-title">Finding Homestay Housing in the U.S. <em>Doesn't Have to Be Difficult.</em></h2>
+      <p>Moving to a new country is exciting, but finding comfortable and affordable student housing can be challenging. With USH, the process is simple and stress-free. We handle all the details, so you can focus on your studies.</p>
+    </div>
+    <div class="value-cards">
+      <div class="value-card" data-reveal>
+        <span class="value-card-num">01</span>
+        <h3>Transparent Pricing, No Surprises.</h3>
+        <p>Clear costs with no hidden fees. View homestay prices online and plan your budget with absolute confidence.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <span class="value-card-num">02</span>
+        <h3>Personalized Host Family Matching</h3>
+        <p>Dedicated coordinators personally match you with a vetted host family that fits your needs and location.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <span class="value-card-num">03</span>
+        <h3>72-Hour Satisfaction Guarantee</h3>
+        <p>Your satisfaction is our priority. If you're not happy after moving in, we'll find you a new homestay at no extra cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUSTED ══════════ -->
+<section class="section trusted">
+  <div class="container trusted-inner">
+    <div class="trusted-text" data-reveal>
+      <div class="section-label">The USH Difference</div>
+      <h2>Trusted Since 1998<br>by Students, <em>Parents, and Universities</em></h2>
+      <p>For over 27 years, USH has helped thousands of international students find homestays across the U.S. We are more than a housing service. We support you from your application to the move out.</p>
+    </div>
+    <div class="trusted-metrics" data-reveal>
+      <div class="trusted-metric">
+        <span class="num" data-count="27" data-suffix="+">0</span>
+        <div class="label">Years of Experience</div>
+      </div>
+      <div class="trusted-metric">
+        <span class="num" data-count="270" data-suffix="+">0</span>
+        <div class="label">Partner Schools</div>
+      </div>
+      <div class="trusted-metric">
+        <span class="num" data-count="19" data-suffix="k+">0</span>
+        <div class="label">Students Placed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SAFETY ══════════ -->
+<section class="section safety">
+  <div class="container safety-inner">
+    <div data-reveal>
+      <div class="section-label">Your Safety, Our Standard</div>
+      <h2 class="section-title">Every Home Vetted In-Person. <em>Every Student's Security is our Priority.</em></h2>
+      <div class="safety-checks">
+        <div class="safety-check">
+          <div class="safety-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p>Full home and bedroom evaluation for student comfort and safety</p>
+        </div>
+        <div class="safety-check">
+          <div class="safety-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p>Every host personally met and approved through our 98-point verification process</p>
+        </div>
+        <div class="safety-check">
+          <div class="safety-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p>Neighborhood and commute to campus verified</p>
+        </div>
+        <div class="safety-check">
+          <div class="safety-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p>Background checks completed for all host families</p>
+        </div>
+        <div class="safety-check">
+          <div class="safety-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p>Ongoing host evaluations based on student feedback</p>
+        </div>
+        <div class="safety-check">
+          <div class="safety-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p>Family Fit: We interview every host family to ensure they genuinely support international students, not just offer a room</p>
+        </div>
+      </div>
+    </div>
+    <div class="safety-visual" data-reveal>
+      <div class="safety-img">
+        <img src="assets/safety-visual.jpg" alt="USH inspector visiting a host family home" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="safety-quote">
+        <p>&ldquo;Our team visits every home in person. No listings. No guesswork. Only verified homes.&rdquo;</p>
+        <div class="author">&mdash; USH Inspection Team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MEET THE HOSTS ══════════ -->
+<section class="section hosts">
+  <div class="container hosts-inner">
+    <div class="hosts-text" data-reveal>
+      <div class="section-label">Our Community</div>
+      <h2>Meet the hosts <em>behind USH</em></h2>
+      <p>Every USH host family opens their home with genuine care. Hosting international students is something they truly enjoy, and many have years of experience. They help students adjust to a new country, feel welcomed, and settle into daily life with ease, creating a home environment where you feel supported and part of the family from day one.</p>
+      <a href="become-a-host.html" class="btn btn-secondary">Become a Host</a>
+    </div>
+    <div class="hosts-carousel" data-reveal>
+      <div class="hosts-track-wrap">
+      <div class="hosts-track" id="hostsTrack">
+        <div class="host-slide">
+          <img src="assets/host-1.jpg" alt="Host family welcoming student">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Family + Students</span>
+            <div class="host-slide-name">The Johnson Family</div>
+            <div class="host-slide-loc">Los Angeles, CA &middot; Hosting since 2015</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-2.jpg" alt="Student arriving with luggage">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Student Arrival</span>
+            <div class="host-slide-name">Welcome Day</div>
+            <div class="host-slide-loc">Tempe, AZ &middot; New student move-in</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-3.jpg" alt="Host family with students outdoors">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Family + Students</span>
+            <div class="host-slide-name">The Smithers Family</div>
+            <div class="host-slide-loc">Phoenix, AZ &middot; Hosting since 2019</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-4.jpg" alt="Host family hiking with students">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Family + Students</span>
+            <div class="host-slide-name">The Olsen Family</div>
+            <div class="host-slide-loc">Tempe, AZ &middot; Hosting since 2017</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="hosts-bottom">
+        <div class="hosts-dots">
+          <button class="hosts-dot active" data-slide="0"></button>
+          <button class="hosts-dot" data-slide="1"></button>
+          <button class="hosts-dot" data-slide="2"></button>
+          <button class="hosts-dot" data-slide="3"></button>
+        </div>
+        <div class="hosts-arrows">
+          <button class="hosts-arrow" id="hostsPrev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="hosts-arrow" id="hostsNext" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STEPS ══════════ -->
+<section class="section steps">
+  <div class="container">
+    <div class="steps-header" data-reveal>
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">How to Apply for International Student Housing USA &mdash; <em>3 Simple Steps</em></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-connector step-connector-1"></div>
+      <div class="step-connector step-connector-2"></div>
+      <div class="step-card" data-reveal>
+        <div class="step-num">01</div>
+        <h3>Apply Online (3 Minutes or less)</h3>
+        <p>Tell us about yourself, your school, and your preferences. Submit your application in just a few minutes, and we'll send you a confirmation email right away.</p>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-num">02</div>
+        <h3>We Find Your Perfect Match</h3>
+        <p>Our team reviews your application and matches you with a verified host family near your campus. Once confirmed and your housing fee is paid, you'll receive your welcome package with host details, a homestay guide, your bus route, and an orientation video.</p>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-num">03</div>
+        <h3>Arrive and Feel at Home</h3>
+        <p>We help coordinate your move-in with your host family so you know your host, where you will live, and how to get to school. We also check in after 72 hours to make sure everything is going well.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="section testimonials">
+  <div class="container">
+    <div class="testimonials-header" data-reveal>
+      <div class="section-label">Student Stories</div>
+      <h2 class="section-title" style="margin:0 auto">Home to Students from <em>130+ Countries</em></h2>
+      <p>More than 19,000 international students from 130+ countries have found homestay accommodations across the U.S. through USH.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-reveal>
+        <div class="quote" style="padding-left:20px">
+          USH matched me with the perfect family two weeks before I even arrived from Saudi. I felt at home from day one.
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">K</div>
+          <div><div class="name">Karl T.</div><div class="origin">Saudi Arabia</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-reveal>
+        <div class="quote" style="padding-left:20px">
+          I'll tell any of their staff to take time to meet our students' needs. We always count on them to respond quickly.
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">W</div>
+          <div><div class="name">William H. Gaskill, PhD</div><div class="origin">UCLA Extension</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-reveal>
+        <div class="quote" style="padding-left:20px">
+          The entire process was so simple. My coordinator answered every question and made sure my home was perfect before I arrived.
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div><div class="name">Maria C.</div><div class="origin">Brazil</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRICING REGIONS ══════════ -->
+<section class="section pricing">
+  <div class="container">
+    <div class="pricing-header" data-reveal>
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title" style="margin:0 auto">Unlike Other Companies, We Show Our Prices. <em>No Hidden Fees.</em></h2>
+      <p>Select your region, find your school, and view your homestay pricing before you apply.</p>
+    </div>
+    <div class="regions" data-reveal>
+      <a href="schools.html#socal" class="region-card">
+        <div class="region-card-img"><img src="assets/regions/socal.jpg" alt="Southern California"></div>
+        <div class="region-card-body">
+          <h4>Southern CA</h4>
+          <div class="price">From <strong>$950</strong>/mo</div>
+        </div>
+      </a>
+      <a href="schools.html#norcal" class="region-card">
+        <div class="region-card-img"><img src="assets/regions/norcal.jpg" alt="Northern California"></div>
+        <div class="region-card-body">
+          <h4>Northern CA</h4>
+          <div class="price">From <strong>$1,100</strong>/mo</div>
+        </div>
+      </a>
+      <a href="schools.html#arizona" class="region-card">
+        <div class="region-card-img"><img src="assets/regions/arizona.jpg" alt="Arizona"></div>
+        <div class="region-card-body">
+          <h4>Arizona</h4>
+          <div class="price">From <strong>$850</strong>/mo</div>
+        </div>
+      </a>
+      <a href="schools.html#florida" class="region-card">
+        <div class="region-card-img"><img src="assets/regions/florida.jpg" alt="Florida"></div>
+        <div class="region-card-body">
+          <h4>Florida</h4>
+          <div class="price">From <strong>$900</strong>/mo</div>
+        </div>
+      </a>
+      <a href="schools.html#newyork" class="region-card">
+        <div class="region-card-img"><img src="assets/regions/newyork.jpg" alt="New York"></div>
+        <div class="region-card-body">
+          <h4>New York</h4>
+          <div class="price">From <strong>$1,200</strong>/mo</div>
+        </div>
+      </a>
+    </div>
+    <div class="pricing-link" data-reveal>
+      <a href="schools.html">View All Schools &amp; Prices <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta">
+  <div class="cta-orb"></div>
+  <div class="container cta-inner" data-reveal>
+    <div class="section-label">Limited Availability</div>
+    <h2>Secure Your Homestay &mdash; <em>Limited Availability</em></h2>
+    <p>Our most popular homestays near campus are reserved early. Availability is limited, so students who apply first have the most choice in host families and locations.</p>
+    <div class="cta-buttons">
+      <a href="apply.html" class="btn btn-secondary">Apply Now</a>
+      <a href="#" class="btn btn-outline">See Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Universal Student Housing</div>
+        <div class="footer-brand-desc">Trusted by international students and American host families since 1998. Every home is checked in person, and every student is supported from application to move-in.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#">Home</a>
+        <a href="#">Homestay</a>
+        <a href="#">FAQ</a>
+        <a href="#">Partners</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Login</a>
+        <a href="#">Apply Now</a>
+        <a href="become-a-host.html">Become a Host</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Designed with care for international students worldwide.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════ NAV SCROLL ══════════
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ══════════ MOBILE MENU ══════════
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ══════════ SCROLL REVEALS ══════════
+function initReveals() {
+  const els = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+}
+
+// ══════════ NUMBER COUNTERS ══════════
+function animateCounters() {
+  const els = document.querySelectorAll('[data-count]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1800;
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.3 });
+  els.forEach(el => obs.observe(el));
+}
+
+// ══════════ HOSTS CAROUSEL ══════════
+function initHostsCarousel() {
+  const track = document.getElementById('hostsTrack');
+  if (!track) return;
+  const slides = track.querySelectorAll('.host-slide');
+  const dots = document.querySelectorAll('.hosts-dot');
+  const prev = document.getElementById('hostsPrev');
+  const next = document.getElementById('hostsNext');
+  let current = 0;
+  function goTo(i) {
+    current = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+  }
+  prev.addEventListener('click', () => goTo(current - 1));
+  next.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.slide))));
+  setInterval(() => goTo(current + 1), 5000);
+}
+
+// ══════════ HERO ROTATING TAGLINE ══════════
+function initRotatingTagline() {
+  const lines = document.querySelectorAll('.hero-rotate-line');
+  if (!lines.length) return;
+  let current = 0;
+  setInterval(() => {
+    lines[current].classList.remove('active');
+    lines[current].classList.add('exit');
+    setTimeout(() => lines[current === 0 ? lines.length - 1 : current - 1].classList.remove('exit'), 500);
+    current = (current + 1) % lines.length;
+    lines[current].classList.add('active');
+  }, 3000);
+}
+
+// ══════════ INIT ══════════
+document.addEventListener('DOMContentLoaded', () => {
+  initReveals();
+  animateCounters();
+  initRotatingTagline();
+  initHostsCarousel();
+});
+</script>
+
+</body>
+</html>

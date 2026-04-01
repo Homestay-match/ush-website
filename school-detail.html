@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- School name, prices, and details populated from database -->
+<title>Homestay near UCLA Extension — USH Pricing</title>
+<meta name="description" content="View homestay pricing near UCLA Extension. Private room with a verified host family from $45/day. Breakfast, dinner, and room-only plans available.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & TOKENS
+   ══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --c-cream: #FBF8F3;
+  --c-cream-dim: #F5F0E8;
+  --c-charcoal: #1A1E1C;
+  --c-text: #2C3330;
+  --c-text-light: #5F6B65;
+  --c-text-muted: #8A9590;
+  --c-teal: #6EB7A3;
+  --c-teal-dark: #5A9E8C;
+  --c-teal-light: #EDF7F4;
+  --c-teal-glow: #6EB7A3;
+  --c-orange: #D9A84E;
+  --c-orange-dark: #C4943F;
+  --c-orange-light: #FDF5E8;
+  --c-amber: #D4984A;
+  --c-amber-light: #FDF5EB;
+  --c-amber-glow: #E8AE5E;
+  --c-olive-dark: #4A5250;
+  --c-olive: #404846;
+  --c-white: #FFFFFF;
+  --c-border: rgba(44,51,48,0.08);
+  --c-border-strong: rgba(44,51,48,0.14);
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body: 'Work Sans', system-ui, sans-serif;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 50px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --max-w: 1200px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1080px){.container{padding:0 48px}}
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 0;background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06);transition:all 0.4s var(--ease-out)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-teal-dark);transition:color 0.4s}
+.nav-logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--c-text);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-teal)}
+.nav-links a.active{color:var(--c-teal);font-weight:600}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-family:var(--ff-body);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary{background:var(--c-orange);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,136,83,0.3)}
+.btn-secondary{background:var(--c-orange);color:var(--c-white)}
+.btn-secondary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,136,83,0.3)}
+.btn-outline{background:transparent;color:var(--c-white);border:1.5px solid rgba(255,255,255,0.7)}
+.btn-outline:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.8)}
+.btn-outline-dark{background:transparent;color:var(--c-orange);border:1.5px solid var(--c-orange)}
+.btn-outline-dark:hover{background:var(--c-orange);color:var(--c-white)}
+.btn-teal{background:var(--c-teal);color:var(--c-white)}
+.btn-teal:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(110,183,163,0.3)}
+
+/* Mobile menu */
+.nav-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text);transition:color 0.3s}
+@media(min-width:900px){.nav-mobile-btn{display:none}}
+.mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+
+/* ══════════════════════════════════════
+   BREADCRUMB
+   ══════════════════════════════════════ */
+.breadcrumb{padding:80px 0 0;background:var(--c-cream)}
+.breadcrumb-inner{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--c-text-muted);flex-wrap:wrap}
+.breadcrumb-inner a{color:var(--c-text-light);transition:color 0.3s}
+.breadcrumb-inner a:hover{color:var(--c-teal)}
+.breadcrumb-sep{color:var(--c-text-muted)}
+.breadcrumb-current{color:var(--c-charcoal);font-weight:500}
+
+/* ══════════════════════════════════════
+   HERO (Compact / Cream)
+   ══════════════════════════════════════ */
+.hero-compact{padding:32px 0 48px;background:var(--c-cream)}
+.hero-compact .hero-content{max-width:720px}
+.hero-compact h1{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.025em;margin-bottom:16px}
+.hero-compact h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.hero-compact p{font-size:clamp(0.95rem,1.6vw,1.1rem);color:var(--c-text-light);line-height:1.65;max-width:600px;font-weight:400}
+
+/* ══════════════════════════════════════
+   SECTIONS SHARED
+   ══════════════════════════════════════ */
+.section{padding:80px 0}
+@media(max-width:768px){.section{padding:56px 0}}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
+.section-title{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;line-height:1.12;letter-spacing:-0.02em;color:var(--c-charcoal);max-width:720px}
+.section-title em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.section-header{margin-bottom:48px}
+.section-header p{font-size:1.02rem;color:var(--c-text-light);max-width:600px;margin-top:14px;line-height:1.7}
+
+/* ══════════════════════════════════════
+   PRICING CARDS
+   ══════════════════════════════════════ */
+.pricing{background:var(--c-white)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}}
+
+.pricing-card{background:var(--c-white);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);text-align:center;position:relative;transition:all 0.4s var(--ease-out)}
+.pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+
+.pricing-card.featured{border-color:var(--c-orange);border-width:2px;box-shadow:var(--shadow-md)}
+.pricing-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c-orange);border-radius:var(--r-lg) var(--r-lg) 0 0}
+
+.pricing-badge{display:inline-block;padding:5px 16px;border-radius:var(--r-full);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--c-orange-light);color:var(--c-orange-dark);margin-bottom:20px}
+
+.pricing-card h3{font-family:var(--ff-display);font-size:1.25rem;font-weight:600;color:var(--c-charcoal);margin-bottom:24px}
+
+.pricing-daily{font-family:var(--ff-display);font-size:3rem;font-weight:700;color:var(--c-charcoal);line-height:1}
+.pricing-daily span{font-size:1.2rem;font-weight:400;color:var(--c-text-muted)}
+.pricing-monthly{font-size:0.92rem;color:var(--c-text-light);margin-top:6px;margin-bottom:8px}
+.pricing-desc{font-size:0.88rem;color:var(--c-text-muted);margin-bottom:28px;line-height:1.5}
+.pricing-card .btn{width:100%}
+
+/* ══════════════════════════════════════
+   INCLUDES GRID
+   ══════════════════════════════════════ */
+.includes{background:var(--c-cream)}
+.includes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.includes-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.includes-grid{grid-template-columns:1fr}}
+
+.include-item{display:flex;align-items:center;gap:14px;padding:20px 24px;background:var(--c-white);border-radius:var(--r-md);border:1px solid var(--c-border)}
+.include-icon{width:32px;height:32px;border-radius:50%;background:var(--c-teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.include-icon svg{width:16px;height:16px;color:var(--c-teal)}
+.include-item span{font-size:0.92rem;font-weight:500;color:var(--c-charcoal)}
+
+/* ══════════════════════════════════════
+   FEES TABLE
+   ══════════════════════════════════════ */
+.fees{background:var(--c-white)}
+.fees-table{max-width:680px}
+.fee-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--c-border)}
+.fee-row:last-child{border-bottom:none}
+.fee-label{font-size:0.95rem;color:var(--c-text)}
+.fee-label .fee-optional{font-size:0.8rem;color:var(--c-text-muted);font-weight:400}
+.fee-value{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal)}
+.fee-value.included{color:var(--c-teal);font-weight:500;font-family:var(--ff-body)}
+
+/* ══════════════════════════════════════
+   COMPARISON CARDS
+   ══════════════════════════════════════ */
+.comparison{background:var(--c-cream)}
+.comparison-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.comparison-grid{grid-template-columns:1fr}}
+
+.comparison-card{background:var(--c-white);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);text-align:center;transition:all 0.4s var(--ease-out)}
+.comparison-card.highlighted{background:var(--c-teal);color:var(--c-white);border-color:var(--c-teal)}
+.comparison-card.highlighted h4{color:var(--c-white)}
+.comparison-card.highlighted .comparison-price{color:var(--c-white)}
+.comparison-card.highlighted .comparison-label{color:rgba(255,255,255,0.8)}
+.comparison-card.highlighted .comparison-best{display:inline-block;padding:4px 14px;border-radius:var(--r-full);font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.2);color:var(--c-white);margin-top:14px}
+
+.comparison-card h4{font-family:var(--ff-display);font-size:1.15rem;font-weight:600;color:var(--c-charcoal);margin-bottom:16px}
+.comparison-price{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--c-charcoal);line-height:1.1}
+.comparison-label{font-size:0.85rem;color:var(--c-text-muted);margin-top:4px}
+
+/* ══════════════════════════════════════
+   ABOUT LOCATION
+   ══════════════════════════════════════ */
+.location-info{background:var(--c-white)}
+.location-content{max-width:760px}
+.location-content h2{font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--c-charcoal);margin-bottom:20px}
+.location-content h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.location-content p{font-size:1rem;color:var(--c-text-light);line-height:1.7;margin-bottom:20px}
+.nearby-schools{margin-top:32px}
+.nearby-schools h3{font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--c-charcoal);margin-bottom:14px}
+.nearby-list{display:flex;flex-wrap:wrap;gap:8px}
+.nearby-list a{display:inline-block;padding:8px 18px;border-radius:var(--r-full);font-size:0.84rem;font-weight:500;color:var(--c-text);background:var(--c-cream);border:1px solid var(--c-border);transition:all 0.3s var(--ease-out)}
+.nearby-list a:hover{color:var(--c-teal);border-color:var(--c-teal);background:var(--c-teal-light)}
+
+/* ══════════════════════════════════════
+   CTA
+   ══════════════════════════════════════ */
+.cta{background:linear-gradient(170deg,#4A5250 0%,#404846 100%);color:var(--c-white);position:relative;overflow:hidden;padding:100px 0}
+.cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.cta-inner{text-align:center;position:relative;z-index:1}
+.cta .section-label{color:var(--c-orange)}
+.cta h2{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+.cta h2 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.cta p{font-size:1.05rem;color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 36px;line-height:1.65}
+.cta-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.cta-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,136,83,0.06),transparent 60%);filter:blur(80px);top:-200px;left:50%;transform:translateX(-50%);pointer-events:none}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer{background:#3A4240;color:rgba(255,255,255,0.7);padding:56px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-white);margin-bottom:12px}
+.footer-brand-desc{font-size:0.85rem;line-height:1.6;max-width:280px}
+.footer-col h4{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(255,255,255,0.75);margin-bottom:10px;transition:color 0.25s}
+.footer-col a:hover{color:var(--c-orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.78rem}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+.hero-stagger>*{opacity:0;transform:translateY(28px);animation:staggerIn 0.8s var(--ease-out) forwards}
+.hero-stagger>*:nth-child(1){animation-delay:.15s}
+.hero-stagger>*:nth-child(2){animation-delay:.3s}
+.hero-stagger>*:nth-child(3){animation-delay:.45s}
+@keyframes staggerIn{to{opacity:1;transform:translateY(0)}}
+
+[data-reveal]{opacity:0;transform:translateY(32px);transition:all 0.7s var(--ease-out)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:480px){
+  .btn{padding:11px 22px;font-size:0.84rem}
+  .cta{padding:72px 0}
+  .pricing-daily{font-size:2.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="partners.html">Partners</a>
+      <a href="homestaymatch.html">HomestayMatch</a>
+      <a href="#">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="partners.html" onclick="closeMobileMenu()">Partners</a>
+  <a href="homestaymatch.html" onclick="closeMobileMenu()">HomestayMatch</a>
+  <a href="#" onclick="closeMobileMenu()">FAQ</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="#" class="btn btn-primary" onclick="closeMobileMenu()">Apply Now</a>
+</div>
+
+<!-- ══════════ BREADCRUMB ══════════ -->
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="schools.html">Prices & Schools</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="schools.html#socal">Southern California</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">UCLA Extension</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero-compact">
+  <div class="container hero-content hero-stagger">
+    <div class="section-label">Homestay Pricing</div>
+    <h1>Homestay near <em>UCLA Extension</em></h1>
+    <p>Live with a verified host family within easy reach of campus. Every home is personally visited.</p>
+  </div>
+</section>
+
+<!-- ══════════ PRICING CARDS ══════════ -->
+<section class="section pricing">
+  <div class="container">
+    <div class="pricing-grid" data-reveal>
+
+      <!-- Card 1: Breakfast & Dinner -->
+      <div class="pricing-card featured">
+        <span class="pricing-badge">Most Popular</span>
+        <h3>Breakfast & Dinner</h3>
+        <div class="pricing-daily">$56<span>/day</span></div>
+        <div class="pricing-monthly">$1,680/month</div>
+        <p class="pricing-desc">2 meals daily with host family</p>
+        <a href="apply.html" class="btn btn-primary">Apply Now &rarr;</a>
+      </div>
+
+      <!-- Card 2: Continental Breakfast -->
+      <div class="pricing-card">
+        <div style="height:31px;margin-bottom:20px"></div>
+        <h3>Continental Breakfast</h3>
+        <div class="pricing-daily">$49<span>/day</span></div>
+        <div class="pricing-monthly">$1,470/month</div>
+        <p class="pricing-desc">Light breakfast included</p>
+        <a href="#" class="btn btn-outline-dark">Apply Now &rarr;</a>
+      </div>
+
+      <!-- Card 3: Room Only -->
+      <div class="pricing-card">
+        <div style="height:31px;margin-bottom:20px"></div>
+        <h3>Room Only</h3>
+        <div class="pricing-daily">$45<span>/day</span></div>
+        <div class="pricing-monthly">$1,350/month</div>
+        <p class="pricing-desc">Independent meal arrangement</p>
+        <a href="#" class="btn btn-outline-dark">Apply Now &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EVERY HOMESTAY INCLUDES ══════════ -->
+<section class="section includes">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <div class="section-label">What You Get</div>
+      <h2 class="section-title">Every homestay <em>includes</em></h2>
+    </div>
+    <div class="includes-grid" data-reveal>
+      <div class="include-item">
+        <div class="include-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span>Private furnished bedroom</span>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span>WiFi included</span>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span>30-day minimum stay</span>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span>Access to common areas</span>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span>TV, heating and air conditioning</span>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span>72-hour satisfaction guarantee</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ONE-TIME FEES ══════════ -->
+<section class="section fees">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <div class="section-label">Additional Fees</div>
+      <h2 class="section-title">One-time <em>fees</em></h2>
+    </div>
+    <div class="fees-table" data-reveal>
+      <div class="fee-row">
+        <span class="fee-label">Application Fee</span>
+        <span class="fee-value">$300</span>
+      </div>
+      <div class="fee-row">
+        <span class="fee-label">Security Deposit</span>
+        <span class="fee-value">$400</span>
+      </div>
+      <div class="fee-row">
+        <span class="fee-label">Airport Pickup <span class="fee-optional">(optional)</span></span>
+        <span class="fee-value">$150</span>
+      </div>
+      <div class="fee-row">
+        <span class="fee-label">Minimum Stay</span>
+        <span class="fee-value">4 weeks (28 days)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW HOMESTAY COMPARES ══════════ -->
+<section class="section comparison">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <div class="section-label">Value Comparison</div>
+      <h2 class="section-title">How homestay <em>compares</em></h2>
+    </div>
+    <div class="comparison-grid" data-reveal>
+      <div class="comparison-card highlighted">
+        <h4>Homestay</h4>
+        <div class="comparison-price">$1,350 - $1,680</div>
+        <div class="comparison-label">per month</div>
+        <span class="comparison-best">Best Value</span>
+      </div>
+      <div class="comparison-card">
+        <h4>Shared Apartment</h4>
+        <div class="comparison-price">$2,000+</div>
+        <div class="comparison-label">per month</div>
+      </div>
+      <div class="comparison-card">
+        <h4>Studio Apartment</h4>
+        <div class="comparison-price">$2,800+</div>
+        <div class="comparison-label">per month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT THIS LOCATION ══════════ -->
+<section class="section location-info">
+  <div class="container">
+    <div class="location-content" data-reveal>
+      <div class="section-label">About This Location</div>
+      <h2>Homestay for International Students near <em>UCLA Extension</em></h2>
+      <p>UCLA Extension is located in the Westwood neighborhood of Los Angeles, one of the most desirable areas in the city. Our host families near UCLA Extension live in safe, residential neighborhoods in Westwood, Brentwood, Santa Monica, and surrounding communities, all within convenient reach of campus by public transit or a short drive.</p>
+      <p>Students enjoy easy access to shops, restaurants, parks, and cultural attractions. The area is well connected by Metro bus lines and the Expo Line, making it simple to get to campus and explore the greater Los Angeles area.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta">
+  <div class="cta-orb"></div>
+  <div class="container cta-inner" data-reveal>
+    <h2>Ready to find your homestay near <em>UCLA Extension?</em></h2>
+    <p>Apply in minutes and receive a placement matched to your needs, your school, and your lifestyle.</p>
+    <div class="cta-buttons">
+      <a href="apply.html" class="btn btn-secondary">Apply Now &rarr;</a>
+      <a href="#" class="btn btn-outline">Chat on WhatsApp &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Universal Student Housing</div>
+        <div class="footer-brand-desc">Trusted by international students and American host families since 1998. Every home is checked in person, and every student is supported from application to move-in.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Homestay</a>
+        <a href="#">FAQ</a>
+        <a href="#">Partners</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Login</a>
+        <a href="#">Apply Now</a>
+        <a href="become-a-host.html">Become a Host</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Designed with care for international students worldwide.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════ MOBILE MENU ══════════
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ══════════ SCROLL REVEALS ══════════
+function initReveals() {
+  const els = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+}
+
+// ══════════ INIT ══════════
+document.addEventListener('DOMContentLoaded', () => {
+  initReveals();
+});
+</script>
+
+</body>
+</html>

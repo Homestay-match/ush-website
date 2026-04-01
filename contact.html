@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Universal Student Housing</title>
+<meta name="description" content="Get in touch with USH. We're based in Los Angeles and ready to help with your homestay placement, partnership inquiry, or any questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & TOKENS
+   ══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c-cream:#FBF8F3;
+  --c-cream-dim:#F5F0E8;
+  --c-charcoal:#1A1E1C;
+  --c-text:#2C3330;
+  --c-text-light:#5F6B65;
+  --c-text-muted:#8A9590;
+  --c-teal:#6EB7A3;
+  --c-teal-dark:#5A9E8C;
+  --c-teal-light:#EDF7F4;
+  --c-orange:#D9A84E;
+  --c-orange-dark:#C4943F;
+  --c-orange-light:#FDF5E8;
+  --c-olive-dark:#4A5250;
+  --c-white:#FFFFFF;
+  --c-border:rgba(44,51,48,0.08);
+  --c-border-strong:rgba(44,51,48,0.14);
+  --ff-display:'Fraunces',Georgia,serif;
+  --ff-body:'Work Sans',system-ui,sans-serif;
+  --r-sm:8px;
+  --r-md:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --r-full:50px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.06),0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04);
+  --max-w:1200px;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+input,select,textarea,button{font-family:var(--ff-body)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1080px){.container{padding:0 48px}}
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 0;background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06);transition:all 0.4s var(--ease-out)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-teal-dark);transition:color 0.4s}
+.nav-logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--c-text);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-teal)}
+.nav-links a.active{color:var(--c-teal);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-family:var(--ff-body);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary{background:var(--c-orange);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(217,168,78,0.3)}
+.nav-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+@media(min-width:900px){.nav-mobile-btn{display:none}}
+.mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+.hero{
+  position:relative;
+  height:68vh;
+  min-height:480px;
+  max-height:700px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  background:var(--c-charcoal);
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:url('assets/team-photo.jpg') center center / cover no-repeat;
+  transform:scale(1.04);
+  transition:transform 8s ease;
+}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(26,30,28,0.78) 0%,
+    rgba(26,30,28,0.45) 45%,
+    rgba(26,30,28,0.15) 100%
+  );
+}
+.hero-inner{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+  padding-bottom:72px;
+}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;color:var(--c-white);line-height:1.08;letter-spacing:-0.025em;margin-bottom:20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.hero p{font-size:clamp(0.95rem,1.7vw,1.1rem);color:rgba(255,255,255,0.78);line-height:1.7;max-width:520px}
+
+/* ══════════════════════════════════════
+   CONTACT GRID
+   ══════════════════════════════════════ */
+.contact-section{padding:80px 0 100px}
+.contact-grid{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start}
+@media(max-width:960px){.contact-grid{grid-template-columns:1fr;gap:48px}}
+
+/* ══════════════════════════════════════
+   FORM
+   ══════════════════════════════════════ */
+.form-card{background:var(--c-white);border-radius:var(--r-xl);border:1px solid var(--c-border);padding:44px;box-shadow:var(--shadow-sm)}
+@media(max-width:600px){.form-card{padding:28px 22px}}
+.form-title{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-charcoal);margin-bottom:6px}
+.form-subtitle{font-size:0.92rem;color:var(--c-text-muted);margin-bottom:32px;line-height:1.55}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-row.full{grid-template-columns:1fr}
+@media(max-width:520px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--c-charcoal)}
+.form-group input,
+.form-group select,
+.form-group textarea{width:100%;padding:12px 16px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-size:0.9rem;color:var(--c-text);background:var(--c-white);outline:none;transition:border-color 0.25s,box-shadow 0.25s;appearance:none;-webkit-appearance:none}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.form-group textarea{resize:vertical;min-height:130px;line-height:1.6}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
+.form-group input::placeholder,
+.form-group textarea::placeholder{color:var(--c-text-muted)}
+.form-submit{margin-top:24px}
+.btn-form{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out)}
+.btn-form:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(110,183,163,0.3)}
+.form-note{margin-top:14px;font-size:0.76rem;color:var(--c-text-muted);text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.form-note svg{color:var(--c-teal-dark)}
+.form-location{margin-top:16px;padding-top:16px;border-top:1px solid var(--c-border);font-size:0.78rem;color:var(--c-text-muted);display:flex;align-items:center;justify-content:center;gap:6px;line-height:1.5}
+.form-location svg{color:var(--c-orange);flex-shrink:0}
+.form-location strong{color:var(--c-text);font-weight:600}
+
+/* Success state */
+.form-success{display:none;text-align:center;padding:60px 32px 52px;animation:successFadeIn 0.5s var(--ease-out) forwards}
+.form-success.visible{display:flex;flex-direction:column;align-items:center}
+@keyframes successFadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.success-icon{width:72px;height:72px;background:var(--c-teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;position:relative}
+.success-icon::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--c-teal);opacity:0.3}
+.success-icon svg{color:var(--c-teal)}
+.success-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-orange);margin-bottom:12px}
+.form-success h3{font-family:var(--ff-display);font-size:1.9rem;font-weight:600;color:var(--c-charcoal);margin-bottom:12px;line-height:1.1}
+.form-success h3 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.form-success > p{font-size:0.95rem;color:var(--c-text-light);line-height:1.7;max-width:360px;margin-bottom:32px}
+.success-steps{display:flex;flex-direction:column;gap:12px;width:100%;max-width:380px;text-align:left;margin-bottom:36px}
+.success-step{display:flex;align-items:flex-start;gap:12px;background:var(--c-cream);border-radius:var(--r-md);padding:14px 16px}
+.success-step-num{width:24px;height:24px;border-radius:50%;background:var(--c-teal);color:#fff;font-size:0.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.success-step-text{font-size:0.85rem;color:var(--c-text);line-height:1.5}
+.success-step-text strong{display:block;font-weight:600;color:var(--c-charcoal);margin-bottom:2px}
+.success-whatsapp{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;border-radius:var(--r-full);padding:11px 22px;font-size:0.85rem;font-weight:600;transition:background 0.25s,transform 0.2s}
+.success-whatsapp:hover{background:#1ebe5d;transform:translateY(-1px)}
+
+/* ══════════════════════════════════════
+   CONTACT INFO SIDEBAR
+   ══════════════════════════════════════ */
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.info-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:28px 28px;transition:all 0.3s var(--ease-out)}
+.info-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.info-card-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0}
+.icon-teal{background:var(--c-teal-light)}
+.icon-teal svg{color:var(--c-teal)}
+.icon-gold{background:var(--c-orange-light)}
+.icon-gold svg{color:var(--c-orange)}
+.icon-olive{background:#EAEDED}
+.icon-olive svg{color:var(--c-olive-dark)}
+.info-card h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin-bottom:6px}
+.info-card p{font-size:0.88rem;color:var(--c-text-light);line-height:1.65;margin-bottom:12px}
+.info-card a{font-size:0.92rem;font-weight:600;color:var(--c-teal);transition:color 0.25s;display:inline-flex;align-items:center;gap:6px}
+.info-card a:hover{color:var(--c-teal-dark)}
+.info-card .tag{display:inline-block;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:var(--c-teal-light);color:var(--c-teal-dark);padding:4px 10px;border-radius:var(--r-full);margin-bottom:14px}
+
+/* WhatsApp card */
+.whatsapp-card{background:linear-gradient(135deg,#25D366 0%,#1DA851 100%);border:none;color:var(--c-white)}
+.whatsapp-card:hover{box-shadow:0 8px 28px rgba(37,211,102,0.25);transform:translateY(-2px)}
+.whatsapp-card h4{color:var(--c-white)}
+.whatsapp-card p{color:rgba(255,255,255,0.85)}
+.whatsapp-card .info-card-icon{background:rgba(255,255,255,0.2)}
+.whatsapp-card .info-card-icon svg{color:var(--c-white)}
+.whatsapp-card a{color:var(--c-white);font-size:1rem;font-weight:700}
+.whatsapp-card a:hover{color:rgba(255,255,255,0.85)}
+
+/* ══════════════════════════════════════
+   FAQ STRIP
+   ══════════════════════════════════════ */
+.faq-strip{background:var(--c-olive-dark);padding:80px 0;position:relative;overflow:hidden}
+.faq-strip::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.faq-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+@media(max-width:768px){.faq-strip-inner{grid-template-columns:1fr;gap:40px}}
+.faq-strip-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
+.faq-strip h2{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--c-white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}
+.faq-strip h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.faq-strip p{font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:28px}
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.08);padding:18px 0}
+.faq-item:first-child{border-top:1px solid rgba(255,255,255,0.08)}
+.faq-question{font-size:0.95rem;font-weight:600;color:var(--c-white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+.faq-question svg{flex-shrink:0;transition:transform 0.3s var(--ease-out);color:var(--c-teal)}
+.faq-item.open .faq-question svg{transform:rotate(45deg)}
+.faq-answer{font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease-out),padding 0.3s}
+.faq-item.open .faq-answer{max-height:200px;padding-top:10px}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer{background:#3A4240;color:rgba(255,255,255,0.7);padding:56px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-white);margin-bottom:12px}
+.footer-brand-desc{font-size:0.85rem;line-height:1.6;max-width:280px}
+.footer-col h4{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(255,255,255,0.75);margin-bottom:10px;transition:color 0.25s}
+.footer-col a:hover{color:var(--c-orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.78rem}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+.hero-stagger>*{opacity:0;transform:translateY(28px);animation:staggerIn 0.8s var(--ease-out) forwards}
+.hero-stagger>*:nth-child(1){animation-delay:.1s}
+.hero-stagger>*:nth-child(2){animation-delay:.25s}
+.hero-stagger>*:nth-child(3){animation-delay:.4s}
+@keyframes staggerIn{to{opacity:1;transform:translateY(0)}}
+[data-reveal]{opacity:0;transform:translateY(32px);transition:all 0.7s var(--ease-out)}
+[data-reveal].revealed{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="partners.html">Partners</a>
+      <a href="homestaymatch.html">HomestayMatch</a>
+      <a href="#">FAQ</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="partners.html" onclick="closeMobileMenu()">Partners</a>
+  <a href="homestaymatch.html" onclick="closeMobileMenu()">HomestayMatch</a>
+  <a href="#" onclick="closeMobileMenu()">FAQ</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="apply.html" class="btn btn-primary" onclick="closeMobileMenu()">Apply Now</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-inner hero-stagger">
+      <div class="section-label">Get in Touch</div>
+      <h1>We'd love to <em>hear from you</em></h1>
+      <p>Whether you're a student looking for a homestay, a school exploring a partnership, or an overseas agent — our team is here to help.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT GRID ══════════ -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT — Form -->
+      <div class="form-card" data-reveal>
+
+        <div id="form-body">
+          <div class="form-title">Send us a message</div>
+          <div class="form-subtitle">We typically respond within 1 business day.</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-first">First Name</label>
+              <input type="text" id="cf-first" placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label for="cf-last">Last Name</label>
+              <input type="text" id="cf-last" placeholder="Your last name">
+            </div>
+          </div>
+
+          <div class="form-row full" style="margin-bottom:16px">
+            <div class="form-group">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" placeholder="your@email.com">
+            </div>
+          </div>
+
+          <div class="form-row full" style="margin-bottom:16px">
+            <div class="form-group">
+              <label for="cf-phone">Phone Number <span style="font-weight:400;color:var(--c-text-muted)">(optional)</span></label>
+              <input type="tel" id="cf-phone" placeholder="+1 (000) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-row full" style="margin-bottom:16px">
+            <div class="form-group">
+              <label for="cf-topic">I'm contacting about</label>
+              <select id="cf-topic">
+                <option value="">Select a topic</option>
+                <option>Homestay application</option>
+                <option>School partnership</option>
+                <option>Overseas agent partnership</option>
+                <option>Current placement support</option>
+                <option>HomestayMatch platform</option>
+                <option>Becoming a host family</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row full" style="margin-bottom:0">
+            <div class="form-group">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" placeholder="Tell us how we can help..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button class="btn-form" onclick="submitForm()">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="form-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Your information is private and will never be shared.
+          </div>
+          <div class="form-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Based in <strong>Los Angeles, California</strong>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="form-success" id="form-success">
+          <div class="success-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="success-tag">Message received</div>
+          <h3>Thank you for <em>reaching out!</em></h3>
+          <p>Our team will review your message and get back to you within 1 business day. Here's what happens next:</p>
+
+          <div class="success-steps">
+            <div class="success-step">
+              <div class="success-step-num">1</div>
+              <div class="success-step-text">
+                <strong>We review your message</strong>
+                Our team reads every inquiry personally — no bots.
+              </div>
+            </div>
+            <div class="success-step">
+              <div class="success-step-num">2</div>
+              <div class="success-step-text">
+                <strong>We'll reply during business hours</strong>
+                Mon–Fri, 9am–5pm PST. We'll follow up at the email you provided.
+              </div>
+            </div>
+            <div class="success-step">
+              <div class="success-step-num">3</div>
+              <div class="success-step-text">
+                <strong>Check your inbox</strong>
+                Keep an eye out for an email from contact@usaish.com — including your spam folder.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT — Info -->
+      <div class="contact-info">
+
+        <!-- Call Us -->
+        <div class="info-card" data-reveal>
+          <div class="info-card-icon icon-teal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          </div>
+          <h4>Call Us</h4>
+          <p>Our team is available Monday–Friday, 9am–5pm PST.</p>
+          <a href="tel:+13108244908">
+            +1 (310) 824-4908
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div class="info-card" data-reveal>
+          <div class="info-card-icon icon-gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>Email Us</h4>
+          <p>For general inquiries, applications, and partnership requests.</p>
+          <a href="mailto:contact@usaish.com">
+            contact@usaish.com
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="info-card whatsapp-card" data-reveal>
+          <div class="info-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <h4>Chat on WhatsApp</h4>
+          <p>Prefer to message? Reach us directly on WhatsApp for quick answers.</p>
+          <a href="https://wa.me/13108244908" target="_blank" rel="noopener">
+            Start a conversation →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ STRIP ══════════ -->
+<section class="faq-strip">
+  <div class="container">
+    <div class="faq-strip-inner">
+      <div data-reveal>
+        <div class="faq-strip-label">Quick Answers</div>
+        <h2>Common <em>questions</em></h2>
+        <p>Can't find what you're looking for? Send us a message and we'll get back to you within 1 business day.</p>
+        <a href="apply.html" class="btn btn-primary">Apply Now →</a>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How long does the placement process take?
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="faq-answer">Most students receive their host family match within 5–10 business days after submitting their application and payment.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Can I request a specific type of host family?
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="faq-answer">Yes. During the application you can specify preferences such as no pets, no children, female host, proximity to school, and dietary requirements. We do our best to match accordingly.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What is included in the homestay fee?
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="faq-answer">All homestays include a private furnished room, use of common areas, Wi-Fi, and laundry access. Meal plans (breakfast & dinner, or continental) are available as an add-on.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Do you work with overseas agents?
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="faq-answer">Absolutely. We partner with 700+ agencies in more than 50 countries. Visit our Partners page to learn more or get in touch to start a partnership.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How do I become a host family?
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="faq-answer">Send us a message using the contact form and select "Becoming a host family" as the topic. Our team will guide you through our 98-point home verification process.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Universal Student Housing</div>
+        <div class="footer-brand-desc">Trusted by international students and American host families since 1998. Every home is checked in person, and every student is supported from application to move-in.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="schools.html">Prices & Schools</a>
+        <a href="#">FAQ</a>
+        <a href="partners.html">Partners</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Login</a>
+        <a href="apply.html">Apply Now</a>
+        <a href="become-a-host.html">Become a Host</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Los Angeles, California</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════ MOBILE MENU ══════════
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ══════════ FORM SUBMIT ══════════
+function submitForm() {
+  // Backend: POST form data to Laravel endpoint
+  const first = document.getElementById('cf-first').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  if (!first || !email) {
+    alert('Please fill in your name and email address.');
+    return;
+  }
+  document.getElementById('form-body').style.display = 'none';
+  document.getElementById('form-success').classList.add('visible');
+}
+
+// ══════════ FAQ ACCORDION ══════════
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ══════════ HERO BG PARALLAX LOAD ══════════
+const heroBg = document.getElementById('heroBg');
+if (heroBg) {
+  const img = new Image();
+  img.src = 'assets/team-photo.jpg';
+  img.onload = () => heroBg.classList.add('loaded');
+}
+
+// ══════════ SCROLL REVEALS ══════════
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = `${(i % 3) * 0.1}s`;
+      e.target.classList.add('revealed');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

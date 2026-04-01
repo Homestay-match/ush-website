@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners — Universal Student Housing</title>
+<meta name="description" content="Partner with USH for full-service homestay placements. We work with 280+ U.S. colleges and 650+ overseas agents to house international students.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & TOKENS
+   ══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --c-cream: #FBF8F3;
+  --c-cream-dim: #F5F0E8;
+  --c-charcoal: #1A1E1C;
+  --c-text: #2C3330;
+  --c-text-light: #5F6B65;
+  --c-text-muted: #8A9590;
+  --c-teal: #6EB7A3;
+  --c-teal-dark: #5A9E8C;
+  --c-teal-light: #EDF7F4;
+  --c-teal-glow: #6EB7A3;
+  --c-orange: #D9A84E;
+  --c-orange-dark: #C4943F;
+  --c-orange-light: #FDF5E8;
+  --c-amber: #D4984A;
+  --c-amber-light: #FDF5EB;
+  --c-amber-glow: #E8AE5E;
+  --c-olive-dark: #4A5250;
+  --c-olive: #404846;
+  --c-white: #FFFFFF;
+  --c-border: rgba(44,51,48,0.08);
+  --c-border-strong: rgba(44,51,48,0.14);
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body: 'Work Sans', system-ui, sans-serif;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 50px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --max-w: 1200px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1080px){.container{padding:0 48px}}
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 0;background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06);transition:all 0.4s var(--ease-out)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-teal-dark);transition:color 0.4s}
+.nav-logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--c-text);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-teal)}
+.nav-links a.active{color:var(--c-teal);font-weight:600}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-family:var(--ff-body);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary{background:var(--c-orange);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,136,83,0.3)}
+.btn-secondary{background:var(--c-orange);color:var(--c-white)}
+.btn-secondary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,136,83,0.3)}
+.btn-outline{background:transparent;color:var(--c-white);border:1.5px solid rgba(255,255,255,0.7)}
+.btn-outline:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.8)}
+.btn-outline-dark{background:transparent;color:var(--c-orange);border:1.5px solid var(--c-orange)}
+.btn-outline-dark:hover{background:var(--c-orange);color:var(--c-white)}
+
+/* Mobile menu */
+.nav-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text);transition:color 0.3s}
+@media(min-width:900px){.nav-mobile-btn{display:none}}
+.mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+.hero{position:relative;min-height:60vh;display:flex;align-items:flex-end;padding:140px 0 60px;overflow:hidden;background:#2C3330}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;z-index:0}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,51,48,0.5) 0%,rgba(44,51,48,0.4) 30%,rgba(44,51,48,0.65) 60%,rgba(44,51,48,0.85) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:700;color:var(--c-white);line-height:1.1;letter-spacing:-0.025em;margin-bottom:20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.hero p{font-size:clamp(1rem,1.8vw,1.2rem);color:rgba(255,255,255,0.9);line-height:1.65;max-width:620px;margin-bottom:0;font-weight:400}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.hero-orb-1{width:500px;height:500px;top:-100px;right:-150px;background:radial-gradient(circle,rgba(255,136,83,0.1),transparent 60%);filter:blur(60px);animation:orbFloat 10s ease-in-out infinite}
+.hero-orb-2{width:400px;height:400px;bottom:-80px;left:-100px;background:radial-gradient(circle,rgba(110,183,163,0.08),transparent 60%);filter:blur(50px);animation:orbFloat 12s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}33%{transform:translate(20px,-15px)}66%{transform:translate(-15px,10px)}}
+
+@media(max-width:600px){
+  .hero{min-height:auto;padding:120px 0 60px}
+}
+
+/* ══════════════════════════════════════
+   SECTIONS SHARED
+   ══════════════════════════════════════ */
+.section{padding:100px 0}
+@media(max-width:768px){.section{padding:64px 0}}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
+.section-title{font-family:var(--ff-display);font-size:clamp(2.2rem,4.5vw,3.2rem);font-weight:600;line-height:1.12;letter-spacing:-0.02em;color:var(--c-charcoal);max-width:720px}
+.section-title em{font-style:italic;font-weight:400;color:var(--c-teal)}
+
+/* ══════════════════════════════════════
+   ZIGZAG ROWS
+   ══════════════════════════════════════ */
+.zigzag-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.zigzag-row.reverse .zigzag-img{order:2}
+.zigzag-row.reverse .zigzag-text{order:1}
+@media(max-width:768px){
+  .zigzag-row{grid-template-columns:1fr;gap:32px}
+  .zigzag-row.reverse .zigzag-img{order:0}
+  .zigzag-row.reverse .zigzag-text{order:0}
+}
+
+/* ══════════════════════════════════════
+   COHABS-STYLE FEATURE GRID
+   ══════════════════════════════════════ */
+.feature-section-header{margin-bottom:56px}
+.feature-section-header p{font-size:1.1rem;color:var(--c-text-light);max-width:580px;margin-top:16px;line-height:1.7}
+.feature-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){.feature-layout{grid-template-columns:1fr;gap:40px}}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:500px){.feature-grid{grid-template-columns:1fr;gap:32px}}
+.feature-item-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feature-item-icon svg{width:26px;height:26px}
+.feature-item h4{font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px}
+.feature-item p{font-size:0.92rem;color:var(--c-text-light);line-height:1.6}
+.feature-side{position:relative}
+.feature-side .section-label{color:var(--c-orange)}
+.feature-side h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--c-charcoal);margin-bottom:16px}
+.feature-side h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.feature-side p{font-size:1.05rem;color:var(--c-text-light);line-height:1.7;margin-bottom:24px}
+.feature-side .btn{margin-top:8px}
+/* Icon colors */
+.icon-teal{background:rgba(110,183,163,0.15)}
+.icon-teal svg{color:var(--c-teal)}
+.icon-gold{background:rgba(217,168,78,0.15)}
+.icon-gold svg{color:var(--c-orange)}
+.icon-blue{background:rgba(100,160,220,0.15)}
+.icon-blue svg{color:#5BA0D0}
+.icon-rose{background:rgba(200,120,140,0.15)}
+.icon-rose svg{color:#C0788C}
+.zigzag-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#e8ddd0,#d4c5b0);display:flex;align-items:center;justify-content:center}
+.zigzag-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out)}
+.zigzag-img:hover img{transform:scale(1.03)}
+.zigzag-img svg{width:100px;height:100px;color:var(--c-teal);opacity:0.2}
+.zigzag-text h3{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-charcoal);margin-bottom:16px}
+.zigzag-text h3 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.zigzag-text p{font-size:1.02rem;color:var(--c-text-light);line-height:1.7;margin-bottom:16px}
+.zigzag-text p:last-child{margin-bottom:0}
+
+/* ══════════════════════════════════════
+   SAFETY CHECK (feature items)
+   ══════════════════════════════════════ */
+.safety-checks{margin-top:24px;display:flex;flex-direction:column;gap:16px}
+.safety-check{display:flex;gap:14px;align-items:flex-start}
+.safety-check-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.safety-check-icon svg{width:14px;height:14px;color:var(--c-teal)}
+.safety-check-text h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin-bottom:4px}
+.safety-check-text p{font-size:0.95rem;color:var(--c-text-light);line-height:1.6;margin-bottom:0}
+
+/* ══════════════════════════════════════
+   HOMESTAYMATCH SECTION
+   ══════════════════════════════════════ */
+.hm-header{text-align:center;margin-bottom:20px}
+.hm-header .section-title{margin:0 auto}
+.hm-header p{font-size:1.05rem;color:var(--c-text-light);max-width:720px;margin:20px auto 0;line-height:1.7}
+.hm-body{text-align:center;max-width:640px;margin:0 auto 48px}
+.hm-body p{font-size:1.02rem;color:var(--c-text-light);line-height:1.7;margin-bottom:16px}
+.hm-mockup{max-width:1100px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,0.1),0 8px 24px rgba(0,0,0,0.05);background:var(--c-white);border:1px solid rgba(0,0,0,0.08)}
+.hm-mockup-bar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:#F3F4F6;border-bottom:1px solid var(--c-border)}
+.hm-mockup-dot{width:11px;height:11px;border-radius:50%}
+.hm-mockup-dot:nth-child(1){background:#EF4444;opacity:0.7}
+.hm-mockup-dot:nth-child(2){background:#F59E0B;opacity:0.7}
+.hm-mockup-dot:nth-child(3){background:#22C55E;opacity:0.7}
+.hm-mockup-url{flex:1;margin-left:14px;height:30px;border-radius:8px;background:var(--c-white);border:1px solid var(--c-border);display:flex;align-items:center;padding:0 14px;font-size:0.75rem;color:var(--c-text-muted)}
+.hm-mockup-body{position:relative;overflow:hidden}
+.hm-mockup-body img{width:100%;display:block}
+.hm-mockup-placeholder{display:flex;align-items:center;justify-content:center;min-height:500px;background:linear-gradient(135deg,#F9FAFB,#EFF1F3);color:var(--c-text-muted);font-size:0.95rem}
+@media(max-width:768px){.hm-mockup{margin:0 -16px;border-radius:10px}.hm-mockup-placeholder{min-height:280px}}
+
+/* ══════════════════════════════════════
+   LOGO WALL
+   ══════════════════════════════════════ */
+.partners-section{background:var(--c-cream)}
+.partners-header{text-align:center;margin-bottom:48px}
+.partners-header .section-title{margin:0 auto}
+.partners-header p{font-size:1.1rem;color:var(--c-text-light);max-width:640px;margin:16px auto 0;line-height:1.7}
+/* ── Marquee Logo Scroll ── */
+.logo-marquee-wrap{overflow:hidden;position:relative;padding:8px 0}
+.logo-marquee-wrap::before,.logo-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.logo-marquee-wrap::before{left:0;background:linear-gradient(to right,var(--c-cream),transparent)}
+.logo-marquee-wrap::after{right:0;background:linear-gradient(to left,var(--c-cream),transparent)}
+.logo-marquee-track{display:flex;gap:16px;width:max-content;animation:marqueeScroll 30s linear infinite}
+.logo-marquee-track:hover{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.logo-item{background:var(--c-white);border-radius:var(--r-md);border:1px solid var(--c-border);padding:16px 20px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:110px;width:170px;flex-shrink:0;transition:all 0.3s var(--ease-out)}
+.logo-item:hover{box-shadow:var(--shadow-md);border-color:var(--c-teal);transform:translateY(-3px)}
+.logo-item img{max-width:100%;max-height:48px;object-fit:contain;transition:transform 0.3s}
+.logo-item:hover img{transform:scale(1.06)}
+.logo-item-name{font-size:0.7rem;font-weight:500;color:var(--c-text-muted);letter-spacing:0.01em;text-align:center;line-height:1.3;white-space:nowrap}
+
+/* ══════════════════════════════════════
+   CONTACT FORM
+   ══════════════════════════════════════ */
+.contact-header{margin-bottom:48px}
+.contact-header p{font-size:1.05rem;color:var(--c-text-light);max-width:560px;margin-top:16px;line-height:1.7}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:32px}}
+.contact-form{display:flex;flex-direction:column;gap:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--c-text);letter-spacing:0.02em}
+.form-group input,
+.form-group select,
+.form-group textarea{font-family:var(--ff-body);font-size:0.95rem;padding:13px 16px;border-radius:var(--r-md);border:1.5px solid var(--c-border-strong);background:var(--c-cream);color:var(--c-text);transition:all 0.3s var(--ease-out);outline:none;appearance:none;-webkit-appearance:none}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
+.form-group input::placeholder,
+.form-group textarea::placeholder{color:var(--c-text-muted)}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235F6B65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.form-group textarea{min-height:120px;resize:vertical}
+.form-submit{margin-top:8px}
+.contact-info-side{display:flex;flex-direction:column;gap:24px;padding-top:20px}
+.contact-info-card{background:var(--c-cream);border-radius:var(--r-lg);padding:28px 24px;border:1px solid var(--c-border)}
+.contact-info-card h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px}
+.contact-info-card p{font-size:0.92rem;color:var(--c-text-light);line-height:1.65}
+.contact-info-card a{color:var(--c-teal);font-weight:500;transition:color 0.3s}
+.contact-info-card a:hover{color:var(--c-teal-dark)}
+
+/* ══════════════════════════════════════
+   CTA
+   ══════════════════════════════════════ */
+.cta{background:linear-gradient(170deg,#4A5250 0%,#404846 100%);color:var(--c-white);position:relative;overflow:hidden;padding:100px 0}
+.cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.cta-inner{text-align:center;position:relative;z-index:1}
+.cta .section-label{color:var(--c-orange)}
+.cta h2{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+.cta h2 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.cta p{font-size:1.05rem;color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 36px;line-height:1.65}
+.cta-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.cta-contact{margin-top:24px;font-size:0.92rem;color:rgba(255,255,255,0.6)}
+.cta-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,136,83,0.06),transparent 60%);filter:blur(80px);top:-200px;left:50%;transform:translateX(-50%);pointer-events:none}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer{background:#3A4240;color:rgba(255,255,255,0.7);padding:56px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-white);margin-bottom:12px}
+.footer-brand-desc{font-size:0.85rem;line-height:1.6;max-width:280px}
+.footer-col h4{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(255,255,255,0.75);margin-bottom:10px;transition:color 0.25s}
+.footer-col a:hover{color:var(--c-orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.78rem}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+.hero-stagger>*{opacity:0;transform:translateY(28px);animation:staggerIn 0.8s var(--ease-out) forwards}
+.hero-stagger>*:nth-child(1){animation-delay:.15s}
+.hero-stagger>*:nth-child(2){animation-delay:.3s}
+.hero-stagger>*:nth-child(3){animation-delay:.45s}
+.hero-stagger>*:nth-child(4){animation-delay:.6s}
+@keyframes staggerIn{to{opacity:1;transform:translateY(0)}}
+
+[data-reveal]{opacity:0;transform:translateY(32px);transition:all 0.7s var(--ease-out)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:480px){
+  .btn{padding:11px 22px;font-size:0.84rem}
+  .cta{padding:72px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="partners.html" class="active">Partners</a>
+      <a href="homestaymatch.html">HomestayMatch</a>
+      <a href="#">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="partners.html" onclick="closeMobileMenu()">Partners</a>
+  <a href="homestaymatch.html" onclick="closeMobileMenu()">HomestayMatch</a>
+  <a href="#" onclick="closeMobileMenu()">FAQ</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="#" class="btn btn-primary" onclick="closeMobileMenu()">Apply Now</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <img class="hero-bg" src="assets/partners-hero.jpg" alt="Host family laughing with students on couch">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="container hero-content hero-stagger">
+    <div class="section-label" style="color:var(--c-orange)">USH Partners</div>
+    <h1>Focus on what you do best; <em>we'll handle the rest.</em></h1>
+    <p>Schools and agents focus on recruiting and academic excellence, while we focus on the housing experience. USH provides full-service homestay placements for international students across the U.S. With over 27 years of experience, we work with more than 280 colleges and universities and 650 agents worldwide.</p>
+  </div>
+</section>
+
+<!-- ══════════ FOR U.S. SCHOOLS ══════════ -->
+<section class="section" style="background:var(--c-white)">
+  <div class="container">
+    <div class="feature-layout" data-reveal>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-item-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h4>Housing Solutions</h4>
+          <p>We provide homestay options for individual students and customized group programs.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon icon-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h4>Direct Coordination</h4>
+          <p>A dedicated point of contact ensures fast, clear communication with your team and your agents.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>Vetted Safety</h4>
+          <p>Our team personally visits every home, meets every host, and inspects each student room.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon icon-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h4>Full-Cycle Support</h4>
+          <p>We support students from application through the end of their stay.</p>
+        </div>
+      </div>
+      <div class="feature-side">
+        <div class="section-label">For U.S. Schools &amp; Colleges</div>
+        <h2>An extension of your <em>student support team</em></h2>
+        <p>We understand that a student's success in the classroom starts with a comfortable home. We act as an extension of your housing team to ensure a high-quality experience for your students.</p>
+        <a href="#contact" class="btn btn-primary">Partner With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOR OVERSEAS AGENTS ══════════ -->
+<section class="section" style="background:var(--c-cream)">
+  <div class="container">
+    <div class="feature-layout" data-reveal>
+      <div class="feature-side">
+        <div class="section-label">For Overseas Agents</div>
+        <h2>Your trusted housing provider <em>in the United States</em></h2>
+        <p>We act as the "boots on the ground" for agents worldwide, ensuring your students are well supported from arrival through their stay.</p>
+        <a href="#contact" class="btn btn-primary">Become a Partner</a>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-item-icon icon-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h4>Full-Service Placement</h4>
+          <p>Our Match Makers handle the entire personal matching process based on student preferences.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>Vetted Safety</h4>
+          <p>Our team personally visits every home and inspects each student room to your standards.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <h4>Transparent Pricing</h4>
+          <p>Pricing is clearly listed online with no hidden fees or surprises.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon icon-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h4>Professional Logistics</h4>
+          <p>Clear updates, reliable timelines, and consistent quality across our network.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOMESTAYMATCH ══════════ -->
+<section class="section" style="background:var(--c-white)">
+  <div class="container">
+    <div class="hm-header" data-reveal>
+      <div class="section-label">HomestayMatch</div>
+      <h2 class="section-title">Another way to experience <em>a USH homestay</em></h2>
+    </div>
+    <div class="hm-body" data-reveal>
+      <p>HomestayMatch is our sister platform that gives agents, schools, and students visibility and transparency into our quality. For students, it provides the freedom to browse and choose their own verified homestay.</p>
+      <p>Every listing includes photos of the home, host profile, room and home amenities so students can see exactly where they will be living before they arrive.</p>
+      <a href="homestaymatch.html" class="btn btn-outline-dark" style="margin-top:16px">Learn More About HomestayMatch &rarr;</a>
+    </div>
+    <div class="hm-mockup" data-reveal>
+      <div class="hm-mockup-bar">
+        <div class="hm-mockup-dot"></div>
+        <div class="hm-mockup-dot"></div>
+        <div class="hm-mockup-dot"></div>
+        <div class="hm-mockup-url">homestaymatch.com</div>
+      </div>
+      <div class="hm-mockup-body">
+        <img src="assets/homestaymatch-screenshot.png" alt="HomestayMatch platform showing homestay listings with map">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LOGO WALL ══════════ -->
+<section class="section partners-section">
+  <div class="container">
+    <div class="partners-header" data-reveal>
+      <div class="section-label">Our Partners</div>
+      <h2 class="section-title" style="margin:0 auto">Trusted by 270+ schools and <em>universities nationwide</em></h2>
+    </div>
+
+    <div class="logo-marquee-wrap">
+      <div class="logo-marquee-track">
+        <!-- Set 1 -->
+        <div class="logo-item"><img src="assets/logos/ucla.png" alt="UCLA"><span class="logo-item-name">UCLA</span></div>
+        <div class="logo-item"><img src="assets/logos/uc-berkeley.png" alt="UC Berkeley"><span class="logo-item-name">UC Berkeley</span></div>
+        <div class="logo-item"><img src="assets/logos/ucsd.png" alt="UC San Diego"><span class="logo-item-name">UC San Diego</span></div>
+        <div class="logo-item"><img src="assets/logos/uci.png" alt="UC Irvine"><span class="logo-item-name">UC Irvine</span></div>
+        <div class="logo-item"><img src="assets/logos/ucr.png" alt="UC Riverside"><span class="logo-item-name">UC Riverside</span></div>
+        <div class="logo-item"><img src="assets/logos/asu.png" alt="Arizona State University"><span class="logo-item-name">Arizona State Univ.</span></div>
+        <div class="logo-item"><img src="assets/logos/santa-monica-college.png" alt="Santa Monica College"><span class="logo-item-name">Santa Monica College</span></div>
+        <div class="logo-item"><img src="assets/logos/miami-dade-college.png" alt="Miami Dade College"><span class="logo-item-name">Miami Dade College</span></div>
+        <div class="logo-item"><img src="assets/logos/miami-university.png" alt="Miami University"><span class="logo-item-name">Miami University</span></div>
+        <div class="logo-item"><img src="assets/logos/sdsu.png" alt="San Diego State University"><span class="logo-item-name">San Diego State Univ.</span></div>
+        <div class="logo-item"><img src="assets/logos/sjsu.png" alt="San Jose State University"><span class="logo-item-name">San Jose State Univ.</span></div>
+        <div class="logo-item"><img src="assets/logos/dvc.png" alt="Diablo Valley College"><span class="logo-item-name">Diablo Valley College</span></div>
+        <div class="logo-item"><img src="assets/logos/nyfa.png" alt="New York Film Academy"><span class="logo-item-name">NY Film Academy</span></div>
+        <div class="logo-item"><img src="assets/logos/artcenter.png" alt="ArtCenter College of Design"><span class="logo-item-name">ArtCenter</span></div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="logo-item"><img src="assets/logos/ucla.png" alt="UCLA"><span class="logo-item-name">UCLA</span></div>
+        <div class="logo-item"><img src="assets/logos/uc-berkeley.png" alt="UC Berkeley"><span class="logo-item-name">UC Berkeley</span></div>
+        <div class="logo-item"><img src="assets/logos/ucsd.png" alt="UC San Diego"><span class="logo-item-name">UC San Diego</span></div>
+        <div class="logo-item"><img src="assets/logos/uci.png" alt="UC Irvine"><span class="logo-item-name">UC Irvine</span></div>
+        <div class="logo-item"><img src="assets/logos/ucr.png" alt="UC Riverside"><span class="logo-item-name">UC Riverside</span></div>
+        <div class="logo-item"><img src="assets/logos/asu.png" alt="Arizona State University"><span class="logo-item-name">Arizona State Univ.</span></div>
+        <div class="logo-item"><img src="assets/logos/santa-monica-college.png" alt="Santa Monica College"><span class="logo-item-name">Santa Monica College</span></div>
+        <div class="logo-item"><img src="assets/logos/miami-dade-college.png" alt="Miami Dade College"><span class="logo-item-name">Miami Dade College</span></div>
+        <div class="logo-item"><img src="assets/logos/miami-university.png" alt="Miami University"><span class="logo-item-name">Miami University</span></div>
+        <div class="logo-item"><img src="assets/logos/sdsu.png" alt="San Diego State University"><span class="logo-item-name">San Diego State Univ.</span></div>
+        <div class="logo-item"><img src="assets/logos/sjsu.png" alt="San Jose State University"><span class="logo-item-name">San Jose State Univ.</span></div>
+        <div class="logo-item"><img src="assets/logos/dvc.png" alt="Diablo Valley College"><span class="logo-item-name">Diablo Valley College</span></div>
+        <div class="logo-item"><img src="assets/logos/nyfa.png" alt="New York Film Academy"><span class="logo-item-name">NY Film Academy</span></div>
+        <div class="logo-item"><img src="assets/logos/artcenter.png" alt="ArtCenter College of Design"><span class="logo-item-name">ArtCenter</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT FORM ══════════ -->
+<section class="section" id="contact" style="background:var(--c-white)">
+  <div class="container">
+    <div class="contact-header" data-reveal>
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's <em>work together</em></h2>
+      <p>Tell us about your school or agency and we'll follow up within 1 business day.</p>
+    </div>
+
+    <div class="contact-grid" data-reveal>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="inquiry-type">I am a...</label>
+          <select id="inquiry-type" name="inquiry-type">
+            <option value="" disabled selected>Select one</option>
+            <option value="school">School</option>
+            <option value="agent">Agent</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="organization">Organization Name</label>
+          <input type="text" id="organization" name="organization" placeholder="Your school or agency name">
+        </div>
+        <div class="form-group">
+          <label for="title">Title / Role</label>
+          <input type="text" id="title" name="title" placeholder="Your title or role">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your needs..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary">Send Inquiry &rarr;</button>
+        </div>
+      </form>
+
+      <div class="contact-info-side">
+        <div class="contact-info-card">
+          <h4>Email Us</h4>
+          <p><a href="mailto:contact@usaish.com">contact@usaish.com</a></p>
+        </div>
+        <div class="contact-info-card">
+          <h4>Call Us</h4>
+          <p><a href="tel:+13108244908">+1 (310) 824-4908</a></p>
+        </div>
+        <div class="contact-info-card">
+          <h4>Response Time</h4>
+          <p>We respond to all partner inquiries within 1 business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta">
+  <div class="cta-orb"></div>
+  <div class="container cta-inner" data-reveal>
+    <h2>Ready to partner <em>with USH?</em></h2>
+    <p>Let us handle the housing so you can focus on the student's academic journey.</p>
+    <div class="cta-buttons">
+      <a href="#contact" class="btn btn-secondary">Partner With Us &rarr;</a>
+    </div>
+    <div class="cta-contact">contact@usaish.com &middot; +1 (310) 824-4908</div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Universal Student Housing</div>
+        <div class="footer-brand-desc">Trusted by international students and American host families since 1998. Every home is checked in person, and every student is supported from application to move-in.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Homestay</a>
+        <a href="#">FAQ</a>
+        <a href="partners.html">Partners</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Login</a>
+        <a href="#">Apply Now</a>
+        <a href="become-a-host.html">Become a Host</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Designed with care for international students worldwide.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════ MOBILE MENU ══════════
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ══════════ SCROLL REVEALS ══════════
+function initReveals() {
+  const els = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+}
+
+// ══════════ INIT ══════════
+document.addEventListener('DOMContentLoaded', () => {
+  initReveals();
+});
+</script>
+
+</body>
+</html>

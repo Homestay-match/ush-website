@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomestayMatch — Browse & Book Verified Homestays | By USH</title>
+<meta name="description" content="HomestayMatch by USH lets students browse verified homestays near their school, see real photos, compare hosts, and book with confidence. Every home personally visited and approved.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & TOKENS
+   ══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --c-cream: #FBF8F3;
+  --c-cream-dim: #F5F0E8;
+  --c-charcoal: #1A1E1C;
+  --c-text: #2C3330;
+  --c-text-light: #5F6B65;
+  --c-text-muted: #8A9590;
+  --c-teal: #6EB7A3;
+  --c-teal-dark: #5A9E8C;
+  --c-teal-light: #EDF7F4;
+  --c-teal-glow: #6EB7A3;
+  --c-orange: #D9A84E;
+  --c-orange-dark: #C4943F;
+  --c-orange-light: #FDF5E8;
+  --c-amber: #D4984A;
+  --c-amber-light: #FDF5EB;
+  --c-amber-glow: #E8AE5E;
+  --c-olive-dark: #4A5250;
+  --c-olive: #404846;
+  --c-white: #FFFFFF;
+  --c-blue: #3B9DD9;
+  --c-blue-dark: #2E87C0;
+  --c-blue-light: #EAF4FB;
+  --c-border: rgba(44,51,48,0.08);
+  --c-border-strong: rgba(44,51,48,0.14);
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body: 'Work Sans', system-ui, sans-serif;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 50px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.06);
+  --max-w: 1200px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1080px){.container{padding:0 48px}}
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 0;background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06);transition:all 0.4s var(--ease-out)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-teal-dark);transition:color 0.4s}
+.nav-logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--c-text);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-teal)}
+.nav-links a.active{color:var(--c-blue);font-weight:600}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-family:var(--ff-body);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary{background:var(--c-orange);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(217,168,78,0.3)}
+.btn-secondary{background:var(--c-orange);color:var(--c-white)}
+.btn-secondary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(217,168,78,0.3)}
+.btn-outline-dark{background:transparent;color:var(--c-olive-dark);border:1.5px solid var(--c-border-strong)}
+.btn-outline-dark:hover{background:var(--c-olive-dark);color:var(--c-white);border-color:var(--c-olive-dark)}
+.btn-outline{background:transparent;color:var(--c-white);border:1.5px solid rgba(255,255,255,0.7)}
+.btn-outline:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.8)}
+.btn-blue{background:var(--c-blue);color:var(--c-white)}
+.btn-blue:hover{background:var(--c-blue-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,157,217,0.3)}
+.btn-lg{padding:16px 40px;font-size:1rem}
+
+/* Mobile menu */
+.nav-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text);transition:color 0.3s}
+@media(min-width:900px){.nav-mobile-btn{display:none}}
+.mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+
+/* ══════════════════════════════════════
+   SECTIONS SHARED
+   ══════════════════════════════════════ */
+.section{padding:100px 0}
+@media(max-width:768px){.section{padding:64px 0}}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-blue);margin-bottom:16px}
+.section-label--gold{color:var(--c-orange)}
+.section-title{font-family:var(--ff-display);font-size:clamp(2.2rem,4.5vw,3.2rem);font-weight:600;line-height:1.12;letter-spacing:-0.02em;color:var(--c-charcoal);max-width:720px}
+.section-title em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.section-subtitle{font-size:1.1rem;color:var(--c-text-light);max-width:640px;margin-top:16px;line-height:1.7}
+
+/* ══════════════════════════════════════
+   HERO — Product Landing
+   ══════════════════════════════════════ */
+.hero-product{position:relative;min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:140px 0 40px;text-align:center;background:linear-gradient(180deg, var(--c-cream) 0%, var(--c-white) 100%);overflow:hidden}
+.hero-product .hero-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.hero-orb-1{width:500px;height:500px;top:-120px;right:-180px;background:radial-gradient(circle,rgba(59,157,217,0.08),transparent 60%);filter:blur(60px);animation:orbFloat 10s ease-in-out infinite}
+.hero-orb-2{width:400px;height:400px;bottom:-80px;left:-120px;background:radial-gradient(circle,rgba(110,183,163,0.07),transparent 60%);filter:blur(50px);animation:orbFloat 12s ease-in-out infinite reverse}
+.hero-orb-3{width:350px;height:350px;top:40%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(217,168,78,0.06),transparent 60%);filter:blur(50px);animation:orbFloat 14s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}33%{transform:translate(20px,-15px)}66%{transform:translate(-15px,10px)}}
+
+.hero-product-content{position:relative;z-index:2;max-width:740px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px 6px 8px;border-radius:var(--r-full);background:var(--c-blue-light);color:var(--c-blue);font-size:0.78rem;font-weight:600;letter-spacing:0.04em;margin-bottom:24px}
+.hero-badge svg{width:18px;height:18px}
+.hero-product h1{font-family:var(--ff-display);font-size:clamp(2.6rem,5.5vw,4rem);font-weight:700;color:var(--c-charcoal);line-height:1.08;letter-spacing:-0.03em;margin-bottom:20px}
+.hero-product h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.hero-product-body{font-size:clamp(1rem,1.6vw,1.15rem);color:var(--c-text-light);line-height:1.7;max-width:600px;margin:0 auto 36px}
+.hero-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+
+/* Browser Mockup */
+.browser-mockup{position:relative;z-index:2;max-width:1200px;margin:64px auto 0;border-radius:16px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,0.12),0 8px 24px rgba(0,0,0,0.06);background:var(--c-white);border:1px solid rgba(0,0,0,0.08)}
+.browser-topbar{display:flex;align-items:center;gap:8px;padding:14px 20px;background:#F3F4F6;border-bottom:1px solid var(--c-border)}
+.browser-dot{width:12px;height:12px;border-radius:50%;background:#D1D5DB}
+.browser-dot:nth-child(1){background:#EF4444;opacity:0.7}
+.browser-dot:nth-child(2){background:#F59E0B;opacity:0.7}
+.browser-dot:nth-child(3){background:#22C55E;opacity:0.7}
+.browser-url{flex:1;margin-left:16px;height:32px;border-radius:8px;background:var(--c-white);border:1px solid var(--c-border);display:flex;align-items:center;padding:0 14px;font-size:0.78rem;color:var(--c-text-muted)}
+.browser-body{position:relative;overflow:hidden}
+.browser-body img{width:100%;display:block}
+.browser-body-placeholder{display:flex;align-items:center;justify-content:center;min-height:560px;background:linear-gradient(135deg,#F9FAFB,#EFF1F3);color:var(--c-text-muted);font-size:1rem;padding:60px 24px;text-align:center}
+.browser-body-placeholder span{font-family:var(--ff-body);font-weight:500;opacity:0.5}
+@media(max-width:768px){
+  .browser-mockup{margin:40px -16px 0;border-radius:10px}
+  .browser-body-placeholder{min-height:300px;padding:40px 16px}
+}
+
+/* ══════════════════════════════════════
+   HOW IT WORKS — Steps
+   ══════════════════════════════════════ */
+.how-it-works{background:var(--c-white)}
+.how-header{text-align:center;margin-bottom:56px}
+.how-header .section-title{margin:0 auto}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:768px){.steps-grid{grid-template-columns:1fr;gap:20px}}
+.step-card{background:var(--c-cream);border-radius:var(--r-lg);padding:40px 32px;border:1px solid var(--c-border);transition:all 0.4s var(--ease-out);position:relative}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.step-num{font-family:var(--ff-display);font-size:3rem;font-weight:700;color:var(--c-blue);opacity:0.15;line-height:1;margin-bottom:16px}
+.step-card h3{font-family:var(--ff-display);font-size:1.25rem;font-weight:600;color:var(--c-charcoal);margin-bottom:12px}
+.step-card p{font-size:0.95rem;color:var(--c-text-light);line-height:1.65}
+
+/* ══════════════════════════════════════
+   WHAT'S INCLUDED — Feature Grid
+   ══════════════════════════════════════ */
+.features{background:var(--c-cream)}
+.features-header{text-align:center;margin-bottom:56px}
+.features-header .section-title{margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.features-grid{grid-template-columns:1fr}}
+.feature-card{background:var(--c-white);border-radius:var(--r-lg);padding:32px 28px;border:1px solid var(--c-border);transition:all 0.4s var(--ease-out)}
+.feature-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:transparent}
+.feature-icon{width:48px;height:48px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feature-icon svg{width:22px;height:22px;color:var(--c-teal)}
+.feature-card h3{font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px}
+.feature-card p{font-size:0.92rem;color:var(--c-text-light);line-height:1.65}
+
+/* ══════════════════════════════════════
+   PLATFORM SHOWCASE — Zigzag
+   ══════════════════════════════════════ */
+.showcase{background:var(--c-white)}
+.zigzag-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px}
+.zigzag-row:last-child{margin-bottom:0}
+.zigzag-row.reverse .zigzag-img{order:2}
+.zigzag-row.reverse .zigzag-text{order:1}
+@media(max-width:768px){
+  .zigzag-row{grid-template-columns:1fr;gap:32px;margin-bottom:56px}
+  .zigzag-row.reverse .zigzag-img{order:0}
+  .zigzag-row.reverse .zigzag-text{order:0}
+}
+.zigzag-text h3{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-charcoal);margin-bottom:16px}
+.zigzag-text h3 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.zigzag-text p{font-size:1.02rem;color:var(--c-text-light);line-height:1.7}
+
+/* Screenshot placeholder */
+.screenshot-placeholder{border-radius:var(--r-xl);border:2px dashed var(--c-border-strong);background:linear-gradient(135deg,#F9FAFB,#F3F4F6);display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;color:var(--c-text-muted);font-size:0.88rem;font-weight:500;transition:all 0.4s var(--ease-out)}
+.screenshot-placeholder:hover{border-color:var(--c-blue);background:var(--c-blue-light)}
+
+/* ══════════════════════════════════════
+   TRUST SECTION
+   ══════════════════════════════════════ */
+.trust{background:var(--c-cream)}
+.trust-header{text-align:center;margin-bottom:16px}
+.trust-header .section-title{margin:0 auto}
+.trust-body{text-align:center;font-size:1.05rem;color:var(--c-text-light);max-width:660px;margin:16px auto 48px;line-height:1.7}
+.trust-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.trust-stats{grid-template-columns:1fr;gap:16px}}
+.trust-stat{background:var(--c-white);border-radius:var(--r-lg);padding:36px 28px;border:1px solid var(--c-border);text-align:center;transition:all 0.4s var(--ease-out)}
+.trust-stat:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:transparent}
+.trust-stat-icon{width:52px;height:52px;border-radius:50%;background:var(--c-orange-light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.trust-stat-icon svg{width:24px;height:24px;color:var(--c-orange)}
+.trust-stat h3{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;color:var(--c-orange);margin-bottom:4px}
+.trust-stat p{font-size:0.88rem;color:var(--c-text-light);font-weight:500}
+
+/* ══════════════════════════════════════
+   FOR PARTNERS — Dark Section
+   ══════════════════════════════════════ */
+.partners-cta{background:linear-gradient(170deg,#4A5250 0%,#404846 100%);color:var(--c-white);position:relative;overflow:hidden;padding:100px 0}
+.partners-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.partners-cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:768px){.partners-cta-inner{grid-template-columns:1fr;gap:40px;text-align:center}}
+.partners-cta .section-label{color:var(--c-orange)}
+.partners-cta h3{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;line-height:1.12;letter-spacing:-0.02em;margin-bottom:16px}
+.partners-cta h3 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.partners-cta p{font-size:1.02rem;color:rgba(255,255,255,0.8);max-width:480px;line-height:1.65;margin-bottom:28px}
+@media(max-width:768px){.partners-cta p{margin-left:auto;margin-right:auto}}
+.partners-cta-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(59,157,217,0.06),transparent 60%);filter:blur(80px);top:-200px;right:-200px;pointer-events:none}
+
+/* ══════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════ */
+.final-cta{background:var(--c-white);position:relative}
+.final-cta-inner{text-align:center;max-width:680px;margin:0 auto;padding:60px 40px;border-radius:var(--r-xl);border:2px solid var(--c-orange);position:relative;overflow:hidden}
+.final-cta-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--c-orange),var(--c-teal),var(--c-blue))}
+.final-cta h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;color:var(--c-charcoal)}
+.final-cta h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.final-cta p{font-size:1.05rem;color:var(--c-text-light);max-width:520px;margin:0 auto 32px;line-height:1.65}
+.final-cta .subtext{font-size:0.88rem;color:var(--c-text-muted);margin-top:20px}
+.final-cta .subtext a{color:var(--c-blue);font-weight:500;border-bottom:1px solid transparent;transition:border-color 0.3s}
+.final-cta .subtext a:hover{border-bottom-color:var(--c-blue)}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer{background:#3A4240;color:rgba(255,255,255,0.7);padding:56px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-white);margin-bottom:12px}
+.footer-brand-desc{font-size:0.85rem;line-height:1.6;max-width:280px}
+.footer-col h4{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(255,255,255,0.75);margin-bottom:10px;transition:color 0.25s}
+.footer-col a:hover{color:var(--c-orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.78rem}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+.hero-stagger>*{opacity:0;transform:translateY(28px);animation:staggerIn 0.8s var(--ease-out) forwards}
+.hero-stagger>*:nth-child(1){animation-delay:.15s}
+.hero-stagger>*:nth-child(2){animation-delay:.3s}
+.hero-stagger>*:nth-child(3){animation-delay:.45s}
+.hero-stagger>*:nth-child(4){animation-delay:.6s}
+.hero-stagger>*:nth-child(5){animation-delay:.75s}
+@keyframes staggerIn{to{opacity:1;transform:translateY(0)}}
+
+[data-reveal]{opacity:0;transform:translateY(32px);transition:all 0.7s var(--ease-out)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:480px){
+  .btn{padding:11px 22px;font-size:0.84rem}
+  .partners-cta{padding:72px 0}
+  .final-cta-inner{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="partners.html">Partners</a>
+      <a href="homestaymatch.html" class="active">HomestayMatch</a>
+      <a href="#">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="partners.html" onclick="closeMobileMenu()">Partners</a>
+  <a href="homestaymatch.html" onclick="closeMobileMenu()">HomestayMatch</a>
+  <a href="#" onclick="closeMobileMenu()">FAQ</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="#" class="btn btn-primary" onclick="closeMobileMenu()">Apply Now</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero-product">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <div class="container hero-product-content hero-stagger">
+    <div class="hero-badge">
+      <svg viewBox="0 0 18 18" fill="none"><rect width="18" height="18" rx="4" fill="#3B9DD9"/><path d="M5 10V7a4 4 0 018 0v3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="12" r="1.5" fill="#E8AE5E"/></svg>
+      HomestayMatch by USH
+    </div>
+    <h1>Choose Your Homestay, <em>Change Your Life</em></h1>
+    <p class="hero-product-body">Browse verified homestays near your school, see real photos, compare hosts, and book with confidence. Every home on HomestayMatch has been personally visited and approved by the USH team.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary">Find a Homestay &rarr;</a>
+      <a href="become-a-host.html" class="btn btn-outline-dark">Become a Host</a>
+    </div>
+  </div>
+
+  <div class="container hero-stagger">
+    <div class="browser-mockup">
+      <div class="browser-topbar">
+        <div class="browser-dot"></div>
+        <div class="browser-dot"></div>
+        <div class="browser-dot"></div>
+        <div class="browser-url">homestaymatch.com</div>
+      </div>
+      <div class="browser-body">
+        <img src="assets/homestaymatch-screenshot.png" alt="HomestayMatch platform showing homestay listings with map">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW IT WORKS ══════════ -->
+<section class="section how-it-works">
+  <div class="container">
+    <div class="how-header" data-reveal>
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Find your homestay in <em>3 simple steps</em></h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card" data-reveal>
+        <div class="step-num">01</div>
+        <h3>Search by School</h3>
+        <p>Select your university, set your dates, and browse verified homestays near campus. Filter by price, room type, meal plan, and more.</p>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-num">02</div>
+        <h3>Compare &amp; Choose</h3>
+        <p>View real photos, read host profiles, check room amenities, and see exactly where you'll be living. Every listing shows distance to campus.</p>
+      </div>
+      <div class="step-card" data-reveal>
+        <div class="step-num">03</div>
+        <h3>Book with Confidence</h3>
+        <p>Reserve your homestay online. Every home has passed our 98-point verification and been personally visited by our team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHAT'S INCLUDED ══════════ -->
+<section class="section features">
+  <div class="container">
+    <div class="features-header" data-reveal>
+      <div class="section-label">Every Listing Includes</div>
+      <h2 class="section-title">Transparency you can <em>count on</em></h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h3>Real Photos</h3>
+        <p>See actual photos of the home, your bedroom, common areas, and neighborhood.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Host Profiles</h3>
+        <p>Learn about your host family — their interests, experience hosting, and house rules.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Room Amenities</h3>
+        <p>Private bedroom details: bed type, desk, closet, WiFi, bathroom access.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Distance to Campus</h3>
+        <p>Know exactly how far your homestay is from school, with transit options.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h3>Meal Plans</h3>
+        <p>Choose from room only, breakfast, or full meal plan options.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Verified Reviews</h3>
+        <p>Read feedback from previous students who stayed in the same home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PLATFORM SHOWCASE ══════════ -->
+<section class="section showcase">
+  <div class="container">
+    <div class="zigzag-row" data-reveal>
+      <div class="screenshot-placeholder">Screenshot placeholder</div>
+      <div class="zigzag-text">
+        <div class="section-label">Platform Preview</div>
+        <h3>Browse listings <em>your way</em></h3>
+        <p>Search by school, filter by preferences, and view homes on an interactive map. HomestayMatch makes it easy to find the right fit.</p>
+      </div>
+    </div>
+
+    <div class="zigzag-row reverse" data-reveal>
+      <div class="screenshot-placeholder">Screenshot placeholder</div>
+      <div class="zigzag-text">
+        <div class="section-label">Quality Assurance</div>
+        <h3>Every home <em>personally verified</em></h3>
+        <p>Unlike other platforms, every listing on HomestayMatch is part of the USH network. That means every host has been personally met, every home has been visited, and every room has been inspected by our team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUST SECTION ══════════ -->
+<section class="section trust">
+  <div class="container">
+    <div class="trust-header" data-reveal>
+      <div class="section-label section-label--gold">Backed by USH</div>
+      <h2 class="section-title">The quality of USH. <em>The freedom to choose.</em></h2>
+    </div>
+    <p class="trust-body" data-reveal>HomestayMatch combines the verified quality of Universal Student Housing with the flexibility of a modern booking platform. Every home meets the same standards USH has maintained for over 27 years.</p>
+
+    <div class="trust-stats">
+      <div class="trust-stat" data-reveal>
+        <div class="trust-stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <h3>98-Point Verification</h3>
+        <p>Every home inspected in person</p>
+      </div>
+      <div class="trust-stat" data-reveal>
+        <div class="trust-stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>27+ Years of Experience</h3>
+        <p>Trusted since 1998</p>
+      </div>
+      <div class="trust-stat" data-reveal>
+        <div class="trust-stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>14,000+ Verified Homes</h3>
+        <p>Across the United States</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOR PARTNERS ══════════ -->
+<section class="partners-cta">
+  <div class="partners-cta-orb"></div>
+  <div class="container partners-cta-inner">
+    <div data-reveal>
+      <div class="section-label">For Schools &amp; Agents</div>
+      <h3>Offer HomestayMatch <em>to your students</em></h3>
+      <p>Give your students the freedom to browse and choose their own verified homestay. All the quality of USH, with the transparency students want.</p>
+      <a href="#" class="btn btn-secondary">Partner With Us &rarr;</a>
+    </div>
+    <div data-reveal>
+      <div class="section-label">For Host Families</div>
+      <h3>List your home <em>on HomestayMatch</em></h3>
+      <p>Join a network of verified host families. Get your own listing with photos, profile, and direct student bookings.</p>
+      <a href="become-a-host.html" class="btn btn-outline">Become a Host &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FINAL CTA ══════════ -->
+<section class="section final-cta">
+  <div class="container">
+    <div class="final-cta-inner" data-reveal>
+      <h2>Ready to find your <em>perfect homestay?</em></h2>
+      <p>Search verified homes near your school. Every listing is backed by USH's 27 years of experience.</p>
+      <a href="#" class="btn btn-primary btn-lg">Start Searching &rarr;</a>
+      <div class="subtext">Or visit <a href="index.html">ushstudent.com</a> to learn more about our full-service placement.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Universal Student Housing</div>
+        <div class="footer-brand-desc">Trusted by international students and American host families since 1998. Every home is checked in person, and every student is supported from application to move-in.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Homestay</a>
+        <a href="homestaymatch.html">HomestayMatch</a>
+        <a href="#">FAQ</a>
+        <a href="#">Partners</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Login</a>
+        <a href="#">Apply Now</a>
+        <a href="become-a-host.html">Become a Host</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Designed with care for international students worldwide.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════ MOBILE MENU ══════════
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ══════════ SCROLL REVEALS ══════════
+function initReveals() {
+  const els = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+}
+
+// ══════════ INIT ══════════
+document.addEventListener('DOMContentLoaded', () => {
+  initReveals();
+});
+</script>
+
+</body>
+</html>

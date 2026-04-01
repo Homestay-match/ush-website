@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — USH Homestay Application</title>
+<meta name="description" content="Apply for a USH homestay placement. Complete your application in 3 simple steps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   RESET & TOKENS
+   ══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c-cream:#FBF8F3;
+  --c-cream-dim:#F5F0E8;
+  --c-charcoal:#1A1E1C;
+  --c-text:#2C3330;
+  --c-text-light:#5F6B65;
+  --c-text-muted:#8A9590;
+  --c-teal:#6EB7A3;
+  --c-teal-dark:#5A9E8C;
+  --c-teal-light:#EDF7F4;
+  --c-orange:#D9A84E;
+  --c-orange-dark:#C4943F;
+  --c-orange-light:#FDF5E8;
+  --c-white:#FFFFFF;
+  --c-border:rgba(44,51,48,0.1);
+  --c-border-strong:rgba(44,51,48,0.18);
+  --c-error:#E05252;
+  --c-error-light:#FEF2F2;
+  --ff-display:'Fraunces',Georgia,serif;
+  --ff-body:'Work Sans',system-ui,sans-serif;
+  --r-sm:8px;
+  --r-md:12px;
+  --r-lg:20px;
+  --r-full:50px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.06),0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04);
+  --max-w:680px;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;min-height:100vh}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+input,select,textarea,button{font-family:var(--ff-body)}
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 0;background:rgba(251,248,243,0.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-teal-dark)}
+.nav-logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--c-text);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-teal)}
+.btn-nav{display:inline-flex;align-items:center;padding:10px 24px;border-radius:50px;background:var(--c-orange);color:var(--c-white);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out)}
+.btn-nav:hover{background:var(--c-orange-dark)}
+
+/* ══════════════════════════════════════
+   PAGE WRAPPER
+   ══════════════════════════════════════ */
+.page{padding:100px 24px 80px;min-height:100vh}
+.form-container{max-width:var(--max-w);margin:0 auto}
+
+/* ══════════════════════════════════════
+   PROGRESS STEPPER
+   ══════════════════════════════════════ */
+.stepper{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:48px;position:relative}
+.stepper-item{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
+.stepper-item:not(:last-child)::after{content:'';position:absolute;top:18px;left:calc(50% + 18px);right:calc(-50% + 18px);height:2px;background:var(--c-border);z-index:0;transition:background 0.4s}
+.stepper-item.completed:not(:last-child)::after{background:var(--c-teal)}
+.stepper-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;border:2px solid var(--c-border);background:var(--c-white);color:var(--c-text-muted);position:relative;z-index:1;transition:all 0.4s var(--ease-out)}
+.stepper-item.active .stepper-num{background:var(--c-teal);border-color:var(--c-teal);color:var(--c-white)}
+.stepper-item.completed .stepper-num{background:var(--c-teal);border-color:var(--c-teal);color:var(--c-white)}
+.stepper-item.completed .stepper-num::after{content:'✓';font-size:0.85rem}
+.stepper-item.completed .stepper-num span{display:none}
+.stepper-label{font-size:0.72rem;font-weight:500;color:var(--c-text-muted);margin-top:8px;text-align:center;line-height:1.3;letter-spacing:0.01em}
+.stepper-item.active .stepper-label{color:var(--c-teal);font-weight:600}
+.stepper-item.completed .stepper-label{color:var(--c-teal)}
+
+/* ══════════════════════════════════════
+   STEP HEADER
+   ══════════════════════════════════════ */
+.step-header{text-align:center;margin-bottom:32px}
+.step-header h1{font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:600;color:var(--c-charcoal);line-height:1.15;letter-spacing:-0.02em;margin-bottom:8px}
+.step-header p{font-size:0.95rem;color:var(--c-text-light)}
+.step-time{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--c-teal);font-weight:500;margin-top:8px}
+.step-time::before{content:'⏱'}
+
+/* ══════════════════════════════════════
+   FORM CARD
+   ══════════════════════════════════════ */
+.form-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:36px;box-shadow:var(--shadow-sm)}
+@media(max-width:600px){.form-card{padding:24px 20px;border-radius:var(--r-md)}}
+
+/* ══════════════════════════════════════
+   AGENT TOGGLE
+   ══════════════════════════════════════ */
+.agent-toggle-wrap{margin-bottom:28px}
+.agent-toggle-label{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:12px}
+.agent-toggle{display:flex;gap:0;background:var(--c-cream);border-radius:var(--r-full);padding:4px;width:fit-content;border:1px solid var(--c-border)}
+.agent-toggle button{padding:8px 28px;border-radius:var(--r-full);border:none;background:transparent;font-family:var(--ff-body);font-size:0.88rem;font-weight:600;color:var(--c-text-muted);cursor:pointer;transition:all 0.25s var(--ease-out)}
+.agent-toggle button.active{background:var(--c-charcoal);color:var(--c-white)}
+
+/* ══════════════════════════════════════
+   FORM SECTIONS
+   ══════════════════════════════════════ */
+.form-section{margin-bottom:28px}
+.form-section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--c-teal-light)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-row.cols-1{grid-template-columns:1fr}
+.form-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:540px){.form-row{grid-template-columns:1fr}.form-row.cols-3{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--c-charcoal)}
+.form-group .label-hint{font-size:0.75rem;font-weight:400;color:var(--c-text-muted);display:block;margin-top:2px}
+.form-group input,
+.form-group select,
+.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-size:0.9rem;color:var(--c-text);background:var(--c-white);outline:none;transition:border-color 0.25s,box-shadow 0.25s;appearance:none;-webkit-appearance:none}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.form-group textarea{resize:vertical;min-height:90px;line-height:1.55}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
+.form-group input::placeholder,
+.form-group textarea::placeholder{color:var(--c-text-muted)}
+
+/* Gender radio */
+.gender-group{display:flex;gap:12px;margin-top:4px}
+.gender-option{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9rem;color:var(--c-text)}
+.gender-option input[type="radio"]{width:18px;height:18px;accent-color:var(--c-teal);cursor:pointer}
+
+/* ══════════════════════════════════════
+   AGENT INFO BOX
+   ══════════════════════════════════════ */
+.agent-info-box{background:var(--c-orange-light);border:1px solid rgba(217,168,78,0.3);border-radius:var(--r-sm);padding:12px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
+.agent-info-box svg{flex-shrink:0;margin-top:2px;color:var(--c-orange)}
+.agent-info-box p{font-size:0.82rem;color:var(--c-text);line-height:1.5}
+
+/* ══════════════════════════════════════
+   NOTICE BOX
+   ══════════════════════════════════════ */
+.notice-box{background:var(--c-orange-light);border:1px solid rgba(217,168,78,0.3);border-radius:var(--r-sm);padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}
+.notice-box svg{flex-shrink:0;color:var(--c-orange);margin-top:1px}
+.notice-box p{font-size:0.84rem;color:var(--c-text);line-height:1.5}
+
+/* ══════════════════════════════════════
+   PAYMENT UI
+   ══════════════════════════════════════ */
+.payment-tabs{display:flex;gap:8px;margin-bottom:20px;align-items:center}
+.payment-tab{padding:8px 20px;border-radius:var(--r-sm);border:1.5px solid var(--c-border);background:var(--c-white);font-size:0.85rem;font-weight:600;color:var(--c-text-muted);cursor:pointer;transition:all 0.25s}
+.payment-tab.active{border-color:var(--c-teal);color:var(--c-teal);background:var(--c-teal-light)}
+.secure-badge{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--c-text-muted)}
+.secure-badge svg{color:var(--c-teal)}
+
+/* ══════════════════════════════════════
+   FORM ACTIONS
+   ══════════════════════════════════════ */
+.form-actions{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 32px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(110,183,163,0.3)}
+.btn-submit{background:var(--c-orange)}
+.btn-submit:hover{background:var(--c-orange-dark);box-shadow:0 8px 24px rgba(217,168,78,0.3)}
+.btn-back{background:transparent;color:var(--c-text-muted);font-size:0.88rem;font-weight:500;border:none;cursor:pointer;padding:4px 8px;transition:color 0.25s;font-family:var(--ff-body)}
+.btn-back:hover{color:var(--c-teal)}
+.form-security{display:flex;align-items:center;gap:6px;font-size:0.76rem;color:var(--c-text-muted)}
+.form-security svg{color:var(--c-teal-dark)}
+
+/* ══════════════════════════════════════
+   CONFIRMATION SCREEN
+   ══════════════════════════════════════ */
+.confirmation{text-align:center;padding:48px 24px}
+.confirm-icon{width:72px;height:72px;background:var(--c-teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px}
+.confirm-icon svg{color:var(--c-teal)}
+.confirmation h1{font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:600;color:var(--c-charcoal);margin-bottom:12px}
+.confirmation p{font-size:1rem;color:var(--c-text-light);max-width:480px;margin:0 auto 36px;line-height:1.65}
+.next-steps{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:32px;text-align:left;max-width:520px;margin:0 auto}
+.next-steps h2{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--c-charcoal);margin-bottom:20px}
+.next-step-item{display:flex;gap:16px;margin-bottom:18px;align-items:flex-start}
+.next-step-item:last-child{margin-bottom:0}
+.next-step-num{width:28px;height:28px;border-radius:50%;background:var(--c-teal-light);color:var(--c-teal);font-size:0.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.next-step-item p{font-size:0.9rem;color:var(--c-text);line-height:1.55}
+.next-step-item a{color:var(--c-teal);font-weight:600}
+.confirm-actions{margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:var(--r-full);background:transparent;color:var(--c-teal);border:1.5px solid var(--c-teal);font-family:var(--ff-body);font-weight:600;font-size:0.9rem;cursor:pointer;transition:all 0.3s var(--ease-out)}
+.btn-outline:hover{background:var(--c-teal);color:var(--c-white)}
+
+/* ══════════════════════════════════════
+   STEP VISIBILITY
+   ══════════════════════════════════════ */
+.step{display:none}
+.step.active{display:block;animation:stepIn 0.4s var(--ease-out)}
+@keyframes stepIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════════
+   AGENT FIELDS
+   ══════════════════════════════════════ */
+.agent-fields{display:none}
+.agent-fields.visible{display:block}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer-mini{text-align:center;padding:32px 24px;font-size:0.8rem;color:var(--c-text-muted);border-top:1px solid var(--c-border);margin-top:48px}
+.footer-mini a{color:var(--c-teal)}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="partners.html">Partners</a>
+      <a href="homestaymatch.html">HomestayMatch</a>
+      <a href="#">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="schools.html" class="btn-nav">Prices &amp; Schools</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="form-container">
+
+    <!-- ══════════ STEPPER ══════════ -->
+    <div class="stepper" id="stepper">
+      <div class="stepper-item active" id="step-dot-1">
+        <div class="stepper-num"><span>1</span></div>
+        <div class="stepper-label">Student<br>Information</div>
+      </div>
+      <div class="stepper-item" id="step-dot-2">
+        <div class="stepper-num"><span>2</span></div>
+        <div class="stepper-label">Your<br>Preferences</div>
+      </div>
+      <div class="stepper-item" id="step-dot-3">
+        <div class="stepper-num"><span>3</span></div>
+        <div class="stepper-label">Payment &amp;<br>Submit</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 1 — STUDENT INFORMATION
+         ══════════════════════════════ -->
+    <div class="step active" id="step-1">
+      <div class="step-header">
+        <h1>Tell us about yourself</h1>
+        <p>We just need the basics to get started.</p>
+        <div class="step-time">About 2 minutes</div>
+      </div>
+
+      <div class="form-card">
+
+        <!-- Agent Toggle -->
+        <div class="agent-toggle-wrap">
+          <div class="agent-toggle-label">Are you an agent?</div>
+          <div class="agent-toggle">
+            <button id="btn-agent-yes" onclick="setAgentMode(true)">YES</button>
+            <button id="btn-agent-no" class="active" onclick="setAgentMode(false)">NO</button>
+          </div>
+        </div>
+
+        <!-- Agent-only fields -->
+        <div class="agent-fields" id="agent-fields">
+          <div class="form-section">
+            <div class="form-row cols-1">
+              <div class="form-group">
+                <label for="group-select">Is the student part of a group?</label>
+                <select id="group-select">
+                  <option value="">Select One</option>
+                  <option>Individual student</option>
+                  <option>Part of a Group</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row cols-1">
+              <div class="form-group">
+                <label for="agent-email">Your Email Address</label>
+                <input type="email" id="agent-email" placeholder="agent@agency.com">
+              </div>
+            </div>
+            <div class="agent-info-box">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+              <p>Send all automated emails (confirmations, updates, etc.) to my agent email instead of the student.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Information -->
+        <div class="form-section">
+          <div class="form-section-label">Student Information</div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="school">School</label>
+              <select id="school">
+                <option value="">Select your school</option>
+                <optgroup label="Southern California">
+                  <option>UCLA Extension</option>
+                  <option>Santa Monica College</option>
+                  <option>CSU Fullerton</option>
+                  <option>Pasadena City College</option>
+                  <option>Orange Coast College</option>
+                  <option>Glendale College</option>
+                  <option>Irvine Valley College</option>
+                  <option>Fullerton College</option>
+                  <option>Citrus College</option>
+                  <option>El Camino College</option>
+                  <option>Long Beach City College</option>
+                  <option>Saddleback College</option>
+                  <option>Golden West College</option>
+                  <option>Mt. San Antonio College</option>
+                  <option>Rio Hondo College</option>
+                  <option>Cypress College</option>
+                  <option>Cerritos College</option>
+                  <option>Santiago Canyon College</option>
+                  <option>Coastline College</option>
+                  <option>CSU Long Beach</option>
+                  <option>San Diego State University</option>
+                </optgroup>
+                <optgroup label="Northern California">
+                  <option>San Francisco State University</option>
+                  <option>San Jose State University</option>
+                  <option>Diablo Valley College</option>
+                  <option>De Anza College</option>
+                  <option>Foothill College</option>
+                  <option>City College of San Francisco</option>
+                  <option>Ohlone College</option>
+                  <option>College of San Mateo</option>
+                  <option>Canada College</option>
+                  <option>Skyline College</option>
+                </optgroup>
+                <optgroup label="Arizona">
+                  <option>Arizona State University</option>
+                  <option>Phoenix College</option>
+                  <option>Mesa Community College</option>
+                  <option>Scottsdale Community College</option>
+                  <option>GateWay Community College</option>
+                  <option>Rio Salado College</option>
+                  <option>South Mountain Community College</option>
+                  <option>Chandler-Gilbert Community College</option>
+                </optgroup>
+                <optgroup label="Florida">
+                  <option>Miami Dade College</option>
+                  <option>Broward College</option>
+                  <option>Florida International University</option>
+                  <option>University of Miami</option>
+                  <option>Palm Beach State College</option>
+                  <option>Miami International University</option>
+                </optgroup>
+                <optgroup label="New York">
+                  <option>New York Film Academy</option>
+                  <option>Pratt Institute</option>
+                  <option>Pace University</option>
+                  <option>St. John's University</option>
+                  <option>CUNY</option>
+                  <option>Fashion Institute of Technology</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" placeholder="Your last name">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Gender</label>
+              <div class="gender-group">
+                <label class="gender-option">
+                  <input type="radio" name="gender" value="male"> Male
+                </label>
+                <label class="gender-option">
+                  <input type="radio" name="gender" value="female"> Female
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="country-residence">Country of Residence</label>
+              <span class="label-hint">What country do you live in?</span>
+              <select id="country-residence">
+                <option value="">Select One</option>
+                <option>Japan</option>
+                <option>South Korea</option>
+                <option>China</option>
+                <option>Colombia</option>
+                <option>Saudi Arabia</option>
+                <option>France</option>
+                <option>Taiwan</option>
+                <option>Brazil</option>
+                <option>Mexico</option>
+                <option>Germany</option>
+                <option>Italy</option>
+                <option>Spain</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="country-birth">Country of Birth</label>
+              <span class="label-hint">Where were you born?</span>
+              <select id="country-birth">
+                <option value="">Select One</option>
+                <option>Japan</option>
+                <option>South Korea</option>
+                <option>China</option>
+                <option>Colombia</option>
+                <option>Saudi Arabia</option>
+                <option>France</option>
+                <option>Taiwan</option>
+                <option>Brazil</option>
+                <option>Mexico</option>
+                <option>Germany</option>
+                <option>Italy</option>
+                <option>Spain</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="english-skill">English Skill</label>
+              <select id="english-skill">
+                <option value="">Select One</option>
+                <option>Beginner</option>
+                <option>Elementary</option>
+                <option>Intermediate</option>
+                <option>Upper Intermediate</option>
+                <option>Advanced</option>
+                <option>Fluent</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="student-email">Email Address</label>
+              <span class="label-hint">Student's email address</span>
+              <input type="email" id="student-email" placeholder="your@email.com">
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Create a password">
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="how-heard">How did you hear about us?</label>
+              <select id="how-heard">
+                <option value="">Select One</option>
+                <option>My school</option>
+                <option>My agent</option>
+                <option>Google search</option>
+                <option>Social media</option>
+                <option>Friend or family referral</option>
+                <option>HomestayMatch platform</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-primary" onclick="goToStep(2)">
+            Continue to Step 2 →
+          </button>
+          <div class="form-security">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Your information is secure and will never be shared.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 2 — PREFERENCES
+         ══════════════════════════════ -->
+    <div class="step" id="step-2">
+      <div class="step-header">
+        <h1>Tell us what you need</h1>
+        <p>These preferences help us find the best host family for you.</p>
+        <div class="step-time">About 2 minutes</div>
+      </div>
+
+      <div class="form-card">
+
+        <!-- Stay Details -->
+        <div class="form-section">
+          <div class="form-section-label">Stay Details</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="move-in">Move-In Date</label>
+              <input type="date" id="move-in">
+            </div>
+            <div class="form-group">
+              <label for="move-out">Move-Out Date</label>
+              <input type="date" id="move-out">
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="num-weeks">Or enter number of weeks</label>
+              <input type="number" id="num-weeks" placeholder="e.g. 13" min="1" max="52" style="max-width:160px">
+            </div>
+          </div>
+        </div>
+
+        <!-- Room & Meal Preferences -->
+        <div class="form-section">
+          <div class="form-section-label">Room &amp; Meal Preferences</div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="room-type">Room Type</label>
+              <select id="room-type">
+                <option value="">Select One</option>
+                <option>Single room</option>
+                <option>Standard room</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="meal-plan">Meal Plan</label>
+              <select id="meal-plan">
+                <option value="">Select One</option>
+                <option>Breakfast & Dinner (B&D)</option>
+                <option>Continental (breakfast only)</option>
+                <option>Room Only (no meals)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="bathroom">Do you need your own bathroom?</label>
+              <span class="label-hint">Private bathroom is +$40, based on availability</span>
+              <select id="bathroom">
+                <option value="">Select One</option>
+                <option>No preference (shared is fine)</option>
+                <option>Prefer private bathroom (+$40)</option>
+                <option>Private bathroom required (+$40)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Host Family Preferences -->
+        <div class="form-section">
+          <div class="form-section-label">Host Family Preferences</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="smoke">Do you smoke?</label>
+              <select id="smoke">
+                <option value="">Select One</option>
+                <option>No, I don't smoke</option>
+                <option>Yes, I smoke</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="children">Live with children?</label>
+              <select id="children">
+                <option value="">Select One</option>
+                <option>No preference</option>
+                <option>Prefer a family with children</option>
+                <option>Prefer no children</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pets">Live with pets?</label>
+              <select id="pets">
+                <option value="">Select One</option>
+                <option>No preference</option>
+                <option>Prefer a home with pets</option>
+                <option>Prefer no pets (allergies/preference)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="transport">Transportation to school?</label>
+              <select id="transport">
+                <option value="">Select One</option>
+                <option>Public transit is fine</option>
+                <option>I need to walk to school</option>
+                <option>I'll have a car</option>
+                <option>No preference</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="special-req">Special Requirements</label>
+              <textarea id="special-req" placeholder="Tell us about any dietary needs, allergies, or preferences..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-primary" onclick="goToStep(3)">
+            Continue to Step 3 →
+          </button>
+          <button class="btn-back" onclick="goToStep(1)">← Go Back</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 3 — PAYMENT & SUBMIT
+         ══════════════════════════════ -->
+    <div class="step" id="step-3">
+      <div class="step-header">
+        <h1>Complete your application</h1>
+        <p>One last step. Your application fee and deposit start the matching process.</p>
+        <div class="step-time">About 1 minute</div>
+      </div>
+
+      <div class="form-card">
+
+        <div class="notice-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+          <p>Your application fee and security deposit are due at the time of submission.</p>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="form-section">
+          <div class="form-section-label">Payment Information</div>
+
+          <div class="payment-tabs">
+            <button class="payment-tab active" onclick="setPaymentTab(this,'visa')">VISA</button>
+            <button class="payment-tab" onclick="setPaymentTab(this,'mastercard')">MASTERCARD</button>
+            <div class="secure-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Secure Payment
+            </div>
+          </div>
+
+          <p style="font-size:0.8rem;color:var(--c-text-muted);margin-bottom:16px;">Please use <strong>VISA</strong> or <strong>MASTERCARD</strong> only.</p>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="card-name">Name on Card</label>
+              <input type="text" id="card-name" placeholder="Full name as it appears on card">
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="card-number">Credit Card Number</label>
+              <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+          </div>
+
+          <div class="form-row cols-3">
+            <div class="form-group">
+              <label for="ccv">CCV</label>
+              <input type="text" id="ccv" placeholder="123" maxlength="4">
+            </div>
+            <div class="form-group">
+              <label for="exp-month">Month</label>
+              <select id="exp-month">
+                <option value="">Month</option>
+                <option>01</option><option>02</option><option>03</option><option>04</option>
+                <option>05</option><option>06</option><option>07</option><option>08</option>
+                <option>09</option><option>10</option><option>11</option><option>12</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exp-year">Year</label>
+              <select id="exp-year">
+                <option value="">Year</option>
+                <option>2025</option><option>2026</option><option>2027</option><option>2028</option>
+                <option>2029</option><option>2030</option><option>2031</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing Address -->
+        <div class="form-section">
+          <div class="form-section-label">Billing Address</div>
+          <p style="font-size:0.82rem;color:var(--c-text-muted);margin-bottom:16px;">Please enter the address associated with your credit card.</p>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="billing-address">Billing Address</label>
+              <input type="text" id="billing-address" placeholder="Street address">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="billing-city">City</label>
+              <input type="text" id="billing-city" placeholder="City">
+            </div>
+            <div class="form-group">
+              <label for="billing-state">State / Province</label>
+              <input type="text" id="billing-state" placeholder="State / Province">
+            </div>
+          </div>
+
+          <div class="form-row cols-1">
+            <div class="form-group">
+              <label for="billing-postal">Postal Code</label>
+              <input type="text" id="billing-postal" placeholder="Postal code" style="max-width:180px">
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size:0.78rem;color:var(--c-text-muted);line-height:1.6;margin-bottom:24px;">
+          We are excited to begin the search for your ideal homestay as soon as we receive your application fee and security deposit.
+        </p>
+
+        <div class="form-actions">
+          <!-- Backend: process payment and submit application to Laravel -->
+          <button class="btn-primary btn-submit" onclick="goToStep(4)">
+            Submit Application
+          </button>
+          <button class="btn-back" onclick="goToStep(2)">← Go Back</button>
+          <div class="form-security">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Your payment information is encrypted and secure.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 4 — CONFIRMATION
+         ══════════════════════════════ -->
+    <div class="step" id="step-4">
+      <div class="confirmation">
+        <div class="confirm-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h1>Application received!</h1>
+        <p>Thank you for applying. Our team will review your application and begin searching for your perfect host family match. We'll be in touch within 2 business days.</p>
+
+        <div class="next-steps">
+          <h2>What happens next</h2>
+          <div class="next-step-item">
+            <div class="next-step-num">1</div>
+            <p>You'll receive a confirmation email with your application details.</p>
+          </div>
+          <div class="next-step-item">
+            <div class="next-step-num">2</div>
+            <p>Our coordinators review your preferences and begin the matching process.</p>
+          </div>
+          <div class="next-step-item">
+            <div class="next-step-num">3</div>
+            <p>Once we find your match, you'll receive a digital Welcome Packet with your host family's details.</p>
+          </div>
+          <div class="next-step-item">
+            <div class="next-step-num">4</div>
+            <p>Questions? Contact us at <a href="mailto:contact@usaish.com">contact@usaish.com</a> or <a href="tel:+13108244909">+1 (310) 824-4909</a></p>
+          </div>
+        </div>
+
+        <div class="confirm-actions">
+          <a href="index.html" class="btn-outline">← Back to Home</a>
+          <a href="schools.html" class="btn-outline">View Schools</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /form-container -->
+</div><!-- /page -->
+
+<div class="footer-mini">
+  &copy; 2026 Universal Student Housing &nbsp;·&nbsp;
+  <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="#">Terms of Service</a>
+</div>
+
+<script>
+// ══════════════════════════════════════
+// STEP NAVIGATION
+// ══════════════════════════════════════
+function goToStep(n) {
+  // Hide all steps
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  // Show target step
+  document.getElementById('step-' + n).classList.add('active');
+  // Update stepper dots (only for steps 1-3)
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('step-dot-' + i);
+    if (!dot) continue;
+    dot.classList.remove('active', 'completed');
+    if (i < n) dot.classList.add('completed');
+    else if (i === n) dot.classList.add('active');
+  }
+  // Hide stepper on confirmation
+  document.getElementById('stepper').style.display = n === 4 ? 'none' : 'flex';
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════
+// AGENT TOGGLE
+// ══════════════════════════════════════
+function setAgentMode(isAgent) {
+  const agentFields = document.getElementById('agent-fields');
+  const btnYes = document.getElementById('btn-agent-yes');
+  const btnNo = document.getElementById('btn-agent-no');
+  if (isAgent) {
+    agentFields.classList.add('visible');
+    btnYes.classList.add('active');
+    btnNo.classList.remove('active');
+  } else {
+    agentFields.classList.remove('visible');
+    btnNo.classList.add('active');
+    btnYes.classList.remove('active');
+  }
+}
+
+// ══════════════════════════════════════
+// PAYMENT TABS
+// ══════════════════════════════════════
+function setPaymentTab(el, type) {
+  document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ══════════════════════════════════════
+// CARD NUMBER FORMATTING
+// ══════════════════════════════════════
+document.getElementById('card-number').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, '').substring(0, 16);
+  e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+});
+</script>
+
+</body>
+</html>
