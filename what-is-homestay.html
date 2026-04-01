@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Homestay? — Universal Student Housing</title>
+<meta name="description" content="Learn what homestay means — living with an American host family while studying in the US. Discover the benefits, what's included, meal plans, and how USH matches you with the right family.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c-cream:#FBF8F3;
+  --c-cream-dim:#F5F0E8;
+  --c-charcoal:#1A1E1C;
+  --c-text:#2C3330;
+  --c-text-light:#5F6B65;
+  --c-text-muted:#8A9590;
+  --c-teal:#6EB7A3;
+  --c-teal-dark:#5A9E8C;
+  --c-teal-light:#EDF7F4;
+  --c-orange:#D9A84E;
+  --c-orange-dark:#C4943F;
+  --c-orange-light:#FDF5E8;
+  --c-olive-dark:#4A5250;
+  --c-white:#FFFFFF;
+  --c-border:rgba(44,51,48,0.08);
+  --c-border-strong:rgba(44,51,48,0.14);
+  --ff-display:'Fraunces',Georgia,serif;
+  --ff-body:'Work Sans',system-ui,sans-serif;
+  --r-sm:8px;
+  --r-md:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --r-full:50px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.06),0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04);
+  --max-w:1200px;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--ff-body);color:var(--c-text);background:var(--c-cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1080px){.container{padding:0 48px}}
+
+/* ══ NAV ══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 0;background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06);transition:all 0.4s var(--ease-out)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--c-teal-dark)}
+.nav-logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:32px;align-items:center}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--c-text);letter-spacing:0.01em;transition:color 0.3s}
+.nav-links a:hover{color:var(--c-teal)}
+.nav-links a.active{color:var(--c-teal);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-family:var(--ff-body);font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
+.btn-primary{background:var(--c-orange);color:var(--c-white)}
+.btn-primary:hover{background:var(--c-orange-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(217,168,78,0.3)}
+.btn-teal{background:var(--c-teal);color:var(--c-white)}
+.btn-teal:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(110,183,163,0.3)}
+.nav-mobile-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+@media(min-width:900px){.nav-mobile-btn{display:none}}
+.mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
+
+/* ══ HERO ══ */
+.hero{position:relative;height:68vh;min-height:480px;max-height:700px;display:flex;align-items:flex-end;overflow:hidden;background:var(--c-charcoal)}
+.hero-bg{position:absolute;inset:0;background:url('assets/host-2.jpg') center 40% / cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,30,28,0.82) 0%,rgba(26,30,28,0.45) 50%,rgba(26,30,28,0.1) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:700px;padding-bottom:72px}
+@keyframes staggerIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-stagger>*{opacity:0;transform:translateY(28px);animation:staggerIn 0.8s var(--ease-out) forwards}
+.hero-stagger>*:nth-child(1){animation-delay:.1s}
+.hero-stagger>*:nth-child(2){animation-delay:.25s}
+.hero-stagger>*:nth-child(3){animation-delay:.4s}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;color:var(--c-white);line-height:1.08;letter-spacing:-0.025em;margin-bottom:20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.hero p{font-size:clamp(0.95rem,1.7vw,1.1rem);color:rgba(255,255,255,0.78);line-height:1.7;max-width:520px}
+
+/* ══ INTRO ══ */
+.intro-section{padding:96px 0}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:860px){.intro-grid{grid-template-columns:1fr;gap:48px}}
+.intro-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/3}
+.intro-img img{width:100%;height:100%;object-fit:cover}
+.intro-content .section-label{margin-bottom:14px}
+.intro-content h2{font-family:var(--ff-display);font-size:clamp(2rem,3.8vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.022em;margin-bottom:20px}
+.intro-content h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.intro-content p{font-size:0.97rem;color:var(--c-text-light);line-height:1.8;margin-bottom:16px}
+.intro-content p:last-of-type{margin-bottom:32px}
+.intro-quote{background:var(--c-teal-light);border-left:3px solid var(--c-teal);border-radius:0 var(--r-md) var(--r-md) 0;padding:18px 20px;margin-bottom:32px}
+.intro-quote p{font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-charcoal);line-height:1.55;margin:0}
+
+/* ══ IS IT RIGHT FOR YOU ══ */
+.right-section{padding:96px 0;background:var(--c-olive-dark)}
+.right-section .section-label{color:var(--c-orange);text-align:center;margin-bottom:16px}
+.right-section h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-white);line-height:1.1;letter-spacing:-0.022em;text-align:center;margin-bottom:12px}
+.right-section h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.right-section > .container > p{font-size:0.97rem;color:rgba(255,255,255,0.6);line-height:1.7;text-align:center;max-width:560px;margin:0 auto 56px}
+.right-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:800px){.right-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.right-grid{grid-template-columns:1fr}}
+.right-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-xl);padding:32px 28px;transition:background 0.3s}
+.right-card:hover{background:rgba(255,255,255,0.09)}
+.right-card-icon{width:48px;height:48px;border-radius:var(--r-md);background:rgba(110,183,163,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.right-card-icon svg{color:var(--c-teal)}
+.right-card h3{font-size:0.97rem;font-weight:700;color:var(--c-white);margin-bottom:8px}
+.right-card p{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65}
+
+/* ══ WHAT'S INCLUDED ══ */
+.included-section{padding:96px 0}
+.included-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:860px){.included-layout{grid-template-columns:1fr;gap:40px}}
+.included-content .section-label{margin-bottom:14px}
+.included-content h2{font-family:var(--ff-display);font-size:clamp(2rem,3.8vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.022em;margin-bottom:12px}
+.included-content h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.included-content > p{font-size:0.97rem;color:var(--c-text-light);line-height:1.75;margin-bottom:36px}
+.included-list{display:flex;flex-direction:column;gap:16px}
+.included-item{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-md);box-shadow:var(--shadow-sm);transition:box-shadow 0.25s,transform 0.25s}
+.included-item:hover{box-shadow:var(--shadow-md);transform:translateX(4px)}
+.included-icon{width:40px;height:40px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.i-teal{background:var(--c-teal-light);color:var(--c-teal)}
+.i-gold{background:var(--c-orange-light);color:var(--c-orange-dark)}
+.i-olive{background:rgba(74,82,80,0.08);color:var(--c-olive-dark)}
+.i-green{background:#E8F8EE;color:#2D9A5A}
+.i-blue{background:#EEF4FD;color:#3B82C4}
+.included-item-text strong{display:block;font-size:0.9rem;font-weight:600;color:var(--c-charcoal);margin-bottom:2px}
+.included-item-text span{font-size:0.83rem;color:var(--c-text-muted);line-height:1.5}
+.included-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4}
+.included-img img{width:100%;height:100%;object-fit:cover}
+
+/* ══ MEAL PLANS ══ */
+.meals-section{padding:96px 0;background:var(--c-cream-dim)}
+.section-header{text-align:center;max-width:580px;margin:0 auto 56px}
+.section-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.022em;margin-bottom:12px}
+.section-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.section-header p{font-size:0.97rem;color:var(--c-text-light);line-height:1.7}
+.meals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:800px){.meals-grid{grid-template-columns:1fr}}
+.meal-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:40px 36px;box-shadow:var(--shadow-sm);position:relative;transition:transform 0.3s var(--ease-out),box-shadow 0.3s}
+.meal-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.meal-card.featured{border-color:var(--c-teal);box-shadow:0 0 0 2px var(--c-teal),var(--shadow-md)}
+.meal-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--c-teal);color:var(--c-white);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);white-space:nowrap}
+.meal-icon{font-size:2.2rem;margin-bottom:16px}
+.meal-card h3{font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px}
+.meal-tag{display:inline-block;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-teal);background:var(--c-teal-light);padding:4px 10px;border-radius:var(--r-full);margin-bottom:16px}
+.meal-card p{font-size:0.9rem;color:var(--c-text-light);line-height:1.65;margin-bottom:24px}
+.meal-includes{display:flex;flex-direction:column;gap:8px}
+.meal-row{display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--c-text)}
+.meal-row svg{color:var(--c-teal);flex-shrink:0}
+.meal-row.off svg{color:var(--c-border)}
+.meal-row.off{color:var(--c-text-muted)}
+
+/* ══ ROOM TYPES ══ */
+.room-section{padding:96px 0}
+.room-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:0}
+@media(max-width:640px){.room-grid{grid-template-columns:1fr}}
+.room-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:36px 32px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:16px}
+.room-card h3{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--c-charcoal)}
+.room-card p{font-size:0.9rem;color:var(--c-text-light);line-height:1.65}
+.room-features{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.room-feat{font-size:0.78rem;font-weight:500;color:var(--c-text);background:var(--c-cream-dim);border:1px solid var(--c-border);padding:5px 12px;border-radius:var(--r-full)}
+
+/* ══ DAY IN THE LIFE ══ */
+.day-section{padding:96px 0;background:var(--c-olive-dark)}
+.day-section .section-label{color:var(--c-orange);text-align:center;margin-bottom:16px}
+.day-section h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-white);line-height:1.1;letter-spacing:-0.022em;text-align:center;margin-bottom:48px}
+.day-section h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.timeline{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.timeline-item{display:flex;gap:24px;padding:20px 0;position:relative}
+.timeline-item::after{content:'';position:absolute;left:19px;top:56px;bottom:-20px;width:2px;background:rgba(255,255,255,0.1)}
+.timeline-item:last-child::after{display:none}
+.timeline-time{width:40px;height:40px;border-radius:50%;background:var(--c-teal);color:var(--c-white);font-size:0.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;line-height:1.2;z-index:1}
+.timeline-body strong{display:block;font-size:0.95rem;font-weight:600;color:var(--c-white);margin-bottom:4px;padding-top:8px}
+.timeline-body p{font-size:0.87rem;color:rgba(255,255,255,0.55);line-height:1.6}
+
+/* ══ FAQ ══ */
+.faq-section{padding:96px 0;background:var(--c-cream-dim)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-md);overflow:hidden;transition:box-shadow 0.25s}
+.faq-item.open{box-shadow:var(--shadow-md)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;gap:16px}
+.faq-q span{font-size:0.95rem;font-weight:600;color:var(--c-charcoal);line-height:1.4}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--c-cream-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.25s,transform 0.3s}
+.faq-item.open .faq-icon{background:var(--c-teal-light);transform:rotate(45deg)}
+.faq-icon svg{color:var(--c-text-muted)}
+.faq-item.open .faq-icon svg{color:var(--c-teal)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease-out),padding 0.3s}
+.faq-item.open .faq-answer{max-height:300px;padding:0 24px 22px}
+.faq-answer p{font-size:0.9rem;color:var(--c-text-light);line-height:1.7}
+
+/* ══ CTA ══ */
+.cta-section{padding:96px 0}
+.cta-banner{background:var(--c-charcoal);border-radius:var(--r-xl);padding:72px 64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;overflow:hidden;position:relative}
+@media(max-width:760px){.cta-banner{grid-template-columns:1fr;padding:48px 36px;gap:32px;text-align:center}}
+.cta-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:var(--c-teal);opacity:0.06}
+.cta-banner::after{content:'';position:absolute;bottom:-60px;left:60px;width:200px;height:200px;border-radius:50%;background:var(--c-orange);opacity:0.06}
+.cta-label{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-orange);margin-bottom:14px}
+.cta-banner h2{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--c-white);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px}
+.cta-banner h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.cta-banner p{font-size:0.95rem;color:rgba(255,255,255,0.65);line-height:1.65;max-width:460px}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:center;position:relative;z-index:1}
+.cta-note{font-size:0.78rem;color:rgba(255,255,255,0.4);text-align:center}
+
+/* ══ FOOTER ══ */
+.footer{background:var(--c-charcoal);padding:64px 0 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08)}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:500px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-display);font-size:1.2rem;font-weight:700;color:var(--c-white);margin-bottom:12px}
+.footer-brand-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.65;max-width:280px}
+.footer-col h4{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:10px;transition:color 0.25s}
+.footer-col a:hover{color:var(--c-white)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font-size:0.78rem;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:8px}
+
+/* ══ REVEAL ══ */
+[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out)}
+[data-reveal].revealed{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#6EB7A3"/><path d="M8 22V13l8-5 8 5v9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 22v-5h6v5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="what-is-homestay.html" class="active">What is Homestay</a>
+      <a href="partners.html">Partners</a>
+      <a href="homestaymatch.html">HomestayMatch</a>
+      <a href="contact.html">Contact</a>
+      <a href="become-a-host.html">Become a Host</a>
+      <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="what-is-homestay.html" onclick="closeMobileMenu()">What is Homestay</a>
+  <a href="partners.html" onclick="closeMobileMenu()">Partners</a>
+  <a href="homestaymatch.html" onclick="closeMobileMenu()">HomestayMatch</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="become-a-host.html" onclick="closeMobileMenu()">Become a Host</a>
+  <a href="apply.html" class="btn btn-primary" onclick="closeMobileMenu()">Apply Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-inner hero-stagger">
+      <div class="section-label">Your Home Away From Home</div>
+      <h1>What is <em>Homestay?</em></h1>
+      <p>Live with a welcoming American family while you study in the US. More than housing — it's the fastest way to improve your English, experience real American culture, and feel at home from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS HOMESTAY -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-img" data-reveal>
+        <img src="assets/host-1.jpg" alt="Host family welcoming a student">
+      </div>
+      <div class="intro-content" data-reveal>
+        <div class="section-label">The Basics</div>
+        <h2>Living with a family, <em>not in a dorm</em></h2>
+        <p>Homestay means living in a private home with an American host family during your studies. Instead of a dormitory or apartment, you become part of a household — sharing meals, daily life, and genuine human connection.</p>
+        <p>Your host family provides a private furnished bedroom, meals, and a supportive home environment. In return, you get something no dorm can offer: real daily practice in English, an inside look at American culture, and a family that actually looks out for you.</p>
+        <div class="intro-quote">
+          <p>"Every match is made by a real person, not an algorithm. We take time to understand both the student and the family before making a placement."</p>
+        </div>
+        <a href="apply.html" class="btn btn-primary">Apply for Homestay</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IS IT RIGHT FOR YOU -->
+<section class="right-section">
+  <div class="container">
+    <div class="section-label">Who It's For</div>
+    <h2>Is homestay <em>right for you?</em></h2>
+    <p>Homestay works especially well for students who want more than just a place to sleep.</p>
+    <div class="right-grid">
+      <div class="right-card" data-reveal>
+        <div class="right-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>English Learners</h3>
+        <p>Daily conversation with your host family accelerates language skills faster than any classroom. You speak English from morning to night, in real situations.</p>
+      </div>
+      <div class="right-card" data-reveal>
+        <div class="right-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </div>
+        <h3>First-Time Students Abroad</h3>
+        <p>Moving to a new country alone is hard. A host family provides structure, safety, and someone to answer your questions — especially in those first confusing weeks.</p>
+      </div>
+      <div class="right-card" data-reveal>
+        <div class="right-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Students Who Want a Home</h3>
+        <p>If you want to feel settled — not just housed — homestay gives you a real home base with someone who genuinely cares about how your day went.</p>
+      </div>
+      <div class="right-card" data-reveal>
+        <div class="right-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Budget-Conscious Students</h3>
+        <p>Room, meals, utilities, and WiFi are all included. Compared to renting an apartment in Southern California, homestay is significantly more affordable.</p>
+      </div>
+      <div class="right-card" data-reveal>
+        <div class="right-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Young & Underage Students</h3>
+        <p>Many of our students are under 18. Host families provide a supervised, caring environment that gives parents back home genuine peace of mind.</p>
+      </div>
+      <div class="right-card" data-reveal>
+        <div class="right-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Short or Long Programs</h3>
+        <p>Whether you're here for 4 weeks or a full academic year, homestay placements are flexible. We match you with a family whose availability fits your schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included-section">
+  <div class="container">
+    <div class="included-layout">
+      <div class="included-content" data-reveal>
+        <div class="section-label">What You Get</div>
+        <h2>Everything you need, <em>already included</em></h2>
+        <p>Every USH homestay placement includes the essentials — so you can focus on your studies and settling in, not on logistics.</p>
+        <div class="included-list">
+          <div class="included-item">
+            <div class="included-icon i-teal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="included-item-text">
+              <strong>Private furnished bedroom</strong>
+              <span>Bed, desk, dresser, and closet — your own space to study and rest.</span>
+            </div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon i-gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div class="included-item-text">
+              <strong>Meals (based on your plan)</strong>
+              <span>From full board (breakfast + dinner) to room only — choose what suits you.</span>
+            </div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon i-blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            </div>
+            <div class="included-item-text">
+              <strong>WiFi access</strong>
+              <span>Reliable internet included — essential for classes, video calls, and staying connected.</span>
+            </div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon i-green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            </div>
+            <div class="included-item-text">
+              <strong>USH support team</strong>
+              <span>We're available Mon–Fri, 9am–5pm PST if you ever need help, have questions, or want to request a change.</span>
+            </div>
+          </div>
+          <div class="included-item">
+            <div class="included-icon i-olive">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="included-item-text">
+              <strong>Verified, inspected home</strong>
+              <span>Every home passes our 98-point in-person inspection before any student is placed.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="included-img" data-reveal>
+        <img src="assets/about-experience.jpg" alt="Student in homestay">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEAL PLANS -->
+<section class="meals-section">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <div class="section-label">Meal Plans</div>
+      <h2>Choose your <em>meal plan</em></h2>
+      <p>Select the option that fits your lifestyle and budget. All plans include your private room and utilities.</p>
+    </div>
+    <div class="meals-grid">
+      <div class="meal-card" data-reveal>
+        <div class="meal-icon">🍳</div>
+        <h3>Bed &amp; Breakfast</h3>
+        <span class="meal-tag">Most Flexible</span>
+        <p>A continental breakfast each morning. Handle your own lunch and dinner — great for students with busy class or social schedules.</p>
+        <div class="meal-includes">
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Breakfast daily</div>
+          <div class="meal-row off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Lunch not included</div>
+          <div class="meal-row off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Dinner not included</div>
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Shared kitchen access</div>
+        </div>
+      </div>
+      <div class="meal-card featured" data-reveal>
+        <div class="meal-badge">Most Popular</div>
+        <div class="meal-icon">🍽️</div>
+        <h3>Full Board</h3>
+        <span class="meal-tag">Best Value</span>
+        <p>Breakfast and dinner every day with your host family. Shared mealtimes are where most of the real cultural exchange and English practice happen.</p>
+        <div class="meal-includes">
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Breakfast daily</div>
+          <div class="meal-row off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Lunch not included</div>
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Dinner daily</div>
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Shared kitchen access</div>
+        </div>
+      </div>
+      <div class="meal-card" data-reveal>
+        <div class="meal-icon">🏠</div>
+        <h3>Room Only</h3>
+        <span class="meal-tag">Self-Catering</span>
+        <p>Your room and all utilities — you handle your own meals entirely. Best for students who prefer full independence or have dietary restrictions.</p>
+        <div class="meal-includes">
+          <div class="meal-row off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No meals included</div>
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Full kitchen access</div>
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Most affordable option</div>
+          <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Full independence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOM TYPES -->
+<section class="room-section">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <div class="section-label">Your Room</div>
+      <h2>Bathroom <em>options</em></h2>
+      <p>All rooms are private and furnished. Choose the bathroom arrangement that works for you.</p>
+    </div>
+    <div class="room-grid">
+      <div class="room-card" data-reveal>
+        <h3>Shared Bathroom</h3>
+        <p>You share the bathroom with other household members, typically 1–2 people. This is the standard arrangement and is included in all base pricing. Host families respect student schedules and keep shared spaces clean and organized.</p>
+        <div class="room-features">
+          <span class="room-feat">Standard pricing</span>
+          <span class="room-feat">1–2 people sharing</span>
+          <span class="room-feat">Most availability</span>
+        </div>
+      </div>
+      <div class="room-card" data-reveal>
+        <h3>Private Bathroom</h3>
+        <p>Your own dedicated bathroom — either en-suite or exclusively reserved for your use. Available at select host homes for an additional fee. Request this preference when you apply and we'll match you accordingly.</p>
+        <div class="room-features">
+          <span class="room-feat">Additional fee applies</span>
+          <span class="room-feat">Full privacy</span>
+          <span class="room-feat">Request on application</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY IN THE LIFE -->
+<section class="day-section">
+  <div class="container">
+    <div class="section-label">A Typical Day</div>
+    <h2>What daily life <em>looks like</em></h2>
+    <div class="timeline">
+      <div class="timeline-item" data-reveal>
+        <div class="timeline-time">7am</div>
+        <div class="timeline-body">
+          <strong>Morning with your host family</strong>
+          <p>Breakfast together — a simple but meaningful daily ritual. Chat about the day ahead, practice your English in a relaxed setting, no pressure.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-reveal>
+        <div class="timeline-time">9am</div>
+        <div class="timeline-body">
+          <strong>Head to school or university</strong>
+          <p>Many host families live within commuting distance of your campus. Your USH coordinator ensures the match makes geographic sense for your program.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-reveal>
+        <div class="timeline-time">3pm</div>
+        <div class="timeline-body">
+          <strong>Afternoons your way</strong>
+          <p>Study in your room, explore the neighborhood, or join your host family on errands or activities. Some families invite students to weekend outings, parks, and local events.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-reveal>
+        <div class="timeline-time">7pm</div>
+        <div class="timeline-body">
+          <strong>Dinner together (Full Board)</strong>
+          <p>Home-cooked dinner with your family. This is where real conversations happen — culture, food, stories. Students consistently say this is their favorite part of homestay.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-reveal>
+        <div class="timeline-time">9pm</div>
+        <div class="timeline-body">
+          <strong>Evening wind-down</strong>
+          <p>Your private room is your space to decompress, study, video call family, or just rest. You have full privacy whenever you need it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <div class="section-label">Common Questions</div>
+      <h2>Homestay <em>FAQs</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" data-reveal>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What types of families can I be placed with?</span>
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-answer"><p>USH host families come in all shapes and sizes — couples, families with children, single adults, and retirees. All live in houses, apartments, or condos across our service areas. What they all have in common: they've been personally verified by our team and genuinely enjoy hosting international students.</p></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Can I request a specific type of host family?</span>
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-answer"><p>Yes. You can share preferences on your application — such as whether you'd prefer a family with children, no pets, or a specific dietary setup. We can't guarantee every preference but we do our best to match thoughtfully. Every placement is made by a real person who reads your profile.</p></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How are host families screened?</span>
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-answer"><p>Every host family goes through our 98-point in-person home inspection. A USH team member physically visits the home, meets the family, inspects the student's room, and verifies safety and comfort standards. All adult residents complete a background check. We visit — no exceptions.</p></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What if I'm not comfortable with my host family?</span>
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-answer"><p>Contact our team and we'll work to resolve it. In most cases, a conversation is all it takes. If a rematch is needed, we handle it. Students are never left in a situation they're uncomfortable with — your wellbeing comes first.</p></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What payments are required to book a homestay?</span>
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-answer"><p>Booking typically requires an application fee, a security deposit, and advance payment for your first period of stay. We accept credit card, bank transfer (wire), and in some cases check or cash. All payment details are provided during your application process.</p></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Can I stay for just a few weeks?</span>
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-answer"><p>Yes. We offer placements from short-term programs (a few weeks) all the way through full academic years. Minimum stay requirements may apply depending on availability and program type. Let us know your dates when you apply.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <div>
+        <div class="cta-label">Ready to get started?</div>
+        <h2>Find your perfect <em>host family</em></h2>
+        <p>Apply today and our team will match you with a verified host family near your school. Most students are placed within 5–10 business days.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="apply.html" class="btn btn-primary" style="font-size:1rem;padding:16px 36px">Apply Now</a>
+        <div class="cta-note">Questions? <a href="contact.html" style="color:var(--c-teal)">Contact our team</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Universal Student Housing</div>
+        <div class="footer-brand-desc">Trusted by international students and American host families since 1998. Every home is checked in person, and every student is supported from application to move-in.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="what-is-homestay.html">What is Homestay</a>
+        <a href="homestaymatch.html">HomestayMatch</a>
+        <a href="partners.html">Partners</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#">Login</a>
+        <a href="apply.html">Apply Now</a>
+        <a href="become-a-host.html">Become a Host</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Los Angeles, California</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuOpen').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+const heroBg = document.getElementById('heroBg');
+if (heroBg) { const img = new Image(); img.src = 'assets/host-2.jpg'; img.onload = () => heroBg.classList.add('loaded'); }
+
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+      e.target.classList.add('revealed');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
