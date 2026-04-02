@@ -93,6 +93,30 @@
 @media(max-width:500px){.trusted-metrics{gap:24px}.trusted-metric .num{font-size:1.6rem}}
 
 /* ══════════════════════════════════════
+   INDEX — REAL HOMES GALLERY
+   ══════════════════════════════════════ */
+.real-homes{background:var(--c-cream);padding:96px 0}
+.real-homes-header{text-align:center;margin-bottom:48px}
+.real-homes-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px}
+.real-homes-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.real-homes-header p{font-size:1rem;color:var(--c-text-light);max-width:520px;margin:0 auto;line-height:1.65}
+.real-homes-tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:16px}
+.homes-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:240px 240px;gap:12px}
+.homes-grid-item{border-radius:var(--r-lg);overflow:hidden;position:relative}
+.homes-grid-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out)}
+.homes-grid-item:hover img{transform:scale(1.04)}
+.homes-grid-item.tall{grid-row:span 2}
+.homes-caption{margin-top:20px;text-align:center;font-size:0.8rem;color:var(--c-text-muted);font-style:italic}
+@media(max-width:768px){
+  .homes-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;gap:8px}
+  .homes-grid-item.tall{grid-row:span 1}
+}
+@media(max-width:480px){
+  .homes-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:8px}
+  .homes-grid-item{height:220px}
+}
+
+/* ══════════════════════════════════════
    INDEX — SAFETY SECTION
    ══════════════════════════════════════ */
 .safety{background:var(--c-white)}
@@ -371,6 +395,35 @@
         <div class="label">Students Placed</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════ REAL HOMES GALLERY ══════════ -->
+<section class="real-homes">
+  <div class="container">
+    <div class="real-homes-header" data-reveal>
+      <div class="real-homes-tag">📷 Photos taken by our team</div>
+      <h2>Real Homes. <em>Personally Verified.</em></h2>
+      <p>Every photo below was taken by a USH coordinator during an in-person visit. What you see is the actual home and student room — no staging, no stock photos.</p>
+    </div>
+    <div class="homes-grid" data-reveal>
+      <div class="homes-grid-item tall">
+        <img src="assets/room-IMG_8193.jpg" alt="Student bedroom with desk and hardwood floors">
+      </div>
+      <div class="homes-grid-item">
+        <img src="assets/room-IMG_8184.jpg" alt="Comfortable student bedroom with natural light">
+      </div>
+      <div class="homes-grid-item">
+        <img src="assets/room-IMG_8175.jpg" alt="Student bedroom with TV and study area">
+      </div>
+      <div class="homes-grid-item">
+        <img src="assets/room-IMG_8161.jpg" alt="Student study desk with warm lighting">
+      </div>
+      <div class="homes-grid-item">
+        <img src="assets/room-IMG_8132.jpg" alt="Welcoming host family living room">
+      </div>
+    </div>
+    <p class="homes-caption">All photos taken by USH coordinators during scheduled in-person home visits.</p>
   </div>
 </section>
 
