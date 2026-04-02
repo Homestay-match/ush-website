@@ -104,27 +104,26 @@
 /* Host card — photos only */
 .host-card{display:none}
 .host-card.active{display:block}
-.host-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:340px 230px;gap:10px}
+.host-label{text-align:center;margin-bottom:16px;min-height:28px}
+.host-label-name{font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:var(--c-charcoal);display:inline-flex;align-items:center;gap:8px}
+.host-label-city{font-size:0.82rem;color:var(--c-text-muted);font-weight:400}
+.host-verified-pill{display:inline-flex;align-items:center;gap:4px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-full)}
+.host-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:400px 280px;gap:10px}
 .host-photo-item{border-radius:var(--r-lg);overflow:hidden}
 .host-photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
 .host-photo-item:hover img{transform:scale(1.04)}
 .host-photo-item.wide{grid-column:span 2}
-/* Navigation tabs */
-.showcase-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
-.showcase-tab{padding:14px 28px;border-radius:var(--r-full);border:1px solid var(--c-border-strong);background:var(--c-white);font-size:0.92rem;font-weight:600;color:var(--c-text-light);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:12px;line-height:1.3}
-.showcase-tab:hover{border-color:var(--c-teal);color:var(--c-teal)}
-.showcase-tab.active{background:var(--c-teal);border-color:var(--c-teal);color:var(--c-white)}
-.showcase-tab-avatar{width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0}
-.showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.showcase-tab-initials{width:36px;height:36px;border-radius:50%;background:rgba(110,183,163,0.2);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;flex-shrink:0}
-.showcase-tab.active .showcase-tab-initials{background:rgba(255,255,255,0.25)}
-.tab-name{font-weight:700}
-.tab-city{font-size:0.78rem;font-weight:400;opacity:0.75}
-@media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}.showcase-nav{margin-top:20px;gap:10px}}
+/* Navigation dots */
+.showcase-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px}
+.showcase-tab{width:44px;height:44px;border-radius:50%;border:2px solid var(--c-border-strong);background:var(--c-white);cursor:pointer;transition:all 0.25s;overflow:hidden;padding:0;flex-shrink:0}
+.showcase-tab:hover{border-color:var(--c-teal)}
+.showcase-tab.active{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.25)}
+.showcase-tab-avatar{width:100%;height:100%;overflow:hidden}
+.showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.showcase-tab-initials{width:100%;height:100%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--c-white)}
+@media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}}
 @media(max-width:600px){
-  .host-photos{grid-template-rows:200px 150px;gap:8px}
-  .showcase-tab{padding:10px 16px}
-  .tab-city{display:none}
+  .host-photos{grid-template-rows:220px 160px;gap:8px}
 }
 
 /* ══════════════════════════════════════
@@ -463,19 +462,22 @@
       </div>
     </div>
 
-    <!-- Tab navigation -->
+    <!-- Active host label -->
+    <div class="host-label" id="hostLabel">
+      <span class="host-label-name">Sandra G. <span class="host-label-city">· Hollywood, CA</span></span>
+      &nbsp;<span class="host-verified-pill">✓ Verified</span>
+    </div>
+
+    <!-- Tab navigation — avatar dots only -->
     <div class="showcase-nav" id="showcaseNav">
-      <button class="showcase-tab active" onclick="switchHost('sandra', this)">
+      <button class="showcase-tab active" onclick="switchHost('sandra', this)" aria-label="Sandra G.">
         <div class="showcase-tab-initials">S</div>
-        <div><div class="tab-name">Sandra G.</div><div class="tab-city">Hollywood, CA</div></div>
       </button>
-      <button class="showcase-tab" onclick="switchHost('greta', this)">
+      <button class="showcase-tab" onclick="switchHost('greta', this)" aria-label="Greta S.">
         <div class="showcase-tab-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
-        <div><div class="tab-name">Greta S.</div><div class="tab-city">San Jose, CA</div></div>
       </button>
-      <button class="showcase-tab" onclick="switchHost('ana', this)">
+      <button class="showcase-tab" onclick="switchHost('ana', this)" aria-label="Ana P.">
         <div class="showcase-tab-initials">A</div>
-        <div><div class="tab-name">Ana P.</div><div class="tab-city">Irvine, CA</div></div>
       </button>
     </div>
   </div>
@@ -757,6 +759,11 @@
 <script>
 // ══════════ HOST SHOWCASE SWITCHER ══════════
 const hostIds = ['sandra', 'greta', 'ana'];
+const hostLabels = {
+  sandra: { name: 'Sandra G.', city: 'Hollywood, CA' },
+  greta:  { name: 'Greta S.',  city: 'San Jose, CA' },
+  ana:    { name: 'Ana P.',    city: 'Irvine, CA' }
+};
 let hostIdx = 0;
 let hostTimer = null;
 
@@ -766,6 +773,9 @@ function switchHost(id, btn) {
   document.getElementById('hostCard-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
   hostIdx = hostIds.indexOf(id);
+  const h = hostLabels[id];
+  document.getElementById('hostLabel').innerHTML =
+    `<span class="host-label-name">${h.name} <span class="host-label-city">· ${h.city}</span></span> &nbsp;<span class="host-verified-pill">✓ Verified</span>`;
 }
 
 function nextHost() {
@@ -776,8 +786,7 @@ function nextHost() {
 }
 
 hostTimer = setInterval(nextHost, 5000);
-
-document.getElementById('showcaseNav').addEventListener('click', function(e) {
+document.getElementById('showcaseNav').addEventListener('click', function() {
   clearInterval(hostTimer);
   hostTimer = setInterval(nextHost, 5000);
 });
