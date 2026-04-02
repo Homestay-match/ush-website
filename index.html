@@ -93,27 +93,50 @@
 @media(max-width:500px){.trusted-metrics{gap:24px}.trusted-metric .num{font-size:1.6rem}}
 
 /* ══════════════════════════════════════
-   INDEX — REAL HOMES GALLERY
+   INDEX — HOST SHOWCASE
    ══════════════════════════════════════ */
-.real-homes{background:var(--c-cream);padding:96px 0}
-.real-homes-header{text-align:center;margin-bottom:48px}
-.real-homes-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px}
-.real-homes-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
-.real-homes-header p{font-size:1rem;color:var(--c-text-light);max-width:520px;margin:0 auto;line-height:1.65}
+.host-showcase{background:var(--c-cream);padding:96px 0;overflow:hidden}
+.host-showcase-header{text-align:center;margin-bottom:56px}
+.host-showcase-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px}
+.host-showcase-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.host-showcase-header p{font-size:1rem;color:var(--c-text-light);max-width:500px;margin:0 auto;line-height:1.65}
 .real-homes-tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:16px}
-.homes-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:240px 240px;gap:12px}
-.homes-grid-item{border-radius:var(--r-lg);overflow:hidden;position:relative}
-.homes-grid-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out)}
-.homes-grid-item:hover img{transform:scale(1.04)}
-.homes-grid-item.tall{grid-row:span 2}
-.homes-caption{margin-top:20px;text-align:center;font-size:0.8rem;color:var(--c-text-muted);font-style:italic}
-@media(max-width:768px){
-  .homes-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;gap:8px}
-  .homes-grid-item.tall{grid-row:span 1}
+/* Host card layout */
+.host-card{display:none;grid-template-columns:280px 1fr;gap:48px;align-items:start}
+.host-card.active{display:grid}
+.host-profile{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:32px 28px;text-align:center;position:sticky;top:100px}
+.host-avatar{width:100px;height:100px;border-radius:50%;overflow:hidden;margin:0 auto 16px;border:3px solid var(--c-teal-light)}
+.host-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.host-avatar-initials{width:100px;height:100px;border-radius:50%;background:var(--c-teal);color:var(--c-white);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:2rem;font-weight:700;margin:0 auto 16px}
+.host-name{font-family:var(--ff-display);font-size:1.3rem;font-weight:700;color:var(--c-charcoal);margin-bottom:4px}
+.host-location{font-size:0.82rem;color:var(--c-text-muted);display:flex;align-items:center;justify-content:center;gap:4px}
+.host-location svg{color:var(--c-teal)}
+.host-verified{display:inline-flex;align-items:center;gap:5px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:var(--r-full);margin-top:14px}
+/* Photo grid */
+.host-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:260px 260px;gap:12px}
+.host-photo-item{border-radius:var(--r-lg);overflow:hidden}
+.host-photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
+.host-photo-item:hover img{transform:scale(1.04)}
+.host-photo-item.wide{grid-column:span 2;height:280px}
+/* Navigation */
+.showcase-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:40px}
+.showcase-tab{padding:10px 24px;border-radius:var(--r-full);border:1px solid var(--c-border-strong);background:var(--c-white);font-size:0.85rem;font-weight:600;color:var(--c-text-light);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:10px}
+.showcase-tab:hover{border-color:var(--c-teal);color:var(--c-teal)}
+.showcase-tab.active{background:var(--c-teal);border-color:var(--c-teal);color:var(--c-white)}
+.showcase-tab-avatar{width:28px;height:28px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.showcase-tab-initials{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700}
+@media(max-width:900px){
+  .host-card.active{grid-template-columns:1fr;gap:32px}
+  .host-profile{position:static;display:flex;align-items:center;gap:24px;text-align:left;padding:20px 24px}
+  .host-avatar{margin:0;width:72px;height:72px;flex-shrink:0}
+  .host-avatar-initials{margin:0;width:72px;height:72px;font-size:1.4rem;flex-shrink:0}
+  .host-verified{margin-top:8px}
 }
-@media(max-width:480px){
-  .homes-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:8px}
-  .homes-grid-item{height:220px}
+@media(max-width:600px){
+  .host-photos{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px;gap:8px}
+  .host-photo-item.wide{height:180px}
+  .showcase-tab span.tab-label{display:none}
 }
 
 /* ══════════════════════════════════════
@@ -398,32 +421,80 @@
   </div>
 </section>
 
-<!-- ══════════ REAL HOMES GALLERY ══════════ -->
-<section class="real-homes">
+<!-- ══════════ HOST SHOWCASE ══════════ -->
+<section class="host-showcase">
   <div class="container">
-    <div class="real-homes-header" data-reveal>
+    <div class="host-showcase-header" data-reveal>
       <div class="real-homes-tag">📷 Photos taken by our team</div>
-      <h2>Real Homes. <em>Personally Verified.</em></h2>
-      <p>Every photo below was taken by a USH coordinator during an in-person visit. What you see is the actual home and student room — no staging, no stock photos.</p>
+      <h2>Real Homes. <em>Real Hosts.</em></h2>
+      <p>Every photo is taken by a USH coordinator during an in-person visit. No staging, no stock photos — just real homes and real rooms.</p>
     </div>
-    <div class="homes-grid" data-reveal>
-      <div class="homes-grid-item tall">
-        <img src="assets/room-IMG_8193.jpg" alt="Student bedroom with desk and hardwood floors">
+
+    <!-- Sandra G. -->
+    <div class="host-card active" id="hostCard-sandra">
+      <div class="host-profile">
+        <div class="host-avatar-initials">S</div>
+        <div>
+          <div class="host-name">Sandra G.</div>
+          <div class="host-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Hollywood, CA
+          </div>
+          <div class="host-verified">✓ USH Verified Host</div>
+        </div>
       </div>
-      <div class="homes-grid-item">
-        <img src="assets/room-IMG_8184.jpg" alt="Comfortable student bedroom with natural light">
-      </div>
-      <div class="homes-grid-item">
-        <img src="assets/room-IMG_8175.jpg" alt="Student bedroom with TV and study area">
-      </div>
-      <div class="homes-grid-item">
-        <img src="assets/room-IMG_8161.jpg" alt="Student study desk with warm lighting">
-      </div>
-      <div class="homes-grid-item">
-        <img src="assets/room-IMG_8132.jpg" alt="Welcoming host family living room">
+      <div class="host-photos">
+        <div class="host-photo-item wide">
+          <img src="assets/room-IMG_8193.jpg" alt="Sandra's student bedroom with desk">
+        </div>
+        <div class="host-photo-item">
+          <img src="assets/room-IMG_8175.jpg" alt="Sandra's bedroom with TV">
+        </div>
+        <div class="host-photo-item">
+          <img src="assets/room-IMG_8161.jpg" alt="Sandra's study desk">
+        </div>
       </div>
     </div>
-    <p class="homes-caption">All photos taken by USH coordinators during scheduled in-person home visits.</p>
+
+    <!-- Greta S. -->
+    <div class="host-card" id="hostCard-greta">
+      <div class="host-profile">
+        <div class="host-avatar">
+          <img src="assets/host-greta.jpg" alt="Greta S.">
+        </div>
+        <div>
+          <div class="host-name">Greta S.</div>
+          <div class="host-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            San Jose, CA
+          </div>
+          <div class="host-verified">✓ USH Verified Host</div>
+        </div>
+      </div>
+      <div class="host-photos">
+        <div class="host-photo-item wide">
+          <img src="assets/greta-IMG_7489.jpg" alt="Greta's student bedroom">
+        </div>
+        <div class="host-photo-item">
+          <img src="assets/greta-IMG_7500.jpg" alt="Greta's bedroom view">
+        </div>
+        <div class="host-photo-item">
+          <img src="assets/greta-IMG_7495.jpg" alt="Greta's room with natural light">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab navigation -->
+    <div class="showcase-nav">
+      <button class="showcase-tab active" onclick="switchHost('sandra', this)">
+        <div class="showcase-tab-initials">S</div>
+        <span class="tab-label">Sandra G. — Hollywood, CA</span>
+      </button>
+      <button class="showcase-tab" onclick="switchHost('greta', this)">
+        <div class="showcase-tab-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
+        <span class="tab-label">Greta S. — San Jose, CA</span>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -701,6 +772,14 @@
 </footer>
 
 <script>
+// ══════════ HOST SHOWCASE SWITCHER ══════════
+function switchHost(id, btn) {
+  document.querySelectorAll('.host-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.showcase-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('hostCard-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
 // ══════════ TESTIMONIALS CAROUSEL ══════════
 (function() {
   const track = document.getElementById('testimonialsTrack');
