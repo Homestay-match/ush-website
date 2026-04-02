@@ -101,41 +101,30 @@
 .host-showcase-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
 .host-showcase-header p{font-size:1rem;color:var(--c-text-light);max-width:500px;margin:0 auto;line-height:1.65}
 .real-homes-tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:16px}
-/* Host card layout */
-.host-card{display:none;flex-direction:column;gap:20px}
-.host-card.active{display:flex}
-.host-profile{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:20px 24px;display:flex;align-items:center;gap:20px;text-align:left}
-.host-avatar{width:72px;height:72px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid var(--c-teal-light)}
-.host-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.host-avatar-initials{width:72px;height:72px;border-radius:50%;background:var(--c-teal);color:var(--c-white);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:1.6rem;font-weight:700;flex-shrink:0}
-.host-name{font-family:var(--ff-display);font-size:1.3rem;font-weight:700;color:var(--c-charcoal);margin-bottom:4px}
-.host-location{font-size:0.82rem;color:var(--c-text-muted);display:flex;align-items:center;gap:4px}
-.host-location svg{color:var(--c-teal)}
-.host-verified{display:inline-flex;align-items:center;gap:5px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:var(--r-full);margin-top:10px}
-/* Photo grid */
-.host-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:320px 220px;gap:10px}
+/* Host card — photos only */
+.host-card{display:none}
+.host-card.active{display:block}
+.host-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:340px 230px;gap:10px}
 .host-photo-item{border-radius:var(--r-lg);overflow:hidden}
 .host-photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
 .host-photo-item:hover img{transform:scale(1.04)}
 .host-photo-item.wide{grid-column:span 2}
-/* Navigation */
-.showcase-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:40px}
-.showcase-tab{padding:10px 24px;border-radius:var(--r-full);border:1px solid var(--c-border-strong);background:var(--c-white);font-size:0.85rem;font-weight:600;color:var(--c-text-light);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:10px}
+/* Navigation tabs */
+.showcase-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
+.showcase-tab{padding:14px 28px;border-radius:var(--r-full);border:1px solid var(--c-border-strong);background:var(--c-white);font-size:0.92rem;font-weight:600;color:var(--c-text-light);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:12px;line-height:1.3}
 .showcase-tab:hover{border-color:var(--c-teal);color:var(--c-teal)}
 .showcase-tab.active{background:var(--c-teal);border-color:var(--c-teal);color:var(--c-white)}
-.showcase-tab-avatar{width:28px;height:28px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.showcase-tab-avatar{width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0}
 .showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.showcase-tab-initials{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700}
-@media(max-width:900px){
-  .host-showcase{padding:64px 0}
-  .host-showcase-header{margin-bottom:32px}
-  .showcase-nav{margin-top:20px}
-}
+.showcase-tab-initials{width:36px;height:36px;border-radius:50%;background:rgba(110,183,163,0.2);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;flex-shrink:0}
+.showcase-tab.active .showcase-tab-initials{background:rgba(255,255,255,0.25)}
+.tab-name{font-weight:700}
+.tab-city{font-size:0.78rem;font-weight:400;opacity:0.75}
+@media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}.showcase-nav{margin-top:20px;gap:10px}}
 @media(max-width:600px){
-  .host-photos{grid-template-columns:1fr 1fr;grid-template-rows:180px 160px;gap:8px}
-  .host-photo-item.wide{grid-column:span 2}
-  .showcase-tab span.tab-label{display:none}
-  .showcase-tab{padding:8px 16px}
+  .host-photos{grid-template-rows:200px 150px;gap:8px}
+  .showcase-tab{padding:10px 16px}
+  .tab-city{display:none}
 }
 
 /* ══════════════════════════════════════
@@ -431,17 +420,6 @@
 
     <!-- Sandra G. -->
     <div class="host-card active" id="hostCard-sandra">
-      <div class="host-profile">
-        <div class="host-avatar-initials">S</div>
-        <div>
-          <div class="host-name">Sandra G.</div>
-          <div class="host-location">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Hollywood, CA
-          </div>
-          <div class="host-verified">✓ USH Verified Host</div>
-        </div>
-      </div>
       <div class="host-photos">
         <div class="host-photo-item wide">
           <img src="assets/sandra-1.jpg" alt="Sandra's student bedroom">
@@ -457,19 +435,6 @@
 
     <!-- Greta S. -->
     <div class="host-card" id="hostCard-greta">
-      <div class="host-profile">
-        <div class="host-avatar">
-          <img src="assets/host-greta.jpg" alt="Greta S.">
-        </div>
-        <div>
-          <div class="host-name">Greta S.</div>
-          <div class="host-location">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            San Jose, CA
-          </div>
-          <div class="host-verified">✓ USH Verified Host</div>
-        </div>
-      </div>
       <div class="host-photos">
         <div class="host-photo-item wide">
           <img src="assets/sandra-4.jpg" alt="Greta's student bedroom">
@@ -485,17 +450,6 @@
 
     <!-- Ana P. -->
     <div class="host-card" id="hostCard-ana">
-      <div class="host-profile">
-        <div class="host-avatar-initials">A</div>
-        <div>
-          <div class="host-name">Ana P.</div>
-          <div class="host-location">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Irvine, CA
-          </div>
-          <div class="host-verified">✓ USH Verified Host</div>
-        </div>
-      </div>
       <div class="host-photos">
         <div class="host-photo-item wide">
           <img src="assets/sandra-7.jpg" alt="Ana's student bedroom">
@@ -510,18 +464,18 @@
     </div>
 
     <!-- Tab navigation -->
-    <div class="showcase-nav">
+    <div class="showcase-nav" id="showcaseNav">
       <button class="showcase-tab active" onclick="switchHost('sandra', this)">
         <div class="showcase-tab-initials">S</div>
-        <span class="tab-label">Sandra G. — Hollywood, CA</span>
+        <div><div class="tab-name">Sandra G.</div><div class="tab-city">Hollywood, CA</div></div>
       </button>
       <button class="showcase-tab" onclick="switchHost('greta', this)">
         <div class="showcase-tab-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
-        <span class="tab-label">Greta S. — San Jose, CA</span>
+        <div><div class="tab-name">Greta S.</div><div class="tab-city">San Jose, CA</div></div>
       </button>
       <button class="showcase-tab" onclick="switchHost('ana', this)">
         <div class="showcase-tab-initials">A</div>
-        <span class="tab-label">Ana P. — Irvine, CA</span>
+        <div><div class="tab-name">Ana P.</div><div class="tab-city">Irvine, CA</div></div>
       </button>
     </div>
   </div>
@@ -802,12 +756,31 @@
 
 <script>
 // ══════════ HOST SHOWCASE SWITCHER ══════════
+const hostIds = ['sandra', 'greta', 'ana'];
+let hostIdx = 0;
+let hostTimer = null;
+
 function switchHost(id, btn) {
   document.querySelectorAll('.host-card').forEach(c => c.classList.remove('active'));
   document.querySelectorAll('.showcase-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('hostCard-' + id).classList.add('active');
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
+  hostIdx = hostIds.indexOf(id);
 }
+
+function nextHost() {
+  hostIdx = (hostIdx + 1) % hostIds.length;
+  const id = hostIds[hostIdx];
+  const btn = document.querySelectorAll('.showcase-tab')[hostIdx];
+  switchHost(id, btn);
+}
+
+hostTimer = setInterval(nextHost, 5000);
+
+document.getElementById('showcaseNav').addEventListener('click', function(e) {
+  clearInterval(hostTimer);
+  hostTimer = setInterval(nextHost, 5000);
+});
 
 // ══════════ TESTIMONIALS CAROUSEL ══════════
 (function() {
