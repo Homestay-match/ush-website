@@ -113,14 +113,17 @@
 .host-photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
 .host-photo-item:hover img{transform:scale(1.04)}
 .host-photo-item.wide{grid-column:span 2}
-/* Navigation dots */
-.showcase-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px}
-.showcase-tab{width:44px;height:44px;border-radius:50%;border:2px solid var(--c-border-strong);background:var(--c-white);cursor:pointer;transition:all 0.25s;overflow:hidden;padding:0;flex-shrink:0}
-.showcase-tab:hover{border-color:var(--c-teal)}
-.showcase-tab.active{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.25)}
-.showcase-tab-avatar{width:100%;height:100%;overflow:hidden}
+/* Navigation — single active pill */
+.showcase-nav{display:flex;align-items:center;justify-content:center;margin-top:24px}
+.showcase-tab{display:none;align-items:center;gap:14px;padding:14px 24px;border-radius:var(--r-full);border:1px solid var(--c-border-strong);background:var(--c-white);cursor:pointer;transition:all 0.25s;font-family:var(--ff-body)}
+.showcase-tab.active{display:flex}
+.showcase-tab:hover{border-color:var(--c-teal);box-shadow:var(--shadow-md)}
+.showcase-tab-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--c-teal-light)}
 .showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.showcase-tab-initials{width:100%;height:100%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--c-white)}
+.showcase-tab-initials{width:44px;height:44px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:var(--c-white);flex-shrink:0}
+.tab-name{font-weight:700;font-size:0.95rem;color:var(--c-charcoal)}
+.tab-city{font-size:0.78rem;color:var(--c-text-muted);margin-top:1px}
+.tab-arrow{margin-left:8px;color:var(--c-teal);font-size:1rem}
 @media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}}
 @media(max-width:600px){
   .host-photos{grid-template-rows:220px 160px;gap:8px}
@@ -462,22 +465,22 @@
       </div>
     </div>
 
-    <!-- Active host label -->
-    <div class="host-label" id="hostLabel">
-      <span class="host-label-name">Sandra G. <span class="host-label-city">· Hollywood, CA</span></span>
-      &nbsp;<span class="host-verified-pill">✓ Verified</span>
-    </div>
-
-    <!-- Tab navigation — avatar dots only -->
+    <!-- Tab navigation — one pill shown at a time -->
     <div class="showcase-nav" id="showcaseNav">
-      <button class="showcase-tab active" onclick="switchHost('sandra', this)" aria-label="Sandra G.">
+      <button class="showcase-tab active" onclick="manualNext()" data-host="sandra">
         <div class="showcase-tab-initials">S</div>
+        <div><div class="tab-name">Sandra G.</div><div class="tab-city">Hollywood, CA</div></div>
+        <span class="tab-arrow">→</span>
       </button>
-      <button class="showcase-tab" onclick="switchHost('greta', this)" aria-label="Greta S.">
+      <button class="showcase-tab" onclick="manualNext()" data-host="greta">
         <div class="showcase-tab-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
+        <div><div class="tab-name">Greta S.</div><div class="tab-city">San Jose, CA</div></div>
+        <span class="tab-arrow">→</span>
       </button>
-      <button class="showcase-tab" onclick="switchHost('ana', this)" aria-label="Ana P.">
+      <button class="showcase-tab" onclick="manualNext()" data-host="ana">
         <div class="showcase-tab-initials">A</div>
+        <div><div class="tab-name">Ana P.</div><div class="tab-city">Irvine, CA</div></div>
+        <span class="tab-arrow">→</span>
       </button>
     </div>
   </div>
@@ -759,37 +762,29 @@
 <script>
 // ══════════ HOST SHOWCASE SWITCHER ══════════
 const hostIds = ['sandra', 'greta', 'ana'];
-const hostLabels = {
-  sandra: { name: 'Sandra G.', city: 'Hollywood, CA' },
-  greta:  { name: 'Greta S.',  city: 'San Jose, CA' },
-  ana:    { name: 'Ana P.',    city: 'Irvine, CA' }
-};
 let hostIdx = 0;
 let hostTimer = null;
 
-function switchHost(id, btn) {
+function switchHost(id) {
   document.querySelectorAll('.host-card').forEach(c => c.classList.remove('active'));
   document.querySelectorAll('.showcase-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('hostCard-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
+  document.querySelector(`.showcase-tab[data-host="${id}"]`).classList.add('active');
   hostIdx = hostIds.indexOf(id);
-  const h = hostLabels[id];
-  document.getElementById('hostLabel').innerHTML =
-    `<span class="host-label-name">${h.name} <span class="host-label-city">· ${h.city}</span></span> &nbsp;<span class="host-verified-pill">✓ Verified</span>`;
 }
 
 function nextHost() {
   hostIdx = (hostIdx + 1) % hostIds.length;
-  const id = hostIds[hostIdx];
-  const btn = document.querySelectorAll('.showcase-tab')[hostIdx];
-  switchHost(id, btn);
+  switchHost(hostIds[hostIdx]);
+}
+
+function manualNext() {
+  nextHost();
+  clearInterval(hostTimer);
+  hostTimer = setInterval(nextHost, 5000);
 }
 
 hostTimer = setInterval(nextHost, 5000);
-document.getElementById('showcaseNav').addEventListener('click', function() {
-  clearInterval(hostTimer);
-  hostTimer = setInterval(nextHost, 5000);
-});
 
 // ══════════ TESTIMONIALS CAROUSEL ══════════
 (function() {
