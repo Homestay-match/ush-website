@@ -127,16 +127,20 @@
 .showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .showcase-tab-initials{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700}
 @media(max-width:900px){
-  .host-card.active{grid-template-columns:1fr;gap:32px}
-  .host-profile{position:static;display:flex;align-items:center;gap:24px;text-align:left;padding:20px 24px}
-  .host-avatar{margin:0;width:72px;height:72px;flex-shrink:0}
-  .host-avatar-initials{margin:0;width:72px;height:72px;font-size:1.4rem;flex-shrink:0}
-  .host-verified{margin-top:8px}
+  .host-showcase{padding:64px 0}
+  .host-showcase-header{margin-bottom:32px}
+  .host-card.active{grid-template-columns:1fr;gap:16px}
+  .host-profile{position:static;display:flex;align-items:center;gap:16px;text-align:left;padding:16px 20px}
+  .host-avatar{margin:0;width:64px;height:64px;flex-shrink:0}
+  .host-avatar-initials{margin:0;width:64px;height:64px;font-size:1.3rem;flex-shrink:0}
+  .host-verified{margin-top:6px}
+  .showcase-nav{margin-top:20px}
 }
 @media(max-width:600px){
-  .host-photos{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px;gap:8px}
-  .host-photo-item.wide{height:180px}
+  .host-photos{grid-template-columns:1fr 1fr;grid-template-rows:180px 160px;gap:8px}
+  .host-photo-item.wide{grid-column:span 2}
   .showcase-tab span.tab-label{display:none}
+  .showcase-tab{padding:8px 16px}
 }
 
 /* ══════════════════════════════════════
