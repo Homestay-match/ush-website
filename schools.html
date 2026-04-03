@@ -564,8 +564,13 @@ document.querySelectorAll('.region-card').forEach(card => {
   card.addEventListener('click', () => showRegion(card.dataset.target));
 });
 
-// Show Southern California by default
-showRegion('socal');
+// Show Southern California by default (no scroll on initial load)
+(function(){
+  const target = document.getElementById('socal');
+  if (target) target.classList.add('visible');
+  const card = document.querySelector('.region-card[data-target="socal"]');
+  if (card) card.classList.add('active');
+})();
 
 // Check URL hash on load (e.g. schools.html#arizona)
 if (window.location.hash) {
