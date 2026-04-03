@@ -79,26 +79,17 @@
 .team-header{text-align:center;margin-bottom:48px}
 .team-header .section-title{margin:0 auto}
 .team-group-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--c-border)}
-/* Featured leader row */
-.team-featured{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center;background:var(--c-white);border-radius:var(--r-xl);border:1px solid var(--c-border);overflow:hidden;margin-bottom:40px}
-.team-featured img{width:100%;height:280px;object-fit:cover;object-position:center top;display:block}
-.team-featured-body{padding:32px 36px 32px 0}
-.team-featured-name{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:4px}
-.team-featured-title{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-teal);margin-bottom:14px}
-.team-featured-bio{font-size:0.92rem;color:var(--c-text-light);line-height:1.7}
-@media(max-width:640px){.team-featured{grid-template-columns:1fr}.team-featured img{height:220px}.team-featured-body{padding:20px}}
-/* Small grid members */
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
-@media(max-width:768px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+@media(max-width:768px){.team-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}}
 .team-member{background:var(--c-white);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--c-border);transition:all 0.3s var(--ease-out)}
 .team-member:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:transparent}
-.team-member img,.team-member-placeholder{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
-.team-member-placeholder{background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);display:flex;align-items:center;justify-content:center}
+.team-member img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
+.team-member-placeholder{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);display:flex;align-items:center;justify-content:center}
 .team-member-placeholder svg{width:48px;height:48px;color:rgba(255,255,255,0.4)}
-.team-member-body{padding:14px 16px}
-.team-member-name{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:2px}
-.team-member-title{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:8px}
+.team-member-body{padding:16px 18px}
+.team-member-name{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:3px}
+.team-member-title{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:10px}
 .team-member-bio{font-size:0.85rem;color:var(--c-text-light);line-height:1.6}
 .testimonials-header{text-align:center;margin-bottom:48px}
 .testimonial-featured{max-width:760px;margin:0 auto;text-align:center}
@@ -290,17 +281,17 @@
       <h2 class="section-title">A Personal Commitment to <em>Every Student's Success</em></h2>
     </div>
 
-    <!-- Leadership: Emerson featured -->
+    <!-- Leadership -->
     <div class="team-group-label" data-reveal>Leadership</div>
-    <div class="team-featured" data-reveal>
-      <img src="assets/team-emerson.jpg" alt="Emerson Torres">
-      <div class="team-featured-body">
-        <div class="team-featured-name">Emerson Torres</div>
-        <div class="team-featured-title">Co-Founder &amp; CEO</div>
-        <p class="team-featured-bio">Emerson founded USH in 1998 after arriving in the U.S. as an international student himself. He leads the company's strategic growth and partnerships with over 270 universities nationwide.</p>
-      </div>
-    </div>
     <div class="team-grid" data-reveal>
+      <div class="team-member">
+        <img src="assets/team-emerson.jpg" alt="Emerson Torres">
+        <div class="team-member-body">
+          <div class="team-member-name">Emerson Torres</div>
+          <div class="team-member-title">Co-Founder &amp; CEO</div>
+          <p class="team-member-bio">Emerson founded USH in 1998 after arriving in the U.S. as an international student himself. He leads the company's strategic growth and partnerships with over 270 universities nationwide.</p>
+        </div>
+      </div>
       <div class="team-member">
         <div class="team-member-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -316,7 +307,6 @@
     <!-- Student Support -->
     <div class="team-group-label" data-reveal>Student Support &amp; Placement</div>
     <div class="team-grid" data-reveal>
-
       <div class="team-member">
         <img src="assets/team-estela.jpg" alt="Estela Franco">
         <div class="team-member-body">
@@ -325,7 +315,6 @@
           <p class="team-member-bio">Estela is on the front lines of the student experience. She works directly with our host families and students to ensure a smooth move-in process and provides support throughout their stay.</p>
         </div>
       </div>
-
       <div class="team-member">
         <img src="assets/team-enzo.jpg" alt="Enzo Torres">
         <div class="team-member-body">
@@ -334,13 +323,11 @@
           <p class="team-member-bio">Enzo assists in coordinating the marketing and communication initiatives for USH. He manages our partner channels, including newsletters and email campaigns, while designing the media and promotional materials that represent our brand.</p>
         </div>
       </div>
-
     </div>
 
     <!-- Strategic Advisors -->
     <div class="team-group-label" data-reveal>Strategic Advisors</div>
     <div class="team-grid" data-reveal>
-
       <div class="team-member">
         <img src="assets/team-scott.jpg" alt="Scott Hindell">
         <div class="team-member-body">
@@ -349,18 +336,14 @@
           <p class="team-member-bio">Scott provides strategic guidance on business innovation, ensuring USH remains the most efficient and reliable homestay provider in the U.S.</p>
         </div>
       </div>
-
       <div class="team-member">
-        <div class="team-member-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        </div>
+        <img src="assets/team-anderson.jpg" alt="Anderson Gobbi">
         <div class="team-member-body">
           <div class="team-member-name">Anderson Gobbi</div>
           <div class="team-member-title">Technology &amp; Strategy Advisory — Rio de Janeiro</div>
           <p class="team-member-bio">Anderson leads our digital evolution, overseeing the HomestayMatch platform to provide a seamless, tech-forward experience for modern students.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
