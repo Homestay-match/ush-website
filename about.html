@@ -126,12 +126,16 @@
 .locations{background:var(--c-cream)}
 .locations-header{margin-bottom:16px}
 .locations-header p{font-size:1.05rem;color:var(--c-text-light);max-width:620px;margin-top:16px;line-height:1.7}
-.locations-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:48px}
-.location-card{background:var(--c-white);border-radius:var(--r-lg);padding:28px 36px;border:1px solid var(--c-border);text-align:center;min-width:180px;transition:all 0.35s var(--ease-out);cursor:default}
-.location-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--c-teal)}
-.location-card-icon{width:44px;height:44px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.location-card-icon svg{width:20px;height:20px;color:var(--c-teal)}
-.location-card h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal)}
+.locations-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:48px}
+@media(max-width:900px){.locations-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.locations-grid{grid-template-columns:repeat(2,1fr)}}
+.location-card{display:block;border-radius:var(--r-lg);overflow:hidden;text-align:center;transition:all 0.4s var(--ease-out);text-decoration:none}
+.location-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.location-card-img{width:100%;aspect-ratio:3/2;overflow:hidden}
+.location-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease-out)}
+.location-card:hover .location-card-img img{transform:scale(1.06)}
+.location-card-body{padding:16px 12px 20px;background:var(--c-white);border:1px solid var(--c-border);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg)}
+.location-card h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin:0}
 
 /* ══════════════════════════════════════
    ABOUT — PARTNERS BRIDGE
@@ -158,7 +162,7 @@
 .host-cta-img svg{width:100px;height:100px;color:var(--c-teal);opacity:0.2}
 
 @media(max-width:480px){
-  .location-card{min-width:140px;padding:18px 20px}
+  .location-card{min-width:0}
   .bridge{padding:72px 0}
 }
 </style>
@@ -554,36 +558,26 @@
       <p>We place students with host families in five states, always close to major schools, colleges, and universities, and within reach of public transportation.</p>
     </div>
     <div class="locations-grid" data-reveal>
-      <div class="location-card">
-        <div class="location-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h4>Southern California</h4>
-      </div>
-      <div class="location-card">
-        <div class="location-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h4>Northern California</h4>
-      </div>
-      <div class="location-card">
-        <div class="location-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h4>Arizona</h4>
-      </div>
-      <div class="location-card">
-        <div class="location-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h4>Florida</h4>
-      </div>
-      <div class="location-card">
-        <div class="location-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h4>New York</h4>
-      </div>
+      <a href="schools.html#socal" class="location-card">
+        <div class="location-card-img"><img src="assets/regions/socal.jpg" alt="Southern California"></div>
+        <div class="location-card-body"><h4>Southern California</h4></div>
+      </a>
+      <a href="schools.html#norcal" class="location-card">
+        <div class="location-card-img"><img src="assets/regions/norcal.jpg" alt="Northern California"></div>
+        <div class="location-card-body"><h4>Northern California</h4></div>
+      </a>
+      <a href="schools.html#arizona" class="location-card">
+        <div class="location-card-img"><img src="assets/regions/arizona.jpg" alt="Arizona"></div>
+        <div class="location-card-body"><h4>Arizona</h4></div>
+      </a>
+      <a href="schools.html#florida" class="location-card">
+        <div class="location-card-img"><img src="assets/regions/florida.jpg" alt="Florida"></div>
+        <div class="location-card-body"><h4>Florida</h4></div>
+      </a>
+      <a href="schools.html#newyork" class="location-card">
+        <div class="location-card-img"><img src="assets/regions/newyork.jpg" alt="New York"></div>
+        <div class="location-card-body"><h4>New York</h4></div>
+      </a>
     </div>
   </div>
 </section>
