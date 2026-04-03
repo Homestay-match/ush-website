@@ -71,6 +71,27 @@
    ABOUT — TESTIMONIALS
    ══════════════════════════════════════ */
 .testimonials{background:var(--c-white)}
+
+/* ══════════════════════════════════════
+   ABOUT — MEET THE TEAM
+   ══════════════════════════════════════ */
+.team{background:var(--c-cream)}
+.team-header{text-align:center;margin-bottom:56px}
+.team-header .section-title{margin:0 auto}
+.team-header p{font-size:1.1rem;color:var(--c-text-light);max-width:580px;margin:16px auto 0;line-height:1.7}
+.team-group-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid var(--c-border)}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:56px}
+.team-grid.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:768px){.team-grid,.team-grid.three{grid-template-columns:1fr;gap:24px}}
+.team-card{background:var(--c-white);border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--c-border);transition:all 0.3s var(--ease-out)}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.team-card-photo{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
+.team-card-photo-placeholder{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);display:flex;align-items:center;justify-content:center}
+.team-card-photo-placeholder svg{width:64px;height:64px;color:rgba(255,255,255,0.4)}
+.team-card-body{padding:24px 28px}
+.team-card-name{font-family:var(--ff-display);font-size:1.2rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:4px}
+.team-card-title{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-teal);margin-bottom:14px}
+.team-card-bio{font-size:0.92rem;color:var(--c-text-light);line-height:1.7}
 .testimonials-header{text-align:center;margin-bottom:48px}
 .testimonial-featured{max-width:760px;margin:0 auto;text-align:center}
 .testimonial-featured .quote{font-family:var(--ff-display);font-style:italic;font-size:clamp(1.1rem,2vw,1.35rem);color:var(--c-text);line-height:1.65;position:relative;padding:0 20px}
@@ -250,6 +271,83 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ══════════ MEET THE TEAM ══════════ -->
+<section class="section team">
+  <div class="container">
+    <div class="team-header" data-reveal>
+      <div class="section-label">Meet the Leadership</div>
+      <h2 class="section-title">A Personal Commitment to <em>Every Student's Success</em></h2>
+    </div>
+
+    <!-- Leadership -->
+    <div class="team-group-label" data-reveal>Leadership</div>
+    <div class="team-grid" data-reveal>
+
+      <div class="team-card">
+        <img src="assets/team-emerson.jpg" alt="Emerson Torres" class="team-card-photo">
+        <div class="team-card-body">
+          <div class="team-card-name">Emerson Torres</div>
+          <div class="team-card-title">Co-Founder &amp; CEO</div>
+          <p class="team-card-bio">Emerson founded USH in 1998 after arriving in the U.S. as an international student himself. He leads the company's strategic growth and partnerships with over 270 universities nationwide.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-name">Ana Paula Oliveira</div>
+          <div class="team-card-title">Co-Founder &amp; Director of Operations</div>
+          <p class="team-card-bio">Ana Paula oversees the "USH Standard" of quality. She manages the logistics of our housing network, ensuring every home verification and student placement is handled with care and precision.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Student Support -->
+    <div class="team-group-label" data-reveal>Student Support &amp; Placement</div>
+    <div class="team-grid" data-reveal>
+
+      <div class="team-card">
+        <img src="assets/team-estela.jpg" alt="Estela Franco" class="team-card-photo">
+        <div class="team-card-body">
+          <div class="team-card-name">Estela Franco</div>
+          <div class="team-card-title">Housing Coordinator</div>
+          <p class="team-card-bio">Estela is on the front lines of the student experience. She works directly with our host families and students to ensure a smooth move-in process and provides professional support throughout their stay.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Strategic Advisors -->
+    <div class="team-group-label" data-reveal>Strategic Advisors</div>
+    <div class="team-grid" data-reveal>
+
+      <div class="team-card">
+        <img src="assets/team-scott.jpg" alt="Scott Hindell" class="team-card-photo">
+        <div class="team-card-body">
+          <div class="team-card-name">Scott Hindell</div>
+          <div class="team-card-title">Business Model Specialist — Los Angeles</div>
+          <p class="team-card-bio">Scott provides strategic guidance on business innovation, ensuring USH remains the most efficient and reliable homestay provider in the U.S.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-name">Anderson Gobbi</div>
+          <div class="team-card-title">Technology &amp; Strategy Advisory — Rio de Janeiro</div>
+          <p class="team-card-bio">Anderson leads our digital evolution, overseeing the HomestayMatch platform to provide a seamless, tech-forward experience for modern students.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
