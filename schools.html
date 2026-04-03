@@ -564,7 +564,11 @@ document.querySelectorAll('.region-card').forEach(card => {
   card.addEventListener('click', () => showRegion(card.dataset.target));
 });
 
-// Show Southern California by default (no scroll on initial load)
+// Force page to top on load
+window.scrollTo(0, 0);
+if (history.scrollRestoration) history.scrollRestoration = 'manual';
+
+// Show Southern California by default (no scroll)
 (function(){
   const target = document.getElementById('socal');
   if (target) target.classList.add('visible');
@@ -577,6 +581,9 @@ if (window.location.hash) {
   const hash = window.location.hash.substring(1);
   if (document.getElementById(hash)) showRegion(hash);
 }
+
+// Ensure page stays at top after everything loads
+window.addEventListener('load', () => { window.scrollTo(0, 0); });
 
 // ══════════ SCROLL REVEALS ══════════
 function initReveals() {
