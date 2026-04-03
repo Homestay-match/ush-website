@@ -71,27 +71,30 @@
    ABOUT — TESTIMONIALS
    ══════════════════════════════════════ */
 .testimonials{background:var(--c-white)}
-.testimonials-header{text-align:center;margin-bottom:20px}
-.testimonials-header p{font-size:1.15rem;color:var(--c-text-light);max-width:600px;margin:16px auto 0;line-height:1.65}
-.testimonials-track-wrap{overflow:hidden;position:relative;margin-top:48px}
-.testimonials-track-wrap::before,.testimonials-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
-.testimonials-track-wrap::before{left:0;background:linear-gradient(to right,var(--c-white),transparent)}
-.testimonials-track-wrap::after{right:0;background:linear-gradient(to left,var(--c-white),transparent)}
-.testimonials-track{display:flex;gap:24px;width:max-content;transition:transform 0.7s cubic-bezier(.16,1,.3,1)}
-.testimonial-card{background:var(--c-cream);border-radius:var(--r-lg);padding:32px 28px;border:1px solid var(--c-border);display:flex;flex-direction:column;width:360px;flex-shrink:0;transition:transform 0.4s ease,box-shadow 0.4s ease,border-color 0.4s ease}
-.testimonial-card.active{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:var(--c-teal)}
-.testimonial-card .quote{font-size:0.92rem;color:var(--c-text);line-height:1.65;flex:1;font-style:italic;position:relative;padding-left:20px}
-.testimonial-card .quote::before{content:'\201C';font-family:var(--ff-display);font-size:3rem;color:var(--c-teal);opacity:0.2;position:absolute;top:-12px;left:-4px;line-height:1}
-.testimonial-author{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid var(--c-border)}
-.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:var(--c-white);flex-shrink:0}
-.testimonial-author .name{font-weight:600;font-size:0.88rem;color:var(--c-charcoal)}
-.testimonial-author .origin{font-size:0.78rem;color:var(--c-text-light)}
-.testimonials-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
-.testimonials-dots{display:flex;gap:8px;align-items:center}
-.testimonials-dot{width:8px;height:8px;border-radius:50%;background:var(--c-border-strong);border:none;cursor:pointer;padding:0;transition:background 0.3s,transform 0.3s}
-.testimonials-dot.active{background:var(--c-teal);transform:scale(1.3)}
-.testimonials-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--c-border-strong);background:var(--c-white);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--c-text);transition:background 0.2s,border-color 0.2s}
-.testimonials-btn:hover{background:var(--c-cream);border-color:var(--c-teal)}
+.testimonials-header{text-align:center;margin-bottom:48px}
+/* Slider */
+.t-slider{position:relative;max-width:860px;margin:0 auto}
+.t-track-wrap{overflow:hidden}
+.t-track{display:flex;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}
+.t-slide{min-width:100%;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+@media(max-width:700px){.t-slide{grid-template-columns:1fr;gap:24px;text-align:center}}
+.t-photo{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0}
+@media(max-width:700px){.t-photo{margin:0 auto}}
+.t-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-teal);margin-bottom:14px}
+.t-quote{font-family:var(--ff-display);font-style:italic;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--c-text);line-height:1.72;position:relative;padding-left:24px}
+.t-quote::before{content:'\201C';font-family:var(--ff-display);font-size:4rem;color:var(--c-teal);opacity:0.18;position:absolute;top:-20px;left:-4px;line-height:1}
+@media(max-width:700px){.t-quote{padding-left:0}}
+.t-author{margin-top:18px;font-size:0.85rem;color:var(--c-text-light);padding-left:24px}
+.t-author strong{display:block;font-family:var(--ff-display);font-size:0.95rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:2px}
+@media(max-width:700px){.t-author{padding-left:0}}
+/* Nav */
+.t-nav{display:flex;align-items:center;gap:16px;margin-top:40px;justify-content:center}
+.t-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--c-olive-dark);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s;color:var(--c-olive-dark)}
+.t-btn:hover{background:var(--c-olive-dark);color:#fff}
+.t-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.t-dots{display:flex;gap:8px}
+.t-dot{width:8px;height:8px;border-radius:50%;background:var(--c-olive-dark);opacity:0.2;border:none;cursor:pointer;padding:0;transition:opacity 0.2s}
+.t-dot.active{opacity:1}
 
 /* ══════════════════════════════════════
    ABOUT — MEET THE TEAM
@@ -432,115 +435,113 @@
       <div class="section-label">What People Say</div>
       <h2 class="section-title" style="margin:0 auto">What our partners and students <em>say about USH</em></h2>
     </div>
-    <div class="testimonials-track-wrap">
-      <div class="testimonials-track" id="testimonialsTrack2">
 
-        <!-- 1: UCLA -->
-        <div class="testimonial-card active">
-          <div class="quote">We have been working with Universal Student Housing for over 10 years and have enjoyed a highly productive relationship. USH staff go out of their way to meet our students' needs, and we can always count on them to respond quickly to our calls and e-mails.</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--c-olive-dark)">W</div>
-            <div><div class="name">William H. Gaskill, PhD</div><div class="origin">Director of International Programs, UCLA</div></div>
+    <div class="t-slider" data-reveal>
+      <div class="t-track-wrap">
+        <div class="t-track" id="tTrack">
+
+          <!-- 1: UCLA -->
+          <div class="t-slide">
+            <img class="t-photo" src="assets/team-scott.jpg" alt="William H. Gaskill">
+            <div>
+              <div class="t-tag">University Partner</div>
+              <p class="t-quote">&ldquo;We have been working with Universal Student Housing for over 10 years and have enjoyed a highly productive relationship. USH staff go out of their way to meet our students&rsquo; needs, and we can always count on them to respond quickly to our calls and e-mails. We&rsquo;re grateful for their help, and we wish them many more years of success.&rdquo;</p>
+              <div class="t-author">
+                <strong>William H. Gaskill, PhD</strong>
+                Director of International Programs &amp; the American Language Center<br>UCLA Extension, University of California, Los Angeles
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- 2: UCR -->
-        <div class="testimonial-card">
-          <div class="quote">USH has been an outstanding partner for our international students. Their attention to detail and commitment to quality housing makes a real difference in the student experience.</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--c-teal)">U</div>
-            <div><div class="name">[Partner Name]</div><div class="origin">UC Riverside</div></div>
+          <!-- 2: UCR -->
+          <div class="t-slide">
+            <div class="t-photo" style="background:var(--c-teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:rgba(255,255,255,0.7)">U</div>
+            <div>
+              <div class="t-tag">University Partner</div>
+              <p class="t-quote">&ldquo;USH has been an outstanding partner for our international students. Their attention to detail and commitment to quality housing makes a real difference in the student experience.&rdquo;</p>
+              <div class="t-author">
+                <strong>[Partner Name]</strong>
+                UC Riverside
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- 3: SMC -->
-        <div class="testimonial-card">
-          <div class="quote">Our students consistently report positive experiences with their USH host families. The professional placement process and ongoing support set USH apart from other providers.</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--c-teal)">S</div>
-            <div><div class="name">[Partner Name]</div><div class="origin">Santa Monica College</div></div>
+          <!-- 3: SMC -->
+          <div class="t-slide">
+            <div class="t-photo" style="background:var(--c-teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:rgba(255,255,255,0.7)">S</div>
+            <div>
+              <div class="t-tag">University Partner</div>
+              <p class="t-quote">&ldquo;Our students consistently report positive experiences with their USH host families. The professional placement process and ongoing support set USH apart from other providers.&rdquo;</p>
+              <div class="t-author">
+                <strong>[Partner Name]</strong>
+                Santa Monica College
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- 4: Host -->
-        <div class="testimonial-card">
-          <div class="quote">Being a USH host has been a rewarding experience. The team ensures a professional matching process, and their commitment to vetted, high-quality standards makes everything seamless for both the family and the student.</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--c-orange)">[H]</div>
-            <div><div class="name">[Host Name]</div><div class="origin">Verified USH Host since [Year]</div></div>
+          <!-- 4: Host -->
+          <div class="t-slide">
+            <div class="t-photo" style="background:var(--c-orange);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:rgba(255,255,255,0.7)">H</div>
+            <div>
+              <div class="t-tag">Verified Host Family</div>
+              <p class="t-quote">&ldquo;Being a USH host has been a rewarding experience. The team ensures a professional matching process, and their commitment to vetted, high-quality standards makes everything seamless for both the family and the student.&rdquo;</p>
+              <div class="t-author">
+                <strong>[Host Name]</strong>
+                Verified USH Host since [Year]
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- 5: Student -->
-        <div class="testimonial-card">
-          <div class="quote">USH made my transition to the U.S. so much easier. I felt supported from the moment I arrived, and my homestay was exactly the high-quality environment I needed to focus on my studies.</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--c-orange)">[S]</div>
-            <div><div class="name">[Student Name]</div><div class="origin">International Student from [Country]</div></div>
+          <!-- 5: Student -->
+          <div class="t-slide">
+            <div class="t-photo" style="background:var(--c-orange);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:rgba(255,255,255,0.7)">S</div>
+            <div>
+              <div class="t-tag">International Student</div>
+              <p class="t-quote">&ldquo;USH made my transition to the U.S. so much easier. I felt supported from the moment I arrived, and my homestay was exactly the high-quality environment I needed to focus on my studies.&rdquo;</p>
+              <div class="t-author">
+                <strong>[Student Name]</strong>
+                International Student from [Country]
+              </div>
+            </div>
           </div>
-        </div>
 
+        </div>
+      </div>
+
+      <div class="t-nav">
+        <button class="t-btn" id="tPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="t-dots" id="tDots">
+          <button class="t-dot active" data-i="0"></button>
+          <button class="t-dot" data-i="1"></button>
+          <button class="t-dot" data-i="2"></button>
+          <button class="t-dot" data-i="3"></button>
+          <button class="t-dot" data-i="4"></button>
+        </div>
+        <button class="t-btn" id="tNext" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
-    <div class="testimonials-controls">
-      <button class="testimonials-btn" id="testimonialsPrev2" aria-label="Previous">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="testimonials-dots" id="testimonialsDots2"></div>
-      <button class="testimonials-btn" id="testimonialsNext2" aria-label="Next">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
+
   </div>
 </section>
 
 <script>
 (function(){
-  const track = document.getElementById('testimonialsTrack2');
-  const dotsWrap = document.getElementById('testimonialsDots2');
-  const btnPrev = document.getElementById('testimonialsPrev2');
-  const btnNext = document.getElementById('testimonialsNext2');
-  if (!track) return;
-  const cards = Array.from(track.querySelectorAll('.testimonial-card'));
-  const total = cards.length;
-  let current = 0;
-  let autoTimer = null;
-  const CARD_W = 360;
-  const GAP = 24;
-  const AUTO_MS = 4500;
-  cards.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
-    d.addEventListener('click', () => { goTo(i); stopAuto(); startAuto(); });
-    dotsWrap.appendChild(d);
-  });
-  function getDots() { return dotsWrap.querySelectorAll('.testimonials-dot'); }
-  function goTo(idx) {
-    cards[current].classList.remove('active');
-    getDots()[current].classList.remove('active');
-    current = (idx + total) % total;
-    cards[current].classList.add('active');
-    getDots()[current].classList.add('active');
-    const wrapW = track.parentElement.offsetWidth;
-    let offset = current * (CARD_W + GAP) - (wrapW / 2 - CARD_W / 2);
-    const maxOffset = total * (CARD_W + GAP) - wrapW;
-    offset = Math.max(0, Math.min(offset, maxOffset));
-    track.style.transform = 'translateX(-' + offset + 'px)';
+  const track = document.getElementById('tTrack');
+  const dots = document.querySelectorAll('.t-dot');
+  const total = dots.length;
+  let cur = 0;
+  function go(n){
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    dots.forEach((d,i) => d.classList.toggle('active', i === cur));
   }
-  function startAuto() { stopAuto(); autoTimer = setInterval(() => goTo(current + 1), AUTO_MS); }
-  function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
-  btnNext.addEventListener('click', () => { goTo(current + 1); stopAuto(); startAuto(); });
-  btnPrev.addEventListener('click', () => { goTo(current - 1); stopAuto(); startAuto(); });
-  track.parentElement.addEventListener('mouseenter', stopAuto);
-  track.parentElement.addEventListener('mouseleave', startAuto);
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 50) { dx < 0 ? goTo(current + 1) : goTo(current - 1); stopAuto(); startAuto(); }
-  }, { passive: true });
-  startAuto();
+  document.getElementById('tPrev').addEventListener('click', () => go(cur - 1));
+  document.getElementById('tNext').addEventListener('click', () => go(cur + 1));
+  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
 })();
 </script>
 
