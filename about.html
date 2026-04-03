@@ -78,27 +78,23 @@
 .team{background:var(--c-cream)}
 .team-header{text-align:center;margin-bottom:48px}
 .team-header .section-title{margin:0 auto}
-.team-group-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:24px}
+.team-group-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:20px}
 .team-advisors-heading{font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--c-olive-dark);margin-bottom:12px}
-/* Advisors specific */
-.team-advisors-wrap{text-align:center;margin-top:32px}
-.team-advisors-grid{display:grid;grid-template-columns:repeat(2,280px);gap:48px;justify-content:center;margin-top:40px}
-@media(max-width:680px){.team-advisors-grid{grid-template-columns:1fr;gap:32px}}
-.team-advisor img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:20px;display:block;margin-bottom:16px}
-.team-advisor-name{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:4px}
-.team-advisor-title{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-teal);margin-bottom:4px}
-.team-advisor-location{font-size:0.85rem;color:var(--c-text-light)}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:56px}
-@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
-@media(max-width:480px){.team-grid{grid-template-columns:1fr}}
-/* No box — just photo + text */
-.team-member{background:none;border:none;text-align:left}
-.team-member img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;border-radius:16px;margin-bottom:14px}
-.team-member-placeholder{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.team-member-placeholder svg{width:48px;height:48px;color:rgba(255,255,255,0.4)}
-.team-member-name{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:3px}
-.team-member-title{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:6px}
-.team-member-bio{font-size:0.85rem;color:var(--c-text-light);line-height:1.6}
+.team-advisors-wrap{text-align:center;margin-top:16px}
+/* Single unified grid for all groups */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:48px}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);gap:20px}}
+@media(max-width:480px){.team-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+.team-advisors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:32px;justify-items:center}
+@media(max-width:900px){.team-advisors-grid{grid-template-columns:repeat(2,1fr)}}
+/* No box — photo + text */
+.team-member,.team-advisor{background:none;border:none;text-align:left;width:100%}
+.team-member img,.team-advisor img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;border-radius:14px;margin-bottom:12px}
+.team-member-placeholder{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.team-member-placeholder svg{width:40px;height:40px;color:rgba(255,255,255,0.4)}
+.team-member-name,.team-advisor-name{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:3px}
+.team-member-title,.team-advisor-title{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:4px}
+.team-member-bio,.team-advisor-location{font-size:0.82rem;color:var(--c-text-light);line-height:1.5}
 .testimonials-header{text-align:center;margin-bottom:48px}
 .testimonial-featured{max-width:760px;margin:0 auto;text-align:center}
 .testimonial-featured .quote{font-family:var(--ff-display);font-style:italic;font-size:clamp(1.1rem,2vw,1.35rem);color:var(--c-text);line-height:1.65;position:relative;padding:0 20px}
@@ -291,7 +287,7 @@
 
     <!-- Leadership -->
     <div class="team-group-label" data-reveal>Leadership</div>
-    <div class="team-grid" style="grid-template-columns:repeat(2,1fr)" data-reveal>
+    <div class="team-grid" data-reveal>
       <div class="team-member">
         <img src="assets/team-emerson.jpg" alt="Emerson Torres">
         <div class="team-member-body">
