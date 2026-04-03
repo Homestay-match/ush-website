@@ -80,6 +80,14 @@
 .team-header .section-title{margin:0 auto}
 .team-group-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:24px}
 .team-advisors-heading{font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--c-olive-dark);margin-bottom:12px}
+/* Advisors specific */
+.team-advisors-wrap{text-align:center;margin-top:32px}
+.team-advisors-grid{display:grid;grid-template-columns:repeat(2,280px);gap:48px;justify-content:center;margin-top:40px}
+@media(max-width:680px){.team-advisors-grid{grid-template-columns:1fr;gap:32px}}
+.team-advisor img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:20px;display:block;margin-bottom:16px}
+.team-advisor-name{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:4px}
+.team-advisor-title{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-teal);margin-bottom:4px}
+.team-advisor-location{font-size:0.85rem;color:var(--c-text-light)}
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:56px}
 @media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}}
@@ -326,25 +334,21 @@
     </div>
 
     <!-- Strategic Advisors -->
-    <div data-reveal>
+    <div class="team-advisors-wrap" data-reveal>
       <h2 class="team-advisors-heading">Our Advisors</h2>
-      <p style="font-size:0.95rem;color:var(--c-text-light);max-width:620px;line-height:1.7;margin-bottom:32px">The HomestayMatch advisory team works to continuously improve the business model and develop better techniques to provide an easy way for international students to find their homestays in the US.</p>
-    </div>
-    <div class="team-grid" data-reveal>
-      <div class="team-member">
-        <img src="assets/team-scott.jpg" alt="Scott Hindell">
-        <div class="team-member-body">
-          <div class="team-member-name">Scott Hindell</div>
-          <div class="team-member-title">Business Model Specialist</div>
-          <p class="team-member-bio">Los Angeles, United States</p>
+      <p style="font-size:0.95rem;color:var(--c-text-light);max-width:560px;line-height:1.7;margin:0 auto">The HomestayMatch advisory team works to continuously improve the business model and develop better techniques to provide an easy way for international students to find their homestays in the US.</p>
+      <div class="team-advisors-grid">
+        <div class="team-advisor">
+          <img src="assets/team-scott.jpg" alt="Scott Hindell">
+          <div class="team-advisor-name">Scott Hindell</div>
+          <div class="team-advisor-title">Business Model Specialist</div>
+          <div class="team-advisor-location">Los Angeles, United States</div>
         </div>
-      </div>
-      <div class="team-member">
-        <img src="assets/team-anderson.jpg" alt="Anderson Gobbi">
-        <div class="team-member-body">
-          <div class="team-member-name">Anderson Gobbi</div>
-          <div class="team-member-title">Business Strategy &amp; Technology</div>
-          <p class="team-member-bio">Rio de Janeiro, Brazil</p>
+        <div class="team-advisor">
+          <img src="assets/team-anderson.jpg" alt="Anderson Gobbi">
+          <div class="team-advisor-name">Anderson Gobbi</div>
+          <div class="team-advisor-title">Business Strategy &amp; Technology</div>
+          <div class="team-advisor-location">Rio de Janeiro, Brazil</div>
         </div>
       </div>
     </div>
