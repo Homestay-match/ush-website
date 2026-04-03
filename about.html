@@ -71,6 +71,14 @@
    ABOUT — TESTIMONIALS
    ══════════════════════════════════════ */
 .testimonials{background:var(--c-white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
+.t-card{background:var(--c-cream);border-radius:16px;padding:32px 28px}
+.t-card-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-teal);margin-bottom:16px}
+.t-card-quote{font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-text);line-height:1.7;position:relative;padding-top:8px}
+.t-card-quote::before{content:'\201C';font-family:var(--ff-display);font-size:3rem;color:var(--c-teal);opacity:0.2;position:absolute;top:-16px;left:-4px;line-height:1}
+.t-card-author{margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.07);font-size:0.82rem;color:var(--c-text-light)}
+.t-card-author strong{display:block;color:var(--c-olive-dark);font-weight:600;font-size:0.88rem;margin-bottom:2px}
 
 /* ══════════════════════════════════════
    ABOUT — MEET THE TEAM
@@ -415,13 +423,40 @@
   <div class="container">
     <div class="testimonials-header" data-reveal>
       <div class="section-label">What People Say</div>
-      <h2 class="section-title" style="margin:0 auto">What people say <em>about USH</em></h2>
+      <h2 class="section-title" style="margin:0 auto">What our partners and students <em>say about USH</em></h2>
     </div>
-    <div class="testimonial-featured" data-reveal>
-      <div class="quote">
-        &ldquo;We have been working with Universal Student Housing for over 10 years and have enjoyed a highly productive working relationship. USH staff go out of their way to meet our needs and our students' needs, and we can always count on them to respond quickly.&rdquo;
+    <div class="testimonials-grid" data-reveal>
+
+      <!-- School / University -->
+      <div class="t-card">
+        <div class="t-card-tag">University Partner</div>
+        <p class="t-card-quote">&ldquo;We have been working with Universal Student Housing for over 10 years and have enjoyed a highly productive relationship. USH staff go out of their way to meet our students&rsquo; needs, and we can always count on them to respond quickly.&rdquo;</p>
+        <div class="t-card-author">
+          <strong>William H. Gaskill, PhD</strong>
+          Director of International Programs, UCLA
+        </div>
       </div>
-      <div class="author">&mdash; <strong>William H. Gaskill, PhD</strong>, Director of International Programs, UCLA</div>
+
+      <!-- Host Family -->
+      <div class="t-card">
+        <div class="t-card-tag">Verified Host Family</div>
+        <p class="t-card-quote">&ldquo;Being a USH host has been a rewarding experience. The team ensures a professional matching process, and their commitment to vetted, high-quality standards makes the experience seamless for both the family and the student.&rdquo;</p>
+        <div class="t-card-author">
+          <strong>[Host Name]</strong>
+          Verified USH Host since [Year]
+        </div>
+      </div>
+
+      <!-- Student -->
+      <div class="t-card">
+        <div class="t-card-tag">International Student</div>
+        <p class="t-card-quote">&ldquo;USH made my transition to the U.S. so much easier. I felt supported from the moment I arrived, and my homestay was exactly the high-quality environment I needed to focus on my studies.&rdquo;</p>
+        <div class="t-card-author">
+          <strong>[Student Name]</strong>
+          International Student from [Country]
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
