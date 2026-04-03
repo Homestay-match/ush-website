@@ -78,18 +78,18 @@
 .team{background:var(--c-cream)}
 .team-header{text-align:center;margin-bottom:48px}
 .team-header .section-title{margin:0 auto}
-.team-group-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--c-border)}
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
-@media(max-width:768px){.team-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+.team-group-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:24px}
+.team-advisors-heading{font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--c-olive-dark);margin-bottom:12px}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:56px}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}}
-.team-member{background:var(--c-white);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--c-border);transition:all 0.3s var(--ease-out)}
-.team-member:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:transparent}
-.team-member img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
-.team-member-placeholder{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);display:flex;align-items:center;justify-content:center}
+/* No box — just photo + text */
+.team-member{background:none;border:none;text-align:left}
+.team-member img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;border-radius:16px;margin-bottom:14px}
+.team-member-placeholder{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .team-member-placeholder svg{width:48px;height:48px;color:rgba(255,255,255,0.4)}
-.team-member-body{padding:16px 18px}
 .team-member-name{font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:3px}
-.team-member-title{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:10px}
+.team-member-title{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:6px}
 .team-member-bio{font-size:0.85rem;color:var(--c-text-light);line-height:1.6}
 .testimonials-header{text-align:center;margin-bottom:48px}
 .testimonial-featured{max-width:760px;margin:0 auto;text-align:center}
@@ -283,7 +283,7 @@
 
     <!-- Leadership -->
     <div class="team-group-label" data-reveal>Leadership</div>
-    <div class="team-grid" data-reveal>
+    <div class="team-grid" style="grid-template-columns:repeat(2,1fr)" data-reveal>
       <div class="team-member">
         <img src="assets/team-emerson.jpg" alt="Emerson Torres">
         <div class="team-member-body">
@@ -326,8 +326,10 @@
     </div>
 
     <!-- Strategic Advisors -->
-    <div class="team-group-label" data-reveal>Our Advisors</div>
-    <p style="font-size:0.95rem;color:var(--c-text-light);max-width:620px;line-height:1.7;margin-bottom:28px">The HomestayMatch advisory team works to continuously improve the business model and develop better techniques to provide an easy way for international students to find their homestays in the US.</p>
+    <div data-reveal>
+      <h2 class="team-advisors-heading">Our Advisors</h2>
+      <p style="font-size:0.95rem;color:var(--c-text-light);max-width:620px;line-height:1.7;margin-bottom:32px">The HomestayMatch advisory team works to continuously improve the business model and develop better techniques to provide an easy way for international students to find their homestays in the US.</p>
+    </div>
     <div class="team-grid" data-reveal>
       <div class="team-member">
         <img src="assets/team-scott.jpg" alt="Scott Hindell">
