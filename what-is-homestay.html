@@ -87,7 +87,8 @@
 .section-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
 .section-header p{font-size:0.97rem;color:var(--c-text-light);line-height:1.7}
 .meals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.meal-note{margin-top:32px;padding:18px 24px;background:var(--c-white);border:1px solid var(--c-border);border-left:3px solid var(--c-orange);border-radius:var(--r-md);font-size:0.88rem;color:var(--c-text-light);line-height:1.7}
+.meal-disclaimer{margin-top:20px;padding:10px 14px;background:var(--c-cream);border-radius:var(--r-sm);font-size:0.78rem;color:var(--c-text-muted);line-height:1.5}
+.meal-disclaimer strong{color:var(--c-orange);font-weight:600}
 @media(max-width:800px){.meals-grid{grid-template-columns:1fr}}
 .meal-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:40px 36px;box-shadow:var(--shadow-sm);position:relative;transition:transform 0.3s var(--ease-out),box-shadow 0.3s}
 .meal-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
@@ -403,6 +404,7 @@
           <div class="meal-row off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Dinner not included</div>
           <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Shared kitchen access</div>
         </div>
+        <div class="meal-disclaimer">🍳 <strong>Kitchen use:</strong> light cooking only — varies by home.</div>
       </div>
       <div class="meal-card featured" data-reveal>
         <div class="meal-badge">Most Popular</div>
@@ -416,6 +418,7 @@
           <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Dinner daily</div>
           <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Shared kitchen access</div>
         </div>
+        <div class="meal-disclaimer">🍳 <strong>Kitchen use:</strong> light cooking only — varies by home.</div>
       </div>
       <div class="meal-card" data-reveal>
         <div class="meal-icon">🏠</div>
@@ -428,8 +431,8 @@
           <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Most affordable option</div>
           <div class="meal-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Full independence</div>
         </div>
+        <div class="meal-disclaimer">🍳 <strong>Kitchen use:</strong> light cooking only — varies by home.</div>
       </div>
-      <p class="meal-note"><span style="color:var(--c-orange);font-weight:600">Kitchen Use:</span> Kitchen access varies by home and is intended for <span style="color:var(--c-orange);font-weight:600">light cooking only.</span> This includes microwaving, boiling water, and simple meal preparation to ensure a comfortable environment for both the student and the host family.</p>
     </div>
   </div>
 </section>
