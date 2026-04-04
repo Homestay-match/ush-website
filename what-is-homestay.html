@@ -94,7 +94,10 @@
 .meal-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
 .meal-card.featured{border-color:var(--c-teal);box-shadow:0 0 0 2px var(--c-teal),var(--shadow-md)}
 .meal-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--c-teal);color:var(--c-white);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);white-space:nowrap}
-.meal-icon{font-size:2.2rem;margin-bottom:16px}
+.meal-icon{width:52px;height:52px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.meal-icon.i-teal{background:var(--c-teal-light);color:var(--c-teal)}
+.meal-icon.i-gold{background:var(--c-orange-light);color:var(--c-orange-dark)}
+.meal-icon.i-olive{background:rgba(74,82,80,0.08);color:var(--c-olive-dark)}
 .meal-card h3{font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px}
 .meal-tag{display:inline-block;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-teal);background:var(--c-teal-light);padding:4px 10px;border-radius:var(--r-full);margin-bottom:16px}
 .meal-card p{font-size:0.9rem;color:var(--c-text-light);line-height:1.65;margin-bottom:24px}
@@ -394,7 +397,7 @@
     </div>
     <div class="meals-grid">
       <div class="meal-card" data-reveal>
-        <div class="meal-icon">🍳</div>
+        <div class="meal-icon i-teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
         <h3>Bed &amp; Breakfast</h3>
         <span class="meal-tag">Most Flexible</span>
         <p>Enjoy a continental breakfast each morning. This plan allows you to handle your own lunch and dinner, making it <span style="color:var(--c-orange);font-weight:600">ideal for students with busy schedules.</span></p>
@@ -407,7 +410,7 @@
       </div>
       <div class="meal-card featured" data-reveal>
         <div class="meal-badge">Most Popular</div>
-        <div class="meal-icon">🍽️</div>
+        <div class="meal-icon i-gold"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
         <h3>Full Board</h3>
         <span class="meal-tag">Best Value</span>
         <p>Breakfast and dinner provided daily. Shared mealtimes are where the <span style="color:var(--c-orange);font-weight:600">real cultural exchange</span> and English practice happen, offering a true sense of home.</p>
@@ -419,7 +422,7 @@
         </div>
       </div>
       <div class="meal-card" data-reveal>
-        <div class="meal-icon">🏠</div>
+        <div class="meal-icon i-olive"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <h3>Room Only</h3>
         <span class="meal-tag">Self-Catering</span>
         <p>Your room and all utilities are included. You handle your own meals entirely, which is best for students who <span style="color:var(--c-orange);font-weight:600">prefer full independence</span> or have specific dietary needs.</p>
