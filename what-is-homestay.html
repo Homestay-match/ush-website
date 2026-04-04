@@ -60,11 +60,12 @@
 
 /* ── WHAT'S INCLUDED ── */
 .included-section{padding:96px 0}
+.included-header{margin-bottom:40px}
+.included-header h2{font-family:var(--ff-display);font-size:clamp(2rem,3.8vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.022em;margin-bottom:12px}
+.included-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.included-header > p{font-size:0.97rem;color:var(--c-text-light);line-height:1.75;margin-bottom:0}
 .included-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 @media(max-width:860px){.included-layout{grid-template-columns:1fr;gap:40px}}
-.included-content h2{font-family:var(--ff-display);font-size:clamp(2rem,3.8vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.022em;margin-bottom:12px}
-.included-content h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
-.included-content > p{font-size:0.97rem;color:var(--c-text-light);line-height:1.75;margin-bottom:36px}
 .included-list{display:flex;flex-direction:column;gap:16px}
 .included-item{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-md);box-shadow:var(--shadow-sm);transition:box-shadow 0.25s,transform 0.25s}
 .included-item:hover{box-shadow:var(--shadow-md);transform:translateX(4px)}
@@ -319,11 +320,13 @@
 <!-- WHAT'S INCLUDED -->
 <section class="included-section">
   <div class="container">
+    <div class="included-header" data-reveal>
+      <div class="section-label">What You Get</div>
+      <h2>Everything you need, <em>already included</em></h2>
+      <p>Every USH homestay placement includes the essentials. We take care of the details so you can <span style="color:var(--c-orange);font-weight:600">focus on your studies and settling in</span> without the stress of logistics.</p>
+    </div>
     <div class="included-layout">
       <div class="included-content" data-reveal>
-        <div class="section-label">What You Get</div>
-        <h2>Everything you need, <em>already included</em></h2>
-        <p>Every USH homestay placement includes the essentials. We take care of the details so you can <span style="color:var(--c-orange);font-weight:600">focus on your studies and settling in</span> without the stress of logistics.</p>
         <div class="included-list">
           <div class="included-item">
             <div class="included-icon i-teal">
