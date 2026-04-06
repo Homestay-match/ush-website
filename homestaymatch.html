@@ -92,9 +92,9 @@
 @media(max-width:860px){
   /* Mockup: full width, no overflow */
   .ui-mockup-wrap{width:100%;margin:40px 0 0;border-radius:12px;overflow:hidden}
-  .ui-main-row{display:block}
-  .ui-map-panel{display:none}
-  .ui-cards-col{max-height:none;border-right:none;width:100%;display:block}
+  .ui-main-row{display:flex;flex-direction:column}
+  .ui-cards-col{max-height:none;border-right:none;width:100%}
+  .ui-map-panel{display:block;min-height:220px;width:100%;flex-shrink:0}
   /* Filter bar */
   .ui-filter-bar{overflow-x:auto;flex-wrap:nowrap;padding:8px 10px;gap:5px}
   .ui-filter-pill{font-size:0.65rem;padding:4px 8px}
