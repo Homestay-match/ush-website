@@ -245,23 +245,28 @@
 .amb-header h3{font-family:var(--ff-display);font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:600;color:var(--c-charcoal);margin:10px 0 8px}
 .amb-header p{font-size:0.92rem;color:var(--c-text-light);max-width:480px;margin:0 auto}
 /* two-column layout: circles left, phone right */
-.amb-layout{display:grid;grid-template-columns:1fr 240px;gap:40px;align-items:center}
+.amb-layout{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:center}
 @media(max-width:768px){.amb-layout{grid-template-columns:1fr}}
-/* circles: 2×2 grid + full-width bottom item */
-.amb-circles{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:280px}
-.amb-circle{border-radius:50%;border:2px solid var(--c-teal);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;aspect-ratio:1;transition:transform 0.3s var(--ease-out),box-shadow 0.3s var(--ease-out);position:relative;width:120px;height:120px}
-.amb-circle:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(110,183,163,0.18)}
-.amb-circle.amb-main{background:var(--c-teal);border-color:var(--c-teal);grid-column:1;grid-row:1}
-.amb-circle.amb-location{grid-column:2;grid-row:1;align-self:end;margin-bottom:-10px}
-.amb-circle.amb-house{grid-column:1;grid-row:2;margin-top:-10px}
-.amb-circle.amb-host{grid-column:2;grid-row:2;align-self:start;margin-top:10px}
-.amb-circle.amb-ongoing{grid-column:1/-1;max-width:130px;margin:6px auto 0;width:130px;height:130px}
-.amb-circle svg{width:18px;height:18px;color:var(--c-teal);margin-bottom:3px}
-.amb-circle.amb-main svg{color:#fff}
-.amb-circle-num{font-family:var(--ff-display);font-size:1.8rem;font-weight:700;color:#fff;line-height:1}
-.amb-circle-title{font-family:var(--ff-display);font-size:0.65rem;font-weight:700;line-height:1.2;margin-top:2px;color:var(--c-charcoal)}
-.amb-circle.amb-main .amb-circle-title{color:rgba(255,255,255,0.9);font-size:0.62rem}
-.amb-circle-sub{font-size:0.5rem;color:var(--c-text-light);margin-top:2px;line-height:1.2}
+/* circles: absolutely positioned for organic layout */
+.amb-circles{position:relative;width:340px;height:460px;flex-shrink:0}
+.amb-circle{position:absolute;border-radius:50%;border:2.5px solid var(--c-teal);background:var(--c-white);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;transition:transform 0.3s var(--ease-out),box-shadow 0.3s var(--ease-out)}
+.amb-circle:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(110,183,163,0.2)}
+/* 98 Total Factors — top left, large, white */
+.amb-circle.amb-main{width:155px;height:155px;top:0;left:0;background:var(--c-white);border-color:var(--c-teal)}
+/* Location — teal filled, overlapping right of main */
+.amb-circle.amb-location{width:118px;height:118px;top:72px;left:168px;background:var(--c-teal);border-color:var(--c-teal)}
+/* House — large, below main */
+.amb-circle.amb-house{width:168px;height:168px;top:178px;left:6px}
+/* Host — medium, right of house */
+.amb-circle.amb-host{width:138px;height:138px;top:218px;left:188px}
+/* Ongoing — bottom left */
+.amb-circle.amb-ongoing{width:132px;height:132px;top:358px;left:28px}
+.amb-circle svg{width:22px;height:22px;color:var(--c-teal);margin-bottom:4px}
+.amb-circle.amb-location svg{color:#fff}
+.amb-circle-num{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--c-teal);line-height:1}
+.amb-circle-title{font-family:var(--ff-display);font-size:0.68rem;font-weight:700;line-height:1.2;margin-top:2px;color:var(--c-charcoal)}
+.amb-circle.amb-location .amb-circle-title{color:#fff}
+.amb-circle-sub{font-size:0.52rem;color:var(--c-text-light);margin-top:2px;line-height:1.25}
 /* CSS phone mockup */
 .amb-phone-wrap{display:flex;justify-content:center;align-items:center}
 @media(max-width:768px){.amb-phone-wrap{display:none}}
