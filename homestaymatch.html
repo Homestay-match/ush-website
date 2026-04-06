@@ -75,7 +75,7 @@
 .ui-card-name{font-size:0.82rem;font-weight:600;color:#111;line-height:1.3}
 .ui-card-type{font-size:0.68rem;color:#888;margin-top:2px}
 .ui-host-initials{width:32px;height:32px;min-width:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:700;color:#fff;flex-shrink:0}
-.ui-card-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:4px}
+.ui-card-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:4px;margin-top:auto}
 .ui-card-meta{display:flex;flex-direction:column;gap:3px;font-size:0.66rem;color:#999}
 .ui-card-meta-row{display:flex;align-items:center;gap:4px}
 .ui-card-price-col{text-align:right;white-space:nowrap}
@@ -89,7 +89,24 @@
 .ui-school-pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:0;cursor:pointer}
 .ui-school-pin-label{background:#3B4A8C;color:#fff;font-size:0.6rem;font-weight:700;padding:4px 9px;border-radius:6px;box-shadow:0 3px 10px rgba(0,0,0,0.25);white-space:nowrap;display:flex;align-items:center;gap:4px}
 .ui-school-pin-tail{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #3B4A8C}
-@media(max-width:860px){.ui-main-row{grid-template-columns:1fr}.ui-map-panel{display:none}}
+@media(max-width:860px){
+  .ui-mockup-wrap{margin:40px -8px 0;border-radius:12px}
+  .ui-main-row{grid-template-columns:1fr}
+  .ui-map-panel{display:none}
+  .ui-cards-col{max-height:none;border-right:none}
+  .ui-filter-bar{gap:5px;padding:8px 10px}
+  .ui-filter-pill{font-size:0.65rem;padding:4px 9px}
+  .ui-hide-map{display:none}
+  .ui-card-thumb{width:120px;min-width:120px}
+  .ui-card-body{padding:9px 10px}
+  .ui-card-name{font-size:0.78rem}
+  .ui-card-type{font-size:0.63rem}
+  .ui-card-bottom{flex-wrap:wrap;gap:6px}
+  .ui-card-price-col{text-align:left}
+  .ui-card-price-day{font-size:0.82rem}
+  /* Keep avatar but smaller */
+  .ui-host-initials{width:26px;height:26px;min-width:26px;font-size:0.55rem}
+}
 
 /* ── BROWSER MOCKUP ── */
 .browser-mockup{position:relative;z-index:2;max-width:1200px;margin:64px auto 0;border-radius:16px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,0.12),0 8px 24px rgba(0,0,0,0.06);background:var(--c-white);border:1px solid rgba(0,0,0,0.08)}
