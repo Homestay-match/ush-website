@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Cancellation Policy — USH Homestay</title>
+<meta name="description" content="USH Guest Cancellation Policy. Understand refunds and charges when cancelling your homestay placement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/ush.css">
+<style>
+.hero{position:relative;height:44vh;min-height:300px;max-height:420px;display:flex;align-items:flex-end;overflow:hidden;background:var(--c-charcoal)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,#2a3530 0%,#1a1e1c 100%)}
+.hero-inner{position:relative;z-index:2;max-width:700px;padding-bottom:60px}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--c-white);line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--c-orange)}
+.hero p{font-size:0.9rem;color:rgba(255,255,255,0.6)}
+
+.legal-wrap{max-width:1100px;margin:0 auto;padding:72px 24px 100px;display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:start}
+@media(max-width:860px){.legal-wrap{grid-template-columns:1fr;gap:40px}}
+
+.legal-sidebar{position:sticky;top:100px}
+@media(max-width:860px){.legal-sidebar{position:static}}
+.toc-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--c-text-muted);margin-bottom:12px}
+.toc-links{list-style:none;padding:0;margin:0}
+.toc-links li{margin-bottom:2px}
+.toc-links a{display:block;padding:7px 12px;border-radius:6px;font-size:0.82rem;font-weight:500;color:var(--c-text-muted);text-decoration:none;transition:all 0.2s;border-left:2px solid transparent}
+.toc-links a:hover{background:rgba(110,183,163,0.1);color:var(--c-teal);border-left-color:var(--c-teal)}
+.toc-links a.active{background:rgba(110,183,163,0.12);color:var(--c-teal);border-left-color:var(--c-teal);font-weight:600}
+.other-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--c-border)}
+.other-legal a{display:block;padding:6px 12px;font-size:0.82rem;color:var(--c-text-muted);text-decoration:none;border-radius:6px;transition:all 0.2s}
+.other-legal a:hover{color:var(--c-teal);background:rgba(110,183,163,0.08)}
+
+.legal-content{min-width:0}
+.last-updated{font-size:0.82rem;color:var(--c-text-muted);margin-bottom:28px;padding:10px 16px;background:#f7f4ef;border-radius:8px;border-left:3px solid var(--c-orange)}
+.legal-section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--c-border)}
+.legal-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.legal-section h2{font-family:var(--ff-display);font-size:1.25rem;font-weight:700;color:var(--c-charcoal);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sec-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--c-teal);color:#fff;font-size:1rem;flex-shrink:0}
+.legal-section p{font-size:0.9rem;color:var(--c-text-light);line-height:1.8;margin-bottom:12px}
+.legal-section ul{padding-left:20px;margin-bottom:12px}
+.legal-section li{font-size:0.9rem;color:var(--c-text-light);line-height:1.8;margin-bottom:6px}
+.legal-section strong{color:var(--c-charcoal);font-weight:600}
+
+/* TABLE */
+.policy-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.85rem;border-radius:10px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,0.07)}
+.policy-table thead{background:var(--c-teal)}
+.policy-table thead th{padding:12px 16px;color:#fff;font-weight:600;text-align:left;white-space:nowrap}
+.policy-table tbody tr{border-bottom:1px solid rgba(0,0,0,0.06)}
+.policy-table tbody tr:nth-child(even){background:#f9f7f4}
+.policy-table tbody tr:hover{background:rgba(110,183,163,0.06)}
+.policy-table td{padding:12px 16px;color:var(--c-text-light);vertical-align:top}
+.policy-table td:first-child{font-weight:500;color:var(--c-charcoal)}
+.badge-refund{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.75rem;font-weight:600}
+.badge-no{background:#fef2f2;color:#e05252}
+.badge-yes{background:#f0fdf4;color:#16a34a}
+.badge-partial{background:#fff8ec;color:#d97706}
+
+/* HIGHLIGHT BOX */
+.notice-box{background:#fff8ec;border:1px solid rgba(217,168,78,0.3);border-radius:10px;padding:16px 20px;margin:20px 0}
+.notice-box p{margin:0;font-size:0.88rem;color:var(--c-charcoal)}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
+        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
+      </svg>
+      USH
+    </a>
+    <div class="nav-links">
+      <a href="../about.html">About</a>
+      <a href="../what-is-homestay.html">What is Homestay</a>
+      <a href="../partners.html">Partners</a>
+      <a href="../homestaymatch.html">HomestayMatch</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="../about.html">About</a>
+  <a href="../what-is-homestay.html">What is Homestay</a>
+  <a href="../partners.html">Partners</a>
+  <a href="../homestaymatch.html">HomestayMatch</a>
+  <a href="../faq.html">FAQ</a>
+  <a href="../contact.html">Contact</a>
+  <a href="../apply.html" class="btn btn-primary">Apply Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="section-label" style="color:var(--c-orange);border-color:rgba(217,168,78,0.3);margin-bottom:14px">Legal</div>
+    <h1>Guest Cancellation <em>Policy</em></h1>
+    <p>Universal Student Housing — USH Inc.</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="legal-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="legal-sidebar">
+    <div class="toc-label">Sections</div>
+    <ul class="toc-links" id="tocLinks">
+      <li><a href="#s1">Overview</a></li>
+      <li><a href="#s2">Before Move-In</a></li>
+      <li><a href="#s3">After Move-In</a></li>
+      <li><a href="#s4">Notes & Fees</a></li>
+    </ul>
+    <div class="other-legal">
+      <div class="toc-label">Other Policies</div>
+      <a href="guest_terms_conditions.html">Terms &amp; Conditions</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="legal-content">
+    <div class="last-updated">Last Updated: February 9, 2020</div>
+
+    <!-- OVERVIEW -->
+    <div class="legal-section" id="s1">
+      <h2><span class="sec-icon">📋</span>Overview</h2>
+      <p>This policy outlines the charges and refunds that apply when guests cancel unconfirmed or confirmed homestay matches. All cancellations must be submitted via email to the provided USH contact address.</p>
+      <p>USH reserves the right to modify charges based on circumstances, with final decision-making authority on all disputes and refunds.</p>
+      <div class="notice-box">
+        <p><strong>Important:</strong> The Application Fee and Security Deposit are <strong>never refunded</strong> under any cancellation scenario. Refunds exclude merchant fees and wire transfer fees (a $65 deduction applies if a wire transfer was used).</p>
+      </div>
+    </div>
+
+    <!-- BEFORE MOVE-IN -->
+    <div class="legal-section" id="s2">
+      <h2><span class="sec-icon">📅</span>Before Move-In Cancellations</h2>
+      <p>The following table outlines what fees apply when a cancellation occurs before the guest moves into the accommodation.</p>
+
+      <table class="policy-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Application Fee</th>
+            <th>Security Deposit</th>
+            <th>Housing Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Not yet confirmed (before host acceptance)</td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-yes">No Charge</span></td>
+          </tr>
+          <tr>
+            <td>30+ days before move-in date</td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-yes">100% Refund</span></td>
+          </tr>
+          <tr>
+            <td>11–29 days before move-in date</td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-partial">2 Weeks Payment</span></td>
+          </tr>
+          <tr>
+            <td>10 days or less before move-in (including no-show)</td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-partial">4 Weeks Payment</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- AFTER MOVE-IN -->
+    <div class="legal-section" id="s3">
+      <h2><span class="sec-icon">🏠</span>After Move-In Cancellations</h2>
+      <p>Once a guest has moved into the accommodation, a minimum notice period is required for cancellation.</p>
+
+      <table class="policy-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Application Fee</th>
+            <th>Security Deposit</th>
+            <th>Housing Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Written 30-day notice required</td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td><span class="badge-refund badge-partial">30-day minimum + additional days; any excess refunded</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="notice-box" style="margin-top:20px">
+        <p><strong>30-Day Notice Rule:</strong> After moving in, you must provide at least 30 days written notice to cancel. You will be charged for those 30 days plus any additional days beyond your notice date. Any housing fees already paid beyond that period will be refunded.</p>
+      </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="legal-section" id="s4">
+      <h2><span class="sec-icon">📌</span>Notes &amp; Additional Fees</h2>
+
+      <p><strong>Cancellation Fee:</strong> USH reserves the right to charge either $225 or 10% of the refund amount, whichever is greater. This fee is deducted from any remaining housing fee refund.</p>
+
+      <p><strong>Merchant &amp; Wire Transfer Fees:</strong> All refunds exclude merchant processing fees. If payment was made via wire transfer, an additional $65 deduction applies.</p>
+
+      <p><strong>How to Cancel:</strong> All cancellations must be submitted in writing via email to USH. Cancellations communicated only to your Host will not be considered valid.</p>
+
+      <p><strong>Refund Timeline:</strong> Any available refund will be returned to the same credit card within 21 days of the cancellation being processed.</p>
+
+      <p><strong>USH Discretion:</strong> USH reserves the right to modify charges and refund amounts based on individual circumstances. USH has final decision-making authority on all disputes and refunds.</p>
+
+      <p><strong>Host Cancellations:</strong> If a Host cancels your confirmed match, please contact USH directly. Refund terms for Host-initiated cancellations are handled at USH's discretion.</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer style="background:var(--c-charcoal);padding:48px 0;text-align:center">
+  <div class="container">
+    <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:12px">© 2024 USH Inc. All rights reserved.</p>
+    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
+      <a href="guest_terms_conditions.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Terms &amp; Conditions</a>
+      <a href="guests_cancellation_policy.html" style="color:var(--c-teal);font-size:0.82rem;text-decoration:none;font-weight:600">Cancellation Policy</a>
+      <a href="privacy_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Privacy Policy</a>
+      <a href="../contact.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+const sections = document.querySelectorAll('.legal-section');
+const tocLinks = document.querySelectorAll('#tocLinks a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`#tocLinks a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
