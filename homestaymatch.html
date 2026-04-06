@@ -82,7 +82,8 @@
 .pin-active{background:var(--c-teal);color:#fff;border-color:var(--c-teal);box-shadow:0 3px 12px rgba(110,183,163,0.4)}
 .ui-campus-marker{position:absolute;transform:translate(-50%,-50%);background:var(--c-olive-dark);color:#fff;font-size:0.58rem;font-weight:700;padding:4px 8px;border-radius:6px;display:flex;align-items:center;gap:4px;white-space:nowrap}
 .ui-host-card{position:absolute;bottom:-20px;right:20px;background:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,0.14);border:1px solid #eee;min-width:260px}
-.ui-host-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--c-teal),var(--c-blue));color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ui-host-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--c-teal),var(--c-blue));color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.ui-host-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .ui-host-name{font-size:0.82rem;font-weight:600;color:#1a1a1a}
 .ui-host-meta{font-size:0.68rem;color:#888;margin:2px 0 4px}
 .ui-host-tags{display:flex;gap:4px}
@@ -335,35 +336,34 @@
         </div>
 
         <!-- Map Panel -->
-        <div class="ui-map-panel">
-          <div class="ui-map-bg">
-            <!-- Grid lines to simulate map -->
-            <div class="ui-map-grid"></div>
-            <!-- Road lines -->
-            <div class="ui-road ui-road-h" style="top:35%"></div>
-            <div class="ui-road ui-road-h" style="top:58%"></div>
-            <div class="ui-road ui-road-v" style="left:28%"></div>
-            <div class="ui-road ui-road-v" style="left:55%"></div>
-            <div class="ui-road ui-road-v" style="left:75%"></div>
-            <!-- Map pins -->
-            <div class="ui-map-pin pin-active" style="top:32%;left:38%">$1,150</div>
-            <div class="ui-map-pin" style="top:52%;left:60%">$1,050</div>
-            <div class="ui-map-pin" style="top:44%;left:72%">$980</div>
-            <div class="ui-map-pin" style="top:65%;left:42%">$1,200</div>
-            <!-- Campus marker -->
-            <div class="ui-campus-marker" style="top:46%;left:46%">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-              UCLA
-            </div>
+        <div class="ui-map-panel" style="position:relative;overflow:hidden">
+          <iframe
+            src="https://maps.google.com/maps?q=UCLA+campus,Westwood,Los+Angeles,CA&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="position:absolute;inset:0;border:0;filter:saturate(0.85) contrast(1.05)"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of homestay locations near UCLA">
+          </iframe>
+          <!-- Price pins overlay -->
+          <div style="position:absolute;inset:0;pointer-events:none;z-index:2">
+            <div class="ui-map-pin pin-active" style="top:28%;left:30%">$1,150</div>
+            <div class="ui-map-pin" style="top:54%;left:62%">$1,050</div>
+            <div class="ui-map-pin" style="top:42%;left:74%">$980</div>
+            <div class="ui-map-pin" style="top:68%;left:44%">$1,200</div>
           </div>
         </div>
       </div>
 
       <!-- Floating Host Card -->
       <div class="ui-host-card">
-        <div class="ui-host-avatar">J</div>
+        <div class="ui-host-avatar">
+          <img src="assets/host-bonny.jpg" alt="Bonny J.">
+        </div>
         <div class="ui-host-info">
-          <div class="ui-host-name">Jennifer Johnson</div>
+          <div class="ui-host-name">Bonny J.</div>
           <div class="ui-host-meta">Host since 2019 · Westwood, CA</div>
           <div class="ui-host-tags"><span>English</span><span>Spanish</span></div>
         </div>
