@@ -97,15 +97,21 @@
   .ui-filter-bar{gap:5px;padding:8px 10px}
   .ui-filter-pill{font-size:0.65rem;padding:4px 9px}
   .ui-hide-map{display:none}
-  .ui-card-thumb{width:120px;min-width:120px}
-  .ui-card-body{padding:9px 10px}
-  .ui-card-name{font-size:0.78rem}
-  .ui-card-type{font-size:0.63rem}
-  .ui-card-bottom{flex-wrap:wrap;gap:6px}
-  .ui-card-price-col{text-align:left}
+  /* Card: taller thumb, body flows naturally (no space-between) */
+  .ui-card-thumb{width:115px;min-width:115px;min-height:155px}
+  .ui-card-body{
+    padding:10px 11px;
+    justify-content:flex-start;
+    gap:8px
+  }
+  .ui-card-bottom{margin-top:0;align-items:flex-start;flex-wrap:nowrap;gap:4px}
+  .ui-card-name{font-size:0.8rem}
+  .ui-card-type{font-size:0.64rem}
+  .ui-card-meta{font-size:0.63rem}
+  .ui-card-price-col{text-align:right}
   .ui-card-price-day{font-size:0.82rem}
-  /* Keep avatar but smaller */
-  .ui-host-initials{width:26px;height:26px;min-width:26px;font-size:0.55rem}
+  .ui-card-price-mo{font-size:0.6rem}
+  .ui-host-initials{width:28px;height:28px;min-width:28px;font-size:0.55rem}
 }
 
 /* ── BROWSER MOCKUP ── */
