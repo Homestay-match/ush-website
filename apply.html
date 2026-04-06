@@ -574,9 +574,10 @@ input,select,textarea,button{font-family:var(--ff-body)}
               <label for="pets">Live with pets?</label>
               <select id="pets">
                 <option value="">Select One</option>
-                <option>No preference</option>
-                <option>Prefer a home with pets</option>
-                <option>Prefer no pets (allergies/preference)</option>
+                <option value="no-preference">Any pets (No preference)</option>
+                <option value="cats">Cats only</option>
+                <option value="dogs">Dogs only</option>
+                <option value="no-pets">No pets</option>
               </select>
             </div>
             <div class="form-group">
