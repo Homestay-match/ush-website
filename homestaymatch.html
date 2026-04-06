@@ -239,6 +239,12 @@
 .shared-std-icon svg{width:24px;height:24px;color:var(--c-orange)}
 .shared-std-text h4{font-family:var(--ff-display);font-size:1.08rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px}
 .shared-std-text p{font-size:0.9rem;color:var(--c-text-light);line-height:1.65}
+/* ── SHARED STANDARDS IMAGES ── */
+.shared-std-images{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+@media(max-width:640px){.shared-std-images{grid-template-columns:1fr}}
+.shared-std-img-wrap{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--c-border)}
+.shared-std-img-wrap img{width:100%;display:block;transition:transform 0.4s var(--ease-out)}
+.shared-std-img-wrap:hover img{transform:scale(1.02)}
 
 /* ── STAGGER EXTRA CHILDREN ── */
 .hero-stagger>*:nth-child(4){animation-delay:.6s}
@@ -529,7 +535,19 @@
           </div>
         </div>
       </div>
+
+      <!-- Supporting images -->
+      <div class="shared-std-images">
+        <div class="shared-std-img-wrap">
+          <img src="assets/ush-ambassador-app.png" alt="USH Ambassador In-Home Visit App showing 98 quality factors" loading="lazy">
+        </div>
+        <div class="shared-std-img-wrap">
+          <img src="assets/ush-photo-upload.png" alt="USH host photo upload and screening app" loading="lazy">
+        </div>
+      </div>
+
     </div>
+  </div>
 
   </div>
 </section>
