@@ -130,6 +130,10 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 32px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);letter-spacing:0.01em}
 .btn-primary:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(110,183,163,0.3)}
 .btn-submit{background:var(--c-orange)}
+.legal-notice{margin-top:24px;padding:16px 18px;background:#f7f4ef;border:1px solid var(--c-border);border-radius:var(--r-md)}
+.legal-notice p{font-size:0.78rem;color:var(--c-text-muted);line-height:1.6;margin:0}
+.legal-notice a{color:var(--c-teal);text-decoration:underline}
+.legal-notice a:hover{color:var(--c-teal-dark)}
 .btn-submit:hover{background:var(--c-orange-dark);box-shadow:0 8px 24px rgba(217,168,78,0.3)}
 .btn-back{background:transparent;color:var(--c-text-muted);font-size:0.88rem;font-weight:500;border:none;cursor:pointer;padding:4px 8px;transition:color 0.25s;font-family:var(--ff-body)}
 .btn-back:hover{color:var(--c-teal)}
@@ -714,6 +718,10 @@ input,select,textarea,button{font-family:var(--ff-body)}
         <p style="font-size:0.78rem;color:var(--c-text-muted);line-height:1.6;margin-bottom:24px;">
           We are excited to begin the search for your ideal homestay as soon as we receive your application fee and security deposit.
         </p>
+
+        <div class="legal-notice">
+          <p>By clicking the <strong>"SUBMIT APPLICATION"</strong> button you agree with the <a href="#">Terms and Conditions</a>, <a href="#">Guest Cancellation Policy</a> and <a href="#">Privacy Policy</a> as well as any House Rules for the accommodation, and submitting your Application fee and Deposit <strong>not refundable</strong> in case of cancellation. If you are an agent, you agree to informing the student of the Terms and Conditions, Guest Cancellation Policy and Privacy Policy when submitting the application on their behalf.</p>
+        </div>
 
         <div class="form-actions">
           <!-- Backend: process payment and submit application to Laravel -->
