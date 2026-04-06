@@ -355,15 +355,12 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label>Gender</label>
-              <div class="gender-group">
-                <label class="gender-option">
-                  <input type="radio" name="gender" value="male"> Male
-                </label>
-                <label class="gender-option">
-                  <input type="radio" name="gender" value="female"> Female
-                </label>
-              </div>
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender">
+                <option value="">Select One</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="dob">Date of Birth</label>
