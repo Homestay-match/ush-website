@@ -86,6 +86,9 @@
 .ui-map-panel{position:relative;overflow:hidden;min-height:480px}
 .ui-map-pin{position:absolute;background:#fff;color:#1a1a1a;font-size:0.63rem;font-weight:700;padding:4px 9px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,0.2);white-space:nowrap;transform:translate(-50%,-50%);cursor:pointer;border:1.5px solid #e0e0e0}
 .pin-active{background:var(--c-teal);color:#fff;border-color:var(--c-teal);box-shadow:0 3px 12px rgba(110,183,163,0.4)}
+.ui-school-pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:0;cursor:pointer}
+.ui-school-pin-label{background:#3B4A8C;color:#fff;font-size:0.6rem;font-weight:700;padding:4px 9px;border-radius:6px;box-shadow:0 3px 10px rgba(0,0,0,0.25);white-space:nowrap;display:flex;align-items:center;gap:4px}
+.ui-school-pin-tail{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #3B4A8C}
 @media(max-width:860px){.ui-main-row{grid-template-columns:1fr}.ui-map-panel{display:none}}
 
 /* ── BROWSER MOCKUP ── */
@@ -307,7 +310,7 @@
 
           <!-- Card 1 (active) -->
           <div class="ui-listing-card ui-card-active">
-            <div class="ui-card-thumb" style="background-image:url(assets/room-IMG_8193.jpg)">
+            <div class="ui-card-thumb" style="background-image:url(assets/room-marks.jpg)">
               <div class="ui-card-room-label">Guest Room</div>
               <div class="ui-card-heart">♡</div>
             </div>
@@ -342,7 +345,7 @@
 
           <!-- Card 2 -->
           <div class="ui-listing-card">
-            <div class="ui-card-thumb" style="background-image:url(assets/room-IMG_8184.jpg)">
+            <div class="ui-card-thumb" style="background-image:url(assets/room-maribel.jpg)">
               <div class="ui-card-room-label">Room 1</div>
               <div class="ui-card-heart">♡</div>
             </div>
@@ -352,7 +355,9 @@
                   <div class="ui-card-name">Maribel's Homestay</div>
                   <div class="ui-card-type">Private Room · Breakfast and Dinner</div>
                 </div>
-                <div class="ui-host-initials" style="background:#f4a887">MS</div>
+                <div class="ui-host-initials" style="background:#f4a887;overflow:hidden">
+                  <img src="assets/host-2.jpg" alt="Maribel" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+                </div>
               </div>
               <div class="ui-card-bottom">
                 <div class="ui-card-meta">
@@ -375,7 +380,7 @@
 
           <!-- Card 3 -->
           <div class="ui-listing-card">
-            <div class="ui-card-thumb" style="background-image:url(assets/room-IMG_8175.jpg)">
+            <div class="ui-card-thumb" style="background-image:url(assets/room-lana.jpg)">
               <div class="ui-card-room-label">Room 1</div>
               <div class="ui-card-heart">♡</div>
             </div>
@@ -385,7 +390,9 @@
                   <div class="ui-card-name">Lana's Homestay</div>
                   <div class="ui-card-type">Private Room · Breakfast and Dinner</div>
                 </div>
-                <div class="ui-host-initials" style="background:#f4a887">LA</div>
+                <div class="ui-host-initials" style="background:#c6a0d4;overflow:hidden">
+                  <img src="assets/host-3.jpg" alt="Lana" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+                </div>
               </div>
               <div class="ui-card-bottom">
                 <div class="ui-card-meta">
@@ -420,13 +427,24 @@
             referrerpolicy="no-referrer-when-downgrade"
             title="Homestay locations near UCLA">
           </iframe>
-          <!-- Price pins overlay -->
+          <!-- School markers overlay -->
           <div style="position:absolute;inset:0;pointer-events:none;z-index:2">
-            <div class="ui-map-pin pin-active" style="top:30%;left:32%">$50</div>
-            <div class="ui-map-pin" style="top:22%;left:58%">$47</div>
-            <div class="ui-map-pin" style="top:48%;left:70%">$45</div>
-            <div class="ui-map-pin" style="top:58%;left:40%">$53</div>
-            <div class="ui-map-pin" style="top:38%;left:20%">$50</div>
+            <!-- UCLA main campus -->
+            <div class="ui-school-pin" style="top:38%;left:42%">
+              <div class="ui-school-pin-label">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                UCLA
+              </div>
+              <div class="ui-school-pin-tail"></div>
+            </div>
+            <!-- UCLA Extension -->
+            <div class="ui-school-pin" style="top:56%;left:46%">
+              <div class="ui-school-pin-label" style="background:#5C6BC0">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                UCLA Extension
+              </div>
+              <div class="ui-school-pin-tail" style="border-top-color:#5C6BC0"></div>
+            </div>
           </div>
         </div>
 
