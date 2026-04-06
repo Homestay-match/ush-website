@@ -74,7 +74,7 @@ a{text-decoration:none;color:inherit}
 @media(min-width:900px){.nav-mobile-btn{display:none}}
 .mobile-menu{position:fixed;inset:0;background:var(--c-cream);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity 0.35s}
 .mobile-menu.open{opacity:1;pointer-events:auto}
-.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text)}
+.mobile-menu a{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-text);display:block;padding:10px 20px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,0.05)}
 .mobile-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--c-text)}
 
 /* ── BUTTONS ── */
