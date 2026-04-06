@@ -82,7 +82,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .form-row.cols-3{grid-template-columns:1fr 1fr 1fr}
 @media(max-width:540px){.form-row{grid-template-columns:1fr}.form-row.cols-3{grid-template-columns:1fr}}
 .form-group{display:flex;flex-direction:column;gap:6px}
-.form-group label{font-size:0.82rem;font-weight:600;color:var(--c-charcoal);text-transform:capitalize}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--c-charcoal)}
 .form-group .label-hint{font-size:0.75rem;font-weight:400;color:var(--c-text-muted);display:block;margin-top:2px}
 .form-group input,
 .form-group select,
@@ -249,7 +249,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
           <div class="form-section">
             <div class="form-row cols-1">
               <div class="form-group">
-                <label for="group-select">Is the student part of a group?</label>
+                <label for="group-select">Is the Student Part of a Group?</label>
                 <select id="group-select">
                   <option value="">Select One</option>
                   <option value="no">No, Individual Student</option>
@@ -260,7 +260,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
             <div class="form-row cols-1">
               <div class="form-group">
                 <label for="agent-email">Your Email Address</label>
-                <input type="email" id="agent-email" placeholder="agent@agency.com">
+                <input type="email" id="agent-email" placeholder="agent@agency.com" autocapitalize="off" autocorrect="off">
               </div>
             </div>
             <div class="agent-info-box">
@@ -434,20 +434,20 @@ input,select,textarea,button{font-family:var(--ff-body)}
             <div class="form-group">
               <label for="student-email">Email Address</label>
               <span class="label-hint">Student's email address</span>
-              <input type="email" id="student-email" placeholder="your@email.com">
+              <input type="email" id="student-email" placeholder="your@email.com" autocapitalize="off" autocorrect="off">
             </div>
           </div>
 
           <div class="form-row cols-1">
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" placeholder="Create a password">
+              <input type="password" id="password" placeholder="Create a password" autocapitalize="off" autocorrect="off">
             </div>
           </div>
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="how-heard">How did you hear about us?</label>
+              <label for="how-heard">How Did You Hear About Us?</label>
               <select id="how-heard">
                 <option value="">Select One</option>
                 <option>My school</option>
@@ -535,7 +535,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="bathroom">Do you need your own bathroom?</label>
+              <label for="bathroom">Do You Need Your Own Bathroom?</label>
               <span class="label-hint">Private bathroom placement fee is +$80, based on availability only</span>
               <select id="bathroom">
                 <option value="">Select One</option>
@@ -553,7 +553,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="smoke">Do you smoke?</label>
+              <label for="smoke">Do You Smoke?</label>
               <select id="smoke">
                 <option value="">Select One</option>
                 <option>No, I don't smoke</option>
@@ -562,7 +562,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
               <span class="label-hint" style="margin-top:6px;display:block">All host homes are smoke-free indoors. Outdoor smoking depends on the host.</span>
             </div>
             <div class="form-group">
-              <label for="children">Live with children?</label>
+              <label for="children">Live With Children?</label>
               <select id="children" onchange="document.getElementById('children-note').style.display=this.value==='children-yes'?'block':'none'">
                 <option value="">Select One</option>
                 <option value="no-preference">No preference</option>
@@ -575,7 +575,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="pets">Live with pets?</label>
+              <label for="pets">Live With Pets?</label>
               <select id="pets">
                 <option value="">Select One</option>
                 <option value="no-preference">Any pets (No preference)</option>
@@ -585,7 +585,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
               </select>
             </div>
             <div class="form-group">
-              <label for="transport">How will you commute to class?</label>
+              <label for="transport">How Will You Commute to Class?</label>
               <select id="transport">
                 <option value="">Select One</option>
                 <option value="public">Public Transportation</option>
