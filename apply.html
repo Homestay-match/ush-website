@@ -838,8 +838,20 @@ function setPaymentTab(el, type) {
 // CARD NUMBER FORMATTING
 // ══════════════════════════════════════
 document.getElementById('card-number').addEventListener('input', function(e) {
-  let v = e.target.value.replace(/\D/g, '').substring(0, 16);
-  e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+  const input = e.target;
+  const cursorPos = input.selectionStart;
+  const prevLen = input.value.length;
+
+  // Strip non-digits, cap at 16 digits
+  let digits = input.value.replace(/\D/g, '').substring(0, 16);
+
+  // Insert space every 4 digits
+  let formatted = digits.replace(/(.{4})/g, '$1 ').trim();
+  input.value = formatted;
+
+  // Adjust cursor so added spaces don't push it forward unexpectedly
+  const diff = formatted.length - prevLen;
+  input.setSelectionRange(cursorPos + diff, cursorPos + diff);
 });
 </script>
 
