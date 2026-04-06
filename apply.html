@@ -559,12 +559,13 @@ input,select,textarea,button{font-family:var(--ff-body)}
             </div>
             <div class="form-group">
               <label for="children">Live with children?</label>
-              <select id="children">
+              <select id="children" onchange="document.getElementById('children-note').style.display=this.value==='children-yes'?'block':'none'">
                 <option value="">Select One</option>
-                <option>No preference</option>
-                <option>Prefer a family with children</option>
-                <option>Prefer no children</option>
+                <option value="no-preference">No preference</option>
+                <option value="children-yes">Prefer a family with children</option>
+                <option value="no-children">Prefer no children</option>
               </select>
+              <span id="children-note" class="label-hint" style="display:none">Requests for homes with children are based on availability.</span>
             </div>
           </div>
 
