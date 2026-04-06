@@ -349,11 +349,11 @@ input,select,textarea,button{font-family:var(--ff-body)}
           <div class="form-row">
             <div class="form-group">
               <label for="first-name">First Name</label>
-              <input type="text" id="first-name" placeholder="Your first name">
+              <input type="text" id="first-name" placeholder="Your first name" autocapitalize="words" class="cap-words">
             </div>
             <div class="form-group">
               <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" placeholder="Your last name">
+              <input type="text" id="last-name" placeholder="Your last name" autocapitalize="words" class="cap-words">
             </div>
           </div>
 
@@ -648,7 +648,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
           <div class="form-row cols-1">
             <div class="form-group">
               <label for="card-name">Name on Card</label>
-              <input type="text" id="card-name" placeholder="Full name as it appears on card">
+              <input type="text" id="card-name" placeholder="Full name as it appears on card" autocapitalize="words" class="cap-words">
             </div>
           </div>
 
@@ -835,6 +835,14 @@ function setPaymentTab(el, type) {
 }
 
 // ══════════════════════════════════════
+// AUTO-CAPITALIZE WORDS (desktop)
+// ══════════════════════════════════════
+document.querySelectorAll('.cap-words').forEach(function(input) {
+  input.addEventListener('blur', function() {
+    this.value = this.value.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+  });
+});
+
 // CARD NUMBER FORMATTING
 // ══════════════════════════════════════
 document.getElementById('card-number').addEventListener('input', function(e) {
