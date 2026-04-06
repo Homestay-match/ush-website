@@ -103,9 +103,9 @@ input,select,textarea,button{font-family:var(--ff-body)}
 /* ══════════════════════════════════════
    AGENT INFO BOX
    ══════════════════════════════════════ */
-.agent-info-box{background:var(--c-orange-light);border:1px solid rgba(217,168,78,0.3);border-radius:var(--r-sm);padding:12px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
-.agent-info-box svg{flex-shrink:0;margin-top:2px;color:var(--c-orange)}
-.agent-info-box p{font-size:0.82rem;color:var(--c-text);line-height:1.5}
+.agent-info-box{background:var(--c-orange-light);border:1px solid rgba(217,168,78,0.3);border-radius:var(--r-sm);padding:12px 16px;margin-bottom:20px}
+.checkbox-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.82rem;color:var(--c-text);line-height:1.5}
+.checkbox-label input[type="checkbox"]{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--c-orange);cursor:pointer}
 
 /* ══════════════════════════════════════
    NOTICE BOX
@@ -260,8 +260,10 @@ input,select,textarea,button{font-family:var(--ff-body)}
               </div>
             </div>
             <div class="agent-info-box">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
-              <p>Send all automated emails (confirmations, updates, etc.) to my agent email instead of the student.</p>
+              <label class="checkbox-label">
+                <input type="checkbox" id="agent-emails" name="agent-emails">
+                <span>Send all automated emails (confirmations, updates, etc.) to my agent email instead of the student.</span>
+              </label>
             </div>
           </div>
         </div>
