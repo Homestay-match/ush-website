@@ -213,8 +213,38 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row full" style="margin-bottom:16px">
             <div class="form-group">
-              <label for="cf-phone">Phone Number <span style="font-weight:400;color:var(--c-text-muted)">(optional)</span></label>
-              <input type="tel" id="cf-phone" placeholder="+1 (000) 000-0000">
+              <label for="cf-country">Country</label>
+              <select id="cf-country">
+                <option value="">Select your country</option>
+                <option>United States</option>
+                <option>Argentina</option>
+                <option>Australia</option>
+                <option>Brazil</option>
+                <option>Canada</option>
+                <option>Chile</option>
+                <option>China</option>
+                <option>Colombia</option>
+                <option>France</option>
+                <option>Germany</option>
+                <option>India</option>
+                <option>Italy</option>
+                <option>Japan</option>
+                <option>Mexico</option>
+                <option>Peru</option>
+                <option>Portugal</option>
+                <option>Saudi Arabia</option>
+                <option>South Korea</option>
+                <option>Spain</option>
+                <option>Switzerland</option>
+                <option>Taiwan</option>
+                <option>Thailand</option>
+                <option>Turkey</option>
+                <option>United Arab Emirates</option>
+                <option>United Kingdom</option>
+                <option>Venezuela</option>
+                <option>Vietnam</option>
+                <option>Other</option>
+              </select>
             </div>
           </div>
 
@@ -412,7 +442,7 @@ function submitForm() {
   const first    = document.getElementById('cf-first').value.trim();
   const last     = document.getElementById('cf-last').value.trim();
   const email    = document.getElementById('cf-email').value.trim();
-  const phone    = document.getElementById('cf-phone').value.trim();
+  const country  = document.getElementById('cf-country').value;
   const topic    = document.getElementById('cf-topic').value;
   const message  = document.getElementById('cf-message').value.trim();
 
@@ -430,7 +460,7 @@ function submitForm() {
   const body = encodeURIComponent(
     'Name: ' + first + ' ' + last + '\n' +
     'Email: ' + email + '\n' +
-    'Phone: ' + (phone || 'Not provided') + '\n' +
+    'Country: ' + (country || 'Not specified') + '\n' +
     'Topic: ' + (topic || 'Not specified') + '\n\n' +
     'Message:\n' + message
   );
