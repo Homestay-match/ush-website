@@ -101,14 +101,19 @@
 .host-showcase-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
 .host-showcase-header p{font-size:1rem;color:var(--c-text-light);max-width:500px;margin:0 auto;line-height:1.65}
 .real-homes-tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:16px}
-/* ── HOST ROOM CARDS ── */
-.host-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.host-room-card{background:var(--c-white);border-radius:var(--r-lg);overflow:visible;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid var(--c-border);transition:all 0.35s var(--ease-out)}
+/* ── HOST ROOM CARDS — SLIDER ── */
+.host-cards-wrap{position:relative}
+.host-cards-grid{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px;cursor:grab}
+.host-cards-grid::-webkit-scrollbar{display:none}
+.host-cards-grid.is-dragging{cursor:grabbing;scroll-behavior:auto}
+/* desktop: 3 visible */
+.host-room-card{flex:0 0 calc(33.33% - 16px);scroll-snap-align:start;position:relative;background:var(--c-white);border-radius:var(--r-lg);overflow:visible;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid var(--c-border);transition:box-shadow 0.35s var(--ease-out),transform 0.35s var(--ease-out)}
 .host-room-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,0.12)}
-.host-room-photo{position:relative;height:260px;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
+.host-room-photo{height:260px;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
 .host-room-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
 .host-room-card:hover .host-room-photo img{transform:scale(1.04)}
-.host-room-avatar{position:absolute;bottom:-22px;left:18px;width:52px;height:52px;border-radius:50%;overflow:hidden;border:3px solid var(--c-white);box-shadow:0 3px 10px rgba(0,0,0,0.18);z-index:2;background:var(--c-teal)}
+/* avatar sits on card (not inside overflow:hidden photo) */
+.host-room-avatar{position:absolute;top:calc(260px - 26px);left:18px;width:52px;height:52px;border-radius:50%;overflow:hidden;border:3px solid var(--c-white);box-shadow:0 3px 12px rgba(0,0,0,0.22);z-index:10;background:var(--c-teal)}
 .host-room-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .host-room-avatar-initials{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;color:var(--c-white);font-family:var(--ff-body)}
 .host-room-info{padding:32px 20px 22px}
@@ -116,8 +121,24 @@
 .host-room-meta{display:flex;flex-direction:column;gap:6px}
 .host-room-meta-row{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--c-text-muted)}
 .host-room-meta-row svg{flex-shrink:0;color:var(--c-teal)}
-@media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}.host-cards-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.host-cards-grid{grid-template-columns:1fr}}
+/* nav arrows */
+.cards-arrow{position:absolute;top:calc(260px / 2);transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--c-white);border:1px solid var(--c-border);box-shadow:0 2px 10px rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;transition:all 0.2s;color:var(--c-charcoal)}
+.cards-arrow:hover{background:var(--c-charcoal);color:var(--c-white);border-color:var(--c-charcoal)}
+.cards-arrow-prev{left:-18px}
+.cards-arrow-next{right:-18px}
+/* dots */
+.cards-dots{display:flex;justify-content:center;gap:6px;margin-top:20px}
+.cards-dot{width:7px;height:7px;border-radius:50%;background:var(--c-border-strong);transition:all 0.25s;cursor:pointer;border:none;padding:0}
+.cards-dot.active{background:var(--c-teal);width:20px;border-radius:4px}
+@media(max-width:900px){
+  .host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}
+  .host-room-card{flex:0 0 calc(50% - 12px)}
+}
+@media(max-width:560px){
+  .host-room-card{flex:0 0 85%}
+  .host-cards-grid{gap:16px}
+  .cards-arrow{display:none}
+}
 
 /* ══════════════════════════════════════
    INDEX — SAFETY SECTION
@@ -414,77 +435,57 @@
       <p>Every photo is taken by a USH coordinator during an in-person visit. No staging, no stock photos — just real homes and real rooms.</p>
     </div>
 
-    <div class="host-cards-grid" data-reveal>
+    <div class="host-cards-wrap" data-reveal>
+      <button class="cards-arrow cards-arrow-prev" id="cardsPrev" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="cards-arrow cards-arrow-next" id="cardsNext" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
 
-      <!-- Sandra G. -->
-      <div class="host-room-card">
-        <div class="host-room-photo">
-          <img src="assets/sandra-1.jpg" alt="Sandra's student bedroom">
-          <div class="host-room-avatar">
-            <div class="host-room-avatar-initials">S</div>
-          </div>
-        </div>
-        <div class="host-room-info">
-          <div class="host-room-name">Sandra G.</div>
-          <div class="host-room-meta">
-            <div class="host-room-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Hollywood, CA
-            </div>
-            <div class="host-room-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              Santa Monica College
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="host-cards-grid" id="hostCardsGrid">
 
-      <!-- Greta S. -->
-      <div class="host-room-card">
-        <div class="host-room-photo">
-          <img src="assets/greta-IMG_7438.jpg" alt="Greta's student bedroom">
-          <div class="host-room-avatar">
-            <img src="assets/host-greta.jpg" alt="Greta S.">
-          </div>
-        </div>
-        <div class="host-room-info">
-          <div class="host-room-name">Greta S.</div>
-          <div class="host-room-meta">
-            <div class="host-room-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              San Jose, CA
-            </div>
-            <div class="host-room-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              San Jose State University
+        <!-- Sandra G. -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img src="assets/sandra-1.jpg" alt="Sandra's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">S</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Sandra G.</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Hollywood, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Santa Monica College</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Ana P. -->
-      <div class="host-room-card">
-        <div class="host-room-photo">
-          <img src="assets/sandra-7.jpg" alt="Ana's student bedroom">
-          <div class="host-room-avatar">
-            <div class="host-room-avatar-initials">A</div>
-          </div>
-        </div>
-        <div class="host-room-info">
-          <div class="host-room-name">Ana P.</div>
-          <div class="host-room-meta">
-            <div class="host-room-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Irvine, CA
-            </div>
-            <div class="host-room-meta-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              UC Irvine
+        <!-- Greta S. -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img src="assets/greta-IMG_7438.jpg" alt="Greta's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Greta S.</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Jose, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>San Jose State University</div>
             </div>
           </div>
         </div>
-      </div>
 
+        <!-- Ana P. -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img src="assets/sandra-7.jpg" alt="Ana's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">A</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Ana P.</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Irvine, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>UC Irvine</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end grid -->
+      <div class="cards-dots" id="cardsDots"></div>
     </div>
   </div>
 </section>
@@ -792,6 +793,70 @@
 </footer>
 
 <script>
+// ══════════ HOST CARDS SLIDER ══════════
+(function() {
+  const grid  = document.getElementById('hostCardsGrid');
+  const prev  = document.getElementById('cardsPrev');
+  const next  = document.getElementById('cardsNext');
+  const dotsW = document.getElementById('cardsDots');
+  if (!grid) return;
+
+  function cardWidth() {
+    const c = grid.querySelector('.host-room-card');
+    return c ? c.offsetWidth + parseInt(getComputedStyle(grid).gap) : 0;
+  }
+
+  function visibleCount() {
+    return Math.round(grid.offsetWidth / cardWidth()) || 1;
+  }
+
+  const total = grid.querySelectorAll('.host-room-card').length;
+
+  // Build dots
+  function buildDots() {
+    dotsW.innerHTML = '';
+    const groups = Math.ceil(total / visibleCount());
+    for (let i = 0; i < groups; i++) {
+      const d = document.createElement('button');
+      d.className = 'cards-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => scrollToGroup(i));
+      dotsW.appendChild(d);
+    }
+  }
+
+  function scrollToGroup(i) {
+    grid.scrollTo({ left: i * cardWidth() * visibleCount(), behavior: 'smooth' });
+  }
+
+  function currentGroup() {
+    return Math.round(grid.scrollLeft / (cardWidth() * visibleCount()));
+  }
+
+  function updateDots() {
+    const g = currentGroup();
+    dotsW.querySelectorAll('.cards-dot').forEach((d, i) => d.classList.toggle('active', i === g));
+  }
+
+  prev.addEventListener('click', () => {
+    grid.scrollBy({ left: -cardWidth() * visibleCount(), behavior: 'smooth' });
+  });
+  next.addEventListener('click', () => {
+    grid.scrollBy({ left: cardWidth() * visibleCount(), behavior: 'smooth' });
+  });
+
+  grid.addEventListener('scroll', updateDots, { passive: true });
+  window.addEventListener('resize', buildDots);
+
+  // Drag-to-scroll (desktop)
+  let isDown = false, startX, scrollL;
+  grid.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - grid.offsetLeft; scrollL = grid.scrollLeft; grid.classList.add('is-dragging'); });
+  grid.addEventListener('mouseleave', () => { isDown = false; grid.classList.remove('is-dragging'); });
+  grid.addEventListener('mouseup', () => { isDown = false; grid.classList.remove('is-dragging'); });
+  grid.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); grid.scrollLeft = scrollL - (e.pageX - grid.offsetLeft - startX); });
+
+  buildDots();
+})();
+
 // ══════════ TESTIMONIALS CAROUSEL ══════════
 (function() {
   const track = document.getElementById('testimonialsTrack');
