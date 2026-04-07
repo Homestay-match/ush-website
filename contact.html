@@ -100,7 +100,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 /* ── FAQ STRIP ── */
 .faq-strip{background:var(--c-olive-dark);padding:80px 0;position:relative;overflow:hidden}
 .faq-strip::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
-.faq-strip-inner{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;position:relative;z-index:1;max-width:600px}
+.faq-strip-inner{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;position:relative;z-index:1;max-width:600px;margin:0 auto;text-align:center}
 .faq-strip-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
 .faq-strip h2{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--c-white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}
 .faq-strip h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
@@ -349,7 +349,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
         <div class="faq-strip-label">Quick Answers</div>
         <h2>Common <em>questions</em></h2>
         <p>Can't find what you're looking for? Send us a message and we'll get back to you within 1 business day.</p>
-        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center">
           <a href="apply.html" class="btn btn-primary">Apply Now →</a>
           <div class="ask-tooltip">
             <a href="#" class="btn btn-outline" onclick="if(window.chatbase)window.chatbase('open');return false;">Ask a Question &rarr;</a>
