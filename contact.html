@@ -409,15 +409,42 @@ function closeMobileMenu() {
 
 // ══════════ FORM SUBMIT ══════════
 function submitForm() {
-  // Backend: POST form data to Laravel endpoint
-  const first = document.getElementById('cf-first').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  if (!first || !email) {
-    alert('Please fill in your name and email address.');
+  const first    = document.getElementById('cf-first').value.trim();
+  const last     = document.getElementById('cf-last').value.trim();
+  const email    = document.getElementById('cf-email').value.trim();
+  const phone    = document.getElementById('cf-phone').value.trim();
+  const topic    = document.getElementById('cf-topic').value;
+  const message  = document.getElementById('cf-message').value.trim();
+
+  if (!first || !email || !message) {
+    alert('Please fill in your name, email address, and message.');
     return;
   }
-  document.getElementById('form-body').style.display = 'none';
-  document.getElementById('form-success').classList.add('visible');
+
+  const btn = document.querySelector('.btn-form');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const recipients = 'contact@usaish.com,emerson@usaish.com,anapaula@usaish.com';
+  const subject = encodeURIComponent('[USH Website] ' + (topic || 'General Inquiry') + ' — ' + first + ' ' + last);
+  const body = encodeURIComponent(
+    'Name: ' + first + ' ' + last + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + (phone || 'Not provided') + '\n' +
+    'Topic: ' + (topic || 'Not specified') + '\n\n' +
+    'Message:\n' + message
+  );
+
+  // Open default mail client with all recipients pre-filled
+  window.location.href = 'mailto:' + recipients + '?subject=' + subject + '&body=' + body;
+
+  // Show success screen after short delay
+  setTimeout(function() {
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('form-success').classList.add('visible');
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  }, 800);
 }
 
 // ══════════ FAQ ACCORDION ══════════
