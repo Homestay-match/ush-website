@@ -45,22 +45,14 @@
 .legal-section strong{color:var(--c-charcoal);font-weight:600}
 
 /* TABLE */
-.policy-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.85rem;border-radius:10px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,0.07)}
-.policy-table thead{background:var(--c-teal)}
-.policy-table thead th{padding:12px 16px;color:#fff;font-weight:600;text-align:left;white-space:nowrap}
-.policy-table tbody tr{border-bottom:1px solid rgba(0,0,0,0.06)}
-.policy-table tbody tr:nth-child(even){background:#f9f7f4}
-.policy-table tbody tr:hover{background:rgba(110,183,163,0.06)}
-.policy-table td{padding:12px 16px;color:var(--c-text-light);vertical-align:top}
-.policy-table td:first-child{font-weight:500;color:var(--c-charcoal)}
-.badge-refund{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.75rem;font-weight:600}
-.badge-no{background:#fef2f2;color:#e05252}
-.badge-yes{background:#f0fdf4;color:#16a34a}
-.badge-partial{background:#fff8ec;color:#d97706}
-
-/* HIGHLIGHT BOX */
-.notice-box{background:#fff8ec;border:1px solid rgba(217,168,78,0.3);border-radius:10px;padding:16px 20px;margin:20px 0}
-.notice-box p{margin:0;font-size:0.88rem;color:var(--c-charcoal)}
+.policy-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.85rem;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,0.1)}
+.policy-table thead{background:#E8744A}
+.policy-table thead th{padding:14px 16px;color:#fff;font-weight:700;text-align:center;font-size:0.82rem;line-height:1.4;border-right:1px solid rgba(255,255,255,0.2)}
+.policy-table thead th:last-child{border-right:none}
+.policy-table tbody tr:nth-child(odd){background:#fff}
+.policy-table tbody tr:nth-child(even){background:#d4ede7}
+.policy-table td{padding:14px 16px;color:#444;vertical-align:middle;text-align:center;border-right:1px solid rgba(0,0,0,0.06);font-size:0.85rem;line-height:1.5}
+.policy-table td:last-child{border-right:none}
 </style>
 </head>
 <body>
@@ -143,7 +135,8 @@
       <table class="policy-table">
         <thead>
           <tr>
-            <th>Homestay Status</th>
+            <th>Homestay Application</th>
+            <th>Guest Cancels (Before Move In)</th>
             <th>Application Fee</th>
             <th>Security Deposit</th>
             <th>Homestay / Housing Fee</th>
@@ -151,28 +144,32 @@
         </thead>
         <tbody>
           <tr>
-            <td>Homestay Not Confirmed — Guest cancels Homestay Application before confirmation by Host, but the search has been started</td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-yes">No Charge</span></td>
+            <td>Homestay Not Confirmed</td>
+            <td>Guest cancels Homestay Application before confirmation by Host, but the search has been started</td>
+            <td>No refund</td>
+            <td>No Refund</td>
+            <td>No charge</td>
           </tr>
           <tr>
-            <td>Homestay Confirmed — Guest cancels Booking 30 days or more before move in</td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-yes">100% Refund**</span></td>
+            <td>Homestay Confirmed</td>
+            <td>Guest cancels Booking 30 days or more before move in</td>
+            <td>No Refund</td>
+            <td>No Refund</td>
+            <td>100% Refund**</td>
           </tr>
           <tr>
-            <td>Homestay Confirmed — Guest cancels Booking between 29 and 11 days before move in</td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-partial">Guest pays for 2 weeks**</span></td>
+            <td>Homestay Confirmed</td>
+            <td>Guest cancels Booking between 29 and 11 days before move in</td>
+            <td>No Refund</td>
+            <td>No Refund</td>
+            <td>Guest pays for 2 weeks**</td>
           </tr>
           <tr>
-            <td>Homestay Confirmed — Guest cancels Booking 10 days or less before move in, including no show</td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-partial">Guest pays for 4 weeks**</span></td>
+            <td>Homestay Confirmed</td>
+            <td>Guest cancels Booking 10 days or less before move in, including no show</td>
+            <td>No Refund</td>
+            <td>No Refund</td>
+            <td>Guest pays for 4 weeks**</td>
           </tr>
         </tbody>
       </table>
@@ -194,8 +191,8 @@
         <tbody>
           <tr>
             <td>Confirmed — 30 days written notice is required</td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
-            <td><span class="badge-refund badge-no">No Refund</span></td>
+            <td>No Refund</td>
+            <td>No Refund</td>
             <td>Guest pays for 30 days minimum charge, plus the days Guest stays past 30 days; excess fee paid will be refunded**</td>
           </tr>
         </tbody>
