@@ -31,6 +31,7 @@
 .other-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--c-border)}
 .other-legal a{display:block;padding:6px 12px;font-size:0.82rem;color:var(--c-text-muted);text-decoration:none;border-radius:6px;transition:all 0.2s}
 .other-legal a:hover{color:var(--c-teal);background:rgba(110,183,163,0.08)}
+.other-legal a.active{color:var(--c-teal);background:rgba(110,183,163,0.12);border-left-color:var(--c-teal);font-weight:600}
 
 .legal-content{min-width:0}
 .last-updated{font-size:0.82rem;color:var(--c-text-muted);margin-bottom:28px;padding:10px 16px;background:#f7f4ef;border-radius:8px;border-left:3px solid var(--c-orange)}
@@ -117,16 +118,10 @@
 
   <!-- SIDEBAR -->
   <aside class="legal-sidebar">
-    <div class="toc-label">Sections</div>
-    <ul class="toc-links" id="tocLinks">
-      <li><a href="#s1">Overview</a></li>
-      <li><a href="#s2">Before Move-In</a></li>
-      <li><a href="#s3">After Move-In</a></li>
-      <li><a href="#s4">Notes & Fees</a></li>
-    </ul>
-    <div class="other-legal">
-      <div class="toc-label">Other Policies</div>
-      <a href="guest_terms_conditions.html">Terms &amp; Conditions</a>
+    <div class="toc-label">Legal Documents</div>
+    <div class="other-legal" style="margin-top:8px;padding-top:0;border-top:none">
+      <a href="guest_terms_conditions.html">Guest Terms &amp; Conditions</a>
+      <a href="guests_cancellation_policy.html" class="active">Guest Cancellation Policy</a>
       <a href="acceptable_use_policy.html">Acceptable Use Policy</a>
       <a href="dmca_policy.html">DMCA Policy</a>
       <a href="privacy_policy.html">Privacy Policy</a>
