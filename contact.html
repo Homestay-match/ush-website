@@ -44,6 +44,11 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .form-group textarea{resize:vertical;min-height:130px;line-height:1.6}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
 .form-group input::placeholder,.form-group textarea::placeholder{color:var(--c-text-muted)}
+.form-group.error input,.form-group.error select,.form-group.error textarea{border-color:#e53e3e;box-shadow:0 0 0 3px rgba(229,62,62,0.12);animation:shake 0.3s ease}
+.form-group.error label{color:#e53e3e}
+.field-error{font-size:0.78rem;color:#e53e3e;margin-top:4px;display:flex;align-items:center;gap:4px}
+.field-error::before{content:'⚠';font-size:0.72rem}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 .form-submit{margin-top:24px}
 .btn-form{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out)}
 .btn-form:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(110,183,163,0.3)}
@@ -613,12 +618,49 @@ function submitForm() {
   const topic    = document.getElementById('cf-topic').value;
   const message  = document.getElementById('cf-message').value.trim();
 
-  if (!first) { alert('Please enter your first name.'); document.getElementById('cf-first').focus(); return; }
-  if (!last) { alert('Please enter your last name.'); document.getElementById('cf-last').focus(); return; }
-  if (!email) { alert('Please enter your email address.'); document.getElementById('cf-email').focus(); return; }
-  if (!country) { alert('Please select your country.'); document.getElementById('cf-country').focus(); return; }
-  if (!topic) { alert('Please select a topic.'); document.getElementById('cf-topic').focus(); return; }
-  if (!message) { alert('Please enter your message.'); document.getElementById('cf-message').focus(); return; }
+  // Clear previous errors
+  document.querySelectorAll('.form-group').forEach(g => {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const fields = [
+    { id: 'cf-first',   val: first,   msg: 'First name is required' },
+    { id: 'cf-last',    val: last,    msg: 'Last name is required' },
+    { id: 'cf-email',   val: email,   msg: 'Email address is required' },
+    { id: 'cf-country', val: country, msg: 'Please select your country' },
+    { id: 'cf-topic',   val: topic,   msg: 'Please select a topic' },
+    { id: 'cf-message', val: message, msg: 'Message is required' },
+  ];
+
+  let hasError = false;
+  fields.forEach(f => {
+    if (!f.val) {
+      hasError = true;
+      const el = document.getElementById(f.id);
+      const group = el.closest('.form-group');
+      group.classList.add('error');
+      const err = document.createElement('div');
+      err.className = 'field-error';
+      err.textContent = f.msg;
+      group.appendChild(err);
+    }
+  });
+
+  if (hasError) {
+    document.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea').focus();
+    return;
+  }
+
+  // Clear errors on input
+  fields.forEach(f => {
+    document.getElementById(f.id).addEventListener('input', function() {
+      this.closest('.form-group').classList.remove('error');
+      const e = this.closest('.form-group').querySelector('.field-error');
+      if (e) e.remove();
+    }, { once: true });
+  });
 
   const btn = document.querySelector('.btn-form');
   btn.disabled = true;
