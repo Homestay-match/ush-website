@@ -16,45 +16,25 @@
 .hero h1{font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--c-white);line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
 .hero h1 em{font-style:italic;font-weight:400;color:var(--c-orange)}
 .hero p{font-size:0.9rem;color:rgba(255,255,255,0.6)}
-
 .legal-wrap{max-width:1100px;margin:0 auto;padding:72px 24px 100px;display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:start}
 @media(max-width:860px){.legal-wrap{grid-template-columns:1fr;gap:40px}}
-
 .legal-sidebar{position:sticky;top:100px}
 @media(max-width:860px){.legal-sidebar{position:static}}
 .toc-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--c-text-muted);margin-bottom:12px}
-.toc-links{list-style:none;padding:0;margin:0}
-.toc-links li{margin-bottom:2px}
-.toc-links a{display:block;padding:7px 12px;border-radius:6px;font-size:0.82rem;font-weight:500;color:var(--c-text-muted);text-decoration:none;transition:all 0.2s;border-left:2px solid transparent}
-.toc-links a:hover{background:rgba(110,183,163,0.1);color:var(--c-teal);border-left-color:var(--c-teal)}
-.toc-links a.active{background:rgba(110,183,163,0.12);color:var(--c-teal);border-left-color:var(--c-teal);font-weight:600}
-.other-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--c-border)}
-.other-legal a{display:block;padding:6px 12px;font-size:0.82rem;color:var(--c-text-muted);text-decoration:none;border-radius:6px;transition:all 0.2s}
-.other-legal a:hover{color:var(--c-teal);background:rgba(110,183,163,0.08)}
-.other-legal a.active{color:var(--c-teal);background:rgba(110,183,163,0.12);border-left-color:var(--c-teal);font-weight:600}
-
+.other-legal{margin-top:8px}
+.other-legal a{display:block;padding:7px 12px;border-radius:6px;font-size:0.82rem;font-weight:500;color:var(--c-text-muted);text-decoration:none;transition:all 0.2s;border-left:2px solid transparent}
+.other-legal a:hover{background:rgba(110,183,163,0.1);color:var(--c-teal);border-left-color:var(--c-teal)}
+.other-legal a.active{background:rgba(110,183,163,0.12);color:var(--c-teal);border-left-color:var(--c-teal);font-weight:600}
 .legal-content{min-width:0}
 .last-updated{font-size:0.82rem;color:var(--c-text-muted);margin-bottom:28px;padding:10px 16px;background:#f7f4ef;border-radius:8px;border-left:3px solid var(--c-orange)}
 .legal-section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--c-border);scroll-margin-top:90px}
 .legal-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.legal-section h2{font-family:var(--ff-display);font-size:1.25rem;font-weight:700;color:var(--c-charcoal);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.sec-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--c-teal);color:#fff;font-size:0.75rem;font-weight:700;flex-shrink:0;font-family:var(--ff-body)}
-.legal-section h3{font-size:0.95rem;font-weight:700;color:var(--c-charcoal);margin:20px 0 8px}
+.legal-section h2{font-family:var(--ff-display);font-size:1.25rem;font-weight:700;color:var(--c-charcoal);margin-bottom:16px}
 .legal-section p{font-size:0.9rem;color:var(--c-text-light);line-height:1.8;margin-bottom:12px}
 .legal-section ul,.legal-section ol{padding-left:22px;margin-bottom:12px}
-.legal-section li{font-size:0.9rem;color:var(--c-text-light);line-height:1.8;margin-bottom:6px}
+.legal-section li{font-size:0.9rem;color:var(--c-text-light);line-height:1.8;margin-bottom:8px}
 .legal-section strong{color:var(--c-charcoal);font-weight:600}
 .legal-section a{color:var(--c-teal)}
-
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
-@media(max-width:540px){.info-grid{grid-template-columns:1fr}}
-.info-card{background:#f7f4ef;border-radius:10px;padding:16px 18px}
-.info-card h4{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-teal);margin-bottom:10px}
-.info-card ul{padding-left:16px;margin:0}
-.info-card li{font-size:0.82rem;color:var(--c-text-light);line-height:1.7;margin-bottom:2px}
-
-.notice-box{background:#fff8ec;border:1px solid rgba(217,168,78,0.3);border-radius:10px;padding:16px 20px;margin:16px 0}
-.notice-box p{margin:0;font-size:0.88rem;color:var(--c-charcoal);line-height:1.7}
 </style>
 </head>
 <body>
@@ -107,13 +87,10 @@
   </div>
 </section>
 
-<!-- CONTENT -->
 <div class="legal-wrap">
-
-  <!-- SIDEBAR -->
   <aside class="legal-sidebar">
     <div class="toc-label">Legal Documents</div>
-    <div class="other-legal" style="margin-top:8px;padding-top:0;border-top:none">
+    <div class="other-legal">
       <a href="guest_terms_conditions.html">Guest Terms &amp; Conditions</a>
       <a href="guests_cancellation_policy.html">Guest Cancellation Policy</a>
       <a href="acceptable_use_policy.html">Acceptable Use Policy</a>
@@ -122,225 +99,164 @@
     </div>
   </aside>
 
-  <!-- MAIN -->
   <main class="legal-content">
     <div class="last-updated">Last Updated: February 9, 2020</div>
 
-    <!-- S1 -->
     <div class="legal-section" id="s1">
-      <h2><span class="sec-num">1</span>Our Commitment to Your Privacy</h2>
-      <p>USH Inc. ("USH", "we", "us" and "our") knows that you care how information about you is used and shared, and we appreciate your trust that we will do so carefully and sensibly.</p>
-      <p>This Privacy Policy covers personal data collected through www.ushhost.com and www.ushstudent.com, including mobile applications and all associated services. "You" or "your" means any visitor or user. Continued use of the USH Website indicates acceptance of any policy modifications.</p>
+      <h2>Our Commitment to Your Privacy</h2>
+      <p>USH Inc. ("USH", "we", "us" and "our") knows that you care how information about you is used and shared, and we appreciate your trust that we will do so carefully and sensibly. This Privacy Policy describes our collection and use of personal data collected from you through the online and/or mobile services and applications provided on or in connection with www.ushhost.com and www.ushstudent.com, which are offered through (i) www.ushhost.com and www.ushstudent.com, (ii) mobile applications associated with www.ushhost.com and www.ushstudent.com, and (iii) any other USH website, app or online service which links to this Privacy Policy (collectively, the "USH Website"). "You" or "your" means a visitor or a user (whether signed in or not) of USH Website. Your use of USH Website is conditioned on your acceptance of this policy. You agree that you are responsible for reviewing this Privacy Policy and our other policies and requirements regularly, and your continued use of the USH Website constitutes your acceptance of any modifications, changes, or revisions to this Privacy Policy and our other policies and requirements.</p>
     </div>
 
-    <!-- S2 -->
     <div class="legal-section" id="s2">
-      <h2><span class="sec-num">2</span>Scope of this Privacy Policy</h2>
-      <p>This policy applies to the USH Website only. Links to other sites are not covered by this policy, and USH is not responsible for the privacy practices of external websites.</p>
+      <h2>Scope of this Privacy Policy</h2>
+      <p>This Privacy Policy applies to information we collect on the USH Website. The USH Website may link to or interoperate with other websites or services over which we have no control. We are not responsible for the privacy policies or practices of other websites or services. You may wish to review the privacy policies of those websites and services so you can understand how they collect, use and share your information.</p>
     </div>
 
-    <!-- S3 -->
     <div class="legal-section" id="s3">
-      <h2><span class="sec-num">3</span>Information We Collect</h2>
-      <p>We collect information in two main ways — directly from you when you use our services, and automatically as you interact with our website.</p>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h4>Directly Provided</h4>
-          <ul>
-            <li>Name</li>
-            <li>Contact information (address, email, telephone)</li>
-            <li>Identifying information (passport, social security, driver's license)</li>
-            <li>Educational history and occupation</li>
-            <li>Birthdate, age, gender</li>
-            <li>Third-party references (with written consent)</li>
-            <li>Credit card and billing information</li>
-            <li>Financial account information</li>
-            <li>Other requested information</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h4>Automatically Collected</h4>
-          <ul>
-            <li>IP address</li>
-            <li>Phone number &amp; device ID</li>
-            <li>Physical location</li>
-            <li>Browser and operating system type</li>
-            <li>Referring URLs</li>
-            <li>Cookies and pixel tag data</li>
-            <li>Website usage patterns</li>
-          </ul>
-        </div>
-      </div>
-
-      <p>We may also collect information about you from publicly available websites, such as LinkedIn and Facebook, as well as information from consumer reporting or background check agencies or public records.</p>
+      <h2>Information We Collect</h2>
+      <p>We collect information about you when you use the USH Website and USH Services. For example, depending on the services you use and whether you create an account and related profile ("USH Account"), we may collect:</p>
+      <ul>
+        <li>Your name</li>
+        <li>Contact information, such as address, email address, telephone number</li>
+        <li>Identifying information, such as passport number, social security number, driver's license number</li>
+        <li>Information about your educational history and occupation</li>
+        <li>Your birthdate, age, and gender</li>
+        <li>Information about third parties, such as references or contacts, that you provide to us if you have their express written consent to do so</li>
+        <li>Credit card number and billing information (for services requiring payment by you)</li>
+        <li>Financial account information (for services involving payment to you)</li>
+        <li>Other information requested within your USH Account or when you use the USH Services</li>
+      </ul>
+      <p>We automatically collect information about you depending on how you use the USH Services, the areas of our websites that you visit, as well as information about your computer or mobile device, including your IP address, phone number, device ID, physical location, browser and operating system type, and referring URLs, using various technological means (including "cookies" and other technologies such as pixel tags and web beacons, as further described below). This information is necessary for providing personalized and location-based content as well as for analyzing the use of resources, troubleshooting problems, preventing fraud, and monitoring and improving the USH Services. We may combine this information with other information we've collected from you and others to help prevent fraud.</p>
+      <p>We may collect information about you from publicly available websites, such as LinkedIn and Facebook, as well as information from consumer reporting or background check agencies or public records. We may use the information we collect to create a profile, even if you do not have a USH Account, or append it to your existing profile.</p>
     </div>
 
-    <!-- S4 -->
     <div class="legal-section" id="s4">
-      <h2><span class="sec-num">4</span>Cookies &amp; Other Technology</h2>
-      <p>Cookies are text files storing alphanumeric identifiers that track website usage patterns and improve functionality. You may delete or block cookies, but doing so may limit certain site features.</p>
-      <p>"Web beacons" are small embedded images used to measure website usage and activity. Third-party service providers assist in analyzing activities without sharing personal user data directly.</p>
-      <p>We use cookies, pixel tags, and web beacons for personalization, fraud prevention, and service improvement purposes.</p>
+      <h2>Cookies and Other Technology</h2>
+      <p>We may use "cookies" and other technologies such as pixel tags and web beacons. Cookies are alphanumeric identifiers in the form of text files that are inserted and stored by your Web browser on your computer's hard drive. These technologies tell us which parts of the USH Website you have visited and how you use the USH Website. They are also used to analyze and improve the design and functionality of the USH Website. If you choose to delete cookies from your device or block them from being stored on your device, please note that the full functionality of the USH Website may not be available to you.</p>
+      <p>"Web beacons" are images embedded in a Web page or e-mail for the purpose of measuring and analyzing USH Website usage and activity. We, or third-party service providers acting on our behalf, may use Web beacons to help us analyze usage and improve the USH Website.</p>
+      <p>We may use third-party service providers to help us analyze certain online activities and improve the USH Website. For example, these service providers may help us measure the performance of our online campaigns or analyze visitor activity on the USH Website. We may permit these service providers to use cookies and other technologies to perform these services for us. We do not share any personal data about our users with these third-party service providers, and these service providers do not collect such information on our behalf. Our third-party service providers are not permitted to use information about our users that they collect for us for any purpose other than providing services to us.</p>
     </div>
 
-    <!-- S5 -->
     <div class="legal-section" id="s5">
-      <h2><span class="sec-num">5</span>How We Use Information</h2>
-      <p>USH provides accommodation systems where hosts offer and guests/students request accommodations. We use the information we collect to provide and improve these services. Specific uses include:</p>
+      <h2>How We Use Information</h2>
+      <p>We use the information we collect to provide, operate and improve the USH Website, respond to you, and foster a positive user experience. Our services include providing a system where hosts can offer accommodations and guests/students can request and pay for accommodations. By registering with USH, by managing your USH account, or by opting in when presented with choices, you have further consented for us to use your information in the following ways:</p>
       <ul>
-        <li>Create profiles from provided or imported information</li>
-        <li>Obtain consumer reports and background checks</li>
-        <li>Provide personalized, targeted, location-based content and advertising</li>
-        <li>Enable user contact and invitations</li>
-        <li>Import/export information from other sites</li>
-        <li>Contact you regarding updates and security information</li>
-        <li>Inform you of other products or services</li>
-        <li>Provide your information to matching parties (hosts to guests/students and vice versa)</li>
-        <li>Generate internal usage reports</li>
-        <li>Provide public information to search engines</li>
-        <li>Detect and prevent policy violations or illegal activity</li>
-        <li>Make suggestions and inferences about your interests</li>
+        <li>to create a profile for you based on information that you have provided to us, information imported or collected from other sites or applications, or information provided to us by third parties;</li>
+        <li>to obtain consumer reports and perform other background checks on you;</li>
+        <li>to provide personalized, targeted, or location-based content, services, and advertising from us and third parties, including alerting you to relevant accommodations;</li>
+        <li>to allow you to contact other users or to invite others to join or create a USH Account;</li>
+        <li>to allow you to import information about yourself from other sites or applications or to export your information to other sites or applications;</li>
+        <li>to contact you about feature updates and informational and service-related communications, including important security updates;</li>
+        <li>to inform you of other products or services available from USH or its affiliates;</li>
+        <li>to enable you to contact us and for us to respond to you;</li>
+        <li>if you are a host, to provide information about you to guests/students, as further described in this Privacy Policy, the Host Terms and Conditions, Guest Terms and Conditions and the USH Website;</li>
+        <li>if you are a guest/student, to provide information about you to hosts, as further described in this Privacy Policy, the Host Terms and Conditions, Guest Terms and Conditions and the USH Website;</li>
+        <li>to generate internal reports about the use of the USH Website;</li>
+        <li>to give search engines access to public information;</li>
+        <li>to detect, investigate and prevent activities that may violate our policies or be illegal;</li>
+        <li>to make suggestions and draw inferences about you. For example, we may make suggestions about additional accommodations, products or services that might be of interest to you.</li>
       </ul>
-      <div class="notice-box">
-        <p>Information you post in public areas of the USH Website or make visible to others may be accessed, used, and stored by others around the world, including those in countries that might not have legislation guaranteeing adequate protection of personal data.</p>
-      </div>
+      <p>Information you post in public areas of the USH Website or make visible to others through the USH Website may be accessed, used, and stored by others around the world, including those in countries that might not have legislation that guarantees adequate protection of personal data as defined by your country of residence. We do not control these third parties and we are not responsible for their use of information you give to us. Accordingly, you should not post sensitive information, or any other information you would not want made public, to any public area.</p>
     </div>
 
-    <!-- S6 -->
     <div class="legal-section" id="s6">
-      <h2><span class="sec-num">6</span>How We Share Information</h2>
-      <p>USH does not share your personal information with third parties for their own direct marketing purposes without your affirmative agreement. We share information in the following categories:</p>
-
-      <h3>Service Providers</h3>
-      <p>Third-party service providers (web hosting, data analysis, marketing, payment processing, customer service, background checks) may access necessary information for specified functions only.</p>
-
-      <h3>Guest / Host Information Disclosure</h3>
-      <ul>
-        <li>Accommodation information and host details appear in the database</li>
-        <li>A confirmed booking discloses guest name, contact details, and personal data to the host</li>
-        <li>Matching requests disclose host name, contact details, and personal data to guests</li>
-      </ul>
-
-      <h3>Aggregated Data</h3>
-      <p>Aggregated data does not identify users individually and may be used by us for any business purposes and made available to third parties, including employers, job candidates, investors, and the public.</p>
-
-      <h3>Legal Disclosure</h3>
-      <p>Information may be disclosed when legally required or when USH believes action is necessary to meet legal requirements, protect rights or property, prevent crime, or protect public safety.</p>
-
-      <h3>Business Transfer</h3>
-      <p>In the event of an acquisition or sale of USH's business, information may be transferred to the acquiring party. Users will receive notification via email or a prominent notice on the website.</p>
+      <h2>How We Share Information</h2>
+      <p>The USH Website and Services are designed to provide guests/hosts with access to accommodation and to provide hosts the ability to offer accommodations for rent by guests/students. We do not share information with third parties for their direct marketing purposes unless you affirmatively agree to such disclosure. We disclose your information as set forth below:</p>
+      <ol>
+        <li>We share your information with third parties who help provide the USH Website and deliver our services to you. Examples include hosting our web servers, analyzing data, providing marketing assistance, processing credit card payments to us and refunds or payments by us to you, providing customer service, performing background checks and onsite host visits. These third parties will have access to your information as necessary to perform their functions, but they may not use that data for any other purpose.</li>
+        <li>We disclose information among students/guests and hosts as follows:
+          <ul>
+            <li>if you offer an accommodation, we will disclose information about the accommodation and certain information about you in our accommodation database;</li>
+            <li>if you book an accommodation, we will disclose your name, contact details and other personal data to the host, as further described in this Privacy Policy, the Host Terms and Conditions, Guest Terms and Conditions and the USH Website; and</li>
+            <li>if you accept a matching request for your accommodation, we will disclose your name, contact details and other personal data to the guest/student, as further described in this Privacy Policy, the Host Terms and Conditions, Guest Terms and Conditions and the USH Website.</li>
+          </ul>
+        </li>
+        <li>We may also aggregate data, such as data regarding educational history, occupation, age, country of origin, USH Website usage and other information. This aggregated data does not identify users individually, and may be used by us for any business purposes and made available to third parties, including employers, job candidates, investors, and the public.</li>
+        <li>We disclose information if legally required to do so, or at our discretion pursuant to a request from a governmental entity or if we believe in good faith – after considering your privacy interests and other factors – that such action is necessary to: (a) meet legal requirements or comply with legal process; (b) protect our rights or property or our affiliated companies; (c) prevent a crime or protect national security; or (d) protect the personal safety of users or the public.</li>
+        <li>We may disclose and transfer information to a third party who acquires any or all of USH's business, whether such acquisition is by way of merger, consolidation or purchase of all or a substantial portion of our assets. In addition, in the event USH becomes the subject of an insolvency proceeding, such information will be disposed of in a transaction approved by the court. You will be notified of the sale of all or a substantial portion of our business to a third party by email or through a prominent notice posted on the Sites.</li>
+      </ol>
     </div>
 
-    <!-- S7 -->
     <div class="legal-section" id="s7">
-      <h2><span class="sec-num">7</span>How to Access, Update or Delete Your Personal Data</h2>
-      <p>You may edit your account or request data changes by emailing <a href="mailto:support@ushstudent.com">support@ushstudent.com</a> or calling <a href="tel:+13108244908">+1 (310) 824-4908</a>. We recommend periodically reviewing your data for accuracy.</p>
-      <p>Because many users use our services at different points of their student or hosting needs, we retain your personal data for continued service and convenience purposes until you advise us not to do so.</p>
-      <p>Data may also be retained for legal compliance, record-keeping, dispute resolution, fraud prevention, agreement enforcement, or other lawful purposes. Anonymized and aggregated data may be retained as needed.</p>
+      <h2>How to Access, Update or Delete Your Personal Data</h2>
+      <p>You may edit your USH Account by emailing us at <a href="mailto:contact@usaish.com">contact@usaish.com</a> or calling +1 (310) 824-4908. We recommend that you review your personal data periodically to ensure that it is accurate, complete, and current. If you do not provide and maintain accurate contact information for your USH Account, we may not be able to provide you with the notices set forth in this Privacy Policy.</p>
+      <p>Because many users tend to use our services at different points of their student, accommodation or hosting needs, we retain your personal data for continued service and convenience purposes until you advise us not to do so (see section "Contacting Us About Privacy" below). Notwithstanding the foregoing, we may retain personal data in order to comply with applicable laws, keep accurate records, resolve disputes, prevent fraud, enforce our Host Terms and Conditions, Guest Terms and Conditions or other agreements, or for any other legally permissible purpose. We may retain and continue to use anonymized and aggregated information as long as we have a business purpose for doing so.</p>
     </div>
 
-    <!-- S8 -->
     <div class="legal-section" id="s8">
-      <h2><span class="sec-num">8</span>Account Security</h2>
-      <p>The security of your USH Account relies on your protection of your password. You are solely responsible for all account activities and password protection. Never share your password with others.</p>
-      <p>USH will never request your password via email. Any request from a URL not beginning with <strong>https://www.ushhost.com</strong> or <strong>https://www.ushstudent.com</strong> should be treated as suspicious and reported to USH immediately.</p>
-      <p>Sharing your password grants third parties access to your account; you are responsible for all resulting actions. Report any unauthorized access to USH immediately.</p>
+      <h2>Account Security</h2>
+      <p>The security of your USH Account relies on your protection of your password. You are responsible for maintaining the security of your password. You are solely responsible for any and all activities that occur under your USH Account. You may not share your password with anyone. We will never ask you to send your password or other sensitive information to us in an email, though we may ask you to enter it into the USH Website. Any email or other communication requesting your password, asking you to provide sensitive account information via email, or linking to a website with a URL that does not begin with https://www.ushhost.com or https://www.ushstudent.com should be treated as unauthorized and suspicious and should be reported to us immediately at <a href="mailto:contact@usaish.com">contact@usaish.com</a>.</p>
+      <p>If you do share your password with a third party for any reason, the third party will have access to your USH Account and your information, and you are responsible for actions taken using your password. If you believe someone else has obtained access to your password, please change it immediately by logging in to your USH Account and using the password change feature. If you believe that an unauthorized access has already occurred, please report it immediately at <a href="mailto:contact@usaish.com">contact@usaish.com</a>.</p>
+      <p>We may have access to your password and may use such password to access your account for debugging, quality assurance, or other internal purposes.</p>
     </div>
 
-    <!-- S9 -->
     <div class="legal-section" id="s9">
-      <h2><span class="sec-num">9</span>Security of the USH Website and Services</h2>
-      <p>While we strive to use commercially acceptable means to protect your personal data, no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
-      <p>We follow industry-standard protections. In the event of an inadvertent disclosure, we will take commercially reasonable remedial steps as required by applicable law.</p>
+      <h2>Security of the USH Website and Services</h2>
+      <p>We follow generally accepted industry standards to protect the information submitted to us, both during transmission and once we receive it. While we strive to use commercially acceptable means to protect your personal data, no method of transmission over the Internet, or method of electronic storage, is 100% secure and we cannot guarantee its absolute security. In the event of an inadvertent disclosure of your personal data we will take all commercially reasonable steps to limit and remedy the disclosure as required by the applicable law. If you have any questions about the security of the USH Website, you can contact us via as described in the "Contacting Us About Privacy" section below.</p>
     </div>
 
-    <!-- S10 -->
     <div class="legal-section" id="s10">
-      <h2><span class="sec-num">10</span>Children</h2>
-      <p>The USH Services are not intended for, nor do we knowingly collect information from, children under the age of majority.</p>
-      <p>In compliance with COPPA, we do not collect personally identifiable information from users under 13 without verified parental consent. In compliance with GDPR, we do not collect information from users under 16 in the EEA without parental consent.</p>
-      <p>Children should not register or submit information to USH. If we become aware that data has been collected from a child without verified parental consent, we will delete it promptly. Please report any suspected child data collection to us immediately.</p>
+      <h2>Children</h2>
+      <p>The USH Services are not intended for, nor do we knowingly collect information from, children under the age of majority. Consistent with the federal Children's Online Privacy Protection Act of 1998 (COPPA), we will never knowingly request personally identifiable information from anyone under the age of 13 without requiring parental consent, and consistent with the EU General Data Protection Regulation ("GDPR"), under the age of 16 in the European Economic Area ("EEA"). If you are under 13 or under 16 in the EEA, please do not attempt to register for the USH Services or send any information about yourself to us, including your name, address, telephone number, or email address. No one under age 13 or 16 in the EEA may provide any personal data to us or on the USH Website. If we learn that we have collected personal data from a child under age 13 or 16 without verification of parental consent, we will delete that information as quickly as possible. If you believe that we might have any information from or about a child under 13 or 16 in the EEA, please contact us at <a href="mailto:contact@usaish.com">contact@usaish.com</a>.</p>
     </div>
 
-    <!-- S11 -->
     <div class="legal-section" id="s11">
-      <h2><span class="sec-num">11</span>International Visitors</h2>
-      <p>USH operates US-based servers, meaning personal data is transferred to, stored, and processed in the United States. The United States does not have the same data protection laws as the EEA, Canada, and some other regions.</p>
-      <p>By providing your personal data to USH, you consent to its transfer to and use in the United States in accordance with this Privacy Policy.</p>
+      <h2>International Visitors</h2>
+      <p>Our servers and offices are located in the United States, so your personal data will be transferred to, stored, or processed in the United States. The United States does not have the same data protection laws as the EEA, Canada and some other regions. By providing your personal data, you consent to the transfer of your personal data to the United States and the use of your personal data in accordance with this Privacy Policy.</p>
     </div>
 
-    <!-- S12 -->
     <div class="legal-section" id="s12">
-      <h2><span class="sec-num">12</span>Specific Information for EU / EEA Users</h2>
-
-      <h3>Legal Basis</h3>
-      <p>Processing of your personal data occurs based on your consent or steps taken at your request prior to entering into a contract.</p>
-
-      <h3>Your Rights</h3>
+      <h2>Specific Information Related to Users in the European Union and European Economic Area</h2>
+      <p>Our legal basis for processing: For personal data that we process in connection with offering and providing the USH Website and Services to you, we will generally process that personal data (i) on the basis of consent, or (ii) in order to take steps at your request.</p>
+      <p>Your Access and Choices: You may have the following rights in relation to your personal data:</p>
       <ul>
-        <li><strong>Rectification:</strong> Correct inaccurate personal data</li>
-        <li><strong>Erasure:</strong> Request deletion of your data under certain circumstances</li>
-        <li><strong>Restriction:</strong> Restrict processing when accuracy is disputed or processing seems unlawful</li>
-        <li><strong>Data Portability:</strong> Access your personal data and receive copies in structured, machine-readable formats transferable to other controllers</li>
-        <li><strong>Complaint:</strong> Lodge a complaint with national data protection regulators for GDPR non-compliance</li>
+        <li>Rectify any inaccurate personal data that we hold about you</li>
+        <li>Have your personal data erased under certain circumstances</li>
+        <li>Have the processing of your personal data restricted where you dispute its accuracy, if you think its processing is unlawful, if you otherwise object to its processing, or when we no longer need your personal data and you need it in relation to a legal claim</li>
+        <li>Have access to your personal data, and the right to receive copies of your personal data in a structured, commonly used and machine-readable format and transfer those copies to another data controller, under certain circumstances</li>
+        <li>Complain to your national data protection regulator if you feel that any of your personal data is not being processed in accordance with the GDPR.</li>
       </ul>
-
-      <h3>Consent Withdrawal</h3>
-      <p>If you withdraw your consent, we will stop processing the relevant personal data except to the extent we have other grounds for processing under applicable laws. Withdrawal prevents future service provision but does not affect any prior lawful processing.</p>
-      <p>To exercise any of these rights, contact USH using the information in the Contact Us section below.</p>
+      <p>Your right to withdraw consent: If you withdraw your consent, we will stop processing the relevant personal data except to the extent we have other grounds for processing under applicable laws. We will respond to your request within a reasonable timeframe. You may withdraw your consent at any time; however, USH will not be able to provide or continue to provide products or services to you. Withdrawing your consent will not affect the lawfulness of any processing we conducted prior to your withdrawal.</p>
+      <p>There may be cases where restrictions on the amount of data that can be disclosed to data subjects under applicable law (for example, if that would necessarily involve disclosing data about another person). USH is permitted to withhold some types of personal data in certain circumstances, subject to applicable local law requirements. If there is a dispute, please contact us using the information in the "Contacting Us About Privacy" section below. In addition, data subjects have the right to lodge a complaint with a supervisory authority. The name and contact details of the supervisory authorities in the European Union can be found at <a href="http://ec.europa.eu/justice/article-29/structure/data-protection-authorities/index_en.htm">http://ec.europa.eu/justice/article-29/structure/data-protection-authorities/index_en.htm</a></p>
+      <p>For questions about the collection of personal data by USH, or to exercise the right to access, correct, update, or delete such data or object, for legitimate purposes, to the processing of personal data, as provided under applicable law, please contact us using the information in the "Contacting Us About Privacy" section below.</p>
     </div>
 
-    <!-- S13 -->
     <div class="legal-section" id="s13">
-      <h2><span class="sec-num">13</span>How We Respond to Do Not Track Signals</h2>
-      <p>There is no consensus among industry participants as to what "Do Not Track" means in this context. Like many websites and online services, we do not alter our practices when we receive a "Do Not Track" signal from a visitor's browser.</p>
-      <p>More information is available at <a href="http://www.allaboutdnt.com" target="_blank">www.allaboutdnt.com</a>.</p>
+      <h2>How We Respond to Do Not Track Signals</h2>
+      <p>Please note that your browser settings may allow you to automatically transmit a "Do Not Track" signal to websites and online services you visit. There is no consensus among industry participants as to what "Do Not Track" means in this context. Like many websites and online services, we do not alter our practices when we receive a "Do Not Track" signal from a visitor's browser. To find out more about "Do Not Track", please visit <a href="http://www.allaboutdnt.com">http://www.allaboutdnt.com</a></p>
     </div>
 
-    <!-- S14 -->
     <div class="legal-section" id="s14">
-      <h2><span class="sec-num">14</span>California Residents — Shine the Light Law</h2>
-      <p>California Civil Code Section 1798.83 permits California residents to request annual lists of personal data shared with third parties for direct marketing purposes, including names and addresses. Such requests are free and limited to once per year.</p>
-      <p>Under Section 1798.83, we currently do not share any personal data with third parties for their own direct marketing purposes.</p>
+      <h2>California's Shine the Light Law</h2>
+      <p>California Civil Code Section 1798.83, known as the "Shine The Light" law, permits users who are California residents to request and obtain from us a list of what personal data (if any) we disclosed to third parties for direct marketing purposes in the preceding calendar year and the names and addresses of those third parties. Requests may be made only once a year and are free of charge. Under Section 1798.83, we currently do not share any personal data with third parties for their own direct marketing purposes.</p>
     </div>
 
-    <!-- S15 -->
     <div class="legal-section" id="s15">
-      <h2><span class="sec-num">15</span>Changes to this Privacy Policy</h2>
-      <p>When we make material changes to this Privacy Policy, we will notify users via their registered account email addresses and through a prominent notice on the USH Website.</p>
-      <p>Continued use of the USH Website after changes are posted constitutes acceptance of the updated policy.</p>
+      <h2>Changes to Privacy Policy</h2>
+      <p>If we decide to materially change the substance of this Privacy Policy, we will, where required, contact you via the email address that you maintain in your USH Account. We will also post those changes through a prominent notice on the USH Website.</p>
     </div>
 
-    <!-- S16 -->
     <div class="legal-section" id="s16">
-      <h2><span class="sec-num">16</span>Contacting Us About Privacy</h2>
-      <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
-      <ul>
-        <li><strong>Email:</strong> <a href="mailto:support@ushstudent.com">support@ushstudent.com</a></li>
-        <li><strong>Phone:</strong> <a href="tel:+13108244908">+1 (310) 824-4908</a></li>
-      </ul>
-      <p>We will use reasonable efforts to promptly answer your question or resolve your problem.</p>
+      <h2>Contacting Us About Privacy</h2>
+      <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:contact@usaish.com">contact@usaish.com</a>. We will use reasonable efforts to promptly answer your question or resolve your problem.</p>
     </div>
 
-    <!-- S17 -->
     <div class="legal-section" id="s17">
-      <h2><span class="sec-num">17</span>Consent to SMS Notifications</h2>
-      <p>By providing your phone number to USH, you grant Universal Student Housing permission to send you text messages related to your account and services. Message and data rates may apply.</p>
-      <p>We will only send one SMS as a reply to you, and you will be able to opt out at any time by replying <strong>"STOP"</strong>.</p>
-      <p>No mobile information is shared with third parties or affiliates for marketing purposes. Text messaging consent data is not shared with any third parties.</p>
+      <h2>Consent to SMS Notifications and Data Privacy</h2>
+      <p>By providing my phone number to Universal Student Housing, you agree and acknowledge that Universal Student Housing may send text messages to my wireless phone number for any purpose. Message and data rates may apply. We will only send one SMS as a reply to you, and you will be able to Opt-out by replying "STOP". For more information on how your data will be handled please read How we Share Information. No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
     </div>
 
   </main>
 </div>
 
-<!-- FOOTER -->
 <footer style="background:var(--c-charcoal);padding:48px 0;text-align:center">
   <div class="container">
     <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:12px">© 2024 USH Inc. All rights reserved.</p>
     <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
       <a href="guest_terms_conditions.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Terms &amp; Conditions</a>
       <a href="guests_cancellation_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Cancellation Policy</a>
+      <a href="acceptable_use_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Acceptable Use</a>
+      <a href="dmca_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">DMCA Policy</a>
       <a href="privacy_policy.html" style="color:var(--c-teal);font-size:0.82rem;text-decoration:none;font-weight:600">Privacy Policy</a>
       <a href="../contact.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Contact</a>
     </div>
@@ -357,18 +273,6 @@ document.getElementById('menuOpen').addEventListener('click', () => {
 document.getElementById('menuClose').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.remove('open');
 });
-const sections = document.querySelectorAll('.legal-section');
-const tocLinks = document.querySelectorAll('#tocLinks a');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      tocLinks.forEach(l => l.classList.remove('active'));
-      const active = document.querySelector(`#tocLinks a[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, { rootMargin: '-20% 0px -70% 0px' });
-sections.forEach(s => observer.observe(s));
 </script>
 </body>
 </html>
