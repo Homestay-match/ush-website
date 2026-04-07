@@ -350,10 +350,12 @@ input,select,textarea,button{font-family:var(--ff-body)}
         <div class="faq-strip-label">Quick Answers</div>
         <h2>Common <em>questions</em></h2>
         <p>Can't find what you're looking for? Send us a message and we'll get back to you within 1 business day.</p>
-        <a href="apply.html" class="btn btn-primary">Apply Now →</a>
-        <div class="ask-tooltip">
-          <a href="#" class="btn btn-outline" onclick="if(window.chatbase)window.chatbase('open');return false;">Ask a Question &rarr;</a>
-          <div class="ask-tip">Sophie our AI assistant is here to help!</div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <a href="apply.html" class="btn btn-primary">Apply Now →</a>
+          <div class="ask-tooltip">
+            <a href="#" class="btn btn-outline" onclick="if(window.chatbase)window.chatbase('open');return false;">Ask a Question &rarr;</a>
+            <div class="ask-tip">Sophie our AI assistant is here to help!</div>
+          </div>
         </div>
       </div>
       <div class="faq-list" data-reveal>
