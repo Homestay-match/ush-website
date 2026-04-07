@@ -60,6 +60,12 @@
 
 /* ── RESPONSIVE ── */
 @media(max-width:480px){.region-section{padding:56px 0 32px}}
+
+/* ── ASK TOOLTIP ── */
+.ask-tooltip{position:relative;display:inline-flex}
+.ask-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--c-charcoal);color:#fff;font-size:0.78rem;padding:7px 16px;border-radius:20px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:10}
+.ask-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--c-charcoal)}
+.ask-tooltip:hover .ask-tip{opacity:1}
 </style>
 </head>
 <body>
@@ -489,7 +495,10 @@
     <p>Apply in minutes and receive a placement matched to your needs, your school, and your lifestyle.</p>
     <div class="cta-buttons">
       <a href="apply.html" class="btn btn-secondary">Apply Now &rarr;</a>
-      <a href="#" class="btn btn-outline">Chat on WhatsApp &rarr;</a>
+      <div class="ask-tooltip">
+        <a href="#" class="btn btn-outline" onclick="if(window.chatbase)window.chatbase('open');return false;">Ask a Question &rarr;</a>
+        <div class="ask-tip">Sophie our AI assistant is here to help!</div>
+      </div>
     </div>
   </div>
 </section>
@@ -607,6 +616,11 @@ function initReveals() {
 document.addEventListener('DOMContentLoaded', () => {
   initReveals();
 });
+</script>
+
+<!-- Chatbase (Sophie) -->
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};window.chatbase=new Proxy(window.chatbase,{get(t,p){if(p==="q")return t.q;return(...a)=>t(p,...a)}})}const onLoad=function(){const s=document.createElement("script");s.src="https://www.chatbase.co/embed.min.js";s.id="YLtSW-RgWa41p4meXLaD8";s.domain="www.chatbase.co";document.body.appendChild(s)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 
 </body>
