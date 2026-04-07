@@ -108,6 +108,21 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .checkbox-label input[type="checkbox"]{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--c-orange);cursor:pointer}
 
 /* ══════════════════════════════════════
+   AGENT EMAIL VERIFY
+   ══════════════════════════════════════ */
+.agent-email-row{display:flex;gap:10px;align-items:stretch}
+.agent-email-row input{flex:1}
+.btn-verify{padding:11px 20px;background:var(--c-charcoal);color:var(--c-white);border:none;border-radius:var(--r-sm);font-family:var(--ff-body);font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.btn-verify:hover{background:var(--c-teal)}
+.agent-email-found{display:flex;align-items:center;gap:8px;background:#edfaf4;border:1px solid #6bcf9e;border-radius:var(--r-sm);padding:10px 14px;margin-top:12px;font-size:0.85rem;color:#1a7d46;font-weight:600}
+.agent-email-found svg{flex-shrink:0}
+.agent-not-found-msg{background:#fff0f0;border:1px solid rgba(224,82,82,0.35);border-radius:var(--r-sm);padding:12px 16px;margin-bottom:20px;font-size:0.84rem;color:var(--c-error);font-weight:600;line-height:1.5}
+.agent-register-fields{display:none;animation:fadeIn 0.25s ease}
+.agent-register-fields.visible{display:block}
+.agent-register-title{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-error);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(224,82,82,0.2)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════════
    NOTICE BOX
    ══════════════════════════════════════ */
 .notice-box{background:var(--c-orange-light);border:1px solid rgba(217,168,78,0.3);border-radius:var(--r-sm);padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}
@@ -271,13 +286,48 @@ input,select,textarea,button{font-family:var(--ff-body)}
             <div class="form-row cols-1">
               <div class="form-group">
                 <label for="agent-email">Your Email Address<span class="req">*</span></label>
-                <input type="email" id="agent-email" placeholder="agent@agency.com" autocapitalize="off" autocorrect="off">
+                <div class="agent-email-row">
+                  <input type="email" id="agent-email" placeholder="agent@agency.com" autocapitalize="off" autocorrect="off">
+                  <button type="button" class="btn-verify" onclick="checkAgentEmail()">Verify</button>
+                </div>
               </div>
             </div>
+
+            <!-- Email status feedback -->
+            <div id="agent-email-status"></div>
+
+            <!-- New-agent registration block (shown when email not found) -->
+            <div id="agent-register" class="agent-register-fields">
+              <div class="agent-not-found-msg">
+                ⚠&nbsp; Your email was not found on file. Please create a new agent account by filling out the following fields.
+              </div>
+              <div class="agent-register-title">New Agent Account</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="agent-agency">Agency's Name<span class="req">*</span></label>
+                  <input type="text" id="agent-agency" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="agent-first">Agent's First Name<span class="req">*</span></label>
+                  <input type="text" id="agent-first" placeholder="">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="agent-last">Agent's Last Name<span class="req">*</span></label>
+                  <input type="text" id="agent-last" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="agent-url">Agent's URL<span class="req">*</span></label>
+                  <input type="text" id="agent-url" placeholder="https://">
+                </div>
+              </div>
+            </div>
+
             <div class="agent-info-box">
               <label class="checkbox-label">
                 <input type="checkbox" id="agent-emails" name="agent-emails">
-                <span>Send all automated emails (confirmations, updates, etc.) to my agent email instead of the student.</span>
+                <span>Send emails to your agent email address, NOT to the student.</span>
               </label>
             </div>
           </div>
@@ -824,6 +874,45 @@ function validateStep(n) {
       { id: 'group-select', msg: 'Please select if the student is part of a group' },
       { id: 'agent-email',  msg: 'Agent email address is required' }
     ].concat(fields);
+
+    // Require email to be verified via the Verify button
+    if (!agentEmailVerified) {
+      hasError = true;
+      var emailEl  = document.getElementById('agent-email');
+      var emailGrp = emailEl.closest('.form-group');
+      emailGrp.classList.add('error');
+      if (!emailGrp.querySelector('.field-error')) {
+        var vErr = document.createElement('div');
+        vErr.className = 'field-error';
+        vErr.textContent = 'Please click Verify to check your email';
+        emailGrp.appendChild(vErr);
+      }
+    }
+
+    // If the registration block is visible, require its fields
+    var regBlock = document.getElementById('agent-register');
+    if (regBlock && regBlock.classList.contains('visible')) {
+      [
+        { id: 'agent-agency', msg: "Agency name is required" },
+        { id: 'agent-first',  msg: "Agent's first name is required" },
+        { id: 'agent-last',   msg: "Agent's last name is required" },
+        { id: 'agent-url',    msg: "Agent's URL is required" }
+      ].forEach(function(f) {
+        var el = document.getElementById(f.id);
+        if (!el) return;
+        if (!el.value.trim()) {
+          hasError = true;
+          var grp = el.closest('.form-group');
+          grp.classList.add('error');
+          if (!grp.querySelector('.field-error')) {
+            var e2 = document.createElement('div');
+            e2.className = 'field-error';
+            e2.textContent = f.msg;
+            grp.appendChild(e2);
+          }
+        }
+      });
+    }
   }
   var hasError = false;
   fields.forEach(function(f) {
@@ -869,7 +958,11 @@ function validateStep(n) {
 
 // Clear error as soon as user interacts with a field
 document.addEventListener('DOMContentLoaded', function() {
-  var agentFields = [{ id: 'group-select' }, { id: 'agent-email' }];
+  var agentFields = [
+    { id: 'group-select' }, { id: 'agent-email' },
+    { id: 'agent-agency' }, { id: 'agent-first' },
+    { id: 'agent-last'   }, { id: 'agent-url'   }
+  ];
   var allFields = agentFields.concat(step1Fields).concat(step2Fields).concat(step3Fields);
   allFields.forEach(function(f) {
     var el = document.getElementById(f.id);
@@ -924,6 +1017,68 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ══════════════════════════════════════
+// AGENT EMAIL VERIFICATION
+// ══════════════════════════════════════
+// Demo list of pre-registered agent emails (replace with real API call when backend is ready)
+var registeredAgentEmails = [
+  'agent@ush.com',
+  'demo@agency.com',
+  'test@studyabroad.com'
+];
+var agentEmailVerified = false; // tracks whether email check has been completed
+
+function checkAgentEmail() {
+  var emailEl  = document.getElementById('agent-email');
+  var statusEl = document.getElementById('agent-email-status');
+  var regBlock = document.getElementById('agent-register');
+  var email    = emailEl.value.trim().toLowerCase();
+
+  // clear previous status
+  statusEl.innerHTML = '';
+  regBlock.classList.remove('visible');
+  agentEmailVerified = false;
+
+  // basic format check
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    var group = emailEl.closest('.form-group');
+    group.classList.add('error');
+    if (!group.querySelector('.field-error')) {
+      var err = document.createElement('div');
+      err.className = 'field-error';
+      err.textContent = 'Please enter a valid email address';
+      group.appendChild(err);
+    }
+    return;
+  }
+
+  if (registeredAgentEmails.indexOf(email) !== -1) {
+    // ── FOUND ──
+    agentEmailVerified = true;
+    statusEl.innerHTML =
+      '<div class="agent-email-found">' +
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' +
+        'Email verified — welcome back! You can continue with the application.' +
+      '</div>';
+  } else {
+    // ── NOT FOUND ──
+    agentEmailVerified = true; // still "verified" — they'll fill registration fields instead
+    regBlock.classList.add('visible');
+  }
+}
+
+// Reset verification state when email is edited after checking
+document.addEventListener('DOMContentLoaded', function() {
+  var emailEl = document.getElementById('agent-email');
+  if (emailEl) {
+    emailEl.addEventListener('input', function() {
+      agentEmailVerified = false;
+      document.getElementById('agent-email-status').innerHTML = '';
+      document.getElementById('agent-register').classList.remove('visible');
+    });
+  }
+});
+
+// ══════════════════════════════════════
 // STEP NAVIGATION
 // ══════════════════════════════════════
 function goToStep(n) {
@@ -965,6 +1120,10 @@ function setAgentMode(isAgent) {
     agentFields.classList.remove('visible');
     btnNo.classList.add('active');
     btnYes.classList.remove('active');
+    // Reset verification state
+    agentEmailVerified = false;
+    document.getElementById('agent-email-status').innerHTML = '';
+    document.getElementById('agent-register').classList.remove('visible');
   }
 }
 
