@@ -101,33 +101,23 @@
 .host-showcase-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
 .host-showcase-header p{font-size:1rem;color:var(--c-text-light);max-width:500px;margin:0 auto;line-height:1.65}
 .real-homes-tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:16px}
-/* Host card — photos only */
-.host-card{display:none}
-.host-card.active{display:block}
-.host-label{text-align:center;margin-bottom:16px;min-height:28px}
-.host-label-name{font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:var(--c-charcoal);display:inline-flex;align-items:center;gap:8px}
-.host-label-city{font-size:0.82rem;color:var(--c-text-muted);font-weight:400}
-.host-verified-pill{display:inline-flex;align-items:center;gap:4px;background:var(--c-teal-light);color:var(--c-teal-dark);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-full)}
-.host-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:400px 280px;gap:10px}
-.host-photo-item{border-radius:var(--r-lg);overflow:hidden}
-.host-photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
-.host-photo-item:hover img{transform:scale(1.04)}
-.host-photo-item.wide{grid-column:span 2}
-/* Navigation — single active pill */
-.showcase-nav{display:flex;align-items:center;justify-content:center;margin-top:24px}
-.showcase-tab{display:none;align-items:center;gap:18px;padding:18px 32px;border-radius:var(--r-full);border:1px solid var(--c-border-strong);background:var(--c-white);cursor:pointer;transition:all 0.25s;font-family:var(--ff-body)}
-.showcase-tab.active{display:flex}
-.showcase-tab:hover{border-color:var(--c-teal);box-shadow:var(--shadow-md)}
-.showcase-tab-avatar{width:54px;height:54px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--c-teal-light)}
-.showcase-tab-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.showcase-tab-initials{width:54px;height:54px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:var(--c-white);flex-shrink:0}
-.tab-name{font-weight:700;font-size:1.1rem;color:var(--c-charcoal)}
-.tab-city{font-size:0.88rem;color:var(--c-text-muted);margin-top:2px}
-.tab-arrow{margin-left:10px;color:var(--c-teal);font-size:1.2rem}
-@media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}}
-@media(max-width:600px){
-  .host-photos{grid-template-rows:220px 160px;gap:8px}
-}
+/* ── HOST ROOM CARDS ── */
+.host-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.host-room-card{background:var(--c-white);border-radius:var(--r-lg);overflow:visible;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid var(--c-border);transition:all 0.35s var(--ease-out)}
+.host-room-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,0.12)}
+.host-room-photo{position:relative;height:260px;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
+.host-room-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);display:block}
+.host-room-card:hover .host-room-photo img{transform:scale(1.04)}
+.host-room-avatar{position:absolute;bottom:-22px;left:18px;width:52px;height:52px;border-radius:50%;overflow:hidden;border:3px solid var(--c-white);box-shadow:0 3px 10px rgba(0,0,0,0.18);z-index:2;background:var(--c-teal)}
+.host-room-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.host-room-avatar-initials{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;color:var(--c-white);font-family:var(--ff-body)}
+.host-room-info{padding:32px 20px 22px}
+.host-room-name{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--c-charcoal);margin-bottom:10px}
+.host-room-meta{display:flex;flex-direction:column;gap:6px}
+.host-room-meta-row{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--c-text-muted)}
+.host-room-meta-row svg{flex-shrink:0;color:var(--c-teal)}
+@media(max-width:900px){.host-showcase{padding:64px 0}.host-showcase-header{margin-bottom:32px}.host-cards-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.host-cards-grid{grid-template-columns:1fr}}
 
 /* ══════════════════════════════════════
    INDEX — SAFETY SECTION
@@ -424,68 +414,77 @@
       <p>Every photo is taken by a USH coordinator during an in-person visit. No staging, no stock photos — just real homes and real rooms.</p>
     </div>
 
-    <!-- Sandra G. -->
-    <div class="host-card active" id="hostCard-sandra">
-      <div class="host-photos">
-        <div class="host-photo-item wide">
+    <div class="host-cards-grid" data-reveal>
+
+      <!-- Sandra G. -->
+      <div class="host-room-card">
+        <div class="host-room-photo">
           <img src="assets/sandra-1.jpg" alt="Sandra's student bedroom">
+          <div class="host-room-avatar">
+            <div class="host-room-avatar-initials">S</div>
+          </div>
         </div>
-        <div class="host-photo-item">
-          <img src="assets/sandra-2.jpg" alt="Sandra's bathroom">
-        </div>
-        <div class="host-photo-item">
-          <img src="assets/sandra-3.jpg" alt="Sandra's living room">
-        </div>
-      </div>
-    </div>
-
-    <!-- Greta S. -->
-    <div class="host-card" id="hostCard-greta">
-      <div class="host-photos">
-        <div class="host-photo-item wide">
-          <img src="assets/sandra-4.jpg" alt="Greta's student bedroom">
-        </div>
-        <div class="host-photo-item">
-          <img src="assets/sandra-5.jpg" alt="Greta's bathroom">
-        </div>
-        <div class="host-photo-item">
-          <img src="assets/sandra-6.jpg" alt="Greta's living room">
+        <div class="host-room-info">
+          <div class="host-room-name">Sandra G.</div>
+          <div class="host-room-meta">
+            <div class="host-room-meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hollywood, CA
+            </div>
+            <div class="host-room-meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Santa Monica College
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Ana P. -->
-    <div class="host-card" id="hostCard-ana">
-      <div class="host-photos">
-        <div class="host-photo-item wide">
+      <!-- Greta S. -->
+      <div class="host-room-card">
+        <div class="host-room-photo">
+          <img src="assets/greta-IMG_7438.jpg" alt="Greta's student bedroom">
+          <div class="host-room-avatar">
+            <img src="assets/host-greta.jpg" alt="Greta S.">
+          </div>
+        </div>
+        <div class="host-room-info">
+          <div class="host-room-name">Greta S.</div>
+          <div class="host-room-meta">
+            <div class="host-room-meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              San Jose, CA
+            </div>
+            <div class="host-room-meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              San Jose State University
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ana P. -->
+      <div class="host-room-card">
+        <div class="host-room-photo">
           <img src="assets/sandra-7.jpg" alt="Ana's student bedroom">
+          <div class="host-room-avatar">
+            <div class="host-room-avatar-initials">A</div>
+          </div>
         </div>
-        <div class="host-photo-item">
-          <img src="assets/sandra-8.jpg" alt="Ana's bathroom">
-        </div>
-        <div class="host-photo-item">
-          <img src="assets/sandra-9.jpg" alt="Ana's living room">
+        <div class="host-room-info">
+          <div class="host-room-name">Ana P.</div>
+          <div class="host-room-meta">
+            <div class="host-room-meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Irvine, CA
+            </div>
+            <div class="host-room-meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              UC Irvine
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Tab navigation — one pill shown at a time -->
-    <div class="showcase-nav" id="showcaseNav">
-      <button class="showcase-tab active" onclick="manualNext()" data-host="sandra">
-        <div class="showcase-tab-initials">S</div>
-        <div><div class="tab-name">Sandra G.</div><div class="tab-city">Hollywood, CA</div></div>
-        <span class="tab-arrow">→</span>
-      </button>
-      <button class="showcase-tab" onclick="manualNext()" data-host="greta">
-        <div class="showcase-tab-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
-        <div><div class="tab-name">Greta S.</div><div class="tab-city">San Jose, CA</div></div>
-        <span class="tab-arrow">→</span>
-      </button>
-      <button class="showcase-tab" onclick="manualNext()" data-host="ana">
-        <div class="showcase-tab-initials">A</div>
-        <div><div class="tab-name">Ana P.</div><div class="tab-city">Irvine, CA</div></div>
-        <span class="tab-arrow">→</span>
-      </button>
     </div>
   </div>
 </section>
@@ -793,32 +792,6 @@
 </footer>
 
 <script>
-// ══════════ HOST SHOWCASE SWITCHER ══════════
-const hostIds = ['sandra', 'greta', 'ana'];
-let hostIdx = 0;
-let hostTimer = null;
-
-function switchHost(id) {
-  document.querySelectorAll('.host-card').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.showcase-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('hostCard-' + id).classList.add('active');
-  document.querySelector(`.showcase-tab[data-host="${id}"]`).classList.add('active');
-  hostIdx = hostIds.indexOf(id);
-}
-
-function nextHost() {
-  hostIdx = (hostIdx + 1) % hostIds.length;
-  switchHost(hostIds[hostIdx]);
-}
-
-function manualNext() {
-  nextHost();
-  clearInterval(hostTimer);
-  hostTimer = setInterval(nextHost, 5000);
-}
-
-hostTimer = setInterval(nextHost, 5000);
-
 // ══════════ TESTIMONIALS CAROUSEL ══════════
 (function() {
   const track = document.getElementById('testimonialsTrack');
