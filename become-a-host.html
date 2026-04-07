@@ -8,15 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/ush.css">
+<link rel="stylesheet" href="assets/ush.css?v=6">
 <style>
 input,select,textarea,button{font-family:var(--ff-body)}
 
 /* ── TRANSPARENT NAV OVERRIDE ── */
 .nav{background:transparent}
 .nav.scrolled{background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06)}
-.nav-logo{color:var(--c-white)}
-.nav.scrolled .nav-logo{color:var(--c-teal-dark)}
+.nav-logo img{filter:brightness(0) invert(1)}
+.nav.scrolled .nav-logo img{filter:none}
 .nav-links a{color:rgba(255,255,255,0.85)}
 .nav-links a:hover{color:var(--c-white)}
 .nav.scrolled .nav-links a{color:var(--c-text)}
@@ -190,8 +190,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 <nav class="nav" id="mainNav">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#6EB7A3"/><path d="M8 22V13l8-5 8 5v9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 22v-5h6v5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      USH
+      <img src="assets/ushlogo.png" alt="USH">
     </a>
     <div class="nav-links">
       <a href="about.html">About</a>
@@ -616,7 +615,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
       <div class="footer-col">
         <h4>Legal</h4>
         <a href="legal/privacy_policy.html">Privacy Policy</a>
-        <a href="legal/guest_terms_conditions.html">Terms of Service</a>
+        <a href="legal/guest_terms_conditions.html">Guest Terms &amp; Conditions</a>
       </div>
     </div>
     <div class="footer-bottom">

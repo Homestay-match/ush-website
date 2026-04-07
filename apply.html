@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/ush.css">
+<link rel="stylesheet" href="assets/ush.css?v=6">
 <style>
 /* ── PAGE-SPECIFIC VARIABLE OVERRIDES ── */
 :root{
@@ -178,6 +178,16 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .footer-mini{text-align:center;padding:32px 24px;font-size:0.8rem;color:var(--c-text-muted);border-top:1px solid var(--c-border);margin-top:48px}
 .footer-mini a{color:var(--c-teal)}
 
+/* ── VALIDATION ── */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea{border-color:var(--c-error);box-shadow:0 0 0 3px rgba(224,82,82,0.12);animation:shake 0.3s ease}
+.form-group.error label{color:var(--c-error)}
+.field-error{font-size:0.78rem;color:var(--c-error);margin-top:4px;display:flex;align-items:center;gap:4px}
+.field-error::before{content:'⚠';font-size:0.72rem}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.req{color:var(--c-error);margin-left:2px;font-weight:700}
+
 /* ── ASK TOOLTIP ── */
 .ask-tooltip{position:relative;display:inline-flex}
 .ask-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--c-charcoal);color:#fff;font-size:0.78rem;padding:7px 16px;border-radius:20px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:10}
@@ -191,13 +201,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
-        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
-      </svg>
-      USH
+      <img src="assets/ushlogo.png" alt="USH">
     </a>
     <div class="nav-links">
       <a href="about.html">About</a>
@@ -256,7 +260,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
           <div class="form-section">
             <div class="form-row cols-1">
               <div class="form-group">
-                <label for="group-select">Is the Student Part of a Group?</label>
+                <label for="group-select">Is the Student Part of a Group?<span class="req">*</span></label>
                 <select id="group-select">
                   <option value="">Select One</option>
                   <option value="no">No, Individual Student</option>
@@ -266,7 +270,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
             </div>
             <div class="form-row cols-1">
               <div class="form-group">
-                <label for="agent-email">Your Email Address</label>
+                <label for="agent-email">Your Email Address<span class="req">*</span></label>
                 <input type="email" id="agent-email" placeholder="agent@agency.com" autocapitalize="off" autocorrect="off">
               </div>
             </div>
@@ -285,7 +289,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="school">School</label>
+              <label for="school">School<span class="req">*</span></label>
               <select id="school">
                 <option value="">Select your school</option>
                 <optgroup label="Southern California">
@@ -355,18 +359,18 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="first-name">First Name</label>
+              <label for="first-name">First Name<span class="req">*</span></label>
               <input type="text" id="first-name" placeholder="Your first name" autocapitalize="words" class="cap-words">
             </div>
             <div class="form-group">
-              <label for="last-name">Last Name</label>
+              <label for="last-name">Last Name<span class="req">*</span></label>
               <input type="text" id="last-name" placeholder="Your last name" autocapitalize="words" class="cap-words">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="gender">Gender</label>
+              <label for="gender">Gender<span class="req">*</span></label>
               <select id="gender" name="gender">
                 <option value="">Select One</option>
                 <option value="male">Male</option>
@@ -374,57 +378,33 @@ input,select,textarea,button{font-family:var(--ff-body)}
               </select>
             </div>
             <div class="form-group">
-              <label for="dob">Date of Birth</label>
+              <label for="dob">Date of Birth<span class="req">*</span></label>
               <input type="date" id="dob">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="country-residence">Country of Residence</label>
+              <label for="country-residence">Country of Residence<span class="req">*</span></label>
               <span class="label-hint">What country do you live in?</span>
               <select id="country-residence">
                 <option value="">Select One</option>
-                <option>Japan</option>
-                <option>South Korea</option>
-                <option>China</option>
-                <option>Colombia</option>
-                <option>Saudi Arabia</option>
-                <option>France</option>
-                <option>Taiwan</option>
-                <option>Brazil</option>
-                <option>Mexico</option>
-                <option>Germany</option>
-                <option>Italy</option>
-                <option>Spain</option>
-                <option>Other</option>
+                <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belgium</option><option>Belize</option><option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cambodia</option><option>Cameroon</option><option>Canada</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option><option>Comoros</option><option>Congo (Brazzaville)</option><option>Congo (Kinshasa)</option><option>Costa Rica</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czech Republic</option><option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option><option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Eswatini</option><option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>France</option><option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kuwait</option><option>Kyrgyzstan</option><option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Mauritania</option><option>Mauritius</option><option>Mexico</option><option>Micronesia</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option><option>Namibia</option><option>Nauru</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option><option>North Macedonia</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palau</option><option>Palestine</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Africa</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Suriname</option><option>Sweden</option><option>Switzerland</option><option>Syria</option><option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option><option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Turkey</option><option>Turkmenistan</option><option>Tuvalu</option><option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="country-birth">Country of Birth</label>
+              <label for="country-birth">Country of Birth<span class="req">*</span></label>
               <span class="label-hint">Where were you born?</span>
               <select id="country-birth">
                 <option value="">Select One</option>
-                <option>Japan</option>
-                <option>South Korea</option>
-                <option>China</option>
-                <option>Colombia</option>
-                <option>Saudi Arabia</option>
-                <option>France</option>
-                <option>Taiwan</option>
-                <option>Brazil</option>
-                <option>Mexico</option>
-                <option>Germany</option>
-                <option>Italy</option>
-                <option>Spain</option>
-                <option>Other</option>
+                <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belgium</option><option>Belize</option><option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cambodia</option><option>Cameroon</option><option>Canada</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option><option>Comoros</option><option>Congo (Brazzaville)</option><option>Congo (Kinshasa)</option><option>Costa Rica</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czech Republic</option><option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option><option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Eswatini</option><option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>France</option><option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kuwait</option><option>Kyrgyzstan</option><option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Mauritania</option><option>Mauritius</option><option>Mexico</option><option>Micronesia</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option><option>Namibia</option><option>Nauru</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option><option>North Macedonia</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palau</option><option>Palestine</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Africa</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Suriname</option><option>Sweden</option><option>Switzerland</option><option>Syria</option><option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option><option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Turkey</option><option>Turkmenistan</option><option>Tuvalu</option><option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
               </select>
             </div>
           </div>
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="english-skill">English Skill</label>
+              <label for="english-skill">English Skill<span class="req">*</span></label>
               <select id="english-skill">
                 <option value="">Select One</option>
                 <option>Beginner</option>
@@ -436,7 +416,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="student-email">Email Address</label>
+              <label for="student-email">Email Address<span class="req">*</span></label>
               <span class="label-hint">Student's email address</span>
               <input type="email" id="student-email" placeholder="your@email.com" autocapitalize="off" autocorrect="off">
             </div>
@@ -444,14 +424,14 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password">Password<span class="req">*</span></label>
               <input type="password" id="password" placeholder="Create a password" autocapitalize="off" autocorrect="off">
             </div>
           </div>
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="how-heard">How Did You Hear About Us?</label>
+              <label for="how-heard">How Did You Hear About Us?<span class="req">*</span></label>
               <select id="how-heard">
                 <option value="">Select One</option>
                 <option>My school</option>
@@ -498,11 +478,11 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="move-in">Move-In Date</label>
+              <label for="move-in">Move-In Date<span class="req">*</span></label>
               <input type="date" id="move-in">
             </div>
             <div class="form-group">
-              <label for="move-out">Move-Out Date</label>
+              <label for="move-out">Move-Out Date<span class="req">*</span></label>
               <input type="date" id="move-out">
             </div>
           </div>
@@ -515,7 +495,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="room-type">Room Type</label>
+              <label for="room-type">Room Type<span class="req">*</span></label>
               <select id="room-type">
                 <option value="">Select One</option>
                 <option value="private">Private Room (1 person)</option>
@@ -527,7 +507,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="meal-plan">Meal Plan</label>
+              <label for="meal-plan">Meal Plan<span class="req">*</span></label>
               <select id="meal-plan">
                 <option value="">Select One</option>
                 <option>Breakfast & Dinner (B&D)</option>
@@ -539,7 +519,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="bathroom">Do You Need Your Own Bathroom?</label>
+              <label for="bathroom">Do You Need Your Own Bathroom?<span class="req">*</span></label>
               <span class="label-hint">Private bathroom placement fee is +$80, based on availability only</span>
               <select id="bathroom">
                 <option value="">Select One</option>
@@ -557,7 +537,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="smoke">Do You Smoke?</label>
+              <label for="smoke">Do You Smoke?<span class="req">*</span></label>
               <select id="smoke">
                 <option value="">Select One</option>
                 <option>No, I don't smoke</option>
@@ -566,7 +546,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
               <span class="label-hint" style="margin-top:6px;display:block">All host homes are smoke-free indoors. Outdoor smoking depends on the host.</span>
             </div>
             <div class="form-group">
-              <label for="children">Live With Children?</label>
+              <label for="children">Live With Children?<span class="req">*</span></label>
               <select id="children" onchange="document.getElementById('children-note').style.display=this.value==='children-yes'?'block':'none'">
                 <option value="">Select One</option>
                 <option value="no-preference">No preference</option>
@@ -579,7 +559,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="pets">Live With Pets?</label>
+              <label for="pets">Live With Pets?<span class="req">*</span></label>
               <select id="pets">
                 <option value="">Select One</option>
                 <option value="no-preference">Any pets (No preference)</option>
@@ -589,7 +569,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
               </select>
             </div>
             <div class="form-group">
-              <label for="transport">How Will You Commute to Class?</label>
+              <label for="transport">How Will You Commute to Class?<span class="req">*</span></label>
               <select id="transport">
                 <option value="">Select One</option>
                 <option value="public">Public Transportation</option>
@@ -651,25 +631,25 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="card-name">Name on Card</label>
+              <label for="card-name">Name on Card<span class="req">*</span></label>
               <input type="text" id="card-name" placeholder="Full name as it appears on card" autocapitalize="words" class="cap-words">
             </div>
           </div>
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="card-number">Credit Card Number</label>
+              <label for="card-number">Credit Card Number<span class="req">*</span></label>
               <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
             </div>
           </div>
 
           <div class="form-row cols-3">
             <div class="form-group">
-              <label for="ccv">CCV</label>
+              <label for="ccv">CCV<span class="req">*</span></label>
               <input type="text" id="ccv" placeholder="123" maxlength="4">
             </div>
             <div class="form-group">
-              <label for="exp-month">Month</label>
+              <label for="exp-month">Month<span class="req">*</span></label>
               <select id="exp-month">
                 <option value="">Month</option>
                 <option>01</option><option>02</option><option>03</option><option>04</option>
@@ -678,7 +658,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
               </select>
             </div>
             <div class="form-group">
-              <label for="exp-year">Year</label>
+              <label for="exp-year">Year<span class="req">*</span></label>
               <select id="exp-year">
                 <option value="">Year</option>
                 <option>2025</option><option>2026</option><option>2027</option><option>2028</option>
@@ -695,25 +675,25 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="billing-address">Billing Address</label>
+              <label for="billing-address">Billing Address<span class="req">*</span></label>
               <input type="text" id="billing-address" placeholder="Street address">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="billing-city">City</label>
+              <label for="billing-city">City<span class="req">*</span></label>
               <input type="text" id="billing-city" placeholder="City">
             </div>
             <div class="form-group">
-              <label for="billing-state">State / Province</label>
+              <label for="billing-state">State / Province<span class="req">*</span></label>
               <input type="text" id="billing-state" placeholder="State / Province">
             </div>
           </div>
 
           <div class="form-row cols-1">
             <div class="form-group">
-              <label for="billing-postal">Postal Code</label>
+              <label for="billing-postal">Postal Code<span class="req">*</span></label>
               <input type="text" id="billing-postal" placeholder="Postal code" style="max-width:180px">
             </div>
           </div>
@@ -786,14 +766,172 @@ input,select,textarea,button{font-family:var(--ff-body)}
 <div class="footer-mini">
   &copy; 2026 Universal Student Housing &nbsp;·&nbsp;
   <a href="legal/privacy_policy.html">Privacy Policy</a> &nbsp;·&nbsp;
-  <a href="legal/guest_terms_conditions.html">Terms of Service</a>
+  <a href="legal/guest_terms_conditions.html">Guest Terms &amp; Conditions</a>
 </div>
 
 <script>
 // ══════════════════════════════════════
+// VALIDATION
+// ══════════════════════════════════════
+var step1Fields = [
+  { id: 'school',            msg: 'Please select your school' },
+  { id: 'first-name',        msg: 'First name is required (letters only)' },
+  { id: 'last-name',         msg: 'Last name is required (letters only)' },
+  { id: 'gender',            msg: 'Please select your gender' },
+  { id: 'dob',               msg: 'Date of birth is required' },
+  { id: 'country-residence', msg: 'Please select your country of residence' },
+  { id: 'country-birth',     msg: 'Please select your country of birth' },
+  { id: 'english-skill',     msg: 'Please select your English skill level' },
+  { id: 'student-email',     msg: 'Email address is required' },
+  { id: 'password',          msg: 'Password is required' },
+  { id: 'how-heard',         msg: 'Please tell us how you heard about us' }
+];
+var step2Fields = [
+  { id: 'move-in',   msg: 'Move-in date is required' },
+  { id: 'move-out',  msg: 'Move-out date is required' },
+  { id: 'room-type', msg: 'Please select a room type' },
+  { id: 'meal-plan', msg: 'Please select a meal plan' },
+  { id: 'bathroom',  msg: 'Please select a bathroom preference' },
+  { id: 'smoke',     msg: 'Please answer this question' },
+  { id: 'children',  msg: 'Please select a preference' },
+  { id: 'pets',      msg: 'Please select a preference' },
+  { id: 'transport', msg: 'Please select how you will commute' }
+];
+var step3Fields = [
+  { id: 'card-name',       msg: 'Name on card is required' },
+  { id: 'card-number',     msg: 'Credit card number is required' },
+  { id: 'ccv',             msg: 'CCV is required' },
+  { id: 'exp-month',       msg: 'Please select expiry month' },
+  { id: 'exp-year',        msg: 'Please select expiry year' },
+  { id: 'billing-address', msg: 'Billing address is required' },
+  { id: 'billing-city',    msg: 'City is required' },
+  { id: 'billing-state',   msg: 'State / Province is required' },
+  { id: 'billing-postal',  msg: 'Postal code is required' }
+];
+
+function validateStep(n) {
+  var stepEl = document.getElementById('step-' + n);
+  // Clear previous errors in this step
+  stepEl.querySelectorAll('.form-group').forEach(function(g) {
+    g.classList.remove('error');
+    var e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+  var fields = n === 1 ? step1Fields.slice() : n === 2 ? step2Fields.slice() : step3Fields;
+  // If agent mode is on, also require agent fields
+  if (n === 1 && document.getElementById('btn-agent-yes').classList.contains('active')) {
+    fields = [
+      { id: 'group-select', msg: 'Please select if the student is part of a group' },
+      { id: 'agent-email',  msg: 'Agent email address is required' }
+    ].concat(fields);
+  }
+  var hasError = false;
+  fields.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    if (!el) return;
+    var val = el.value ? el.value.trim() : '';
+    if (!val) {
+      hasError = true;
+      var group = el.closest('.form-group');
+      group.classList.add('error');
+      if (!group.querySelector('.field-error')) {
+        var err = document.createElement('div');
+        err.className = 'field-error';
+        err.textContent = f.msg;
+        group.appendChild(err);
+      }
+    }
+  });
+  // Cross-check: move-out must be after move-in
+  if (n === 2) {
+    var inVal  = document.getElementById('move-in').value;
+    var outVal = document.getElementById('move-out').value;
+    if (inVal && outVal && outVal <= inVal) {
+      hasError = true;
+      var outEl    = document.getElementById('move-out');
+      var outGroup = outEl.closest('.form-group');
+      outGroup.classList.add('error');
+      if (!outGroup.querySelector('.field-error')) {
+        var dateErr = document.createElement('div');
+        dateErr.className = 'field-error';
+        dateErr.textContent = 'Move-out date must be after move-in date';
+        outGroup.appendChild(dateErr);
+      }
+    }
+  }
+  if (hasError) {
+    var first = stepEl.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea');
+    if (first) first.focus();
+    return false;
+  }
+  return true;
+}
+
+// Clear error as soon as user interacts with a field
+document.addEventListener('DOMContentLoaded', function() {
+  var agentFields = [{ id: 'group-select' }, { id: 'agent-email' }];
+  var allFields = agentFields.concat(step1Fields).concat(step2Fields).concat(step3Fields);
+  allFields.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    if (!el) return;
+    ['input', 'change'].forEach(function(evt) {
+      el.addEventListener(evt, function() {
+        var group = this.closest('.form-group');
+        group.classList.remove('error');
+        var e = group.querySelector('.field-error');
+        if (e) e.remove();
+      });
+    });
+  });
+
+  // First & Last name — letters, spaces, hyphens and apostrophes only
+  ['first-name', 'last-name'].forEach(function(id) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', function() {
+      var pos = this.selectionStart;
+      var cleaned = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s'\-]/g, '');
+      if (cleaned !== this.value) {
+        this.value = cleaned;
+        this.setSelectionRange(pos - 1, pos - 1);
+      }
+    });
+  });
+
+  // Move-In must be today or later
+  var moveIn  = document.getElementById('move-in');
+  var moveOut = document.getElementById('move-out');
+  moveIn.min = new Date().toISOString().split('T')[0];
+  moveIn.addEventListener('change', function() {
+    if (!this.value) return;
+    var next = new Date(this.value);
+    next.setDate(next.getDate() + 1);
+    var minDate = next.toISOString().split('T')[0];
+    moveOut.min = minDate;
+    // If move-out is already set and is now invalid, clear it
+    if (moveOut.value && moveOut.value <= this.value) {
+      moveOut.value = '';
+    }
+  });
+
+  // Move-Out calendar opens at move-in month when first clicked
+  moveOut.addEventListener('focus', function() {
+    if (!this.value && moveIn.value) {
+      var next = new Date(moveIn.value);
+      next.setDate(next.getDate() + 1);
+      this.value = next.toISOString().split('T')[0];
+    }
+  });
+});
+
+// ══════════════════════════════════════
 // STEP NAVIGATION
 // ══════════════════════════════════════
 function goToStep(n) {
+  // Validate before advancing
+  var current = n - 1;
+  if (current >= 1 && current <= 3) {
+    if (!validateStep(current)) return;
+  }
   // Hide all steps
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   // Show target step
@@ -837,6 +975,24 @@ function setPaymentTab(el, type) {
   document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 }
+
+// ══════════════════════════════════════
+// DATE OF BIRTH — open calendar at ~20 years ago
+// ══════════════════════════════════════
+(function() {
+  var dob = document.getElementById('dob');
+  // Set max to today so future dates can't be picked
+  var today = new Date();
+  dob.max = today.toISOString().split('T')[0];
+  // On first focus, pre-fill to 20 years ago so calendar opens there
+  dob.addEventListener('focus', function() {
+    if (!this.value) {
+      var d = new Date();
+      d.setFullYear(d.getFullYear() - 20);
+      this.value = d.toISOString().split('T')[0];
+    }
+  }, { once: true });
+})();
 
 // ══════════════════════════════════════
 // AUTO-CAPITALIZE WORDS (desktop)

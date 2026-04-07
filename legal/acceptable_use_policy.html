@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/ush.css">
+<link rel="stylesheet" href="../assets/ush.css?v=6">
 <style>
 .hero{position:relative;height:44vh;min-height:300px;max-height:420px;display:flex;align-items:flex-end;overflow:hidden;background:var(--c-charcoal)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,#2a3530 0%,#1a1e1c 100%)}
@@ -41,13 +41,7 @@
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="../index.html" class="nav-logo">
-      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="8" fill="#6EB7A3"/>
-        <path d="M8 20V12a4 4 0 014-4h8a4 4 0 014 4v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <path d="M10 20v-5a6 6 0 0112 0v5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="16" cy="22" r="2" fill="#E8AE5E"/>
-      </svg>
-      USH
+      <img src="../assets/ushlogo.png" alt="USH">
     </a>
     <div class="nav-links">
       <a href="../about.html">About</a>
@@ -147,16 +141,40 @@
   </main>
 </div>
 
-<footer style="background:var(--c-charcoal);padding:48px 0;text-align:center">
-  <div class="container">
-    <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:12px">© 2024 USH Inc. All rights reserved.</p>
-    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
-      <a href="guest_terms_conditions.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Terms &amp; Conditions</a>
-      <a href="guests_cancellation_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Cancellation Policy</a>
-      <a href="acceptable_use_policy.html" style="color:var(--c-teal);font-size:0.82rem;text-decoration:none;font-weight:600">Acceptable Use</a>
-      <a href="dmca_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">DMCA Policy</a>
-      <a href="privacy_policy.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Privacy Policy</a>
-      <a href="../contact.html" style="color:rgba(255,255,255,0.6);font-size:0.82rem;text-decoration:none">Contact</a>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" style="display:inline-block;margin-bottom:16px">
+        <img src="../assets/ushlogo.png" alt="USH" style="height:36px;width:auto;filter:brightness(0) invert(1)">
+      </a>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);max-width:260px;line-height:1.6">Universal Student Housing — connecting students with verified local hosts since 1998.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="../about.html">About Us</a>
+      <a href="../what-is-homestay.html">What is Homestay</a>
+      <a href="../partners.html">Partners</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="../homestaymatch.html">HomestayMatch</a>
+      <a href="../apply.html">Apply Now</a>
+      <a href="../faq.html">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="guest_terms_conditions.html">Guest Terms &amp; Conditions</a>
+      <a href="guests_cancellation_policy.html">Guest Cancellation Policy</a>
+      <a href="acceptable_use_policy.html">Acceptable Use Policy</a>
+      <a href="dmca_policy.html">DMCA Policy</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span style="font-size:0.78rem;color:rgba(255,255,255,0.4)">Los Angeles, California</span>
     </div>
   </div>
 </footer>
