@@ -286,10 +286,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
             <div class="form-row cols-1">
               <div class="form-group">
                 <label for="agent-email">Your Email Address<span class="req">*</span></label>
-                <div class="agent-email-row">
-                  <input type="email" id="agent-email" placeholder="agent@agency.com" autocapitalize="off" autocorrect="off">
-                  <button type="button" class="btn-verify" onclick="checkAgentEmail()">Verify</button>
-                </div>
+                <input type="email" id="agent-email" placeholder="agent@agency.com" autocapitalize="off" autocorrect="off">
               </div>
             </div>
 
@@ -884,7 +881,7 @@ function validateStep(n) {
       if (!emailGrp.querySelector('.field-error')) {
         var vErr = document.createElement('div');
         vErr.className = 'field-error';
-        vErr.textContent = 'Please click Verify to check your email';
+        vErr.textContent = 'Please enter your email and wait for verification';
         emailGrp.appendChild(vErr);
       }
     }
@@ -1066,16 +1063,20 @@ function checkAgentEmail() {
   }
 }
 
-// Reset verification state when email is edited after checking
+// Auto-check on blur; reset when user edits the email
 document.addEventListener('DOMContentLoaded', function() {
   var emailEl = document.getElementById('agent-email');
-  if (emailEl) {
-    emailEl.addEventListener('input', function() {
-      agentEmailVerified = false;
-      document.getElementById('agent-email-status').innerHTML = '';
-      document.getElementById('agent-register').classList.remove('visible');
-    });
-  }
+  if (!emailEl) return;
+  // Instantly verify when focus leaves the field
+  emailEl.addEventListener('blur', function() {
+    if (this.value.trim()) checkAgentEmail();
+  });
+  // Reset if they type again after a check
+  emailEl.addEventListener('input', function() {
+    agentEmailVerified = false;
+    document.getElementById('agent-email-status').innerHTML = '';
+    document.getElementById('agent-register').classList.remove('visible');
+  });
 });
 
 // ══════════════════════════════════════
