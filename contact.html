@@ -100,8 +100,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 /* ── FAQ STRIP ── */
 .faq-strip{background:var(--c-olive-dark);padding:80px 0;position:relative;overflow:hidden}
 .faq-strip::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
-.faq-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
-@media(max-width:768px){.faq-strip-inner{grid-template-columns:1fr;gap:40px}}
+.faq-strip-inner{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;position:relative;z-index:1;max-width:600px}
 .faq-strip-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-orange);margin-bottom:16px}
 .faq-strip h2{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--c-white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}
 .faq-strip h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
@@ -356,43 +355,6 @@ input,select,textarea,button{font-family:var(--ff-body)}
             <a href="#" class="btn btn-outline" onclick="if(window.chatbase)window.chatbase('open');return false;">Ask a Question &rarr;</a>
             <div class="ask-tip">Sophie our AI assistant is here to help!</div>
           </div>
-        </div>
-      </div>
-      <div class="faq-list" data-reveal>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            How long does the placement process take?
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div class="faq-answer">Most students receive their host family match within 5–10 business days after submitting their application and payment.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Can I request a specific type of host family?
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div class="faq-answer">Yes. During the application you can specify preferences such as no pets, no children, female host, proximity to school, and dietary requirements. We do our best to match accordingly.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            What is included in the homestay fee?
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div class="faq-answer">All homestays include a private furnished room, use of common areas, Wi-Fi, and laundry access. Meal plans (breakfast & dinner, or continental) are available as an add-on.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            Do you work with overseas agents?
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div class="faq-answer">Absolutely. We partner with 700+ agencies in more than 50 countries. Visit our Partners page to learn more or get in touch to start a partnership.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            How do I become a host family?
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div class="faq-answer">Send us a message using the contact form and select "Becoming a host family" as the topic. Our team will guide you through our 98-point home verification process.</div>
         </div>
       </div>
     </div>
