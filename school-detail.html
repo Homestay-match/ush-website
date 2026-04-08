@@ -36,8 +36,8 @@
 .pricing{background:var(--c-white)}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media(max-width:900px){.pricing-grid{grid-template-columns:1fr}}
-.pricing-card{background:var(--c-white);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);text-align:center;position:relative;transition:all 0.4s var(--ease-out)}
-.pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.pricing-card{background:var(--c-white);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);text-align:center;position:relative;transition:transform 0.35s var(--ease-out),box-shadow 0.35s var(--ease-out),border-color 0.35s var(--ease-out)}
+.pricing-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--c-orange)}
 .pricing-card.featured{border-color:var(--c-orange);border-width:2px;box-shadow:var(--shadow-md)}
 .pricing-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c-orange);border-radius:var(--r-lg) var(--r-lg) 0 0}
 .pricing-badge{display:inline-block;padding:5px 16px;border-radius:var(--r-full);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--c-orange-light);color:var(--c-orange-dark);margin-bottom:20px}
