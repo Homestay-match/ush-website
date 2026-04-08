@@ -527,6 +527,19 @@
 </footer>
 
 <script>
+// ══════════ TESTIMONIAL ALIGNMENT ══════════
+window.addEventListener('load', function() {
+  function equalizeTestimonials() {
+    const persons = document.querySelectorAll('.testimonial-person');
+    persons.forEach(p => p.style.minHeight = '');
+    let maxH = 0;
+    persons.forEach(p => maxH = Math.max(maxH, p.offsetHeight));
+    persons.forEach(p => p.style.minHeight = maxH + 'px');
+  }
+  equalizeTestimonials();
+  window.addEventListener('resize', equalizeTestimonials);
+});
+
 // ══════════ MOBILE MENU ══════════
 document.getElementById('menuOpen').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.add('open');
