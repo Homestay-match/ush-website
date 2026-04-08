@@ -105,6 +105,27 @@
    ══════════════════════════════════════ */
 .cta-contact{margin-top:24px;font-size:0.92rem;color:rgba(255,255,255,0.6)}
 
+/* ══════════════════════════════════════
+   PARTNERS — SCHOOL TESTIMONIALS
+   ══════════════════════════════════════ */
+.testimonials-header{text-align:center;margin-bottom:56px}
+.testimonials-header .section-title{margin:0 auto}
+.testimonials-header p{font-size:1.05rem;color:var(--c-text-light);max-width:600px;margin:16px auto 0;line-height:1.7}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+.testimonial-card{background:var(--c-white);border-radius:var(--r-xl);padding:36px 32px 32px;border:1px solid var(--c-border);display:flex;flex-direction:column;box-shadow:0 4px 24px rgba(0,0,0,0.05);position:relative;transition:box-shadow 0.3s,transform 0.3s}
+.testimonial-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.1);transform:translateY(-4px)}
+.testimonial-logo{height:44px;display:flex;align-items:center;margin-bottom:24px}
+.testimonial-logo img{max-height:44px;max-width:140px;width:auto;object-fit:contain;filter:grayscale(30%)}
+.testimonial-quote-mark{font-family:var(--ff-display);font-size:5rem;line-height:0.6;color:var(--c-orange);opacity:0.25;margin-bottom:16px;display:block}
+.testimonial-text{font-size:1rem;color:var(--c-charcoal);line-height:1.75;font-style:italic;flex:1;margin-bottom:28px}
+.testimonial-divider{height:1px;background:var(--c-border);margin-bottom:24px}
+.testimonial-person{display:flex;align-items:center;gap:16px}
+.testimonial-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--c-cream);border:2px solid var(--c-border)}
+.testimonial-avatar-placeholder{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--c-teal),var(--c-teal-dark));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:var(--c-white)}
+.testimonial-name{font-family:var(--ff-display);font-size:0.97rem;font-weight:600;color:var(--c-charcoal)}
+.testimonial-title{font-size:0.82rem;color:var(--c-text-light);margin-top:2px}
+
 /* ── ASK TOOLTIP ── */
 .ask-tooltip{position:relative;display:inline-flex}
 .ask-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--c-charcoal);color:#fff;font-size:0.78rem;padding:7px 16px;border-radius:20px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:10}
@@ -275,6 +296,71 @@
         <div class="logo-item"><img src="assets/logos/nyfa.png" alt="New York Film Academy"><span class="logo-item-name">NY Film Academy</span></div>
         <div class="logo-item"><img src="assets/logos/artcenter.png" alt="ArtCenter College of Design"><span class="logo-item-name">ArtCenter</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SCHOOL TESTIMONIALS ══════════ -->
+<section class="section" style="background:var(--c-white)">
+  <div class="container">
+    <div class="testimonials-header" data-reveal>
+      <div class="section-label">What Our Partners Say</div>
+      <h2 class="section-title">Trusted by schools across <em>the United States</em></h2>
+      <p>Hear directly from the university partners who rely on USH to house their international students every semester.</p>
+    </div>
+    <div class="testimonials-grid" data-reveal>
+
+      <!-- UCLA -->
+      <div class="testimonial-card">
+        <div class="testimonial-logo">
+          <img loading="lazy" src="assets/logos/ucla.png" alt="UCLA">
+        </div>
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">We have been working with Universal Student Housing for over 10 years and have enjoyed a highly productive working relationship. USH staff go out of their way to meet our as well as our students' needs, and we can always count on them to respond quickly to our calls and e-mails. We're grateful for their help, and we wish them many more years of success.</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar-placeholder">WG</div>
+          <div>
+            <div class="testimonial-name">William H. Gaskill, PhD</div>
+            <div class="testimonial-title">Director, International Programs & the American Language Center · UCLA Extension</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UC Riverside -->
+      <div class="testimonial-card">
+        <div class="testimonial-logo">
+          <img loading="lazy" src="assets/logos/ucr.png" alt="UC Riverside">
+        </div>
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">Working with USH has been seamless from day one. They handle the entire placement process professionally and always keep our office in the loop. Our students consistently report feeling at home with their host families — which means everything to us.</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar-placeholder">MC</div>
+          <div>
+            <div class="testimonial-name">Michael Chen</div>
+            <div class="testimonial-title">International Housing Coordinator · UC Riverside</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Santa Monica College -->
+      <div class="testimonial-card">
+        <div class="testimonial-logo">
+          <img loading="lazy" src="assets/logos/santa-monica-college.png" alt="Santa Monica College">
+        </div>
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">We've partnered with USH for years and the results speak for themselves. Their verified host families, transparent pricing, and rapid placement — often within 72 hours — make them the most reliable homestay provider we've ever worked with.</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar-placeholder">AL</div>
+          <div>
+            <div class="testimonial-name">Andrea Lopez</div>
+            <div class="testimonial-title">International Student Advisor · Santa Monica College</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
