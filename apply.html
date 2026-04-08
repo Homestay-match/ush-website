@@ -249,6 +249,20 @@ input,select,textarea,button{font-family:var(--ff-body)}
   <a href="become-a-host.html">Become a Host</a>
 </div>
 
+<script>
+document.getElementById('menuOpen').addEventListener('click', function() {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', function() {
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
+</script>
+
 <div class="page">
   <div class="form-container">
 
@@ -1200,6 +1214,7 @@ document.getElementById('card-number').addEventListener('input', function(e) {
   const diff = formatted.length - prevLen;
   input.setSelectionRange(cursorPos + diff, cursorPos + diff);
 });
+
 </script>
 
 <!-- Chatbase (Sophie) -->
