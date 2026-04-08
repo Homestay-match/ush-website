@@ -184,7 +184,7 @@ a{text-decoration:none;color:inherit}
 .form-group label{font-size:0.82rem;font-weight:600;color:var(--c-charcoal);letter-spacing:0.02em}
 .form-group input,
 .form-group select,
-.form-group textarea{font-family:var(--ff-body);font-size:0.95rem;padding:13px 16px;border-radius:var(--r-md);border:1.5px solid var(--c-border-strong);background:var(--c-cream);color:var(--c-text);transition:all 0.3s var(--ease-out);outline:none;appearance:none;-webkit-appearance:none}
+.form-group textarea{font-family:var(--ff-body);font-size:0.95rem;padding:13px 16px;border-radius:var(--r-md);border:1.5px solid var(--c-border-strong);background:var(--c-white);color:var(--c-text);transition:all 0.3s var(--ease-out);outline:none;appearance:none;-webkit-appearance:none}
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
