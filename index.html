@@ -170,7 +170,7 @@
 .hosts-track-wrap{position:relative;overflow:hidden;border-radius:var(--r-xl);aspect-ratio:4/3.5}
 .hosts-track{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;transition:transform 0.5s cubic-bezier(.16,1,.3,1)}
 .host-slide{min-width:100%;width:100%;flex-shrink:0;position:relative;overflow:hidden}
-.host-slide img{width:100%;height:100%;object-fit:cover;object-position:top center;position:absolute;top:0;left:0}
+.host-slide img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
 .host-slide-info{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%)}
 .host-slide-badge{display:inline-block;background:rgba(110,183,163,0.9);color:var(--c-white);font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:50px;margin-bottom:10px}
 .host-slide-name{font-family:var(--ff-display);font-size:1.3rem;font-weight:700;color:var(--c-white)}
@@ -447,7 +447,7 @@
 
         <!-- Sandra G. -->
         <div class="host-room-card">
-          <div class="host-room-photo"><img src="assets/sandra-1.jpg" alt="Sandra's bedroom"></div>
+          <div class="host-room-photo"><img loading="lazy" src="assets/sandra-1.jpg" alt="Sandra's bedroom"></div>
           <div class="host-room-avatar"><div class="host-room-avatar-initials">S</div></div>
           <div class="host-room-info">
             <div class="host-room-name">Sandra G.</div>
@@ -458,28 +458,236 @@
           </div>
         </div>
 
-        <!-- Greta S. -->
+        <!-- Beth -->
         <div class="host-room-card">
-          <div class="host-room-photo"><img src="assets/greta-IMG_7438.jpg" alt="Greta's bedroom"></div>
-          <div class="host-room-avatar"><img src="assets/host-greta.jpg" alt="Greta S."></div>
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-beth.jpg" alt="Beth's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">B</div></div>
           <div class="host-room-info">
-            <div class="host-room-name">Greta S.</div>
+            <div class="host-room-name">Beth</div>
             <div class="host-room-meta">
-              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Jose, CA</div>
-              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>San Jose State University</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Costa Mesa, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Orange Coast College</div>
             </div>
           </div>
         </div>
 
-        <!-- Ana P. -->
+        <!-- Bozena -->
         <div class="host-room-card">
-          <div class="host-room-photo"><img src="assets/sandra-7.jpg" alt="Ana's bedroom"></div>
-          <div class="host-room-avatar"><div class="host-room-avatar-initials">A</div></div>
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-bozena.jpg" alt="Bozena's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">B</div></div>
           <div class="host-room-info">
-            <div class="host-room-name">Ana P.</div>
+            <div class="host-room-name">Bozena</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Irvine, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Westcliff University</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chine -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-chine.jpg" alt="Chine's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-chine.jpg" alt="Chine"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Chine</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Cerritos, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Cerritos College</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Christine -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-christine.jpg" alt="Christine's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">C</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Christine</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Long Beach, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Cal State Long Beach</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cynthia -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-cynthia.jpg" alt="Cynthia's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-cynthia.jpg" alt="Cynthia"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Cynthia</div>
             <div class="host-room-meta">
               <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Irvine, CA</div>
               <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>UC Irvine</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dayen -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-dayen.jpg" alt="Dayen's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-dayen.jpg" alt="Dayen"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Dayen</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Diego, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>San Diego State Univ.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Debra -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-debra.jpg" alt="Debra's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">D</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Debra</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Diego, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>San Diego State Univ.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jose -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-jose.jpg" alt="Jose's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-jose.jpg" alt="Jose"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Jose</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Riverside, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>UC Riverside</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kelly -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-kelly.jpg" alt="Kelly's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-kelly.jpg" alt="Kelly"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Kelly</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Santa Monica, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Santa Monica College</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kim Loan -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-kimloan.jpg" alt="Kim Loan's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">K</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Kim Loan</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Huntington Beach, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Golden West College</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kimberly -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-kimberly.jpg" alt="Kimberly's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-kimberly.jpg" alt="Kimberly"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Kimberly</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Diego, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>UC San Diego</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kristy -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-kristy.jpg" alt="Kristy's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">K</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Kristy</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Tempe, AZ</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Arizona State Univ.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Merria -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-merria.jpg" alt="Merria's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">M</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Merria</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Berkeley, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>UC Berkeley</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sandra (USD) -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-sandra2.jpg" alt="Sandra's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">S</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Sandra</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Diego, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Univ. of San Diego</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stephanie -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-stephanie.jpg" alt="Stephanie's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">S</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Stephanie</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Pasadena, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>ArtCenter College</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thuy -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-thuy.jpg" alt="Thuy's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-thuy.jpg" alt="Thuy"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Thuy</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Riverside, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>UC Riverside</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tümay -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-tumay.jpg" alt="Tümay's bedroom"></div>
+          <div class="host-room-avatar"><div class="host-room-avatar-initials">T</div></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Tümay</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Francisco, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>San Francisco Univ.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yvonne -->
+        <div class="host-room-card">
+          <div class="host-room-photo"><img loading="lazy" src="assets/room-yvonne.jpg" alt="Yvonne's bedroom"></div>
+          <div class="host-room-avatar"><img src="assets/profile-yvonne.jpg" alt="Yvonne"></div>
+          <div class="host-room-info">
+            <div class="host-room-name">Yvonne</div>
+            <div class="host-room-meta">
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Carson, CA</div>
+              <div class="host-room-meta-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Cal State Dominguez Hills</div>
             </div>
           </div>
         </div>
@@ -524,7 +732,7 @@
       <div class="hosts-track-wrap">
       <div class="hosts-track" id="hostsTrack">
         <div class="host-slide">
-          <img src="assets/host-1.jpg" alt="Host family welcoming student">
+          <img src="assets/host-1.jpg" alt="Host family welcoming student" style="object-position:center 25%">
           <div class="host-slide-info">
             <span class="host-slide-badge">Host Family + Students</span>
             <div class="host-slide-name">The Johnson Family</div>
@@ -553,6 +761,62 @@
             <span class="host-slide-badge">Host Family + Students</span>
             <div class="host-slide-name">The Olsen Family</div>
             <div class="host-slide-loc">Tempe, AZ &middot; Hosting since 2017</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-5.jpg" alt="Host cooking Japanese cuisine with students">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host + Students</span>
+            <div class="host-slide-name">Cooking Night with Ichi &amp; Hiro</div>
+            <div class="host-slide-loc">Tempe, AZ &middot; Hosting since 2016</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-6.jpg" alt="Host family with students at Disneyland" style="object-position:center bottom">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Family + Students</span>
+            <div class="host-slide-name">A Day at Disneyland</div>
+            <div class="host-slide-loc">Los Angeles, CA &middot; Hosting since 2018</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-7.jpg" alt="Host with students at the Grand Canyon">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host + Students</span>
+            <div class="host-slide-name">Grand Canyon Road Trip</div>
+            <div class="host-slide-loc">Phoenix, AZ &middot; Hosting since 2015</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-8.jpg" alt="Host families with students at Ostrich Ranch">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Families + Students</span>
+            <div class="host-slide-name">Ostrich Ranch Adventure</div>
+            <div class="host-slide-loc">Tempe, AZ &middot; Hosting since 2014</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-9.jpg" alt="Host family enjoying dinner with students" style="object-position:center 30%">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Family + Students</span>
+            <div class="host-slide-name">Homemade Dinner Night</div>
+            <div class="host-slide-loc">Los Angeles, CA &middot; Hosting since 2017</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-10.jpg" alt="Host with students near Arizona State University">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host + Students</span>
+            <div class="host-slide-name">Welcome to Tempe!</div>
+            <div class="host-slide-loc">Tempe, AZ &middot; Hosting since 2016</div>
+          </div>
+        </div>
+        <div class="host-slide">
+          <img src="assets/host-11.jpg" alt="Host family welcoming student at home">
+          <div class="host-slide-info">
+            <span class="host-slide-badge">Host Family + Student</span>
+            <div class="host-slide-name">At Home with the Family</div>
+            <div class="host-slide-loc">Irvine, CA &middot; Hosting since 2013</div>
           </div>
         </div>
       </div>
@@ -587,18 +851,18 @@
       <div class="step-card" data-reveal>
         <div class="step-num">01</div>
         <h3>Apply Online</h3>
-        <p style="font-size:0.78rem;font-weight:700;color:var(--c-text);margin-top:-10px">(3 Minutes or Less)</p>
+        <p style="font-size:0.78rem;font-weight:700;color:var(--c-orange);margin-top:-10px">(3 Minutes or Less)</p>
         <p>Tell us about yourself, your school, and your preferences. Submit your application and receive a confirmation right away.</p>
       </div>
       <div class="step-card" data-reveal>
         <div class="step-num">02</div>
         <h3>We Find Your Perfect Match</h3>
-        <p>Our team reviews your application and matches you with a verified host family near your school. You will receive your host details and next steps once your placement is confirmed.</p>
+        <p>Our team reviews your application and matches you with a <span style="color:var(--c-orange);font-weight:600">verified host family</span> near your school. You will receive your host details and next steps once your placement is confirmed.</p>
       </div>
       <div class="step-card" data-reveal>
         <div class="step-num">03</div>
         <h3>Arrive and Feel at Home</h3>
-        <p>We coordinate your move-in with your host family and help you prepare for your arrival. We check in after 72 hours to make sure everything is going well.</p>
+        <p>We coordinate your move-in with your host family and help you prepare for your arrival. We check in after <span style="color:var(--c-orange);font-weight:600">72 hours</span> to make sure everything is going well.</p>
       </div>
     </div>
   </div>
@@ -855,6 +1119,21 @@
   grid.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); grid.scrollLeft = scrollL - (e.pageX - grid.offsetLeft - startX); });
 
   buildDots();
+
+  // Auto-advance every 3.5 seconds
+  let autoTimer = setInterval(advance, 3500);
+
+  function advance() {
+    const groups = Math.ceil(total / visibleCount());
+    const next = (currentGroup() + 1) % groups;
+    scrollToGroup(next);
+  }
+
+  // Pause on hover / drag, resume on leave
+  grid.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  grid.addEventListener('mouseleave', () => { autoTimer = setInterval(advance, 3500); });
+  grid.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
+  grid.addEventListener('touchend', () => { autoTimer = setInterval(advance, 3500); });
 })();
 
 // ══════════ TESTIMONIALS CAROUSEL ══════════
@@ -997,6 +1276,8 @@ function initRotatingTagline() {
 
 // ══════════ INIT ══════════
 document.addEventListener('DOMContentLoaded', () => {
+  history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
   initReveals();
   animateCounters();
   initRotatingTagline();
