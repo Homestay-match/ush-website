@@ -408,49 +408,62 @@
     </div>
 
     <div class="contact-grid" data-reveal>
-      <form class="contact-form" onsubmit="return false;">
-        <div class="form-group">
-          <label for="inquiry-type">I am a...</label>
-          <select id="inquiry-type" name="inquiry-type">
-            <option value="" disabled selected>Select one</option>
-            <option value="school">School</option>
-            <option value="agent">Agent</option>
-          </select>
-        </div>
-        <div class="form-row">
+      <form class="contact-form" onsubmit="return false;" id="partners-form">
+        <div id="form-body">
           <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="First name">
+            <label for="inquiry-type">I am a...</label>
+            <select id="inquiry-type" name="inquiry-type">
+              <option value="" disabled selected>Select one</option>
+              <option value="school">School</option>
+              <option value="agent">Agent</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name" placeholder="Last name">
+            </div>
           </div>
           <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Last name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="organization">Organization Name</label>
-          <input type="text" id="organization" name="organization" placeholder="Your school or agency name">
-        </div>
-        <div class="form-group">
-          <label for="title">Title / Role</label>
-          <input type="text" id="title" name="title" placeholder="Your title or role">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com">
+            <label for="organization">Organization Name</label>
+            <input type="text" id="organization" name="organization" placeholder="Your school or agency name">
           </div>
           <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+            <label for="title">Title / Role</label>
+            <input type="text" id="title" name="title" placeholder="Your title or role">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your needs..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="button" class="btn btn-primary" onclick="submitPartnersForm()">Send Inquiry &rarr;</button>
           </div>
         </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us about your needs..."></textarea>
-        </div>
-        <div class="form-submit">
-          <button type="submit" class="btn btn-primary">Send Inquiry &rarr;</button>
+
+        <!-- Success Message -->
+        <div class="form-success" id="partners-success" style="display:none;text-align:center;padding:60px 32px 52px;animation:successFadeIn 0.5s ease-out forwards">
+          <div class="success-icon" style="width:60px;height:60px;border-radius:50%;background:rgba(110,183,163,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#6EB7A3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#D9A84E;margin-bottom:12px">Inquiry received</div>
+          <h3 style="font-family:'Fraunces',Georgia,serif;font-size:1.9rem;font-weight:600;color:#1A1E1C;margin-bottom:12px;line-height:1.1">Thank you for <em style="font-style:italic;font-weight:400;color:#6EB7A3">reaching out!</em></h3>
+          <p style="font-size:0.95rem;color:#5F6B65;line-height:1.7;max-width:360px;margin:0 auto">Our team will review your inquiry and get back to you within 1 business day. We look forward to exploring partnership opportunities with you.</p>
         </div>
       </form>
 
@@ -562,6 +575,82 @@ function initReveals() {
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   els.forEach(el => obs.observe(el));
+}
+
+// ══════════ PARTNERS FORM SUBMISSION ══════════
+function submitPartnersForm() {
+  const inquiryType = document.getElementById('inquiry-type').value.trim();
+  const first = document.getElementById('first-name').value.trim();
+  const last = document.getElementById('last-name').value.trim();
+  const organization = document.getElementById('organization').value.trim();
+  const title = document.getElementById('title').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  // Clear previous errors
+  document.querySelectorAll('.form-group').forEach(g => {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const fields = [
+    { id: 'inquiry-type', val: inquiryType, msg: 'Please select I am a...' },
+    { id: 'first-name', val: first, msg: 'First name is required' },
+    { id: 'last-name', val: last, msg: 'Last name is required' },
+    { id: 'organization', val: organization, msg: 'Organization name is required' },
+    { id: 'title', val: title, msg: 'Title / Role is required' },
+    { id: 'email', val: email, msg: 'Email address is required' },
+    { id: 'phone', val: phone, msg: 'Phone is required' },
+    { id: 'message', val: message, msg: 'Message is required' },
+  ];
+
+  let hasError = false;
+  fields.forEach(f => {
+    if (!f.val) {
+      hasError = true;
+      const el = document.getElementById(f.id);
+      const group = el.closest('.form-group');
+      group.classList.add('error');
+      const err = document.createElement('div');
+      err.className = 'field-error';
+      err.textContent = f.msg;
+      group.appendChild(err);
+    }
+  });
+
+  if (hasError) {
+    document.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea').focus();
+    return;
+  }
+
+  const btn = document.querySelector('#partners-form .btn-primary');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const recipients = 'contact@usaish.com,emerson@usaish.com';
+  const subject = encodeURIComponent('[USH Partner Inquiry] ' + inquiryType + ' — ' + first + ' ' + last);
+  const body = encodeURIComponent(
+    'Inquiry Type: ' + inquiryType + '\n' +
+    'Name: ' + first + ' ' + last + '\n' +
+    'Organization: ' + organization + '\n' +
+    'Title/Role: ' + (title || 'Not specified') + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + (phone || 'Not provided') + '\n\n' +
+    'Message:\n' + message
+  );
+
+  // Open default mail client
+  window.location.href = 'mailto:' + recipients + '?subject=' + subject + '&body=' + body;
+
+  // Show success screen after short delay
+  setTimeout(function() {
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('partners-success').style.display = 'flex';
+    btn.disabled = false;
+    btn.textContent = 'Send Inquiry →';
+  }, 800);
 }
 
 // ══════════ INIT ══════════
