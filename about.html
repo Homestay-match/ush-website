@@ -494,6 +494,81 @@
             </div>
           </div>
 
+          <!-- 4: Mei – Student -->
+          <div class="t-slide">
+            <img class="t-photo" src="assets/student-mei.jpg" alt="Mei L.">
+            <div>
+              <div class="t-tag">Student Review</div>
+              <p class="t-quote">&ldquo;I stayed a full year and it went by fast in the best way. My host family was warm and genuinely welcoming and I never felt like a guest. It made being so far from home a lot easier.&rdquo;</p>
+              <div class="t-author">
+                <div>
+                  <strong>Mei L.</strong>
+                  <div class="t-title">China · Santa Monica College</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5: Jinyeong – Student -->
+          <div class="t-slide">
+            <img class="t-photo" src="assets/testimonial-jinyeong.jpg" alt="Jinyeong K.">
+            <div>
+              <div class="t-tag">Student Review</div>
+              <p class="t-quote">&ldquo;I had a very positive experience in my homestay. The host family was kind and welcoming, and I felt comfortable from the first day. It was a great way to live while studying at UCLA!&rdquo;</p>
+              <div class="t-author">
+                <div>
+                  <strong>Jinyeong K.</strong>
+                  <div class="t-title">South Korea · UCLA Dashew Center</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6: Rodrigo – Student -->
+          <div class="t-slide">
+            <img class="t-photo" src="assets/testimonial-rodrigo.jpg" alt="Rodrigo P.">
+            <div>
+              <div class="t-tag">Student Review</div>
+              <p class="t-quote">&ldquo;Living in Westwood was the best choice for my studies! I was just a few minutes&rsquo; walk from the UCLA campus, supermarkets, and restaurants in Westwood Village. My host family was so welcoming, and I loved being surrounded by students from all over the world while experiencing the local culture.&rdquo;</p>
+              <div class="t-author">
+                <div>
+                  <strong>Rodrigo P.</strong>
+                  <div class="t-title">Brazil · UCLA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7: Xinlan – Student -->
+          <div class="t-slide">
+            <img class="t-photo" src="assets/testimonial-xinlan.jpg" alt="Xinlan X.">
+            <div>
+              <div class="t-tag">Student Review</div>
+              <p class="t-quote">&ldquo;I am so happy with my host! She takes me shopping every week and we even cook dinner together. I love learning how to cook Western dishes and she always helps me correct my pronunciation and teach me new words. I feel so lucky that USH found such a good homestay for me!&rdquo;</p>
+              <div class="t-author">
+                <div>
+                  <strong>Xinlan X.</strong>
+                  <div class="t-title">China · Arizona State University</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8: Nawaf – Student -->
+          <div class="t-slide">
+            <img class="t-photo" src="assets/testimonial-nawaf.jpg" alt="Nawaf A.">
+            <div>
+              <div class="t-tag">Student Review</div>
+              <p class="t-quote">&ldquo;I am so thankful for my host family. They were incredibly kind and helped me adjust to life in a new country. It truly felt like a home away from home!&rdquo;</p>
+              <div class="t-author">
+                <div>
+                  <strong>Nawaf A.</strong>
+                  <div class="t-title">Saudi Arabia · Santiago Canyon College</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -507,6 +582,9 @@
           <button class="t-dot" data-i="2"></button>
           <button class="t-dot" data-i="3"></button>
           <button class="t-dot" data-i="4"></button>
+          <button class="t-dot" data-i="5"></button>
+          <button class="t-dot" data-i="6"></button>
+          <button class="t-dot" data-i="7"></button>
         </div>
         <button class="t-btn" id="tNext" aria-label="Next">
           <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
@@ -523,14 +601,18 @@
   const dots = document.querySelectorAll('.t-dot');
   const total = dots.length;
   let cur = 0;
+  let autoTimer;
   function go(n){
     cur = (n + total) % total;
     track.style.transform = 'translateX(-' + (cur * 100) + '%)';
     dots.forEach((d,i) => d.classList.toggle('active', i === cur));
   }
-  document.getElementById('tPrev').addEventListener('click', () => go(cur - 1));
-  document.getElementById('tNext').addEventListener('click', () => go(cur + 1));
-  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
+  function startAuto(){ autoTimer = setInterval(() => go(cur + 1), 5000); }
+  function resetAuto(){ clearInterval(autoTimer); startAuto(); }
+  startAuto();
+  document.getElementById('tPrev').addEventListener('click', () => { go(cur - 1); resetAuto(); });
+  document.getElementById('tNext').addEventListener('click', () => { go(cur + 1); resetAuto(); });
+  dots.forEach(d => d.addEventListener('click', () => { go(+d.dataset.i); resetAuto(); }));
 })();
 </script>
 

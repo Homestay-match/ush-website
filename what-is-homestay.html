@@ -180,13 +180,14 @@
 .reviews-track-wrap::before{left:0;background:linear-gradient(to right,var(--c-white),transparent)}
 .reviews-track-wrap::after{right:0;background:linear-gradient(to left,var(--c-white),transparent)}
 .reviews-track{display:flex;gap:24px;width:max-content;transition:transform 0.7s cubic-bezier(.16,1,.3,1)}
-.review-card{background:var(--c-cream);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:36px 32px;width:360px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-sm);transition:box-shadow 0.3s,transform 0.3s}
+.review-card{background:var(--c-cream);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:36px 32px;width:360px;flex-shrink:0;display:flex;flex-direction:column;justify-content:space-between;gap:16px;box-shadow:var(--shadow-sm);transition:box-shadow 0.3s,transform 0.3s}
 .review-card.active{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:var(--c-teal)}
 .review-stars{display:flex;gap:3px}
 .review-stars span{color:var(--c-orange);font-size:1.1rem}
-.review-text{font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-charcoal);line-height:1.65;flex:1}
+.review-text{font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-charcoal);line-height:1.65;flex:1;display:flex;align-items:center}
 .review-author{display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid var(--c-border)}
-.review-avatar{width:44px;height:44px;border-radius:50%;background:var(--c-teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--c-teal)}
+.review-avatar{width:44px;height:44px;border-radius:50%;background:var(--c-teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--c-teal);overflow:hidden}
+.review-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .review-info strong{display:block;font-size:0.88rem;font-weight:600;color:var(--c-charcoal)}
 .review-info span{font-size:0.78rem;color:var(--c-text-muted)}
 .review-flag{font-size:1rem}
@@ -534,9 +535,9 @@
 
         <div class="review-card active">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"My host family made me feel at home from the very first day. They helped me with my English, took me to the grocery store, and even celebrated my birthday. I will never forget them."</div>
+          <div class="review-text">"My host family was really warm and always made time for me. Having people to come home to every day made a big difference."</div>
           <div class="review-author">
-            <div class="review-avatar">Y</div>
+            <div class="review-avatar"><img src="assets/student-yuna.jpg" alt="Yuna K."></div>
             <div class="review-info">
               <strong>Yuna K. <span class="review-flag">🇰🇷</span></strong>
               <span>UCLA Extension · 6 months</span>
@@ -546,9 +547,9 @@
 
         <div class="review-card">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"I was scared to come alone, but USH matched me with an amazing family. They treated me like their own daughter. My English improved so much just from dinner conversations every night."</div>
+          <div class="review-text">"I stayed a full year and it went by fast in the best way. My host family was warm and genuinely welcoming and I never felt like a guest. It made being so far from home a lot easier."</div>
           <div class="review-author">
-            <div class="review-avatar">M</div>
+            <div class="review-avatar"><img src="assets/student-mei.jpg" alt="Mei L."></div>
             <div class="review-info">
               <strong>Mei L. <span class="review-flag">🇨🇳</span></strong>
               <span>Santa Monica College · 1 year</span>
@@ -558,9 +559,9 @@
 
         <div class="review-card">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"The matching process was fast and professional. Within one week I had a confirmed placement. My host mom picked me up from the airport and made me feel like family immediately."</div>
+          <div class="review-text">"I was nervous at first but my host family was warm and easy to talk to. They helped me figure everything out without making it a big deal. Got comfortable faster than I thought."</div>
           <div class="review-author">
-            <div class="review-avatar">R</div>
+            <div class="review-avatar"><img src="assets/student-rafael.jpg" alt="Rafael S."></div>
             <div class="review-info">
               <strong>Rafael S. <span class="review-flag">🇧🇷</span></strong>
               <span>UC Irvine · 8 months</span>
@@ -570,9 +571,9 @@
 
         <div class="review-card">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"Living in a real American home is completely different from a dorm. I learned things about American culture you can't learn in a classroom. I recommend homestay to every international student."</div>
+          <div class="review-text">"Living with a host family is so different from a dorm. You actually get to experience real life here and it makes the whole thing feel less overwhelming."</div>
           <div class="review-author">
-            <div class="review-avatar">H</div>
+            <div class="review-avatar"><img src="assets/student-hina.jpg" alt="Hina T."></div>
             <div class="review-info">
               <strong>Hina T. <span class="review-flag">🇯🇵</span></strong>
               <span>Pasadena City College · 5 months</span>
@@ -582,9 +583,9 @@
 
         <div class="review-card">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"USH was very helpful when I had questions before arriving. My host family had hosted students before so they knew exactly how to help me settle in. The meals were incredible too!"</div>
+          <div class="review-text">"My host family gave me my space and made me feel comfortable from the start. The home cooked meals were a nice bonus every night."</div>
           <div class="review-author">
-            <div class="review-avatar">S</div>
+            <div class="review-avatar"><img src="assets/student-sofia.jpg" alt="Sofia A."></div>
             <div class="review-info">
               <strong>Sofia A. <span class="review-flag">🇸🇦</span></strong>
               <span>San Diego State Univ. · 4 months</span>
@@ -594,9 +595,9 @@
 
         <div class="review-card">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"I was 17 when I arrived and my parents were worried. But my host family checked in on me, drove me to school on rainy days, and my parents could see I was really safe and happy."</div>
+          <div class="review-text">"Adjusting was easier than I thought. My host family helped me get into a routine and that really helped with school."</div>
           <div class="review-author">
-            <div class="review-avatar">J</div>
+            <div class="review-avatar"><img src="assets/student-jiwon.png" alt="Jiwon P."></div>
             <div class="review-info">
               <strong>Jiwon P. <span class="review-flag">🇰🇷</span></strong>
               <span>Orange Coast College · 10 months</span>
@@ -606,9 +607,9 @@
 
         <div class="review-card">
           <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-text">"I chose full board and it was the best decision. Breakfast and dinner with my host family every day gave me a routine and so many conversations I wouldn't have had otherwise."</div>
+          <div class="review-text">"Eating together every day helped me stay focused. My English got a lot better just from talking at dinner."</div>
           <div class="review-author">
-            <div class="review-avatar">C</div>
+            <div class="review-avatar"><img src="assets/student-chen.png" alt="Chen W."></div>
             <div class="review-info">
               <strong>Chen W. <span class="review-flag">🇹🇼</span></strong>
               <span>UC Berkeley Extension · 6 months</span>
@@ -678,7 +679,7 @@
           <span>Can I stay for just a few weeks?</span>
           <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
-        <div class="faq-answer"><p>Yes. We offer placements from short-term programs (a few weeks) all the way through full academic years. Minimum stay requirements may apply depending on availability and program type. Let us know your dates when you apply.</p></div>
+        <div class="faq-answer"><p>Yes. We offer placements from short-term programs all the way through full academic years. The minimum stay is usually 4 weeks, but for custom groups it can be shorter. Let us know your dates when you apply.</p></div>
       </div>
     </div>
   </div>
