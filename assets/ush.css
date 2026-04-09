@@ -256,6 +256,37 @@ a{text-decoration:none;color:inherit}
 .login-create a:hover{color:var(--c-teal-dark)}
 @media(max-width:480px){.login-modal{padding:32px 24px 28px}}
 
+/* ── SIGNUP MODAL ── */
+.signup-overlay{position:fixed;inset:0;background:rgba(26,30,28,0.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;padding:24px}
+.signup-overlay.open{opacity:1;pointer-events:auto}
+.signup-modal{background:var(--c-white);border-radius:var(--r-xl);padding:44px 40px 36px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px) scale(0.97);transition:transform 0.35s var(--ease-out);box-shadow:0 24px 60px rgba(0,0,0,0.15)}
+.signup-overlay.open .signup-modal{transform:translateY(0) scale(1)}
+.signup-modal .login-close{position:absolute;top:16px;right:16px}
+.signup-modal .login-title{margin-bottom:6px}
+.signup-modal .login-subtitle{margin-bottom:24px}
+.signup-form{display:flex;flex-direction:column;gap:14px}
+.signup-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.signup-form .form-group{display:flex;flex-direction:column;gap:5px}
+.signup-form .form-group label{font-size:0.78rem;font-weight:600;color:var(--c-charcoal)}
+.signup-form .form-group input,.signup-form .form-group select,.signup-form .form-group textarea{font-family:var(--ff-body);font-size:0.88rem;padding:11px 14px;border-radius:var(--r-sm);border:1.5px solid var(--c-border-strong);background:var(--c-white);color:var(--c-text);outline:none;transition:border-color 0.25s,box-shadow 0.25s;appearance:none;-webkit-appearance:none}
+.signup-form .form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.signup-form .form-group textarea{resize:vertical;min-height:80px;line-height:1.5}
+.signup-form .form-group input:focus,.signup-form .form-group select:focus,.signup-form .form-group textarea:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
+.signup-form .form-group input::placeholder,.signup-form .form-group textarea::placeholder{color:var(--c-text-muted)}
+.signup-section-label{font-size:0.82rem;font-weight:600;color:var(--c-charcoal);margin-top:4px}
+.signup-section-note{font-size:0.75rem;color:var(--c-text-muted);margin-top:-4px}
+.dob-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.gender-row{display:flex;gap:0;margin-top:2px}
+.gender-row label{flex:1;display:flex;align-items:center;justify-content:center;padding:10px;border:1.5px solid var(--c-border-strong);font-size:0.88rem;font-weight:500;color:var(--c-text);cursor:pointer;transition:all 0.25s}
+.gender-row label:first-child{border-radius:var(--r-sm) 0 0 var(--r-sm)}
+.gender-row label:last-child{border-radius:0 var(--r-sm) var(--r-sm) 0;border-left:none}
+.gender-row input{display:none}
+.gender-row input:checked+span{color:var(--c-teal);font-weight:600}
+.gender-row label:has(input:checked){border-color:var(--c-teal);background:var(--c-teal-light)}
+.signup-legal{font-size:0.75rem;color:var(--c-text-muted);text-align:center;line-height:1.5;margin-top:4px}
+.signup-legal a{color:var(--c-teal);font-weight:500}
+@media(max-width:520px){.signup-form .form-row{grid-template-columns:1fr}.signup-modal{padding:32px 24px 28px}}
+
 /* ── DARK FOOTER VARIANT (shared: become-a-host, what-is-homestay) ── */
 .footer-charcoal{background:var(--c-charcoal);padding:64px 0 0}
 .footer-charcoal .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08)}

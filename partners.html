@@ -151,6 +151,7 @@
       <a href="#" onclick="openLoginModal();return false;">Log In</a>
       <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
       <a href="become-a-host.html">Become a Host</a>
+      <a href="#" class="btn btn-teal" style="padding:10px 20px" onclick="openSignupModal();return false;">Student Sign Up</a>
     </div>
     <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
@@ -170,6 +171,7 @@
   <a href="#" onclick="openLoginModal();return false;">Log In</a>
   <a href="apply.html" class="btn btn-primary">Apply Now</a>
   <a href="become-a-host.html">Become a Host</a>
+  <a href="#" class="btn btn-teal" onclick="closeMobileMenu&&closeMobileMenu();openSignupModal();return false;">Student Sign Up</a>
 </div>
 
 <!-- ══════════ HERO ══════════ -->
@@ -666,6 +668,95 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
+<!-- ══════════ SIGNUP MODAL ══════════ -->
+<div class="signup-overlay" id="signupOverlay">
+  <div class="signup-modal">
+    <button class="login-close" onclick="closeSignupModal()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="login-title">Student Sign Up</div>
+    <div class="login-subtitle">Create your account to get started with USH.</div>
+    <div class="signup-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="su-first">First Name</label>
+          <input type="text" id="su-first" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label for="su-last">Last Name</label>
+          <input type="text" id="su-last" placeholder="Last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="su-email">Email address</label>
+        <input type="email" id="su-email" placeholder="you@example.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="su-pass">Password</label>
+          <input type="password" id="su-pass" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="su-pass2">Password Confirm</label>
+          <input type="password" id="su-pass2" placeholder="Confirm password">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="su-nationality">Nationality</label>
+        <select id="su-nationality"><option value="" disabled selected>Select nationality</option><option>Afghan</option><option>Brazilian</option><option>Chinese</option><option>Colombian</option><option>Indian</option><option>Japanese</option><option>Korean</option><option>Mexican</option><option>Saudi</option><option>Taiwanese</option><option>Thai</option><option>Turkish</option><option>Vietnamese</option><option>Other</option></select>
+      </div>
+      <div class="form-group">
+        <label for="su-living">Currently living in</label>
+        <select id="su-living"><option value="" disabled selected>Select country</option><option>United States</option><option>Brazil</option><option>China</option><option>Colombia</option><option>India</option><option>Japan</option><option>South Korea</option><option>Mexico</option><option>Saudi Arabia</option><option>Taiwan</option><option>Thailand</option><option>Turkey</option><option>Vietnam</option><option>Other</option></select>
+      </div>
+      <div class="form-group">
+        <label for="su-school">Select your school</label>
+        <select id="su-school"><option value="" disabled selected>Select your school</option><option>UCLA Extension</option><option>UC Riverside Extension</option><option>UC Irvine</option><option>Santa Monica College</option><option>Cal State Long Beach</option><option>Arizona State University</option><option>Phoenix College</option><option>Santiago Canyon College</option><option>Other</option></select>
+      </div>
+      <div class="signup-section-label">Date of Birth:</div>
+      <div class="signup-section-note">You must be 18 years or older to apply</div>
+      <div class="dob-row">
+        <div class="form-group">
+          <select id="su-month"><option value="" disabled selected>Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+        </div>
+        <div class="form-group">
+          <select id="su-day"><option value="" disabled selected>Day</option></select>
+        </div>
+        <div class="form-group">
+          <select id="su-year"><option value="" disabled selected>Year</option></select>
+        </div>
+      </div>
+      <div class="signup-section-label">Gender:</div>
+      <div class="gender-row">
+        <label><input type="radio" name="gender" value="male"><span>Male</span></label>
+        <label><input type="radio" name="gender" value="female"><span>Female</span></label>
+      </div>
+      <div class="form-group">
+        <label for="su-hear">How did you hear about us?</label>
+        <select id="su-hear"><option value="" disabled selected>Choose one</option><option>School / University</option><option>Agent / Agency</option><option>Google Search</option><option>Social Media</option><option>Friend / Family</option><option>Other</option></select>
+      </div>
+      <div class="form-group">
+        <label for="su-purpose">What's the purpose of the stay? <span style="color:var(--c-text-muted);font-weight:400">Optional</span></label>
+        <textarea id="su-purpose" placeholder="Please tell us whether you will be studying or working, and where"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="su-questions">Do you have any questions? <span style="color:var(--c-text-muted);font-weight:400">Optional</span></label>
+        <textarea id="su-questions" placeholder="Ask any questions"></textarea>
+      </div>
+      <button class="login-btn" onclick="handleSignup()">Sign up</button>
+      <div class="signup-legal">By signing up, you agree with the <a href="legal/guest_terms_conditions.html">Guest Terms and Conditions</a>, <a href="legal/guests_cancellation_policy.html">Guest Cancellation Policy</a> and <a href="legal/privacy_policy.html">Privacy Policy</a></div>
+      <div class="login-create" style="margin-top:4px">Already have an account? <a href="#" onclick="closeSignupModal();openLoginModal();return false;">Log in</a></div>
+    </div>
+  </div>
+</div>
+<script>
+function openSignupModal(){document.getElementById('signupOverlay').classList.add('open');document.body.style.overflow='hidden';populateDOB();}
+function closeSignupModal(){document.getElementById('signupOverlay').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('signupOverlay').addEventListener('click',function(e){if(e.target===this)closeSignupModal();});
+function populateDOB(){var d=document.getElementById('su-day'),y=document.getElementById('su-year');if(d.options.length>1)return;for(var i=1;i<=31;i++){var o=document.createElement('option');o.value=i;o.textContent=i;d.appendChild(o);}var cy=new Date().getFullYear();for(var j=cy-18;j>=cy-80;j--){var o=document.createElement('option');o.value=j;o.textContent=j;y.appendChild(o);}}
+function handleSignup(){var f=document.getElementById('su-first').value.trim();var l=document.getElementById('su-last').value.trim();var e=document.getElementById('su-email').value.trim();var p=document.getElementById('su-pass').value;var p2=document.getElementById('su-pass2').value;if(!f||!l||!e||!p||!p2){alert('Please fill in all required fields.');return;}if(p!==p2){alert('Passwords do not match.');return;}alert('Thank you for signing up, '+f+'! We will be in touch shortly.');closeSignupModal();}
+</script>
 <!-- ══════════ LOGIN MODAL ══════════ -->
 <div class="login-overlay" id="loginOverlay">
   <div class="login-modal">
@@ -689,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="login-forgot"><a href="#" onclick="showResetView();return false;">Forgot your Password?</a></div>
         <button class="login-btn" onclick="handleLogin()">Login</button>
         <div class="login-divider"><span>or</span></div>
-        <div class="login-create">Don't have an account? <a href="apply.html">Create an account</a></div>
+        <div class="login-create">Don't have an account? <a href="#" onclick="closeLoginModal();openSignupModal();return false;">Create an account</a></div>
       </div>
     </div>
 
