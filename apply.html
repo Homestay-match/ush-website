@@ -222,9 +222,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
     <div class="nav-links">
       <a href="about.html">About</a>
       <a href="what-is-homestay.html">What is Homestay</a>
-      <a href="faq.html">FAQ</a>
       <a href="partners.html">Partners</a>
-      <a href="contact.html">Contact</a>
       <a href="#" onclick="openLoginModal();return false;">Log In</a>
       <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
       <a href="become-a-host.html">Become a Host</a>
@@ -242,9 +240,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
   </button>
   <a href="about.html">About</a>
   <a href="what-is-homestay.html">What is Homestay</a>
-  <a href="faq.html">FAQ</a>
   <a href="partners.html">Partners</a>
-  <a href="contact.html">Contact</a>
   <a href="#" onclick="openLoginModal();return false;">Log In</a>
   <a href="apply.html" class="btn btn-primary">Apply Now</a>
   <a href="become-a-host.html">Become a Host</a>
@@ -1374,6 +1370,6 @@ function closeLoginModal(){document.getElementById('loginOverlay').classList.rem
 document.getElementById('loginOverlay').addEventListener('click',function(e){if(e.target===this)closeLoginModal();});
 function showResetView(){document.getElementById('loginView').style.display='none';document.getElementById('resetView').style.display='block';}
 function showLoginView(){document.getElementById('loginView').style.display='block';document.getElementById('resetView').style.display='none';}
-function handleLogin(){document.querySelectorAll('#loginView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('login-email').value.trim();var pass=document.getElementById('login-password').value.trim();var hasErr=false;if(!email){hasErr=true;var g=document.getElementById('login-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);}if(!pass){hasErr=true;var g=document.getElementById('login-password').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Password is required';g.appendChild(e);}if(hasErr){document.querySelector('#loginView .form-group.error input').focus();return;}window.location.href='https://www.ushstudent.com';}
+function handleLogin(){document.querySelectorAll('#loginView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('login-email').value.trim();var pass=document.getElementById('login-password').value.trim();var hasErr=false;if(!email){hasErr=true;var g=document.getElementById('login-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);}if(!pass){hasErr=true;var g=document.getElementById('login-password').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Password is required';g.appendChild(e);}if(hasErr){document.querySelector('#loginView .form-group.error input').focus();return;}window.location.href='dashboard.html';}
 function handleReset(){document.querySelectorAll('#resetView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('reset-email').value.trim();if(!email){var g=document.getElementById('reset-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);document.getElementById('reset-email').focus();return;}alert('A password reset link has been sent to '+email);showLoginView();}
 </script>

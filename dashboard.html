@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard — USH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ush.css?v=7">
+<style>
+/* ── DASHBOARD NAV ── */
+.dash-nav{background:var(--c-white);border-bottom:1px solid var(--c-border);padding:14px 0;position:sticky;top:0;z-index:100}
+.dash-nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.dash-nav-logo img{height:40px}
+.dash-nav-right{display:flex;align-items:center;gap:24px}
+.dash-nav-user{display:flex;align-items:center;gap:10px;font-size:0.88rem;font-weight:500;color:var(--c-text)}
+.dash-nav-avatar{width:36px;height:36px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--c-white)}
+.dash-nav-link{font-size:0.85rem;font-weight:500;color:var(--c-text-muted);transition:color 0.25s}
+.dash-nav-link:hover{color:var(--c-teal)}
+.dash-logout{font-size:0.85rem;font-weight:500;color:var(--c-text-muted);background:none;border:1px solid var(--c-border);border-radius:50px;padding:7px 18px;cursor:pointer;transition:all 0.25s}
+.dash-logout:hover{border-color:var(--c-text-muted);color:var(--c-text)}
+
+/* ── DASHBOARD LAYOUT ── */
+.dash-page{background:var(--c-cream);min-height:100vh;padding:40px 24px 80px}
+.dash-container{max-width:1100px;margin:0 auto}
+.dash-header{margin-bottom:36px}
+.dash-header h1{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;color:var(--c-charcoal);margin-bottom:6px}
+.dash-header p{font-size:0.95rem;color:var(--c-text-light);line-height:1.6}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.dash-grid{grid-template-columns:1fr}}
+
+/* ── DASHBOARD CARDS ── */
+.dash-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:32px;transition:box-shadow 0.3s}
+.dash-card:hover{box-shadow:var(--shadow-md)}
+.dash-card-full{grid-column:1/-1}
+.dash-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.dash-card-title{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--c-charcoal);display:flex;align-items:center;gap:10px}
+.dash-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dash-card-icon.teal{background:rgba(110,183,163,0.12)}
+.dash-card-icon.teal svg{color:var(--c-teal)}
+.dash-card-icon.gold{background:rgba(217,168,78,0.12)}
+.dash-card-icon.gold svg{color:var(--c-orange)}
+
+/* ── ARRIVAL INFO ── */
+.arrival-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:500px){.arrival-grid{grid-template-columns:1fr}}
+.arrival-item{text-align:center;padding:16px;background:var(--c-cream);border-radius:var(--r-md)}
+.arrival-item .label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:6px}
+.arrival-item .value{font-family:var(--ff-display);font-size:1.15rem;font-weight:600;color:var(--c-charcoal)}
+
+/* ── PAYMENT / BALANCE ── */
+.balance-row{display:flex;align-items:center;justify-content:space-between;padding:20px;background:var(--c-cream);border-radius:var(--r-md);margin-bottom:20px}
+.balance-label{font-size:0.85rem;color:var(--c-text-light);font-weight:500}
+.balance-amount{font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:var(--c-teal)}
+.balance-amount.due{color:var(--c-orange)}
+.balance-note{font-size:0.82rem;color:var(--c-text-muted);line-height:1.6;margin-bottom:20px}
+.balance-note a{color:var(--c-teal);font-weight:500}
+
+/* ── CREDIT CARDS TABLE ── */
+.cards-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.cards-table th{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--c-border)}
+.cards-table td{font-size:0.88rem;color:var(--c-text);padding:14px 12px;border-bottom:1px solid var(--c-border)}
+.cards-table tr:last-child td{border-bottom:none}
+.card-type{display:inline-flex;align-items:center;gap:6px;font-weight:500}
+.card-type svg{width:20px;height:14px}
+.card-number{font-family:monospace;font-size:0.85rem;color:var(--c-text-muted)}
+.add-card-btn{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--c-teal);background:none;border:1px dashed var(--c-teal);border-radius:var(--r-sm);padding:10px 18px;cursor:pointer;transition:all 0.25s;margin-top:4px}
+.add-card-btn:hover{background:var(--c-teal-light)}
+
+/* ── DOCUMENT UPLOAD ── */
+.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:500px){.upload-grid{grid-template-columns:1fr}}
+.upload-box{border:2px dashed var(--c-border-strong);border-radius:var(--r-md);padding:32px 20px;text-align:center;cursor:pointer;transition:all 0.3s;position:relative}
+.upload-box:hover{border-color:var(--c-teal);background:var(--c-teal-light)}
+.upload-box.uploaded{border-color:var(--c-teal);border-style:solid;background:rgba(110,183,163,0.05)}
+.upload-icon{width:48px;height:48px;border-radius:12px;background:var(--c-cream);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.upload-icon svg{color:var(--c-text-muted)}
+.upload-box:hover .upload-icon svg{color:var(--c-teal)}
+.upload-label{font-size:0.88rem;font-weight:600;color:var(--c-charcoal);margin-bottom:4px}
+.upload-hint{font-size:0.78rem;color:var(--c-text-muted)}
+.upload-input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.upload-status{display:flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:500;color:var(--c-teal);margin-top:10px;justify-content:center}
+
+.send-docs-btn{margin-top:20px;padding:13px 32px;border:none;border-radius:50px;background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease-out);display:inline-flex;align-items:center;gap:8px}
+.send-docs-btn:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(110,183,163,0.3)}
+
+/* ── STATUS BADGE ── */
+.status-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:50px}
+.status-badge.success{background:rgba(110,183,163,0.12);color:var(--c-teal)}
+.status-badge.pending{background:rgba(217,168,78,0.12);color:var(--c-orange)}
+.status-badge.none{background:var(--c-cream);color:var(--c-text-muted)}
+
+/* ── QUICK HELP ── */
+.help-card{background:linear-gradient(135deg,var(--c-charcoal) 0%,#4A5250 100%);color:var(--c-white);border-color:transparent}
+.help-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.help-card .dash-card-title{color:var(--c-white)}
+.help-card p{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:20px}
+.help-links{display:flex;flex-direction:column;gap:10px}
+.help-link{display:flex;align-items:center;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.85);padding:10px 14px;border-radius:var(--r-sm);background:rgba(255,255,255,0.06);transition:background 0.25s}
+.help-link:hover{background:rgba(255,255,255,0.12)}
+.help-link svg{flex-shrink:0;color:var(--c-orange)}
+</style>
+</head>
+<body>
+
+<!-- ══════════ DASHBOARD NAV ══════════ -->
+<nav class="dash-nav">
+  <div class="dash-nav-inner">
+    <a href="index.html" class="dash-nav-logo">
+      <img src="assets/ushlogo.png" alt="USH">
+    </a>
+    <div class="dash-nav-right">
+      <a href="#" class="dash-nav-link">Dashboard</a>
+      <a href="#" class="dash-nav-link">Make a Payment</a>
+      <div class="dash-nav-user">
+        <div class="dash-nav-avatar">NI</div>
+        <span>Norimitsu I.</span>
+      </div>
+      <button class="dash-logout" onclick="window.location.href='index.html'">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ DASHBOARD CONTENT ══════════ -->
+<div class="dash-page">
+  <div class="dash-container">
+
+    <!-- Header -->
+    <div class="dash-header">
+      <h1>Welcome back, Norimitsu</h1>
+      <p>Manage your homestay payments and documents below.</p>
+    </div>
+
+    <div class="dash-grid">
+
+      <!-- ══════════ ARRIVAL INFO ══════════ -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <div class="dash-card-icon teal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            </div>
+            Arrival Information
+          </div>
+          <span class="status-badge none">Not set</span>
+        </div>
+        <div class="arrival-grid">
+          <div class="arrival-item">
+            <div class="label">Date</div>
+            <div class="value">—</div>
+          </div>
+          <div class="arrival-item">
+            <div class="label">Time</div>
+            <div class="value">—</div>
+          </div>
+          <div class="arrival-item">
+            <div class="label">Airport</div>
+            <div class="value">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ PAYMENT BALANCE ══════════ -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <div class="dash-card-icon gold">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            </div>
+            Payment
+          </div>
+          <span class="status-badge success">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            No balance due
+          </span>
+        </div>
+        <div class="balance-row">
+          <div class="balance-label">Current Balance</div>
+          <div class="balance-amount">$0.00 <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span></div>
+        </div>
+        <p class="balance-note">Your balance must be verified by our staff before a payment can be made. If you need to make a payment right away, please <a href="contact.html">contact our office</a>.</p>
+      </div>
+
+      <!-- ══════════ CREDIT CARDS ══════════ -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <div class="dash-card-icon teal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            </div>
+            Your Credit Cards
+          </div>
+        </div>
+        <table class="cards-table">
+          <thead>
+            <tr>
+              <th>Name on Card</th>
+              <th>Type</th>
+              <th>Card Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NORIMITSU IMOOKA</td>
+              <td><span class="card-type">Visa</span></td>
+              <td><span class="card-number">************9535</span></td>
+            </tr>
+            <tr>
+              <td>NANAMI IMOOKA</td>
+              <td><span class="card-type">Visa</span></td>
+              <td><span class="card-number">************5183</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="add-card-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add New Card
+        </button>
+      </div>
+
+      <!-- ══════════ NEED HELP ══════════ -->
+      <div class="dash-card help-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">Need Help?</div>
+        </div>
+        <p>Have questions about your homestay, payments, or documents? We're here to help.</p>
+        <div class="help-links">
+          <a href="contact.html" class="help-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Call us: +1 (310) 824-4908
+          </a>
+          <a href="mailto:contact@usaish.com" class="help-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email: contact@usaish.com
+          </a>
+          <a href="faq.html" class="help-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            View FAQ
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ UPLOAD DOCUMENTS ══════════ -->
+      <div class="dash-card dash-card-full">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <div class="dash-card-icon gold">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg>
+            </div>
+            Upload Passport / Picture ID
+          </div>
+        </div>
+        <div class="upload-grid">
+          <div class="upload-box" onclick="this.querySelector('input').click()">
+            <input type="file" class="upload-input" accept="image/*,.pdf" onchange="handleUpload(this,'passport')">
+            <div class="upload-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
+            </div>
+            <div class="upload-label">Passport Personal Information Page / Picture ID</div>
+            <div class="upload-hint">Click to upload — JPG, PNG, or PDF</div>
+            <div class="upload-status" id="passport-status"></div>
+          </div>
+          <div class="upload-box" onclick="this.querySelector('input').click()">
+            <input type="file" class="upload-input" accept="image/*,.pdf" onchange="handleUpload(this,'visa')">
+            <div class="upload-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
+            </div>
+            <div class="upload-label">Passport Visa Page</div>
+            <div class="upload-hint">Click to upload — JPG, PNG, or PDF</div>
+            <div class="upload-status" id="visa-status"></div>
+          </div>
+        </div>
+        <button class="send-docs-btn" onclick="alert('Documents submitted successfully!')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
+          Send Documents
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="background:#3A4240;color:rgba(255,255,255,0.5);padding:24px 0;text-align:center;font-size:0.78rem">
+  &copy; 2025 Universal Student Housing. All rights reserved. &nbsp;|&nbsp;
+  <a href="legal/privacy_policy.html" style="color:rgba(255,255,255,0.6)">Privacy Policy</a> &nbsp;|&nbsp;
+  <a href="legal/guest_terms_conditions.html" style="color:rgba(255,255,255,0.6)">Terms</a> &nbsp;|&nbsp;
+  <a href="contact.html" style="color:rgba(255,255,255,0.6)">Contact</a>
+</footer>
+
+<script>
+function handleUpload(input, type) {
+  if (input.files && input.files[0]) {
+    var fileName = input.files[0].name;
+    var statusEl = document.getElementById(type + '-status');
+    statusEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> ' + fileName;
+    input.closest('.upload-box').classList.add('uploaded');
+  }
+}
+</script>
+
+</body>
+</html>
