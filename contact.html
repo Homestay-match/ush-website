@@ -14,7 +14,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 
 /* ── HERO (contact bg image variant) ── */
 .hero{position:relative;height:68vh;min-height:480px;max-height:700px;display:flex;align-items:flex-end;overflow:hidden;background:var(--c-charcoal)}
-.hero-bg{position:absolute;inset:0;background:url('assets/team-photo.jpg') center center / cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
+.hero-bg{position:absolute;inset:0;background:url('assets/contact-hero.jpg') center center / cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
 .hero-bg.loaded{transform:scale(1)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,30,28,0.78) 0%,rgba(26,30,28,0.45) 45%,rgba(26,30,28,0.15) 100%)}
 .hero-inner{position:relative;z-index:2;max-width:700px;padding-bottom:72px}
@@ -702,7 +702,7 @@ function toggleFaq(el) {
 const heroBg = document.getElementById('heroBg');
 if (heroBg) {
   const img = new Image();
-  img.src = 'assets/team-photo.jpg';
+  img.src = 'assets/contact-hero.jpg';
   img.onload = () => heroBg.classList.add('loaded');
 }
 
