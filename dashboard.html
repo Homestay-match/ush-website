@@ -167,23 +167,17 @@
 </head>
 <body>
 
-<!-- ══════════ DASHBOARD NAV ══════════ -->
-<nav class="dash-nav">
+<!-- ══════════ DASHBOARD TOP BAR ══════════ -->
+<div class="dash-nav">
   <div class="dash-nav-inner">
     <a href="index.html" class="dash-nav-logo">
       <img src="assets/ushlogo.png" alt="USH">
     </a>
     <div class="dash-nav-right">
-      <a href="#" class="dash-nav-link">Dashboard</a>
-      <a href="#" class="dash-nav-link">Make a Payment</a>
-      <div class="dash-nav-user">
-        <div class="dash-nav-avatar">NI</div>
-        <span>Norimitsu I.</span>
-      </div>
       <button class="dash-logout" onclick="window.location.href='index.html'">Logout</button>
     </div>
   </div>
-</nav>
+</div>
 
 <!-- ══════════ DASHBOARD CONTENT ══════════ -->
 <div class="dash-page">
@@ -218,17 +212,29 @@
           </div>
           <span class="status-badge none">Not set</span>
         </div>
-        <div class="arrival-grid">
-          <div class="arrival-item">
-            <div class="label">Date</div>
+        <div class="arrival-grid" style="grid-template-columns:1fr 1fr">
+          <div class="arrival-item" style="grid-column:1/-1">
+            <div class="label">School</div>
             <div class="value">—</div>
           </div>
           <div class="arrival-item">
-            <div class="label">Time</div>
+            <div class="label">Move-in Date</div>
             <div class="value">—</div>
           </div>
           <div class="arrival-item">
-            <div class="label">Airport</div>
+            <div class="label">Move-out Date</div>
+            <div class="value">—</div>
+          </div>
+          <div class="arrival-item">
+            <div class="label">Airline</div>
+            <div class="value">—</div>
+          </div>
+          <div class="arrival-item">
+            <div class="label">Flight Number</div>
+            <div class="value">—</div>
+          </div>
+          <div class="arrival-item" style="grid-column:1/-1">
+            <div class="label">Arrival Time</div>
             <div class="value">—</div>
           </div>
         </div>
@@ -243,14 +249,10 @@
             </div>
             Host Family Information
           </div>
-          <span class="status-badge success" id="hostBadgePaid" style="display:none">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Matched &amp; Paid
-          </span>
-          <span class="status-badge pending" id="hostBadgePending" style="display:none">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-            Pending Payment
-          </span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="status-badge none" id="hostBadgeMatched">Matched</span>
+            <span class="status-badge none" id="hostBadgePaid">Paid</span>
+          </div>
         </div>
 
         <!-- Pending payment state -->
@@ -754,26 +756,35 @@ function checkShowHostCard() {
   var card = document.getElementById('hostCard');
   var pendingPayment = document.getElementById('hostPendingPayment');
   var matched = document.getElementById('hostMatched');
+  var badgeMatched = document.getElementById('hostBadgeMatched');
   var badgePaid = document.getElementById('hostBadgePaid');
-  var badgePending = document.getElementById('hostBadgePending');
+
+  // Update badge states
+  if (isMatched) {
+    badgeMatched.className = 'status-badge success';
+    badgeMatched.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Matched';
+  } else {
+    badgeMatched.className = 'status-badge none';
+    badgeMatched.textContent = 'Matched';
+  }
+  if (isPaid) {
+    badgePaid.className = 'status-badge success';
+    badgePaid.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Paid';
+  } else {
+    badgePaid.className = 'status-badge none';
+    badgePaid.textContent = 'Paid';
+  }
 
   if (!isMatched) {
-    // Not matched yet — hide entire card
     card.style.display = 'none';
   } else if (isMatched && !isPaid) {
-    // Matched but not paid — show card with pending payment message
     card.style.display = 'block';
     pendingPayment.style.display = 'block';
     matched.style.display = 'none';
-    badgePending.style.display = 'inline-flex';
-    badgePaid.style.display = 'none';
   } else {
-    // Matched AND paid — show full host info
     card.style.display = 'block';
     pendingPayment.style.display = 'none';
     matched.style.display = 'block';
-    badgePending.style.display = 'none';
-    badgePaid.style.display = 'inline-flex';
   }
 }
 
