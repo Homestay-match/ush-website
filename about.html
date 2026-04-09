@@ -25,7 +25,7 @@
 .hero-stat .num{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--c-white)}
 .hero-stat .label{font-size:0.72rem;color:rgba(255,255,255,0.8);font-weight:400;margin-top:2px;letter-spacing:0.04em;text-transform:uppercase}
 @media(max-width:600px){
-  .hero{height:70vh;min-height:480px;padding:0 0 48px}
+  .hero{height:70vh;min-height:480px;padding:0 0 48px;background-attachment:scroll}
   .hero-stats{gap:20px}
   .hero-stat .num{font-size:1.3rem}
 }
@@ -84,9 +84,11 @@
 .t-quote{font-family:var(--ff-display);font-style:italic;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--c-text);line-height:1.72;position:relative;padding-left:24px}
 .t-quote::before{content:'\201C';font-family:var(--ff-display);font-size:4rem;color:var(--c-teal);opacity:0.18;position:absolute;top:-20px;left:-4px;line-height:1}
 @media(max-width:700px){.t-quote{padding-left:0}}
-.t-author{margin-top:18px;font-size:0.85rem;color:var(--c-text-light);padding-left:24px}
-.t-author strong{display:block;font-family:var(--ff-display);font-size:0.95rem;font-weight:700;color:var(--c-olive-dark);margin-bottom:2px}
-@media(max-width:700px){.t-author{padding-left:0}}
+.t-author{margin-top:24px;font-size:0.85rem;color:var(--c-text-light);padding-left:24px;display:flex;align-items:center;gap:16px}
+.t-author .t-logo{height:72px;width:auto;object-fit:contain;flex-shrink:0}
+.t-author strong{display:block;font-family:var(--ff-display);font-size:0.95rem;font-weight:700;color:var(--c-orange);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.03em}
+.t-author .t-title{font-size:0.8rem;color:var(--c-text-light);line-height:1.45}
+@media(max-width:700px){.t-author{padding-left:0;justify-content:center}}
 /* Nav */
 .t-nav{display:flex;align-items:center;gap:16px;margin-top:40px;justify-content:center}
 .t-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--c-olive-dark);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s;color:var(--c-olive-dark)}
@@ -451,8 +453,11 @@
               <div class="t-tag">University Partner</div>
               <p class="t-quote">&ldquo;We have been working with Universal Student Housing for over 15 years and have enjoyed a highly productive working relationship. USH staff go out of their way to meet our as well as our students&rsquo; needs, and we can always count on them to respond quickly to our calls and e-mails. We&rsquo;re grateful for their help, and we wish them many more years of success.&rdquo;</p>
               <div class="t-author">
-                <strong>William H. Gaskill, PhD</strong>
-                Former Director, International Programs &middot; UCLA Extension
+                <img class="t-logo" src="assets/logo-ucla-extension.png" alt="UCLA Extension">
+                <div>
+                  <strong>William H. Gaskill, PhD</strong>
+                  <div class="t-title">Director, International Programs — UCLA Extension</div>
+                </div>
               </div>
             </div>
           </div>
@@ -464,8 +469,11 @@
               <div class="t-tag">University Partner</div>
               <p class="t-quote">&ldquo;We deeply value our partnership with USH. Emerson and his team are responsive, friendly, and service-oriented, running a high-quality homestay program that our students and partners consistently praise. They truly feel like an extension of our own team.&rdquo;</p>
               <div class="t-author">
-                <strong>Cynthia Welle</strong>
-                Director of Strategic Partnership, Office of Dean &middot; UCR Extension
+                <img class="t-logo" src="assets/logo-ucr-extension.png" alt="UCR Extension">
+                <div>
+                  <strong>Cynthia Welle</strong>
+                  <div class="t-title">Director of Strategic Partnership — UCR Extension</div>
+                </div>
               </div>
             </div>
           </div>
@@ -477,8 +485,11 @@
               <div class="t-tag">University Partner</div>
               <p class="t-quote">&ldquo;It has been a pleasure working with Universal Student Housing over the last several years. Their professionalism and care consistently stand out when helping our International Students secure housing. The team is responsive, organized, and dedicated to helping the students find a place to live.&rdquo;</p>
               <div class="t-author">
-                <strong>Carlos Jauregui</strong>
-                Student Services Specialist, International Education Center &middot; Santa Monica College
+                <img class="t-logo" src="assets/logo-smc.png" alt="Santa Monica College">
+                <div>
+                  <strong>Carlos Jauregui</strong>
+                  <div class="t-title">Student Services Specialist — Santa Monica College</div>
+                </div>
               </div>
             </div>
           </div>
