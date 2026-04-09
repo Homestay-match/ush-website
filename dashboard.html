@@ -56,6 +56,23 @@
 .balance-amount.due{color:var(--c-orange)}
 .balance-note{font-size:0.82rem;color:var(--c-text-muted);line-height:1.6;margin-bottom:20px}
 .balance-note a{color:var(--c-teal);font-weight:500}
+.pay-btn{width:100%;padding:14px;border:none;border-radius:50px;font-family:var(--ff-body);font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease-out);display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+.pay-btn.active{background:var(--c-orange);color:var(--c-white)}
+.pay-btn.active:hover{background:var(--c-orange-dark,#c7932e);transform:translateY(-1px);box-shadow:0 6px 20px rgba(217,168,78,0.35)}
+.pay-btn.disabled{background:var(--c-cream);color:var(--c-text-muted);cursor:default;opacity:0.7}
+.pay-btn-outline{padding:14px 24px;border:1px solid var(--c-border-strong);border-radius:50px;font-family:var(--ff-body);font-size:0.9rem;font-weight:600;color:var(--c-text-muted);background:var(--c-white);cursor:pointer;transition:all 0.25s}
+.pay-btn-outline:hover{border-color:var(--c-text-muted);color:var(--c-text)}
+.balance-row.due{background:rgba(217,168,78,0.08);border:1px solid rgba(217,168,78,0.2)}
+.balance-desc{font-size:0.88rem;color:var(--c-text);line-height:1.6;padding:14px 16px;background:var(--c-cream);border-radius:var(--r-md);margin-bottom:20px;border-left:3px solid var(--c-orange)}
+.card-select-list{display:flex;flex-direction:column;gap:10px}
+.card-select-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border:2px solid var(--c-border);border-radius:var(--r-md);cursor:pointer;transition:all 0.25s}
+.card-select-item:hover{border-color:var(--c-teal);background:rgba(110,183,163,0.04)}
+.card-select-item.selected{border-color:var(--c-teal);background:rgba(110,183,163,0.06)}
+.card-select-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--c-border-strong);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.25s}
+.card-select-item.selected .card-select-radio{border-color:var(--c-teal);background:var(--c-teal)}
+.card-select-item.selected .card-select-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--c-white)}
+.card-select-name{font-size:0.88rem;font-weight:600;color:var(--c-charcoal)}
+.card-select-num{font-family:monospace;font-size:0.82rem;color:var(--c-text-muted)}
 
 /* ── CREDIT CARDS TABLE ── */
 .cards-table{width:100%;border-collapse:collapse;margin-bottom:16px}
@@ -67,6 +84,20 @@
 .card-number{font-family:monospace;font-size:0.85rem;color:var(--c-text-muted)}
 .add-card-btn{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--c-teal);background:none;border:1px dashed var(--c-teal);border-radius:var(--r-sm);padding:10px 18px;cursor:pointer;transition:all 0.25s;margin-top:4px}
 .add-card-btn:hover{background:var(--c-teal-light)}
+
+/* ── ADD CARD FORM ── */
+.add-card-form{margin-top:16px;padding:20px;background:var(--c-cream);border-radius:var(--r-md);border:1px solid var(--c-border);display:none}
+.add-card-form.open{display:block}
+.add-card-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.add-card-form .form-row.full{grid-template-columns:1fr}
+.add-card-form label{font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-text-muted);display:block;margin-bottom:5px}
+.add-card-form input,.add-card-form select{width:100%;padding:10px 14px;border:1px solid var(--c-border-strong);border-radius:var(--r-sm);font-family:var(--ff-body);font-size:0.88rem;color:var(--c-text);background:var(--c-white);transition:border-color 0.25s;box-sizing:border-box}
+.add-card-form input:focus,.add-card-form select:focus{outline:none;border-color:var(--c-teal)}
+.add-card-form .form-actions{display:flex;gap:10px;margin-top:18px}
+.save-card-btn{padding:11px 24px;border:none;border-radius:50px;background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.25s}
+.save-card-btn:hover{background:var(--c-teal-dark)}
+.cancel-card-btn{padding:11px 24px;border:1px solid var(--c-border-strong);border-radius:50px;background:var(--c-white);color:var(--c-text-muted);font-family:var(--ff-body);font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.25s}
+.cancel-card-btn:hover{border-color:var(--c-text-muted);color:var(--c-text)}
 
 /* ── DOCUMENT UPLOAD ── */
 .upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -90,6 +121,38 @@
 .status-badge.success{background:rgba(110,183,163,0.12);color:var(--c-teal)}
 .status-badge.pending{background:rgba(217,168,78,0.12);color:var(--c-orange)}
 .status-badge.none{background:var(--c-cream);color:var(--c-text-muted)}
+
+/* ── PROFILE PICTURE ── */
+.profile-section{display:flex;align-items:center;gap:24px;margin-bottom:36px}
+.profile-avatar-wrap{position:relative;width:100px;height:100px;flex-shrink:0}
+.profile-avatar{width:100px;height:100px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--c-white);overflow:hidden;border:3px solid var(--c-white);box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.profile-avatar img{width:100%;height:100%;object-fit:cover}
+.profile-upload-btn{position:absolute;bottom:2px;right:2px;width:32px;height:32px;border-radius:50%;background:var(--c-orange);border:2px solid var(--c-white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+.profile-upload-btn:hover{background:var(--c-orange-dark,#c7932e);transform:scale(1.1)}
+.profile-upload-btn svg{color:var(--c-white)}
+.profile-upload-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;border-radius:50%}
+.profile-info h1{font-family:var(--ff-display);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;color:var(--c-charcoal);margin-bottom:4px}
+.profile-info p{font-size:0.95rem;color:var(--c-text-light);line-height:1.6}
+.profile-photo-hint{font-size:0.78rem;color:var(--c-text-muted);margin-top:4px}
+@media(max-width:500px){.profile-section{flex-direction:column;text-align:center}.profile-avatar-wrap{margin:0 auto}}
+
+/* ── HOST INFO ── */
+.host-info-row{display:flex;align-items:center;gap:16px;padding:14px 16px;background:var(--c-cream);border-radius:var(--r-md);margin-bottom:12px}
+.host-info-row:last-of-type{margin-bottom:0}
+.host-info-icon{width:36px;height:36px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.host-info-icon svg{color:var(--c-teal)}
+.host-info-label{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:2px}
+.host-info-value{font-size:0.9rem;font-weight:500;color:var(--c-charcoal)}
+.host-info-value a{color:var(--c-teal);text-decoration:none;font-weight:600}
+.host-info-value a:hover{text-decoration:underline}
+.host-pending{text-align:center;padding:24px 16px;color:var(--c-text-muted);font-size:0.88rem;line-height:1.6}
+.host-pending svg{display:block;margin:0 auto 12px;color:var(--c-border-strong)}
+.welcome-pkg-btn{display:inline-flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;color:var(--c-teal);background:rgba(110,183,163,0.08);border:1px solid rgba(110,183,163,0.25);border-radius:var(--r-sm);padding:10px 18px;text-decoration:none;transition:all 0.25s;margin-top:16px}
+.welcome-pkg-btn:hover{background:rgba(110,183,163,0.15);border-color:var(--c-teal)}
+.orientation-video{margin-top:20px;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/9}
+.orientation-video iframe{width:100%;height:100%;border:none;border-radius:var(--r-md)}
+.orientation-label{font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-text-muted);margin-top:20px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.orientation-label svg{color:var(--c-orange)}
 
 /* ── QUICK HELP ── */
 .help-card{background:linear-gradient(135deg,var(--c-charcoal) 0%,#4A5250 100%);color:var(--c-white);border-color:transparent}
@@ -126,10 +189,20 @@
 <div class="dash-page">
   <div class="dash-container">
 
-    <!-- Header -->
-    <div class="dash-header">
-      <h1>Welcome back, Norimitsu</h1>
-      <p>Manage your homestay payments and documents below.</p>
+    <!-- Profile + Header -->
+    <div class="profile-section">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="profileAvatar">NI</div>
+        <label class="profile-upload-btn" title="Upload profile photo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <input type="file" accept="image/*" onchange="handleProfilePhoto(this)">
+        </label>
+      </div>
+      <div class="profile-info">
+        <h1>Welcome back, Norimitsu</h1>
+        <p>Manage your homestay payments and documents below.</p>
+        <div class="profile-photo-hint" id="profileHint">Upload a profile photo</div>
+      </div>
     </div>
 
     <div class="dash-grid">
@@ -161,25 +234,166 @@
         </div>
       </div>
 
-      <!-- ══════════ PAYMENT BALANCE ══════════ -->
-      <div class="dash-card">
+      <!-- ══════════ HOST INFORMATION (only visible when matched + paid) ══════════ -->
+      <div class="dash-card" id="hostCard" style="display:none">
         <div class="dash-card-header">
           <div class="dash-card-title">
-            <div class="dash-card-icon gold">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            <div class="dash-card-icon teal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            Payment
+            Host Family Information
           </div>
-          <span class="status-badge success">
+          <span class="status-badge success" id="hostBadgePaid" style="display:none">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-            No balance due
+            Matched &amp; Paid
+          </span>
+          <span class="status-badge pending" id="hostBadgePending" style="display:none">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Pending Payment
           </span>
         </div>
-        <div class="balance-row">
-          <div class="balance-label">Current Balance</div>
-          <div class="balance-amount">$0.00 <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span></div>
+
+        <!-- Pending payment state -->
+        <div id="hostPendingPayment" style="display:none">
+          <div class="host-pending">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            You have been matched with a host family!<br>Complete your payment to view your host family details and welcome package.
+          </div>
         </div>
-        <p class="balance-note">Your balance must be verified by our staff before a payment can be made. If you need to make a payment right away, please <a href="contact.html">contact our office</a>.</p>
+
+        <!-- Matched + Paid state -->
+        <div id="hostMatched" style="display:none">
+          <div class="host-info-row">
+            <div class="host-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="host-info-label">Host Name</div>
+              <div class="host-info-value" id="hostName">—</div>
+            </div>
+          </div>
+          <div class="host-info-row">
+            <div class="host-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="host-info-label">Phone</div>
+              <div class="host-info-value" id="hostPhone">—</div>
+            </div>
+          </div>
+          <div class="host-info-row">
+            <div class="host-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="host-info-label">Email</div>
+              <div class="host-info-value" id="hostEmail">—</div>
+            </div>
+          </div>
+          <div class="host-info-row">
+            <div class="host-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="host-info-label">Address</div>
+              <div class="host-info-value" id="hostAddress">—</div>
+            </div>
+          </div>
+
+          <!-- Welcome Package PDF -->
+          <a href="#" class="welcome-pkg-btn" id="welcomePkgLink" style="display:none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+            Download Welcome Package (PDF)
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ══════════ PAYMENT BALANCE ══════════ -->
+      <div class="dash-card" id="paymentCard">
+
+        <!-- ── DEFAULT: No balance ── -->
+        <div id="payNoBalance">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <div class="dash-card-icon gold">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+              </div>
+              Payment
+            </div>
+            <span class="status-badge success">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              No balance due
+            </span>
+          </div>
+          <div class="balance-row">
+            <div class="balance-label">Current Balance</div>
+            <div class="balance-amount">$0.00 <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span></div>
+          </div>
+          <p class="balance-note">You have no outstanding balance. If you believe this is an error, please <a href="contact.html">contact our office</a>.</p>
+          <button class="pay-btn disabled" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            Make a Payment
+          </button>
+        </div>
+
+        <!-- ── BALANCE DUE (hidden by default, shown when balance exists) ── -->
+        <div id="payBalanceDue" style="display:none">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <div class="dash-card-icon gold">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+              </div>
+              Payment
+            </div>
+            <span class="status-badge pending">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              Balance due
+            </span>
+          </div>
+          <div class="balance-row due">
+            <div class="balance-label">Amount Due</div>
+            <div class="balance-amount due" id="balanceAmountText">$0.00 <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span></div>
+          </div>
+          <div class="balance-desc" id="balanceDescription"></div>
+          <button class="pay-btn active" id="payBtn" onclick="showCardSelection()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            Make a Payment
+          </button>
+        </div>
+
+        <!-- ── SELECT CREDIT CARD (shown after clicking Make a Payment) ── -->
+        <div id="paySelectCard" style="display:none">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <div class="dash-card-icon gold">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+              </div>
+              Select a Credit Card
+            </div>
+          </div>
+          <p class="balance-note" style="margin-bottom:16px">Choose which card to use for your payment of <strong id="payAmountLabel">$0.00</strong>.</p>
+          <div class="card-select-list" id="cardSelectList"></div>
+          <div style="display:flex;gap:12px;margin-top:20px">
+            <button class="pay-btn active" id="confirmPayBtn" onclick="confirmPayment()" style="flex:1" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Confirm Payment
+            </button>
+            <button class="pay-btn-outline" onclick="cancelCardSelection()">Cancel</button>
+          </div>
+        </div>
+
+        <!-- ── PAYMENT SUCCESS ── -->
+        <div id="paySuccess" style="display:none;text-align:center;padding:30px 10px">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--c-teal)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:700;color:var(--c-charcoal);margin-bottom:8px">Thank You!</h3>
+          <p style="font-size:0.95rem;color:var(--c-text);line-height:1.7;margin-bottom:6px">Your payment has been successfully submitted.</p>
+          <p style="font-size:0.85rem;color:var(--c-text-muted);line-height:1.6;margin-bottom:20px">A confirmation email will be sent to your registered email address. If you have any questions, please don't hesitate to <a href="contact.html" style="color:var(--c-teal);font-weight:500">contact us</a>.</p>
+          <div style="font-size:0.78rem;color:var(--c-text-muted);padding-top:16px;border-top:1px solid var(--c-border)">Reference will be sent via email</div>
+        </div>
+
       </div>
 
       <!-- ══════════ CREDIT CARDS ══════════ -->
@@ -213,9 +427,85 @@
             </tr>
           </tbody>
         </table>
-        <button class="add-card-btn">
+        <button class="add-card-btn" id="addCardToggle" onclick="toggleAddCardForm()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           Add New Card
+        </button>
+        <div class="add-card-form" id="addCardForm">
+          <div class="form-row full">
+            <div>
+              <label for="cardName">Name on Card</label>
+              <input type="text" id="cardName" placeholder="Full name as shown on card">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label for="cardNumber">Card Number</label>
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)">
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="cardExpiry">Expiration Date</label>
+              <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+            </div>
+            <div>
+              <label for="cardCvv">CVV</label>
+              <input type="text" id="cardCvv" placeholder="123" maxlength="4">
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="cardType">Card Type</label>
+              <select id="cardType">
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="Amex">American Express</option>
+                <option value="Discover">Discover</option>
+              </select>
+            </div>
+            <div></div>
+          </div>
+          <div class="form-actions">
+            <button class="save-card-btn" onclick="saveNewCard()">Save Card</button>
+            <button class="cancel-card-btn" onclick="toggleAddCardForm()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ UPLOAD DOCUMENTS ══════════ -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <div class="dash-card-icon gold">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg>
+            </div>
+            Upload Documents
+          </div>
+        </div>
+        <div class="upload-grid" style="grid-template-columns:1fr">
+          <div class="upload-box" onclick="this.querySelector('input').click()">
+            <input type="file" class="upload-input" accept="image/*,.pdf" onchange="handleUpload(this,'passport')">
+            <div class="upload-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
+            </div>
+            <div class="upload-label">Passport / Picture ID</div>
+            <div class="upload-hint">Click to upload — JPG, PNG, or PDF</div>
+            <div class="upload-status" id="passport-status"></div>
+          </div>
+          <div class="upload-box" onclick="this.querySelector('input').click()">
+            <input type="file" class="upload-input" accept="image/*,.pdf" onchange="handleUpload(this,'visa')">
+            <div class="upload-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
+            </div>
+            <div class="upload-label">Passport Visa Page</div>
+            <div class="upload-hint">Click to upload — JPG, PNG, or PDF</div>
+            <div class="upload-status" id="visa-status"></div>
+          </div>
+        </div>
+        <button class="send-docs-btn" onclick="alert('Documents submitted successfully!')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
+          Send Documents
         </button>
       </div>
 
@@ -241,40 +531,20 @@
         </div>
       </div>
 
-      <!-- ══════════ UPLOAD DOCUMENTS ══════════ -->
+      <!-- ══════════ ORIENTATION VIDEO ══════════ -->
       <div class="dash-card dash-card-full">
         <div class="dash-card-header">
           <div class="dash-card-title">
             <div class="dash-card-icon gold">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </div>
-            Upload Passport / Picture ID
+            Orientation Video
           </div>
         </div>
-        <div class="upload-grid">
-          <div class="upload-box" onclick="this.querySelector('input').click()">
-            <input type="file" class="upload-input" accept="image/*,.pdf" onchange="handleUpload(this,'passport')">
-            <div class="upload-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
-            </div>
-            <div class="upload-label">Passport Personal Information Page / Picture ID</div>
-            <div class="upload-hint">Click to upload — JPG, PNG, or PDF</div>
-            <div class="upload-status" id="passport-status"></div>
-          </div>
-          <div class="upload-box" onclick="this.querySelector('input').click()">
-            <input type="file" class="upload-input" accept="image/*,.pdf" onchange="handleUpload(this,'visa')">
-            <div class="upload-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
-            </div>
-            <div class="upload-label">Passport Visa Page</div>
-            <div class="upload-hint">Click to upload — JPG, PNG, or PDF</div>
-            <div class="upload-status" id="visa-status"></div>
-          </div>
+        <p style="font-size:0.88rem;color:var(--c-text-muted);line-height:1.6;margin-bottom:16px">Watch this video to learn about your homestay experience, house rules, and what to expect upon arrival.</p>
+        <div class="orientation-video">
+          <iframe src="https://www.youtube.com/embed/DjDayH5Pl3Q" title="USH Orientation Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <button class="send-docs-btn" onclick="alert('Documents submitted successfully!')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
-          Send Documents
-        </button>
       </div>
 
     </div>
@@ -290,6 +560,26 @@
 </footer>
 
 <script>
+function handleProfilePhoto(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var avatar = document.getElementById('profileAvatar');
+      avatar.innerHTML = '<img src="' + e.target.result + '" alt="Profile">';
+      // Also update nav avatar
+      var navAvatar = document.querySelector('.dash-nav-avatar');
+      if (navAvatar) {
+        navAvatar.style.backgroundImage = 'url(' + e.target.result + ')';
+        navAvatar.style.backgroundSize = 'cover';
+        navAvatar.style.backgroundPosition = 'center';
+        navAvatar.textContent = '';
+      }
+      document.getElementById('profileHint').textContent = 'Photo uploaded! Click camera to change.';
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
 function handleUpload(input, type) {
   if (input.files && input.files[0]) {
     var fileName = input.files[0].name;
@@ -298,6 +588,200 @@ function handleUpload(input, type) {
     input.closest('.upload-box').classList.add('uploaded');
   }
 }
+
+/* ── PAYMENT FLOW ── */
+
+// Credit cards data (would come from backend)
+var creditCards = [
+  { name: 'NORIMITSU IMOOKA', type: 'Visa', last4: '9535' },
+  { name: 'NANAMI IMOOKA', type: 'Visa', last4: '5183' }
+];
+var selectedCard = null;
+
+// Call this to set a balance (simulating what happens when admin creates a balance)
+// Example: setBalance(1250.00, 'Fall 2026 Homestay Program — 4 months (Sep–Dec)')
+function setBalance(amount, description) {
+  document.getElementById('payNoBalance').style.display = 'none';
+  document.getElementById('payBalanceDue').style.display = 'block';
+  document.getElementById('paySelectCard').style.display = 'none';
+  document.getElementById('paySuccess').style.display = 'none';
+
+  var formatted = '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('balanceAmountText').innerHTML = formatted + ' <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span>';
+  document.getElementById('balanceDescription').textContent = description;
+  document.getElementById('payAmountLabel').textContent = formatted;
+}
+
+// Call this to clear balance (back to no balance state)
+function clearBalance() {
+  document.getElementById('payNoBalance').style.display = 'block';
+  document.getElementById('payBalanceDue').style.display = 'none';
+  document.getElementById('paySelectCard').style.display = 'none';
+  document.getElementById('paySuccess').style.display = 'none';
+}
+
+function showCardSelection() {
+  document.getElementById('payBalanceDue').style.display = 'none';
+  document.getElementById('paySelectCard').style.display = 'block';
+  selectedCard = null;
+
+  var list = document.getElementById('cardSelectList');
+  list.innerHTML = '';
+
+  creditCards.forEach(function(card, i) {
+    var item = document.createElement('div');
+    item.className = 'card-select-item';
+    item.setAttribute('data-index', i);
+    item.innerHTML = '<div class="card-select-radio"></div>' +
+      '<div><div class="card-select-name">' + card.name + '</div>' +
+      '<div class="card-select-num">' + card.type + ' ending in ' + card.last4 + '</div></div>';
+    item.addEventListener('click', function() { selectCard(i); });
+    list.appendChild(item);
+  });
+
+  // If only one card, auto-select it
+  if (creditCards.length === 1) {
+    selectCard(0);
+  }
+
+  document.getElementById('confirmPayBtn').disabled = true;
+  document.getElementById('confirmPayBtn').classList.remove('active');
+  document.getElementById('confirmPayBtn').classList.add('disabled');
+}
+
+function selectCard(index) {
+  selectedCard = index;
+  var items = document.querySelectorAll('.card-select-item');
+  items.forEach(function(item) { item.classList.remove('selected'); });
+  items[index].classList.add('selected');
+
+  var btn = document.getElementById('confirmPayBtn');
+  btn.disabled = false;
+  btn.classList.remove('disabled');
+  btn.classList.add('active');
+}
+
+function cancelCardSelection() {
+  document.getElementById('paySelectCard').style.display = 'none';
+  document.getElementById('payBalanceDue').style.display = 'block';
+  selectedCard = null;
+}
+
+function confirmPayment() {
+  if (selectedCard === null) return;
+  document.getElementById('paySelectCard').style.display = 'none';
+  document.getElementById('paySuccess').style.display = 'block';
+}
+
+// Call this to set host family info (when student is matched)
+// Example: setHostInfo({ name:'Maria Garcia', phone:'(310) 555-1234', email:'maria@email.com', address:'1234 Oak St, Los Angeles, CA 90025', welcomePdf:'assets/welcome-package.pdf' })
+/* ── ADD CARD FUNCTIONS ── */
+function toggleAddCardForm() {
+  var form = document.getElementById('addCardForm');
+  form.classList.toggle('open');
+  if (!form.classList.contains('open')) {
+    document.getElementById('cardName').value = '';
+    document.getElementById('cardNumber').value = '';
+    document.getElementById('cardExpiry').value = '';
+    document.getElementById('cardCvv').value = '';
+  }
+}
+
+function formatCardNumber(input) {
+  var v = input.value.replace(/\D/g, '').substring(0, 16);
+  input.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+}
+
+function formatExpiry(input) {
+  var v = input.value.replace(/\D/g, '').substring(0, 4);
+  if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
+  input.value = v;
+}
+
+function saveNewCard() {
+  var name = document.getElementById('cardName').value.trim();
+  var number = document.getElementById('cardNumber').value.replace(/\s/g, '');
+  var type = document.getElementById('cardType').value;
+
+  if (!name || number.length < 12) {
+    alert('Please fill in the card name and a valid card number.');
+    return;
+  }
+
+  var last4 = number.slice(-4);
+  var masked = '************' + last4;
+
+  // Add to table
+  var tbody = document.querySelector('.cards-table tbody');
+  var row = document.createElement('tr');
+  row.innerHTML = '<td>' + name.toUpperCase() + '</td><td><span class="card-type">' + type + '</span></td><td><span class="card-number">' + masked + '</span></td>';
+  tbody.appendChild(row);
+
+  // Add to credit cards data for payment selection
+  creditCards.push({ name: name.toUpperCase(), type: type, last4: last4 });
+
+  // Close form
+  toggleAddCardForm();
+}
+
+// Host info is stored but card only shows when both matched AND paid
+var hostData = null;
+var isPaid = false;
+var isMatched = false;
+
+function setHostInfo(host) {
+  hostData = host;
+  isMatched = true;
+  document.getElementById('hostName').textContent = host.name || '—';
+  document.getElementById('hostPhone').innerHTML = host.phone ? '<a href="tel:' + host.phone + '">' + host.phone + '</a>' : '—';
+  document.getElementById('hostEmail').innerHTML = host.email ? '<a href="mailto:' + host.email + '">' + host.email + '</a>' : '—';
+  document.getElementById('hostAddress').textContent = host.address || '—';
+  if (host.welcomePdf) {
+    var link = document.getElementById('welcomePkgLink');
+    link.href = host.welcomePdf;
+    link.setAttribute('target', '_blank');
+    link.style.display = 'inline-flex';
+  }
+  checkShowHostCard();
+}
+
+function setStudentPaid() {
+  isPaid = true;
+  checkShowHostCard();
+}
+
+function checkShowHostCard() {
+  var card = document.getElementById('hostCard');
+  var pendingPayment = document.getElementById('hostPendingPayment');
+  var matched = document.getElementById('hostMatched');
+  var badgePaid = document.getElementById('hostBadgePaid');
+  var badgePending = document.getElementById('hostBadgePending');
+
+  if (!isMatched) {
+    // Not matched yet — hide entire card
+    card.style.display = 'none';
+  } else if (isMatched && !isPaid) {
+    // Matched but not paid — show card with pending payment message
+    card.style.display = 'block';
+    pendingPayment.style.display = 'block';
+    matched.style.display = 'none';
+    badgePending.style.display = 'inline-flex';
+    badgePaid.style.display = 'none';
+  } else {
+    // Matched AND paid — show full host info
+    card.style.display = 'block';
+    pendingPayment.style.display = 'none';
+    matched.style.display = 'block';
+    badgePending.style.display = 'none';
+    badgePaid.style.display = 'inline-flex';
+  }
+}
+
+// ── DEMO: for testing ──
+// Both matched AND paid — host card will show
+setBalance(1250.00, 'Fall 2026 Homestay Program — 4 months (Sep–Dec). Includes room, breakfast & dinner daily.');
+setHostInfo({ name: 'Maria Garcia', phone: '(310) 555-1234', email: 'maria.garcia@email.com', address: '1234 Oak Street, Los Angeles, CA 90025', welcomePdf: '#' });
+setStudentPaid();
 </script>
 
 </body>
