@@ -41,6 +41,14 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .hero h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
 .hero p{font-size:clamp(0.95rem,1.7vw,1.1rem);color:rgba(255,255,255,0.78);line-height:1.7;max-width:520px;margin-bottom:32px}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:480px){
+  .hero{height:auto;min-height:680px;max-height:none}
+  .hero-bg{background-position:center 18%}
+  .hero-overlay{background:linear-gradient(to top,rgba(26,30,28,0.9) 0%,rgba(26,30,28,0.75) 35%,rgba(26,30,28,0.35) 65%,rgba(26,30,28,0.05) 100%)}
+  .hero-inner{padding-bottom:40px;padding-top:20px}
+  .hero h1{font-size:2rem;margin-bottom:16px}
+  .hero p{font-size:0.92rem;line-height:1.6;margin-bottom:24px}
+}
 
 /* ── STAGGER DELAYS ── */
 .hero-stagger>*:nth-child(1){animation-delay:.1s}
