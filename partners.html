@@ -77,7 +77,7 @@
 /* ══════════════════════════════════════
    PARTNERS — LOGO WALL SECTION
    ══════════════════════════════════════ */
-.partners-section{background:var(--c-white)}
+.partners-section{background:var(--c-cream)}
 .partners-header{text-align:center;margin-bottom:48px}
 .partners-header .section-title{margin:0 auto}
 .partners-header p{font-size:1.1rem;color:var(--c-text-light);max-width:640px;margin:16px auto 0;line-height:1.7}
@@ -126,6 +126,32 @@
 .testimonial-avatar-placeholder{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--c-teal),var(--c-teal-dark));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:var(--c-white)}
 .testimonial-name{font-family:var(--ff-display);font-size:0.97rem;font-weight:600;color:var(--c-charcoal)}
 .testimonial-title{font-size:0.82rem;color:var(--c-text-light);margin-top:2px}
+
+/* ══════════════════════════════════════
+   PARTNERS — GROUP PLACEMENT
+   ══════════════════════════════════════ */
+.group-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.group-layout>div:last-child{padding-top:100px}
+@media(max-width:900px){.group-layout{grid-template-columns:1fr;gap:36px}}
+.group-text .section-label{color:var(--c-orange)}
+.group-text h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--c-charcoal);margin-bottom:16px}
+.group-text h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.group-text>p{font-size:1.05rem;color:var(--c-text-light);line-height:1.7;margin-bottom:28px}
+.group-features{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:500px){.group-features{grid-template-columns:1fr}}
+.group-feat{display:flex;align-items:flex-start;gap:12px}
+.group-feat-icon{width:36px;height:36px;border-radius:50%;background:rgba(110,183,163,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.group-feat-icon svg{width:18px;height:18px;color:var(--c-teal)}
+.group-feat h4{font-family:var(--ff-display);font-size:0.95rem;font-weight:600;color:var(--c-charcoal);margin-bottom:2px}
+.group-feat p{font-size:0.85rem;color:var(--c-text-light);line-height:1.5}
+
+/* Group slideshow */
+.group-slideshow{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/3;box-shadow:0 16px 60px rgba(0,0,0,0.12)}
+.group-slideshow img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease}
+.group-slideshow img.active{opacity:1}
+.group-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.group-dots button{width:10px;height:10px;border-radius:50%;border:none;background:var(--c-border);cursor:pointer;padding:0;transition:background 0.3s,transform 0.3s}
+.group-dots button.active{background:var(--c-teal);transform:scale(1.2)}
 
 /* ── ASK TOOLTIP ── */
 .ask-tooltip{position:relative;display:inline-flex}
@@ -254,6 +280,75 @@
   </div>
 </section>
 
+<!-- ══════════ GROUP PLACEMENTS ══════════ -->
+<section class="section" style="background:var(--c-white)">
+  <div class="container">
+    <div class="group-layout" data-reveal>
+      <div class="group-text">
+        <div class="section-label">Group Placements</div>
+        <h2>Custom homestay programs <em>for student groups</em></h2>
+        <p>We provide custom housing solutions for international groups of all sizes. Our team leverages decades of experience to manage the local coordination, offering the flexibility and expertise required to create a culturally rich experience from arrival to departure.</p>
+        <div class="group-features">
+          <div class="group-feat">
+            <div class="group-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div>
+              <h4>Strategic Matching Process</h4>
+              <p>Placements based on lifestyle and program needs to create the ideal environment for cultural exchange.</p>
+            </div>
+          </div>
+          <div class="group-feat">
+            <div class="group-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div>
+              <h4>Proven Group Experience</h4>
+              <p>Decades of expertise managing group placements with consistent results through our established network.</p>
+            </div>
+          </div>
+          <div class="group-feat">
+            <div class="group-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+            <div>
+              <h4>End-to-End Coordination</h4>
+              <p>Seamless support from arrival through departure allowing you to focus on your program goals.</p>
+            </div>
+          </div>
+          <div class="group-feat">
+            <div class="group-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div>
+              <h4>Dedicated Communication</h4>
+              <p>Centralized coordination and fast, responsive support with a single point of contact.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:28px">Request a Group Quote</a>
+      </div>
+      <div>
+        <div class="group-slideshow" id="groupSlideshow">
+          <img src="assets/group-bus.jpg" alt="Student group on charter bus" class="active">
+          <img src="assets/group-airport-1.jpg" alt="Student group at Welcome to LA sign">
+
+          <img src="assets/group-campus.jpg" alt="Student group at campus orientation">
+          <img src="assets/group-building.jpg" alt="Student group outside building">
+          <img src="assets/group-airport-night.jpg" alt="Student group at airport at night">
+          <img src="assets/group-van.jpg" alt="Students in transport van">
+          <img src="assets/group-luggage-dropoff.jpg" alt="Students arriving at host location">
+          <img src="assets/group-lax-terminal.jpg" alt="Student group at LAX terminal">
+          <img src="assets/group-firepit.jpg" alt="Students enjoying s'mores at host family firepit">
+        </div>
+        <div class="group-dots" id="groupDots">
+          <button class="active" aria-label="Slide 1"></button>
+          <button aria-label="Slide 2"></button>
+          <button aria-label="Slide 3"></button>
+          <button aria-label="Slide 4"></button>
+          <button aria-label="Slide 5"></button>
+          <button aria-label="Slide 6"></button>
+          <button aria-label="Slide 7"></button>
+          <button aria-label="Slide 8"></button>
+          <button aria-label="Slide 9"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ LOGO WALL ══════════ -->
 <section class="section partners-section">
   <div class="container">
@@ -300,7 +395,7 @@
 </section>
 
 <!-- ══════════ SCHOOL TESTIMONIALS ══════════ -->
-<section class="section" style="background:var(--c-cream)">
+<section class="section" style="background:var(--c-white)">
   <div class="container">
     <div class="testimonials-header" data-reveal>
       <div class="section-label">What Our Partners Say</div>
@@ -371,7 +466,7 @@
 </section>
 
 <!-- ══════════ HOMESTAYMATCH ══════════ -->
-<section class="section" style="background:var(--c-white)">
+<section class="section" style="background:var(--c-cream)">
   <div class="container">
     <div class="hm-header" data-reveal>
       <div class="section-label">HomestayMatch</div>
@@ -397,7 +492,7 @@
 </section>
 
 <!-- ══════════ CONTACT FORM ══════════ -->
-<section class="section" id="contact" style="background:var(--c-cream)">
+<section class="section" id="contact" style="background:var(--c-white)">
   <div class="container">
     <div class="contact-header" data-reveal>
       <div class="section-label">Get In Touch</div>
@@ -513,6 +608,8 @@
         <a href="index.html">Home</a>
         <a href="what-is-homestay.html">Homestay</a>
         <a href="partners.html">Partners</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact Us</a>
         
       </div>
       <div class="footer-col">
@@ -648,6 +745,29 @@ function submitPartnersForm() {
     btn.textContent = 'Send Inquiry →';
   }, 800);
 }
+
+// ══════════ GROUP SLIDESHOW ══════════
+(function(){
+  const imgs = document.querySelectorAll('#groupSlideshow img');
+  const dots = document.querySelectorAll('#groupDots button');
+  if (!imgs.length) return;
+  let cur = 0;
+  let timer;
+
+  function go(i) {
+    imgs[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (i + imgs.length) % imgs.length;
+    imgs[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  function startAuto() { timer = setInterval(() => go(cur + 1), 4000); }
+  function resetAuto() { clearInterval(timer); startAuto(); }
+
+  dots.forEach((d, i) => d.addEventListener('click', () => { go(i); resetAuto(); }));
+  startAuto();
+})();
 
 // ══════════ INIT ══════════
 document.addEventListener('DOMContentLoaded', () => {

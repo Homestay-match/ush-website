@@ -116,6 +116,29 @@
 .send-docs-btn{margin-top:20px;padding:13px 32px;border:none;border-radius:50px;background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease-out);display:inline-flex;align-items:center;gap:8px}
 .send-docs-btn:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(110,183,163,0.3)}
 
+/* ── MESSAGES ── */
+.msg-locked{text-align:center;padding:24px 16px;color:var(--c-text-muted)}
+.msg-locked-icon{width:56px;height:56px;border-radius:50%;background:var(--c-cream);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.msg-locked-icon svg{color:var(--c-text-muted)}
+.msg-locked p{font-size:0.88rem;line-height:1.6;margin-bottom:4px}
+.msg-locked .msg-unlock-date{font-size:0.82rem;color:var(--c-teal);font-weight:600}
+.msg-chat{display:flex;flex-direction:column;height:380px}
+.msg-host-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--c-cream);border-radius:var(--r-md);margin-bottom:12px}
+.msg-host-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--c-border)}
+.msg-host-name{font-weight:600;font-size:0.9rem;color:var(--c-charcoal)}
+.msg-host-status{font-size:0.75rem;color:var(--c-teal);display:flex;align-items:center;gap:4px}
+.msg-host-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-teal)}
+.msg-thread{flex:1;overflow-y:auto;padding:8px 4px;display:flex;flex-direction:column;gap:10px}
+.msg-bubble{max-width:80%;padding:10px 14px;border-radius:14px;font-size:0.85rem;line-height:1.55;position:relative}
+.msg-bubble.host{background:var(--c-cream);color:var(--c-charcoal);align-self:flex-start;border-bottom-left-radius:4px}
+.msg-bubble.student{background:var(--c-teal);color:var(--c-white);align-self:flex-end;border-bottom-right-radius:4px}
+.msg-bubble .msg-time{font-size:0.7rem;opacity:0.6;margin-top:4px}
+.msg-input-row{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--c-border)}
+.msg-input{flex:1;padding:10px 16px;border:1px solid var(--c-border);border-radius:50px;font-family:var(--ff-body);font-size:0.85rem;outline:none;transition:border-color 0.2s}
+.msg-input:focus{border-color:var(--c-teal)}
+.msg-send-btn{width:40px;height:40px;border-radius:50%;border:none;background:var(--c-teal);color:var(--c-white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.msg-send-btn:hover{background:var(--c-teal-dark);transform:scale(1.05)}
+
 /* ── STATUS BADGE ── */
 .status-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:50px}
 .status-badge.success{background:rgba(110,183,163,0.12);color:var(--c-teal)}
@@ -201,113 +224,111 @@
 
     <div class="dash-grid">
 
-      <!-- ══════════ ARRIVAL INFO ══════════ -->
-      <div class="dash-card">
-        <div class="dash-card-header">
-          <div class="dash-card-title">
-            <div class="dash-card-icon teal">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-            </div>
-            Arrival Information
-          </div>
-          <span class="status-badge none">Not set</span>
-        </div>
-        <div class="arrival-grid" style="grid-template-columns:1fr 1fr">
-          <div class="arrival-item" style="grid-column:1/-1">
-            <div class="label">School</div>
-            <div class="value">—</div>
-          </div>
-          <div class="arrival-item">
-            <div class="label">Move-in Date</div>
-            <div class="value">—</div>
-          </div>
-          <div class="arrival-item">
-            <div class="label">Move-out Date</div>
-            <div class="value">—</div>
-          </div>
-          <div class="arrival-item">
-            <div class="label">Airline</div>
-            <div class="value">—</div>
-          </div>
-          <div class="arrival-item">
-            <div class="label">Flight Number</div>
-            <div class="value">—</div>
-          </div>
-          <div class="arrival-item" style="grid-column:1/-1">
-            <div class="label">Arrival Time</div>
-            <div class="value">—</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══════════ HOST INFORMATION (only visible when matched + paid) ══════════ -->
-      <div class="dash-card" id="hostCard" style="display:none">
+      <!-- ══════════ ARRIVAL & HOST INFORMATION ══════════ -->
+      <div class="dash-card" id="arrivalHostCard">
         <div class="dash-card-header">
           <div class="dash-card-title">
             <div class="dash-card-icon teal">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            Host Family Information
+            Arrival Information
           </div>
           <div style="display:flex;gap:6px;align-items:center">
-            <span class="status-badge none" id="hostBadgeMatched">Matched</span>
-            <span class="status-badge none" id="hostBadgePaid">Paid</span>
+            <span class="status-badge none" id="hostBadgeMatched">Not set</span>
+            <span class="status-badge none" id="hostBadgePaid" style="display:none">Paid</span>
           </div>
         </div>
 
-        <!-- Pending payment state -->
-        <div id="hostPendingPayment" style="display:none">
-          <div class="host-pending">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-            You have been matched with a host family!<br>Complete your payment to view your host family details and welcome package.
+        <!-- Arrival dates — always visible -->
+        <div class="arrival-grid" style="grid-template-columns:1fr 1fr">
+          <div class="arrival-item">
+            <div class="label">Move-in Date</div>
+            <div class="value" id="arrivalMoveIn">—</div>
+          </div>
+          <div class="arrival-item">
+            <div class="label">Move-out Date</div>
+            <div class="value" id="arrivalMoveOut">—</div>
           </div>
         </div>
 
-        <!-- Matched + Paid state -->
-        <div id="hostMatched" style="display:none">
-          <div class="host-info-row">
-            <div class="host-info-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            <div>
-              <div class="host-info-label">Host Name</div>
-              <div class="host-info-value" id="hostName">—</div>
-            </div>
-          </div>
-          <div class="host-info-row">
-            <div class="host-info-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            </div>
-            <div>
-              <div class="host-info-label">Phone</div>
-              <div class="host-info-value" id="hostPhone">—</div>
-            </div>
-          </div>
-          <div class="host-info-row">
-            <div class="host-info-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <div class="host-info-label">Email</div>
-              <div class="host-info-value" id="hostEmail">—</div>
-            </div>
-          </div>
-          <div class="host-info-row">
-            <div class="host-info-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div class="host-info-label">Address</div>
-              <div class="host-info-value" id="hostAddress">—</div>
+        <!-- Host section: only visible when matched -->
+        <div id="hostSection" style="display:none">
+          <div style="border-top:1px solid var(--c-border);margin:20px 0 16px"></div>
+          <div style="font-family:var(--ff-display);font-weight:600;font-size:1rem;color:var(--c-charcoal);margin-bottom:16px">Host Family</div>
+
+          <!-- Pending payment state -->
+          <div id="hostPendingPayment" style="display:none">
+            <div class="host-pending">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+              You have been matched with a host family!<br>Complete your payment to view your host family details and welcome package.
             </div>
           </div>
 
-          <!-- Welcome Package PDF -->
-          <a href="#" class="welcome-pkg-btn" id="welcomePkgLink" style="display:none">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
-            Download Welcome Package (PDF)
-          </a>
+          <!-- Matched + Paid state -->
+          <div id="hostMatched" style="display:none">
+            <div class="host-info-row">
+              <div class="host-info-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div>
+                <div class="host-info-label">Host Name</div>
+                <div class="host-info-value" id="hostName">—</div>
+              </div>
+            </div>
 
+            <!-- Welcome Package PDF -->
+            <a href="#" class="welcome-pkg-btn" id="welcomePkgLink" style="display:none">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+              Download Welcome Package (PDF)
+            </a>
+            <p style="font-size:0.78rem;color:var(--c-text-muted);margin-top:10px;line-height:1.5">Your Welcome Package includes host details, address, bus routes, tips, house rules and more. 7 days before move-in, <strong>Messages</strong> will open so you can chat with your host to discuss arrangements.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ MESSAGES (unlocks 7 days before arrival) ══════════ -->
+      <div class="dash-card" id="messagesCard" style="display:none">
+        <div class="dash-card-header">
+          <div class="dash-card-title">
+            <div class="dash-card-icon teal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            Messages
+          </div>
+          <span class="status-badge" id="msgBadge" style="display:none">Active</span>
+        </div>
+
+        <!-- Locked state: more than 7 days before arrival -->
+        <div id="msgLocked">
+          <div class="msg-locked">
+            <div class="msg-locked-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <p>7 days before your arrival, you can chat with your host through Messages to discuss move-in time. Both you and your host will receive an email when messaging becomes available.</p>
+            <div class="msg-unlock-date" id="msgUnlockDate"></div>
+          </div>
+        </div>
+
+        <!-- Active chat state: within 7 days of arrival -->
+        <div id="msgActive" style="display:none">
+          <div class="msg-chat">
+            <div class="msg-host-bar">
+              <img class="msg-host-avatar" id="msgHostAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23e8e0d4' width='40' height='40'/%3E%3C/svg%3E" alt="Host">
+              <div>
+                <div class="msg-host-name" id="msgHostName">Your Host</div>
+                <div class="msg-host-status">Available</div>
+              </div>
+            </div>
+            <div class="msg-thread" id="msgThread">
+              <!-- Messages will appear here -->
+            </div>
+            <div class="msg-input-row">
+              <input type="text" class="msg-input" id="msgInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter')sendMessage()">
+              <button class="msg-send-btn" onclick="sendMessage()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -676,7 +697,8 @@ function confirmPayment() {
 }
 
 // Call this to set host family info (when student is matched)
-// Example: setHostInfo({ name:'Maria Garcia', phone:'(310) 555-1234', email:'maria@email.com', address:'1234 Oak St, Los Angeles, CA 90025', welcomePdf:'assets/welcome-package.pdf' })
+// Example: setArrivalDates('April 12, 2026', 'August 10, 2026')
+// Example: setHostInfo({ name:'Maria Garcia', welcomePdf:'assets/welcome-package.pdf' })
 /* ── ADD CARD FUNCTIONS ── */
 function toggleAddCardForm() {
   var form = document.getElementById('addCardForm');
@@ -726,18 +748,20 @@ function saveNewCard() {
   toggleAddCardForm();
 }
 
-// Host info is stored but card only shows when both matched AND paid
+// Host info is stored but host section only shows when matched; details show when paid
 var hostData = null;
 var isPaid = false;
 var isMatched = false;
+
+function setArrivalDates(moveIn, moveOut) {
+  document.getElementById('arrivalMoveIn').textContent = moveIn || '—';
+  document.getElementById('arrivalMoveOut').textContent = moveOut || '—';
+}
 
 function setHostInfo(host) {
   hostData = host;
   isMatched = true;
   document.getElementById('hostName').textContent = host.name || '—';
-  document.getElementById('hostPhone').innerHTML = host.phone ? '<a href="tel:' + host.phone + '">' + host.phone + '</a>' : '—';
-  document.getElementById('hostEmail').innerHTML = host.email ? '<a href="mailto:' + host.email + '">' + host.email + '</a>' : '—';
-  document.getElementById('hostAddress').textContent = host.address || '—';
   if (host.welcomePdf) {
     var link = document.getElementById('welcomePkgLink');
     link.href = host.welcomePdf;
@@ -753,7 +777,7 @@ function setStudentPaid() {
 }
 
 function checkShowHostCard() {
-  var card = document.getElementById('hostCard');
+  var hostSection = document.getElementById('hostSection');
   var pendingPayment = document.getElementById('hostPendingPayment');
   var matched = document.getElementById('hostMatched');
   var badgeMatched = document.getElementById('hostBadgeMatched');
@@ -763,9 +787,11 @@ function checkShowHostCard() {
   if (isMatched) {
     badgeMatched.className = 'status-badge success';
     badgeMatched.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Matched';
+    badgePaid.style.display = '';
   } else {
     badgeMatched.className = 'status-badge none';
-    badgeMatched.textContent = 'Matched';
+    badgeMatched.textContent = 'Not set';
+    badgePaid.style.display = 'none';
   }
   if (isPaid) {
     badgePaid.className = 'status-badge success';
@@ -776,23 +802,83 @@ function checkShowHostCard() {
   }
 
   if (!isMatched) {
-    card.style.display = 'none';
+    hostSection.style.display = 'none';
   } else if (isMatched && !isPaid) {
-    card.style.display = 'block';
+    hostSection.style.display = '';
     pendingPayment.style.display = 'block';
     matched.style.display = 'none';
   } else {
-    card.style.display = 'block';
+    hostSection.style.display = '';
     pendingPayment.style.display = 'none';
     matched.style.display = 'block';
   }
 }
 
+// ── MESSAGES ──
+function initMessages(moveInDate, hostName, hostAvatar) {
+  const card = document.getElementById('messagesCard');
+  const locked = document.getElementById('msgLocked');
+  const active = document.getElementById('msgActive');
+  const badge = document.getElementById('msgBadge');
+  const unlockDateEl = document.getElementById('msgUnlockDate');
+
+  card.style.display = '';
+
+  const moveIn = new Date(moveInDate);
+  const unlockDate = new Date(moveIn);
+  unlockDate.setDate(unlockDate.getDate() - 7);
+  const now = new Date();
+
+  if (hostName) {
+    document.getElementById('msgHostName').textContent = hostName;
+  }
+  if (hostAvatar) {
+    document.getElementById('msgHostAvatar').src = hostAvatar;
+  }
+
+  if (now >= unlockDate) {
+    // Chat is active
+    locked.style.display = 'none';
+    active.style.display = '';
+    badge.style.display = '';
+    badge.classList.add('green');
+    badge.textContent = 'Active';
+    // Add welcome message from host
+    addBubble('host', 'Hi! Welcome — I\'m looking forward to meeting you. Let me know your arrival time and I\'ll have everything ready for you! 😊');
+  } else {
+    // Still locked
+    locked.style.display = '';
+    active.style.display = 'none';
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    unlockDateEl.textContent = 'Messages will unlock on ' + unlockDate.toLocaleDateString('en-US', options);
+  }
+}
+
+function addBubble(type, text, time) {
+  const thread = document.getElementById('msgThread');
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble ' + type;
+  const timeStr = time || new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  bubble.innerHTML = text + '<div class="msg-time">' + timeStr + '</div>';
+  thread.appendChild(bubble);
+  thread.scrollTop = thread.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById('msgInput');
+  const text = input.value.trim();
+  if (!text) return;
+  addBubble('student', text);
+  input.value = '';
+}
+
 // ── DEMO: for testing ──
-// Both matched AND paid — host card will show
+setArrivalDates('April 12, 2026', 'August 10, 2026');
 setBalance(1250.00, 'Fall 2026 Homestay Program — 4 months (Sep–Dec). Includes room, breakfast & dinner daily.');
-setHostInfo({ name: 'Maria Garcia', phone: '(310) 555-1234', email: 'maria.garcia@email.com', address: '1234 Oak Street, Los Angeles, CA 90025', welcomePdf: '#' });
+setHostInfo({ name: 'Maria Garcia', welcomePdf: '#' });
 setStudentPaid();
+// Messages: active (move-in is within 7 days for demo)
+initMessages('2026-04-12', 'Maria Garcia');
 </script>
 
 </body>
