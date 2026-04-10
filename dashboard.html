@@ -128,11 +128,20 @@
 .msg-host-name{font-weight:600;font-size:0.9rem;color:var(--c-charcoal)}
 .msg-host-status{font-size:0.75rem;color:var(--c-teal);display:flex;align-items:center;gap:4px}
 .msg-host-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-teal)}
-.msg-thread{flex:1;overflow-y:auto;padding:8px 4px;display:flex;flex-direction:column;gap:10px}
+.msg-thread-wrap{flex:1;position:relative;min-height:0}
+.msg-thread{position:absolute;inset:0;overflow-y:auto;padding:8px 10px 8px 4px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.msg-thread::-webkit-scrollbar{width:6px}
+.msg-thread::-webkit-scrollbar-track{background:transparent}
+.msg-thread::-webkit-scrollbar-thumb{background:var(--c-border);border-radius:10px}
+.msg-thread::-webkit-scrollbar-thumb:hover{background:#c9c0b2}
+.msg-thread{scrollbar-width:thin;scrollbar-color:var(--c-border) transparent}
 .msg-bubble{max-width:80%;padding:10px 14px;border-radius:14px;font-size:0.85rem;line-height:1.55;position:relative}
 .msg-bubble.host{background:var(--c-cream);color:var(--c-charcoal);align-self:flex-start;border-bottom-left-radius:4px}
 .msg-bubble.student{background:var(--c-teal);color:var(--c-white);align-self:flex-end;border-bottom-right-radius:4px}
 .msg-bubble .msg-time{font-size:0.7rem;opacity:0.6;margin-top:4px}
+.msg-new-pill{position:absolute;left:50%;bottom:10px;transform:translateX(-50%) translateY(10px);background:var(--c-teal);color:var(--c-white);font-size:0.75rem;font-weight:600;padding:6px 14px;border-radius:50px;box-shadow:0 4px 14px rgba(0,0,0,0.15);cursor:pointer;display:none;align-items:center;gap:6px;border:none;opacity:0;transition:opacity 0.25s ease,transform 0.25s ease;z-index:2}
+.msg-new-pill.show{display:inline-flex;opacity:1;transform:translateX(-50%) translateY(0)}
+.msg-new-pill:hover{background:var(--c-teal-dark)}
 .msg-input-row{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--c-border)}
 .msg-input{flex:1;padding:10px 16px;border:1px solid var(--c-border);border-radius:50px;font-family:var(--ff-body);font-size:0.85rem;outline:none;transition:border-color 0.2s}
 .msg-input:focus{border-color:var(--c-teal)}
@@ -319,8 +328,14 @@
                 <div class="msg-host-status">Available</div>
               </div>
             </div>
-            <div class="msg-thread" id="msgThread">
-              <!-- Messages will appear here -->
+            <div class="msg-thread-wrap">
+              <div class="msg-thread" id="msgThread">
+                <!-- Messages will appear here -->
+              </div>
+              <button type="button" class="msg-new-pill" id="msgNewPill" onclick="scrollThreadToBottom(true)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+                New message
+              </button>
             </div>
             <div class="msg-input-row">
               <input type="text" class="msg-input" id="msgInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter')sendMessage()">
@@ -844,7 +859,9 @@ function initMessages(moveInDate, hostName, hostAvatar) {
     badge.classList.add('green');
     badge.textContent = 'Active';
     // Add welcome message from host
-    addBubble('host', 'Hi! Welcome — I\'m looking forward to meeting you. Let me know your arrival time and I\'ll have everything ready for you! 😊');
+    addBubble('host', 'Hi! Welcome — I\'m looking forward to meeting you. Let me know your arrival time and I\'ll have everything ready for you! 😊', null, { forceScroll: true });
+    // Ensure we land at the bottom on first open
+    setTimeout(function(){ scrollThreadToBottom(false); }, 0);
   } else {
     // Still locked
     locked.style.display = '';
@@ -854,14 +871,42 @@ function initMessages(moveInDate, hostName, hostAvatar) {
   }
 }
 
-function addBubble(type, text, time) {
+function isThreadAtBottom(thread, threshold) {
+  threshold = threshold || 40;
+  return (thread.scrollHeight - thread.scrollTop - thread.clientHeight) <= threshold;
+}
+
+function scrollThreadToBottom(smooth) {
   const thread = document.getElementById('msgThread');
+  const pill = document.getElementById('msgNewPill');
+  if (!thread) return;
+  const prev = thread.style.scrollBehavior;
+  thread.style.scrollBehavior = smooth ? 'smooth' : 'auto';
+  thread.scrollTop = thread.scrollHeight;
+  thread.style.scrollBehavior = prev;
+  if (pill) pill.classList.remove('show');
+}
+
+function addBubble(type, text, time, opts) {
+  opts = opts || {};
+  const thread = document.getElementById('msgThread');
+  const pill = document.getElementById('msgNewPill');
+  const wasAtBottom = isThreadAtBottom(thread);
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble ' + type;
   const timeStr = time || new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
   bubble.innerHTML = text + '<div class="msg-time">' + timeStr + '</div>';
   thread.appendChild(bubble);
-  thread.scrollTop = thread.scrollHeight;
+
+  // Smart auto-scroll:
+  // - Own messages or initial load: always scroll to bottom
+  // - Incoming messages: only scroll if user was already at the bottom
+  //   Otherwise show the "New message" pill
+  if (type === 'student' || opts.forceScroll || wasAtBottom) {
+    scrollThreadToBottom(opts.forceScroll === false);
+  } else if (pill) {
+    pill.classList.add('show');
+  }
 }
 
 function sendMessage() {
@@ -871,6 +916,16 @@ function sendMessage() {
   addBubble('student', text);
   input.value = '';
 }
+
+// Hide the pill automatically when the user scrolls back to the bottom
+document.addEventListener('DOMContentLoaded', function(){
+  const thread = document.getElementById('msgThread');
+  const pill = document.getElementById('msgNewPill');
+  if (!thread || !pill) return;
+  thread.addEventListener('scroll', function(){
+    if (isThreadAtBottom(thread)) pill.classList.remove('show');
+  });
+});
 
 // ── DEMO: for testing ──
 setArrivalDates('April 12, 2026', 'August 10, 2026');
