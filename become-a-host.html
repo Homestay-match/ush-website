@@ -111,6 +111,8 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .how-panel h2{font-family:var(--ff-display);font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:700;color:var(--c-charcoal);line-height:1.08;letter-spacing:-0.022em;margin-bottom:16px}
 .how-panel h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
 .how-panel p{font-size:0.97rem;color:var(--c-text-light);line-height:1.75;margin-bottom:32px}
+.how-panel-img{margin-top:36px;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 10px 30px rgba(26,30,28,0.12)}
+.how-panel-img img{width:100%;height:auto;display:block}
 .how-steps{display:flex;flex-direction:column;gap:0}
 .how-step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--c-border)}
 .how-step:last-child{border-bottom:none}
@@ -360,6 +362,9 @@ input,select,textarea,button{font-family:var(--ff-body)}
         <h2>Simple steps to <em>get started</em></h2>
         <p>From your first application to welcoming a student through your door — USH guides you through every step. Most families are matched within 2–4 weeks of approval.</p>
         <a href="#apply" class="btn btn-primary">Start Your Application</a>
+        <div class="how-panel-img">
+          <img loading="lazy" src="assets/host-steps.jpg" alt="Host family welcoming students in Los Angeles">
+        </div>
       </div>
 
       <!-- RIGHT: Steps list -->
