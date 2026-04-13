@@ -3,11 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About USH — Universal Student Housing Since 1998</title>
-<meta name="description" content="Learn about Universal Student Housing. For over 27 years, USH has connected international students with welcoming American host families. Every match is made by a real person.">
+<title>About USH — Homestay USA Program for International Students Since 1998</title>
+<meta name="description" content="Universal Student Housing has provided homestay in the USA for international students since 1998. 19,000+ students placed with verified host families across 5 states. Every home visited in person.">
+<meta name="keywords" content="homestay USA, international student housing, about USH, Universal Student Housing, student homestay program, homestay placement service USA, host family USA, safe verified homestay, cultural immersion homestay, homestay since 1998">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://usaish.com/about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About USH — Homestay USA Since 1998">
+<meta property="og:description" content="27+ years connecting international students with verified American host families. 19,000+ students, 270+ schools, 5 states.">
+<meta property="og:image" content="https://usaish.com/assets/team-photo.jpg">
+<meta property="og:url" content="https://usaish.com/about">
+<meta property="og:site_name" content="Universal Student Housing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About USH — Homestay USA Since 1998">
+<meta name="twitter:description" content="27+ years connecting international students with verified American host families. 19,000+ students, 270+ schools, 5 states.">
+<meta name="twitter:image" content="https://usaish.com/assets/team-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 <link rel="stylesheet" href="assets/ush.css?v=7">
 <style>
 /* ══════════════════════════════════════
@@ -185,21 +199,22 @@
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ══════════ NAV ══════════ -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="assets/ushlogo.png" alt="USH">
+      <img src="assets/ushlogo.png" alt="USH" width="400" height="164">
     </a>
     <div class="nav-links">
       <a href="about.html" class="active">About</a>
       <a href="what-is-homestay.html">What is Homestay</a>
       <a href="partners.html">Partners</a>
-      <a href="#" onclick="openLoginModal();return false;">Log In</a>
+      <a href="#" id="navLogin">Log In</a>
       <a href="apply.html" class="btn btn-primary" style="padding:10px 24px">Apply Now</a>
       <a href="become-a-host.html">Become a Host</a>
-      <a href="#" class="btn btn-teal" style="padding:10px 20px" onclick="openSignupModal();return false;">Student Sign Up</a>
+      <a href="#" class="btn btn-teal" style="padding:10px 20px" id="navSignup">Student Sign Up</a>
     </div>
     <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
@@ -214,11 +229,13 @@
   <a href="about.html">About</a>
   <a href="what-is-homestay.html">What is Homestay</a>
   <a href="partners.html">Partners</a>
-  <a href="#" onclick="openLoginModal();return false;">Log In</a>
+  <a href="#" id="mobileLogin">Log In</a>
   <a href="apply.html" class="btn btn-primary">Apply Now</a>
   <a href="become-a-host.html">Become a Host</a>
-  <a href="#" class="btn btn-teal" onclick="closeMobileMenu&&closeMobileMenu();openSignupModal();return false;">Student Sign Up</a>
+  <a href="#" class="btn btn-teal" id="mobileSignup">Student Sign Up</a>
 </div>
+
+<main id="main-content">
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
@@ -242,7 +259,7 @@
   <div class="container">
     <div class="zigzag-row" data-reveal>
       <div class="zigzag-img" style="aspect-ratio:3/4">
-        <img src="assets/safety-visual.jpg" alt="USH founder">
+        <img src="assets/safety-visual.jpg" alt="USH founder" width="800" height="534">
       </div>
       <div class="zigzag-text">
         <div class="section-label">Our Story</div>
@@ -322,7 +339,7 @@
     <!-- Our Team -->
     <div class="team-grid" data-reveal>
       <div class="team-member">
-        <img src="assets/team-emerson.jpg" alt="Emerson Torres">
+        <img src="assets/team-emerson.jpg" alt="Emerson Torres" width="800" height="800">
         <div class="team-member-body">
           <div class="team-member-name">Emerson Torres</div>
           <div class="team-member-title">Co-Founder &amp; CEO</div>
@@ -330,7 +347,7 @@
         </div>
       </div>
       <div class="team-member">
-        <img src="assets/team-ana-paula.jpg?v=2" alt="Ana Paula Oliveira">
+        <img src="assets/team-ana-paula.jpg?v=2" alt="Ana Paula Oliveira" width="800" height="800">
         <div class="team-member-body">
           <div class="team-member-name">Ana Paula Oliveira</div>
           <div class="team-member-title">Co-Founder &amp; Director of Operations</div>
@@ -338,7 +355,7 @@
         </div>
       </div>
       <div class="team-member">
-        <img src="assets/team-estela.jpg" alt="Estela Franco">
+        <img src="assets/team-estela.jpg" alt="Estela Franco" width="800" height="800">
         <div class="team-member-body">
           <div class="team-member-name">Estela Franco</div>
           <div class="team-member-title">Housing Coordinator</div>
@@ -346,7 +363,7 @@
         </div>
       </div>
       <div class="team-member">
-        <img src="assets/team-enzo.jpg" alt="Enzo Torres">
+        <img src="assets/team-enzo.jpg" alt="Enzo Torres" width="800" height="800">
         <div class="team-member-body">
           <div class="team-member-name">Enzo Torres</div>
           <div class="team-member-title">Marketing Associate</div>
@@ -361,13 +378,13 @@
       <p style="font-size:0.95rem;color:var(--c-text-light);max-width:560px;line-height:1.7;margin:0 auto">Our advisors work to continuously improve the USH experience, providing the strategic guidance needed to ensure our housing and student support remain the <em style="font-style:italic;color:var(--c-orange);font-weight:500">leader in quality and reliability</em> across the U.S.</p>
       <div class="team-advisors-grid">
         <div class="team-advisor">
-          <img src="assets/team-scott.jpg" alt="Scott Hindell">
+          <img src="assets/team-scott.jpg" alt="Scott Hindell" width="800" height="800">
           <div class="team-advisor-name">Scott Hindell</div>
           <div class="team-advisor-title">Business Model Specialist</div>
           <div class="team-advisor-location">Los Angeles, United States</div>
         </div>
         <div class="team-advisor">
-          <img src="assets/team-anderson.jpg" alt="Anderson Gobbi">
+          <img src="assets/team-anderson.jpg" alt="Anderson Gobbi" width="800" height="800">
           <div class="team-advisor-name">Anderson Gobbi</div>
           <div class="team-advisor-title">Business Strategy &amp; Technology</div>
           <div class="team-advisor-location">Rio de Janeiro, Brazil</div>
@@ -635,23 +652,23 @@
     </div>
     <div class="locations-grid" data-reveal>
       <div class="location-card">
-        <div class="location-card-img"><img src="assets/regions/socal.jpg" alt="Southern California"></div>
+        <div class="location-card-img"><img src="assets/regions/socal.jpg" alt="Southern California" width="600" height="400"></div>
         <div class="location-card-body"><h4>Southern California</h4></div>
       </div>
       <div class="location-card">
-        <div class="location-card-img"><img src="assets/regions/norcal.jpg" alt="Northern California"></div>
+        <div class="location-card-img"><img src="assets/regions/norcal.jpg" alt="Northern California" width="600" height="338"></div>
         <div class="location-card-body"><h4>Northern California</h4></div>
       </div>
       <div class="location-card">
-        <div class="location-card-img"><img src="assets/regions/arizona.jpg" alt="Arizona"></div>
+        <div class="location-card-img"><img src="assets/regions/arizona.jpg" alt="Arizona" width="600" height="400"></div>
         <div class="location-card-body"><h4>Arizona</h4></div>
       </div>
       <div class="location-card">
-        <div class="location-card-img"><img src="assets/regions/florida.jpg" alt="Florida"></div>
+        <div class="location-card-img"><img src="assets/regions/florida.jpg" alt="Florida" width="600" height="900"></div>
         <div class="location-card-body"><h4>Florida</h4></div>
       </div>
       <div class="location-card">
-        <div class="location-card-img"><img src="assets/regions/newyork.jpg" alt="New York"></div>
+        <div class="location-card-img"><img src="assets/regions/newyork.jpg" alt="New York" width="600" height="400"></div>
         <div class="location-card-body"><h4>New York</h4></div>
       </div>
     </div>
@@ -686,12 +703,14 @@
     <div class="cta-buttons">
       <a href="apply.html" class="btn btn-secondary">Apply Now &rarr;</a>
       <div class="ask-tooltip">
-        <a href="#" class="btn btn-outline" onclick="if(window.chatbase)window.chatbase('open');return false;">Ask a Question &rarr;</a>
+        <a href="#" class="btn btn-outline ask-question-btn">Ask a Question &rarr;</a>
         <div class="ask-tip">Sophie our AI assistant is here to help!</div>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer class="footer">
@@ -797,11 +816,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ══════════ SIGNUP MODAL ══════════ -->
 <div class="signup-overlay" id="signupOverlay">
-  <div class="signup-modal">
-    <button class="login-close" onclick="closeSignupModal()">
+  <div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <button class="login-close" id="signupCloseBtn" aria-label="Close dialog">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <div id="signupFormFields"><div class="login-title">Student Sign Up</div>
+    <div id="signupFormFields"><div class="login-title" id="signupTitle">Student Sign Up</div>
     <div class="login-subtitle">Create your account to get started with USH.</div>
     <div class="signup-form">
       <div class="form-row">
@@ -870,9 +889,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <label for="su-questions">Do you have any questions? <span style="color:var(--c-text-muted);font-weight:400">Optional</span></label>
         <textarea id="su-questions" placeholder="Ask any questions"></textarea>
       </div>
-      <button class="login-btn" onclick="handleSignup()">Sign up</button>
+      <button class="login-btn" id="signupSubmitBtn">Sign up</button>
       <div class="signup-legal">By signing up, you agree with the <a href="legal/guest_terms_conditions.html">Guest Terms and Conditions</a>, <a href="legal/guests_cancellation_policy.html">Guest Cancellation Policy</a> and <a href="legal/privacy_policy.html">Privacy Policy</a></div>
-      <div class="login-create" style="margin-top:4px">Already have an account? <a href="#" onclick="closeSignupModal();openLoginModal();return false;">Log in</a></div>
+      <div class="login-create" style="margin-top:4px">Already have an account? <a href="#" id="signupToLogin">Log in</a></div>
     </div>
     </div>
     <div id="signupSuccess" style="display:none;flex-direction:column;align-items:center;text-align:center;padding:40px 20px">
@@ -880,29 +899,95 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-charcoal);margin-bottom:12px">Thanks for signing up!</div>
       <p style="font-size:0.92rem;color:var(--c-text-light);line-height:1.65;margin-bottom:8px">We have sent an email to the address you provided. Please check your inbox.</p>
       <p style="font-size:0.92rem;color:var(--c-text-light);line-height:1.65;margin-bottom:28px">We look forward to helping you find a perfect homestay!</p>
-      <button class="login-btn" onclick="closeSignupModal();resetSignupModal();">Close Message</button>
+      <button class="login-btn" id="signupSuccessCloseBtn">Close Message</button>
     </div>
     </div>
   </div>
 </div>
 <script>
-function openSignupModal(){document.getElementById('signupOverlay').classList.add('open');document.body.style.overflow='hidden';populateDOB();}
-function closeSignupModal(){document.getElementById('signupOverlay').classList.remove('open');document.body.style.overflow='';}
-function resetSignupModal(){document.getElementById('signupFormFields').style.display='block';document.getElementById('signupSuccess').style.display='none';}
-document.getElementById('signupOverlay').addEventListener('click',function(e){if(e.target===this)closeSignupModal();});
-function populateDOB(){var d=document.getElementById('su-day'),y=document.getElementById('su-year');if(d.options.length>1)return;for(var i=1;i<=31;i++){var o=document.createElement('option');o.value=i;o.textContent=i;d.appendChild(o);}var cy=new Date().getFullYear();for(var j=cy-18;j>=cy-80;j--){var o=document.createElement('option');o.value=j;o.textContent=j;y.appendChild(o);}}
-function handleSignup(){var f=document.getElementById('su-first').value.trim();var l=document.getElementById('su-last').value.trim();var e=document.getElementById('su-email').value.trim();var p=document.getElementById('su-pass').value;var p2=document.getElementById('su-pass2').value;if(!f||!l||!e||!p||!p2){alert('Please fill in all required fields.');return;}if(p!==p2){alert('Passwords do not match.');return;}document.getElementById('signupFormFields').style.display='none';document.getElementById('signupSuccess').style.display='flex';}
+function openSignupModal() {
+  document.getElementById('signupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  populateDOB();
+}
+
+function closeSignupModal() {
+  document.getElementById('signupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function resetSignupModal() {
+  document.getElementById('signupFormFields').style.display = 'block';
+  document.getElementById('signupSuccess').style.display = 'none';
+}
+
+document.getElementById('signupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSignupModal();
+});
+
+function populateDOB() {
+  const d = document.getElementById('su-day');
+  const y = document.getElementById('su-year');
+  if (d.options.length > 1) return;
+
+  for (let i = 1; i <= 31; i++) {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = i;
+    d.appendChild(o);
+  }
+
+  const cy = new Date().getFullYear();
+  for (let j = cy - 18; j >= cy - 80; j--) {
+    const o = document.createElement('option');
+    o.value = j;
+    o.textContent = j;
+    y.appendChild(o);
+  }
+}
+
+function handleSignup() {
+  const f = document.getElementById('su-first').value.trim();
+  const l = document.getElementById('su-last').value.trim();
+  const e = document.getElementById('su-email').value.trim();
+  const p = document.getElementById('su-pass').value;
+  const p2 = document.getElementById('su-pass2').value;
+
+  if (!f || !l || !e || !p || !p2) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  if (p !== p2) {
+    alert('Passwords do not match.');
+    return;
+  }
+
+  document.getElementById('signupFormFields').style.display = 'none';
+  document.getElementById('signupSuccess').style.display = 'flex';
+}
+
+document.getElementById('signupCloseBtn').addEventListener('click', closeSignupModal);
+document.getElementById('signupSubmitBtn').addEventListener('click', handleSignup);
+document.getElementById('signupToLogin').addEventListener('click', function(e) {
+  e.preventDefault();
+  closeSignupModal();
+  openLoginModal();
+});
+document.getElementById('signupSuccessCloseBtn').addEventListener('click', function() {
+  closeSignupModal();
+  resetSignupModal();
+});
 </script>
 <!-- ══════════ LOGIN MODAL ══════════ -->
 <div class="login-overlay" id="loginOverlay">
-  <div class="login-modal">
-    <button class="login-close" onclick="closeLoginModal()">
+  <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <button class="login-close" id="loginCloseBtn" aria-label="Close dialog">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
 
     <!-- Login View -->
     <div id="loginView">
-      <div class="login-title">Access your Dashboard</div>
+      <div class="login-title" id="loginTitle">Access your Dashboard</div>
       <div class="login-subtitle">Welcome back! Log in to manage your homestay.</div>
       <div class="login-form">
         <div class="form-group">
@@ -913,10 +998,10 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
           <label for="login-password">Password</label>
           <input type="password" id="login-password" placeholder="Enter your password">
         </div>
-        <div class="login-forgot"><a href="#" onclick="showResetView();return false;">Forgot your Password?</a></div>
-        <button class="login-btn" onclick="handleLogin()">Login</button>
+        <div class="login-forgot"><a href="#" id="forgotPasswordLink">Forgot your Password?</a></div>
+        <button class="login-btn" id="loginSubmitBtn">Login</button>
         <div class="login-divider"><span>or</span></div>
-        <div class="login-create">Don't have an account? <a href="#" onclick="closeLoginModal();openSignupModal();return false;">Create an account</a></div>
+        <div class="login-create">Don't have an account? <a href="#" id="loginToSignup">Create an account</a></div>
       </div>
     </div>
 
@@ -929,19 +1014,150 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
           <label for="reset-email">Email address</label>
           <input type="email" id="reset-email" placeholder="you@example.com">
         </div>
-        <button class="login-btn" onclick="handleReset()">Send Reset Link</button>
-        <div class="login-create" style="margin-top:8px"><a href="#" onclick="showLoginView();return false;">Cancel</a></div>
+        <button class="login-btn" id="resetSubmitBtn">Send Reset Link</button>
+        <div class="login-create" style="margin-top:8px"><a href="#" id="resetCancelLink">Cancel</a></div>
       </div>
     </div>
 
   </div>
 </div>
 <script>
-function openLoginModal(){showLoginView();document.getElementById('loginOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeLoginModal(){document.getElementById('loginOverlay').classList.remove('open');document.body.style.overflow='';}
-document.getElementById('loginOverlay').addEventListener('click',function(e){if(e.target===this)closeLoginModal();});
-function showResetView(){document.getElementById('loginView').style.display='none';document.getElementById('resetView').style.display='block';}
-function showLoginView(){document.getElementById('loginView').style.display='block';document.getElementById('resetView').style.display='none';}
-function handleLogin(){document.querySelectorAll('#loginView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('login-email').value.trim();var pass=document.getElementById('login-password').value.trim();var hasErr=false;if(!email){hasErr=true;var g=document.getElementById('login-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);}if(!pass){hasErr=true;var g=document.getElementById('login-password').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Password is required';g.appendChild(e);}if(hasErr){document.querySelector('#loginView .form-group.error input').focus();return;}window.location.href='dashboard.html';}
-function handleReset(){document.querySelectorAll('#resetView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('reset-email').value.trim();if(!email){var g=document.getElementById('reset-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);document.getElementById('reset-email').focus();return;}alert('A password reset link has been sent to '+email);showLoginView();}
+function openLoginModal() {
+  showLoginView();
+  document.getElementById('loginOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('loginOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeLoginModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    if (document.getElementById('loginOverlay').classList.contains('open')) closeLoginModal();
+    if (document.getElementById('signupOverlay').classList.contains('open')) closeSignupModal();
+  }
+});
+
+function showResetView() {
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('resetView').style.display = 'block';
+}
+
+function showLoginView() {
+  document.getElementById('loginView').style.display = 'block';
+  document.getElementById('resetView').style.display = 'none';
+}
+
+function handleLogin() {
+  document.querySelectorAll('#loginView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-password').value.trim();
+  let hasErr = false;
+
+  if (!email) {
+    hasErr = true;
+    const g = document.getElementById('login-email').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Email address is required';
+    g.appendChild(e);
+  }
+
+  if (!pass) {
+    hasErr = true;
+    const g = document.getElementById('login-password').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Password is required';
+    g.appendChild(e);
+  }
+
+  if (hasErr) {
+    document.querySelector('#loginView .form-group.error input').focus();
+    return;
+  }
+
+  window.location.href = 'dashboard.html';
+}
+
+function handleReset() {
+  document.querySelectorAll('#resetView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const email = document.getElementById('reset-email').value.trim();
+
+  if (!email) {
+    const g = document.getElementById('reset-email').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Email address is required';
+    g.appendChild(e);
+    document.getElementById('reset-email').focus();
+    return;
+  }
+
+  alert('A password reset link has been sent to ' + email);
+  showLoginView();
+}
+
+document.getElementById('loginCloseBtn').addEventListener('click', closeLoginModal);
+document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  showResetView();
+});
+document.getElementById('loginSubmitBtn').addEventListener('click', handleLogin);
+document.getElementById('loginToSignup').addEventListener('click', function(e) {
+  e.preventDefault();
+  closeLoginModal();
+  openSignupModal();
+});
+document.getElementById('resetSubmitBtn').addEventListener('click', handleReset);
+document.getElementById('resetCancelLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  showLoginView();
+});
+
+// Nav and mobile menu login/signup buttons
+document.getElementById('navLogin').addEventListener('click', function(e) {
+  e.preventDefault();
+  openLoginModal();
+});
+document.getElementById('navSignup').addEventListener('click', function(e) {
+  e.preventDefault();
+  openSignupModal();
+});
+document.getElementById('mobileLogin').addEventListener('click', function(e) {
+  e.preventDefault();
+  openLoginModal();
+});
+document.getElementById('mobileSignup').addEventListener('click', function(e) {
+  e.preventDefault();
+  if (closeMobileMenu) closeMobileMenu();
+  openSignupModal();
+});
+
+// Ask a Question buttons (Chatbase)
+document.querySelectorAll('.ask-question-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (window.chatbase) window.chatbase('open');
+  });
+});
 </script>

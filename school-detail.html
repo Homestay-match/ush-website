@@ -4,11 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- School name, prices, and details populated from database -->
-<title>Homestay near UCLA Extension — USH Pricing</title>
-<meta name="description" content="View homestay pricing near UCLA Extension. Private room with a verified host family from $45/day. Breakfast, dinner, and room-only plans available.">
+<title>Homestay near UCLA Extension — USH Pricing & Host Families</title>
+<meta name="description" content="View homestay USA pricing near UCLA Extension. Private room with a verified host family from $45/day. Breakfast, dinner, and room-only meal plans available for international students.">
+<meta name="keywords" content="homestay USA, international student housing, homestay near UCLA, homestay Los Angeles, homestay pricing, host family USA, private room homestay, homestay with meals included, student housing Southern California, affordable homestay">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://usaish.com/schools/ucla-extension">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Homestay near UCLA Extension — Pricing & Host Families">
+<meta property="og:description" content="Private room homestay near UCLA Extension from $45/day. Verified host families, meals included. Book with USH.">
+<meta property="og:image" content="https://usaish.com/assets/homestay-hero.jpg">
+<meta property="og:url" content="https://usaish.com/schools/ucla-extension">
+<meta property="og:site_name" content="Universal Student Housing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Homestay near UCLA Extension — Pricing & Host Families">
+<meta name="twitter:description" content="Private room homestay near UCLA Extension from $45/day. Verified host families, meals included. Book with USH.">
+<meta name="twitter:image" content="https://usaish.com/assets/homestay-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 <link rel="stylesheet" href="assets/ush.css?v=7">
 <style>
 /* ── BREADCRUMB ── */
@@ -105,12 +119,13 @@
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ══════════ NAV ══════════ -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="assets/ushlogo.png" alt="USH">
+      <img src="assets/ushlogo.png" alt="USH" width="400" height="164">
     </a>
     <div class="nav-links">
       <a href="about.html">About</a>
@@ -139,6 +154,8 @@
   <a href="become-a-host.html">Become a Host</a>
   <a href="#" class="btn btn-teal" onclick="closeMobileMenu&&closeMobileMenu();openSignupModal();return false;">Student Sign Up</a>
 </div>
+
+<main id="main-content">
 
 <!-- ══════════ BREADCRUMB ══════════ -->
 <div class="breadcrumb">
@@ -329,6 +346,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ══════════ FOOTER ══════════ -->
 <footer class="footer">
   <div class="container">
@@ -404,12 +423,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </html>
 
 <!-- ══════════ SIGNUP MODAL ══════════ -->
-<div class="signup-overlay" id="signupOverlay">
+<div class="signup-overlay" id="signupOverlay" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
   <div class="signup-modal">
-    <button class="login-close" onclick="closeSignupModal()">
+    <button class="login-close" id="signupCloseBtn" aria-label="Close dialog">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <div id="signupFormFields"><div class="login-title">Student Sign Up</div>
+    <div id="signupFormFields"><div class="login-title" id="signupTitle">Student Sign Up</div>
     <div class="login-subtitle">Create your account to get started with USH.</div>
     <div class="signup-form">
       <div class="form-row">
@@ -478,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <label for="su-questions">Do you have any questions? <span style="color:var(--c-text-muted);font-weight:400">Optional</span></label>
         <textarea id="su-questions" placeholder="Ask any questions"></textarea>
       </div>
-      <button class="login-btn" onclick="handleSignup()">Sign up</button>
+      <button class="login-btn" id="signupBtn">Sign up</button>
       <div class="signup-legal">By signing up, you agree with the <a href="legal/guest_terms_conditions.html">Guest Terms and Conditions</a>, <a href="legal/guests_cancellation_policy.html">Guest Cancellation Policy</a> and <a href="legal/privacy_policy.html">Privacy Policy</a></div>
       <div class="login-create" style="margin-top:4px">Already have an account? <a href="#" onclick="closeSignupModal();openLoginModal();return false;">Log in</a></div>
     </div>
@@ -488,29 +507,96 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-charcoal);margin-bottom:12px">Thanks for signing up!</div>
       <p style="font-size:0.92rem;color:var(--c-text-light);line-height:1.65;margin-bottom:8px">We have sent an email to the address you provided. Please check your inbox.</p>
       <p style="font-size:0.92rem;color:var(--c-text-light);line-height:1.65;margin-bottom:28px">We look forward to helping you find a perfect homestay!</p>
-      <button class="login-btn" onclick="closeSignupModal();resetSignupModal();">Close Message</button>
+      <button class="login-btn" id="signupSuccessCloseBtn">Close Message</button>
     </div>
     </div>
   </div>
 </div>
 <script>
-function openSignupModal(){document.getElementById('signupOverlay').classList.add('open');document.body.style.overflow='hidden';populateDOB();}
-function closeSignupModal(){document.getElementById('signupOverlay').classList.remove('open');document.body.style.overflow='';}
-function resetSignupModal(){document.getElementById('signupFormFields').style.display='block';document.getElementById('signupSuccess').style.display='none';}
-document.getElementById('signupOverlay').addEventListener('click',function(e){if(e.target===this)closeSignupModal();});
-function populateDOB(){var d=document.getElementById('su-day'),y=document.getElementById('su-year');if(d.options.length>1)return;for(var i=1;i<=31;i++){var o=document.createElement('option');o.value=i;o.textContent=i;d.appendChild(o);}var cy=new Date().getFullYear();for(var j=cy-18;j>=cy-80;j--){var o=document.createElement('option');o.value=j;o.textContent=j;y.appendChild(o);}}
-function handleSignup(){var f=document.getElementById('su-first').value.trim();var l=document.getElementById('su-last').value.trim();var e=document.getElementById('su-email').value.trim();var p=document.getElementById('su-pass').value;var p2=document.getElementById('su-pass2').value;if(!f||!l||!e||!p||!p2){alert('Please fill in all required fields.');return;}if(p!==p2){alert('Passwords do not match.');return;}document.getElementById('signupFormFields').style.display='none';document.getElementById('signupSuccess').style.display='flex';}
+function openSignupModal() {
+  document.getElementById('signupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  populateDOB();
+}
+
+function closeSignupModal() {
+  document.getElementById('signupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function resetSignupModal() {
+  document.getElementById('signupFormFields').style.display = 'block';
+  document.getElementById('signupSuccess').style.display = 'none';
+}
+
+document.getElementById('signupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSignupModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('signupOverlay').classList.contains('open')) {
+    closeSignupModal();
+  }
+});
+
+function populateDOB() {
+  const d = document.getElementById('su-day');
+  const y = document.getElementById('su-year');
+  if (d.options.length > 1) return;
+
+  for (let i = 1; i <= 31; i++) {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = i;
+    d.appendChild(o);
+  }
+
+  const cy = new Date().getFullYear();
+  for (let j = cy - 18; j >= cy - 80; j--) {
+    const o = document.createElement('option');
+    o.value = j;
+    o.textContent = j;
+    y.appendChild(o);
+  }
+}
+
+function handleSignup() {
+  const f = document.getElementById('su-first').value.trim();
+  const l = document.getElementById('su-last').value.trim();
+  const e = document.getElementById('su-email').value.trim();
+  const p = document.getElementById('su-pass').value;
+  const p2 = document.getElementById('su-pass2').value;
+
+  if (!f || !l || !e || !p || !p2) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  if (p !== p2) {
+    alert('Passwords do not match.');
+    return;
+  }
+
+  document.getElementById('signupFormFields').style.display = 'none';
+  document.getElementById('signupSuccess').style.display = 'flex';
+}
+
+document.getElementById('signupCloseBtn').addEventListener('click', closeSignupModal);
+document.getElementById('signupBtn').addEventListener('click', handleSignup);
+document.getElementById('signupSuccessCloseBtn').addEventListener('click', function() {
+  closeSignupModal();
+  resetSignupModal();
+});
 </script>
 <!-- ══════════ LOGIN MODAL ══════════ -->
-<div class="login-overlay" id="loginOverlay">
+<div class="login-overlay" id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
   <div class="login-modal">
-    <button class="login-close" onclick="closeLoginModal()">
+    <button class="login-close" id="loginCloseBtn" aria-label="Close dialog">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
 
     <!-- Login View -->
     <div id="loginView">
-      <div class="login-title">Access your Dashboard</div>
+      <div class="login-title" id="loginTitle">Access your Dashboard</div>
       <div class="login-subtitle">Welcome back! Log in to manage your homestay.</div>
       <div class="login-form">
         <div class="form-group">
@@ -522,7 +608,7 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
           <input type="password" id="login-password" placeholder="Enter your password">
         </div>
         <div class="login-forgot"><a href="#" onclick="showResetView();return false;">Forgot your Password?</a></div>
-        <button class="login-btn" onclick="handleLogin()">Login</button>
+        <button class="login-btn" id="loginBtn">Login</button>
         <div class="login-divider"><span>or</span></div>
         <div class="login-create">Don't have an account? <a href="#" onclick="closeLoginModal();openSignupModal();return false;">Create an account</a></div>
       </div>
@@ -537,7 +623,7 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
           <label for="reset-email">Email address</label>
           <input type="email" id="reset-email" placeholder="you@example.com">
         </div>
-        <button class="login-btn" onclick="handleReset()">Send Reset Link</button>
+        <button class="login-btn" id="resetBtn">Send Reset Link</button>
         <div class="login-create" style="margin-top:8px"><a href="#" onclick="showLoginView();return false;">Cancel</a></div>
       </div>
     </div>
@@ -545,11 +631,101 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
   </div>
 </div>
 <script>
-function openLoginModal(){showLoginView();document.getElementById('loginOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeLoginModal(){document.getElementById('loginOverlay').classList.remove('open');document.body.style.overflow='';}
-document.getElementById('loginOverlay').addEventListener('click',function(e){if(e.target===this)closeLoginModal();});
-function showResetView(){document.getElementById('loginView').style.display='none';document.getElementById('resetView').style.display='block';}
-function showLoginView(){document.getElementById('loginView').style.display='block';document.getElementById('resetView').style.display='none';}
-function handleLogin(){document.querySelectorAll('#loginView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('login-email').value.trim();var pass=document.getElementById('login-password').value.trim();var hasErr=false;if(!email){hasErr=true;var g=document.getElementById('login-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);}if(!pass){hasErr=true;var g=document.getElementById('login-password').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Password is required';g.appendChild(e);}if(hasErr){document.querySelector('#loginView .form-group.error input').focus();return;}window.location.href='dashboard.html';}
-function handleReset(){document.querySelectorAll('#resetView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('reset-email').value.trim();if(!email){var g=document.getElementById('reset-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);document.getElementById('reset-email').focus();return;}alert('A password reset link has been sent to '+email);showLoginView();}
+function openLoginModal() {
+  showLoginView();
+  document.getElementById('loginOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('loginOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeLoginModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('loginOverlay').classList.contains('open')) {
+    closeLoginModal();
+  }
+});
+
+function showResetView() {
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('resetView').style.display = 'block';
+}
+
+function showLoginView() {
+  document.getElementById('loginView').style.display = 'block';
+  document.getElementById('resetView').style.display = 'none';
+}
+
+function handleLogin() {
+  document.querySelectorAll('#loginView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-password').value.trim();
+  let hasErr = false;
+
+  if (!email) {
+    hasErr = true;
+    const g = document.getElementById('login-email').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Email address is required';
+    g.appendChild(e);
+  }
+
+  if (!pass) {
+    hasErr = true;
+    const g = document.getElementById('login-password').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Password is required';
+    g.appendChild(e);
+  }
+
+  if (hasErr) {
+    document.querySelector('#loginView .form-group.error input').focus();
+    return;
+  }
+
+  window.location.href = 'dashboard.html';
+}
+
+function handleReset() {
+  document.querySelectorAll('#resetView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const email = document.getElementById('reset-email').value.trim();
+
+  if (!email) {
+    const g = document.getElementById('reset-email').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Email address is required';
+    g.appendChild(e);
+    document.getElementById('reset-email').focus();
+    return;
+  }
+
+  alert('A password reset link has been sent to ' + email);
+  showLoginView();
+}
+
+document.getElementById('loginCloseBtn').addEventListener('click', closeLoginModal);
+document.getElementById('loginBtn').addEventListener('click', handleLogin);
+document.getElementById('resetBtn').addEventListener('click', handleReset);
 </script>

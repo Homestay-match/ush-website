@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Host Family Dashboard — USH</title>
+<meta name="description" content="Manage your exchange students, stipend payments, documents, and referrals from your USH host family dashboard.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://ushhost.com/dashboard">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ush.css?v=7">
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
+<style>
+:root{
+  --c-border:rgba(44,51,48,0.1);
+  --c-border-strong:rgba(44,51,48,0.18);
+}
+body{min-height:100vh;background:var(--c-cream)}
+input,select,textarea,button{font-family:var(--ff-body)}
+
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+
+/* ── PAGE LAYOUT ── */
+.page{padding:100px 24px 80px;min-height:100vh}
+.dash-container{max-width:1000px;margin:0 auto}
+
+/* ── HOST PROFILE HEADER ── */
+.host-profile{display:flex;align-items:center;gap:24px;margin-bottom:40px;padding:32px;background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);box-shadow:var(--shadow-sm)}
+@media(max-width:600px){.host-profile{flex-direction:column;text-align:center;gap:16px;padding:24px}}
+.host-avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;border:3px solid var(--c-teal)}
+.host-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.host-avatar-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--c-teal) 0%,#4a9485 100%);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:rgba(255,255,255,0.8)}
+.host-avatar-edit{position:absolute;bottom:0;right:0;width:28px;height:28px;border-radius:50%;background:var(--c-charcoal);color:var(--c-white);border:2px solid var(--c-white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s}
+.host-avatar-edit:hover{background:var(--c-teal)}
+.host-profile-info{flex:1}
+.host-profile-info h1{font-family:var(--ff-display);font-size:clamp(1.6rem,3.5vw,2rem);font-weight:600;color:var(--c-charcoal);line-height:1.15;letter-spacing:-0.02em;margin-bottom:4px}
+.host-profile-info h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.host-profile-info p{font-size:0.92rem;color:var(--c-text-light);margin-bottom:0}
+.host-profile-meta{display:flex;gap:20px;margin-top:10px;flex-wrap:wrap}
+@media(max-width:600px){.host-profile-meta{justify-content:center}}
+.host-meta-item{font-size:0.78rem;color:var(--c-text-muted);display:flex;align-items:center;gap:5px}
+.host-meta-item svg{color:var(--c-teal);flex-shrink:0}
+.host-profile-actions{flex-shrink:0;display:flex;flex-direction:column;gap:8px}
+@media(max-width:600px){.host-profile-actions{flex-direction:row}}
+.btn-profile{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:var(--r-full);font-family:var(--ff-body);font-size:0.8rem;font-weight:600;border:1.5px solid var(--c-border);background:none;color:var(--c-text-muted);cursor:pointer;transition:all 0.2s}
+.btn-profile:hover{border-color:var(--c-teal);color:var(--c-teal)}
+
+/* ── WELCOME HEADER ── */
+.dash-welcome{margin-bottom:24px}
+.dash-welcome h1{font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:600;color:var(--c-charcoal);line-height:1.15;letter-spacing:-0.02em;margin-bottom:6px}
+.dash-welcome h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.dash-welcome p{font-size:0.95rem;color:var(--c-text-light)}
+
+/* ── DASHBOARD CARDS GRID ── */
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
+@media(max-width:660px){.dash-grid{grid-template-columns:1fr}}
+
+.dash-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:32px;box-shadow:var(--shadow-sm);transition:all 0.3s var(--ease-out);cursor:pointer;text-decoration:none;display:flex;flex-direction:column;gap:16px}
+.dash-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--c-teal)}
+
+.dash-card-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-teal{background:var(--c-teal-light);color:var(--c-teal)}
+.icon-gold{background:var(--c-orange-light);color:var(--c-orange-dark)}
+.icon-olive{background:rgba(74,82,80,0.08);color:var(--c-olive-dark)}
+
+.dash-card h3{font-family:var(--ff-display);font-size:1.15rem;font-weight:600;color:var(--c-charcoal);margin:0}
+.dash-card p{font-size:0.88rem;color:var(--c-text-light);line-height:1.6;margin:0}
+
+/* ── SECTION PANELS ── */
+.dash-section{display:none;margin-bottom:48px}
+.dash-section.active{display:block;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.dash-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.dash-section-header h2{font-family:var(--ff-display);font-size:clamp(1.4rem,3vw,1.8rem);font-weight:600;color:var(--c-charcoal);margin:0}
+.dash-section-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.btn-back-dash{display:inline-flex;align-items:center;gap:6px;background:none;border:1.5px solid var(--c-border);color:var(--c-text-muted);padding:8px 16px;border-radius:var(--r-full);font-family:var(--ff-body);font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+.btn-back-dash:hover{border-color:var(--c-teal);color:var(--c-teal)}
+
+/* ── TABLE STYLES ── */
+.dash-table-wrap{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);overflow:hidden;box-shadow:var(--shadow-sm)}
+.dash-table{width:100%;border-collapse:collapse;font-size:0.88rem}
+.dash-table thead{background:var(--c-cream)}
+.dash-table th{text-align:left;padding:14px 18px;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);border-bottom:1px solid var(--c-border)}
+.dash-table td{padding:14px 18px;border-bottom:1px solid var(--c-border);color:var(--c-text)}
+.dash-table tbody tr:last-child td{border-bottom:none}
+.dash-table tbody tr:hover{background:rgba(110,183,163,0.04)}
+@media(max-width:700px){
+  .dash-table-wrap{overflow-x:auto}
+  .dash-table{min-width:580px}
+}
+
+/* ── STATUS BADGES ── */
+.badge{display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:0.75rem;font-weight:600;letter-spacing:0.02em}
+.badge-active{background:var(--c-teal-light);color:var(--c-teal)}
+.badge-upcoming{background:var(--c-orange-light);color:var(--c-orange-dark)}
+.badge-past{background:rgba(74,82,80,0.08);color:var(--c-text-muted)}
+.badge-sent{background:var(--c-teal-light);color:var(--c-teal)}
+.badge-pending{background:var(--c-orange-light);color:var(--c-orange-dark)}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:48px 24px;color:var(--c-text-muted)}
+.empty-state svg{margin-bottom:16px;opacity:0.3}
+.empty-state p{font-size:0.92rem;line-height:1.6}
+.empty-state p strong{color:var(--c-charcoal)}
+
+/* ── MESSAGES ── */
+.msg-layout{display:grid;grid-template-columns:280px 1fr;border-radius:var(--r-lg);border:1px solid var(--c-border);overflow:hidden;box-shadow:var(--shadow-sm);height:520px;background:var(--c-white)}
+@media(max-width:700px){.msg-layout{grid-template-columns:1fr;height:auto}}
+
+/* Sidebar */
+.msg-sidebar{background:var(--c-cream);border-right:1px solid var(--c-border);overflow-y:auto}
+@media(max-width:700px){.msg-sidebar{border-right:none;border-bottom:1px solid var(--c-border);max-height:180px}}
+.msg-sidebar-header{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-text-muted);padding:16px 18px 10px}
+.msg-contact{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;transition:background 0.15s;border-bottom:1px solid var(--c-border)}
+.msg-contact:last-child{border-bottom:none}
+.msg-contact:hover{background:rgba(110,183,163,0.06)}
+.msg-contact.active{background:var(--c-white);border-left:3px solid var(--c-teal)}
+.msg-avatar{width:40px;height:40px;border-radius:50%;background:var(--c-teal-light);color:var(--c-teal);font-size:0.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.msg-avatar-sm{width:34px;height:34px;border-radius:50%;background:var(--c-teal-light);color:var(--c-teal);font-size:0.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.msg-contact-info{flex:1;min-width:0}
+.msg-contact-name{font-size:0.88rem;font-weight:600;color:var(--c-charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msg-contact-preview{font-size:0.78rem;color:var(--c-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.msg-contact-meta{flex-shrink:0;text-align:right}
+.msg-contact-time{font-size:0.7rem;color:var(--c-text-muted)}
+.msg-badge-unread{width:18px;height:18px;border-radius:50%;background:var(--c-teal);color:var(--c-white);font-size:0.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:4px;margin-left:auto}
+
+/* Chat */
+.msg-chat{display:flex;flex-direction:column}
+.msg-chat-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--c-border);background:var(--c-white)}
+.msg-chat-name{font-size:0.92rem;font-weight:600;color:var(--c-charcoal)}
+.msg-chat-status{font-size:0.75rem;color:var(--c-text-muted);display:flex;align-items:center;gap:6px}
+.msg-status-dot{width:8px;height:8px;border-radius:50%;background:#2D9A5A;display:inline-block}
+
+.msg-chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;background:#fafbfa}
+@media(max-width:700px){.msg-chat-body{min-height:300px}}
+
+.msg-bubble{max-width:75%;padding:12px 16px;border-radius:16px;font-size:0.88rem;line-height:1.55;position:relative}
+.msg-bubble.received{align-self:flex-start;background:var(--c-white);border:1px solid var(--c-border);border-bottom-left-radius:4px;color:var(--c-text)}
+.msg-bubble.sent{align-self:flex-end;background:var(--c-teal);color:var(--c-white);border-bottom-right-radius:4px}
+.msg-time{font-size:0.7rem;color:var(--c-text-muted);margin-top:4px}
+.msg-bubble.sent .msg-time{color:rgba(255,255,255,0.6)}
+
+.msg-chat-input{display:flex;align-items:center;gap:10px;padding:14px 20px;border-top:1px solid var(--c-border);background:var(--c-white)}
+.msg-chat-input input{flex:1;padding:10px 16px;border:1.5px solid var(--c-border);border-radius:var(--r-full);font-size:0.88rem;font-family:var(--ff-body);color:var(--c-text);outline:none;transition:border-color 0.2s}
+.msg-chat-input input:focus{border-color:var(--c-teal)}
+.msg-send-btn{width:40px;height:40px;border-radius:50%;background:var(--c-teal);color:var(--c-white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s}
+.msg-send-btn:hover{background:var(--c-teal-dark)}
+
+/* ── W9 FORM ── */
+.w9-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:40px;box-shadow:var(--shadow-sm)}
+.w9-card > p{font-size:0.9rem;color:var(--c-text-light);line-height:1.65;margin:0}
+@media(max-width:600px){.w9-card{padding:24px 20px}}
+
+.w9-form-section{margin-top:28px;padding-top:24px;border-top:1px solid var(--c-border)}
+.w9-form-section:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.w9-section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-teal);margin-bottom:16px}
+
+.w9-field{margin-bottom:16px}
+.w9-field label{display:block;font-size:0.82rem;font-weight:600;color:var(--c-charcoal);margin-bottom:6px}
+.w9-field input:not([type="radio"]):not([type="checkbox"]),
+.w9-field select{width:100%;padding:11px 14px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-size:0.9rem;color:var(--c-text);background:var(--c-white);outline:none;transition:border-color 0.25s,box-shadow 0.25s;appearance:none;-webkit-appearance:none;font-family:var(--ff-body)}
+.w9-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.w9-field input:focus,.w9-field select:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
+.w9-field.error input,.w9-field.error select{border-color:var(--c-error);box-shadow:0 0 0 3px rgba(224,82,82,0.12)}
+.w9-field.error label{color:var(--c-error)}
+.w9-field .field-error{font-size:0.78rem;color:var(--c-error);margin-top:4px;display:flex;align-items:center;gap:4px}
+.w9-field .field-error::before{content:'⚠';font-size:0.72rem}
+
+.w9-req{color:var(--c-error);margin-left:2px;font-weight:700}
+.w9-opt{font-size:0.72rem;font-weight:400;color:var(--c-text-muted);margin-left:8px;text-transform:uppercase;letter-spacing:0.06em}
+
+.w9-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.w9-row-3{display:grid;grid-template-columns:1.2fr 0.8fr 0.8fr;gap:16px}
+@media(max-width:540px){.w9-row-2,.w9-row-3{grid-template-columns:1fr}}
+
+.w9-radio-row{display:flex;gap:24px}
+.w9-radio{display:flex;align-items:center;gap:8px;font-size:0.9rem;color:var(--c-text);cursor:pointer;font-weight:500}
+.w9-radio input[type="radio"]{width:18px;height:18px;accent-color:var(--c-teal);cursor:pointer}
+
+.w9-hint{font-size:0.78rem;color:var(--c-text-muted);margin-top:8px;line-height:1.5}
+
+.w9-trust-line{display:flex;align-items:flex-start;gap:8px;margin-top:12px;padding:12px 14px;background:rgba(110,183,163,0.06);border-radius:var(--r-sm);font-size:0.8rem;color:var(--c-text-muted);line-height:1.5}
+.w9-trust-line svg{flex-shrink:0;color:var(--c-teal);margin-top:1px}
+
+/* Certification */
+.w9-cert-box{background:var(--c-cream);border:1.5px solid var(--c-border);border-radius:var(--r-md);padding:20px;transition:border-color 0.2s}
+.w9-cert-box.error{border-color:var(--c-error);background:rgba(224,82,82,0.04)}
+.w9-cert-label{display:flex;align-items:flex-start;gap:14px;cursor:pointer;font-size:0.87rem;color:var(--c-text);line-height:1.6}
+.w9-cert-label input[type="checkbox"]{width:20px;height:20px;margin-top:2px;flex-shrink:0;accent-color:var(--c-teal);cursor:pointer}
+.w9-cert-label strong{display:block;color:var(--c-charcoal);margin-bottom:8px;font-size:0.88rem}
+.w9-cert-list{margin:0;padding-left:18px;list-style:disc}
+.w9-cert-list li{margin-bottom:4px;font-size:0.84rem;color:var(--c-text-light);line-height:1.55}
+.w9-cert-list li:last-child{margin-bottom:0}
+
+/* Submit */
+.btn-submit-w9{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 32px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:0.92rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out)}
+.btn-submit-w9:hover:not(:disabled){background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(110,183,163,0.3)}
+.btn-submit-w9:disabled{opacity:0.45;cursor:not-allowed;transform:none;box-shadow:none}
+
+.w9-compliance-footer{margin-top:24px;padding-top:20px;border-top:1px solid var(--c-border);text-align:center}
+.w9-compliance-footer p{font-size:0.8rem;color:var(--c-text-muted);margin:0 0 6px;line-height:1.5}
+.w9-compliance-footer p:last-child{margin-bottom:0}
+.w9-compliance-footer a{color:var(--c-teal);font-weight:600}
+
+/* ── REFER A FRIEND ── */
+.refer-banner{background:linear-gradient(135deg,rgba(110,183,163,0.08) 0%,rgba(255,136,83,0.06) 100%);border:1.5px solid var(--c-teal);border-radius:var(--r-lg);padding:28px 32px;margin-bottom:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+@media(max-width:600px){.refer-banner{flex-direction:column;text-align:center;padding:24px 20px}}
+.refer-banner-icon{width:56px;height:56px;border-radius:50%;background:var(--c-teal);color:var(--c-white);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.refer-banner-text{flex:1}
+.refer-banner-text h3{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--c-charcoal);margin:0 0 4px}
+.refer-banner-text h3 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.refer-banner-text p{font-size:0.88rem;color:var(--c-text-light);line-height:1.55;margin:0}
+.refer-banner-text p strong{color:var(--c-orange);font-weight:700}
+.refer-earnings{flex-shrink:0;text-align:center;padding:12px 24px;background:var(--c-white);border-radius:var(--r-md);border:1px solid var(--c-border)}
+.refer-earnings .amount{font-family:var(--ff-display);font-size:1.8rem;font-weight:700;color:var(--c-teal);line-height:1}
+.refer-earnings .label{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-text-muted);margin-top:4px}
+
+.refer-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:32px;box-shadow:var(--shadow-sm);margin-bottom:24px}
+@media(max-width:600px){.refer-card{padding:24px 20px}}
+.refer-card-title{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin-bottom:6px}
+.refer-card-subtitle{font-size:0.85rem;color:var(--c-text-muted);margin-bottom:20px}
+.refer-form{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:540px){.refer-form{flex-direction:column}}
+.refer-form input{flex:1;min-width:140px;padding:11px 16px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-size:0.9rem;font-family:var(--ff-body);color:var(--c-text);outline:none;transition:border-color 0.25s,box-shadow 0.25s}
+.refer-form input:focus{border-color:var(--c-teal);box-shadow:0 0 0 3px rgba(110,183,163,0.12)}
+.btn-refer{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:0.9rem;border:none;cursor:pointer;transition:all 0.3s var(--ease-out);flex-shrink:0}
+.btn-refer:hover{background:var(--c-teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(110,183,163,0.3)}
+.refer-success{display:none;padding:14px 18px;background:rgba(110,183,163,0.08);border-radius:var(--r-sm);font-size:0.88rem;color:var(--c-teal);font-weight:600;margin-top:16px;align-items:center;gap:8px}
+.refer-or{margin-top:20px;padding-top:20px;border-top:1px solid var(--c-border)}
+.refer-or p{font-size:0.85rem;color:var(--c-text-muted);margin-bottom:10px}
+.refer-link-box{display:flex;align-items:center;gap:10px}
+@media(max-width:540px){.refer-link-box{flex-direction:column}}
+.refer-link-box input{flex:1;padding:10px 14px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-size:0.82rem;color:var(--c-text-muted);background:var(--c-cream);font-family:var(--ff-body);width:100%}
+.btn-copy{padding:10px 18px;border-radius:var(--r-sm);background:var(--c-charcoal);color:var(--c-white);font-family:var(--ff-body);font-weight:600;font-size:0.82rem;border:none;cursor:pointer;transition:background 0.2s;flex-shrink:0}
+.btn-copy:hover{background:var(--c-olive-dark)}
+
+/* ── SOCIAL SHARE BUTTONS ── */
+.refer-share{margin-top:20px;padding-top:20px;border-top:1px solid var(--c-border)}
+.refer-share-label{font-size:0.85rem;font-weight:600;color:var(--c-charcoal);margin-bottom:16px}
+.share-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--r-full);font-family:var(--ff-body);font-size:0.85rem;font-weight:600;border:none;cursor:pointer;transition:all 0.25s var(--ease-out);color:#fff;text-decoration:none}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+.share-btn svg{flex-shrink:0}
+.share-fb{background:#1877F2}
+.share-fb:hover{background:#1565d8}
+.share-ig{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)}
+.share-ig:hover{opacity:0.9}
+.share-email{background:var(--c-olive-dark)}
+.share-email:hover{background:var(--c-charcoal)}
+.share-sms{background:var(--c-teal)}
+.share-sms:hover{background:var(--c-teal-dark)}
+
+/* ── MESSAGE PREVIEW ── */
+.msg-preview{background:var(--c-cream);border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px 22px;position:relative}
+.msg-preview-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-teal);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.msg-preview-label svg{flex-shrink:0}
+.msg-preview-text{font-size:0.88rem;color:var(--c-text);line-height:1.7;white-space:pre-line}
+.msg-preview-text .highlight{color:var(--c-teal);font-weight:600;word-break:break-all}
+.msg-preview-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.msg-tab{padding:6px 14px;border-radius:var(--r-full);border:1px solid var(--c-border);background:var(--c-white);font-family:var(--ff-body);font-size:0.78rem;font-weight:600;color:var(--c-text-muted);cursor:pointer;transition:all 0.2s}
+.msg-tab:hover{border-color:var(--c-teal);color:var(--c-teal)}
+.msg-tab.active{background:var(--c-teal);color:var(--c-white);border-color:var(--c-teal)}
+.msg-preview-note{margin-top:14px;font-size:0.78rem;color:var(--c-text-muted);display:flex;align-items:center;gap:6px}
+.msg-preview-note svg{color:var(--c-teal);flex-shrink:0}
+
+/* ── TOAST NOTIFICATION ── */
+.share-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--c-charcoal);color:var(--c-white);padding:14px 28px;border-radius:var(--r-full);font-family:var(--ff-body);font-size:0.88rem;font-weight:600;display:flex;align-items:center;gap:10px;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.2);transition:transform 0.4s var(--ease-out);white-space:nowrap}
+.share-toast.show{transform:translateX(-50%) translateY(0)}
+.share-toast svg{flex-shrink:0}
+
+/* ── REFERRAL TRACKER TABLE ── */
+.refer-tracker{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);overflow:hidden;box-shadow:var(--shadow-sm)}
+.refer-tracker-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--c-border)}
+.refer-tracker-header h4{font-family:var(--ff-display);font-size:1rem;font-weight:600;color:var(--c-charcoal);margin:0}
+.refer-summary{display:flex;gap:16px}
+.refer-summary-item{text-align:center;padding:6px 14px;border-radius:var(--r-sm);background:var(--c-cream)}
+.refer-summary-item .num{font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:var(--c-charcoal);line-height:1}
+.refer-summary-item .lbl{font-size:0.68rem;color:var(--c-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px}
+@media(max-width:600px){.refer-tracker-header{flex-direction:column;gap:12px}.refer-summary{justify-content:center}}
+
+/* Referral status steps */
+.refer-status-steps{display:flex;align-items:center;gap:4px}
+.refer-step{display:flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:var(--c-text-muted)}
+.refer-step-dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.refer-step-dot svg{display:none}
+.refer-step.complete .refer-step-dot{background:var(--c-teal);border-color:var(--c-teal)}
+.refer-step.complete .refer-step-dot svg{display:block}
+.refer-step.complete{color:var(--c-teal)}
+.refer-step.active .refer-step-dot{border-color:var(--c-orange);background:var(--c-orange-light)}
+.refer-step.active{color:var(--c-orange-dark)}
+.refer-step-line{width:16px;height:2px;background:var(--c-border);flex-shrink:0}
+.refer-step.complete + .refer-step-line{background:var(--c-teal)}
+
+/* Referral payment badge */
+.badge-paid{background:#E8F8EE;color:#2D9A5A}
+.badge-eligible{background:var(--c-orange-light);color:var(--c-orange-dark)}
+.badge-waiting{background:rgba(74,82,80,0.08);color:var(--c-text-muted)}
+
+/* ── FOOTER ── */
+.footer-mini{text-align:center;padding:32px 24px;font-size:0.8rem;color:var(--c-text-muted);border-top:1px solid var(--c-border);margin-top:48px}
+.footer-mini a{color:var(--c-teal)}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="become-a-host.html" class="nav-logo">
+      <img src="assets/ushlogo.png" alt="USH" width="400" height="164">
+    </a>
+    <div class="nav-links">
+      <a href="become-a-host.html">Home</a>
+      <a href="host-about.html">About</a>
+      <a href="become-a-host.html#how-it-works">How It Works</a>
+      <a href="host-apply.html">Apply</a>
+      <a href="host-faq.html">FAQ</a>
+      <a href="host-contact.html">Contact</a>
+      <a href="#" id="navLoginLink">Log In</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="become-a-host.html">Home</a>
+  <a href="host-about.html">About</a>
+  <a href="become-a-host.html#how-it-works">How It Works</a>
+  <a href="host-apply.html">Apply</a>
+  <a href="host-faq.html">FAQ</a>
+  <a href="host-contact.html">Contact</a>
+  <a href="#" id="mobileLoginLink">Log In</a>
+</div>
+
+<script>
+document.getElementById('menuOpen').addEventListener('click', function(){
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', function(){
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(link){
+  link.addEventListener('click', function(){
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
+</script>
+
+<main id="main-content">
+<div class="page">
+  <div class="dash-container">
+
+    <!-- ══════════ HOST PROFILE ══════════ -->
+    <div class="host-profile" id="hostProfile">
+      <div class="host-avatar">
+        <div class="host-avatar-placeholder" id="hostAvatarPlaceholder">JD</div>
+        <img id="hostAvatarImg" src="" alt="Host photo" style="display:none">
+        <label class="host-avatar-edit" for="avatarUpload" title="Change photo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </label>
+        <input type="file" id="avatarUpload" accept="image/*" style="display:none" onchange="handleAvatarUpload(this)">
+      </div>
+      <div class="host-profile-info">
+        <h1>Welcome back, <em>Jane</em></h1>
+        <p>Manage your students, payments, and documents from your dashboard.</p>
+        <div class="host-profile-meta">
+          <div class="host-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Los Angeles, CA
+          </div>
+          <div class="host-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Host since 2023
+          </div>
+          <div class="host-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Verified Host
+          </div>
+        </div>
+      </div>
+      <div class="host-profile-actions">
+        <button class="btn-profile" id="btnEditProfile">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Edit Profile
+        </button>
+        <button class="btn-profile" id="btnLogOut">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Log Out
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════ WELCOME ══════════ -->
+    <div class="dash-welcome" id="dashWelcome" style="display:none">
+    </div>
+
+    <!-- ══════════ DASHBOARD CARDS ══════════ -->
+    <div class="dash-grid" id="dashGrid">
+
+      <!-- My Students -->
+      <a class="dash-card" href="javascript:void(0)" id="cardStudents">
+        <div class="dash-card-icon icon-teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>My Students</h3>
+        <p>View your current students and upcoming student's arrival information.</p>
+      </a>
+
+      <!-- My Checks -->
+      <a class="dash-card" href="javascript:void(0)" id="cardChecks">
+        <div class="dash-card-icon icon-gold">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3>My Checks</h3>
+        <p>Keep track of checks already sent for your current students.</p>
+      </a>
+
+      <!-- Messages -->
+      <a class="dash-card" href="javascript:void(0)" id="cardMessages">
+        <div class="dash-card-icon" style="background:#E8F8EE;color:#2D9A5A">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Messages</h3>
+        <p>Chat with your current students and stay connected.</p>
+      </a>
+
+      <!-- W9 -->
+      <a class="dash-card" href="javascript:void(0)" id="cardW9">
+        <div class="dash-card-icon icon-olive">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>W9</h3>
+        <p>Send your W9.</p>
+      </a>
+
+      <!-- Refer a Friend -->
+      <a class="dash-card" href="javascript:void(0)" id="cardRefer" style="grid-column:1/-1;background:linear-gradient(135deg,rgba(110,183,163,0.06) 0%,rgba(255,136,83,0.04) 100%)">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="dash-card-icon" style="background:#FEF0EF;color:#D9645A">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </div>
+          <div>
+            <h3>Refer a Friend — Earn $50</h3>
+            <p>Know someone who would make a great host? Refer them and earn $50 when they host their first student.</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ══════════ MY STUDENTS SECTION ══════════ -->
+    <div class="dash-section" id="section-students">
+      <div class="dash-section-header">
+        <h2>My <em>Students</em></h2>
+        <button class="btn-back-dash">← Back to Dashboard</button>
+      </div>
+
+      <div class="dash-table-wrap">
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Nationality</th>
+              <th>School</th>
+              <th>Move-In</th>
+              <th>Move-Out</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <!-- Sample data — will be replaced with real data -->
+            <tr>
+              <td><strong>Yuki Tanaka</strong></td>
+              <td>Japanese</td>
+              <td>UCLA Extension</td>
+              <td>Mar 15, 2026</td>
+              <td>Aug 20, 2026</td>
+              <td><span class="badge badge-active">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>Sofia Martinez</strong></td>
+              <td>Colombian</td>
+              <td>Santa Monica College</td>
+              <td>May 1, 2026</td>
+              <td>Dec 15, 2026</td>
+              <td><span class="badge badge-upcoming">Upcoming</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════════ MY CHECKS SECTION ══════════ -->
+    <div class="dash-section" id="section-checks">
+      <div class="dash-section-header">
+        <h2>My <em>Checks</em></h2>
+        <button class="btn-back-dash">← Back to Dashboard</button>
+      </div>
+
+      <div class="dash-table-wrap">
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>Check #</th>
+              <th>Student</th>
+              <th>Period</th>
+              <th>Amount</th>
+              <th>Date Sent</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="checksTableBody">
+            <!-- Sample data — will be replaced with real data -->
+            <tr>
+              <td><strong>#10452</strong></td>
+              <td>Yuki Tanaka</td>
+              <td>April 2026</td>
+              <td>$1,200.00</td>
+              <td>Apr 1, 2026</td>
+              <td><span class="badge badge-sent">Sent</span></td>
+            </tr>
+            <tr>
+              <td><strong>#10389</strong></td>
+              <td>Yuki Tanaka</td>
+              <td>March 2026</td>
+              <td>$1,200.00</td>
+              <td>Mar 1, 2026</td>
+              <td><span class="badge badge-sent">Sent</span></td>
+            </tr>
+            <tr>
+              <td><strong>#10510</strong></td>
+              <td>Sofia Martinez</td>
+              <td>May 2026</td>
+              <td>$1,350.00</td>
+              <td>—</td>
+              <td><span class="badge badge-pending">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════════ MESSAGES SECTION ══════════ -->
+    <div class="dash-section" id="section-messages">
+      <div class="dash-section-header">
+        <h2><em>Messages</em></h2>
+        <button class="btn-back-dash">← Back to Dashboard</button>
+      </div>
+
+      <div class="msg-layout">
+        <!-- Student List Sidebar -->
+        <div class="msg-sidebar">
+          <div class="msg-sidebar-header">Students</div>
+          <div class="msg-contact active" data-convo="0">
+            <div class="msg-avatar">YT</div>
+            <div class="msg-contact-info">
+              <div class="msg-contact-name">Yuki Tanaka</div>
+              <div class="msg-contact-preview">Hi! Welcome — I'm looking forward...</div>
+            </div>
+            <div class="msg-contact-meta">
+              <div class="msg-contact-time">9:48 PM</div>
+              <div class="msg-badge-unread" style="display:none">1</div>
+            </div>
+          </div>
+          <div class="msg-contact" data-convo="1">
+            <div class="msg-avatar" style="background:var(--c-orange-light);color:var(--c-orange-dark)">SM</div>
+            <div class="msg-contact-info">
+              <div class="msg-contact-name">Sofia Martinez</div>
+              <div class="msg-contact-preview">Thank you! See you on May 1st</div>
+            </div>
+            <div class="msg-contact-meta">
+              <div class="msg-contact-time">Yesterday</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="msg-chat">
+          <div class="msg-chat-header">
+            <div class="msg-avatar-sm" id="chatAvatar">YT</div>
+            <div>
+              <div class="msg-chat-name" id="chatName">Yuki Tanaka</div>
+              <div class="msg-chat-status"><span class="msg-status-dot"></span> <span id="chatStatus">Available</span></div>
+            </div>
+          </div>
+
+          <div class="msg-chat-body" id="chatBody">
+            <!-- Messages will be injected by JS -->
+          </div>
+
+          <div class="msg-chat-input">
+            <input type="text" id="msgInput" placeholder="Type your message...">
+            <button class="msg-send-btn" id="msgSendBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ W9 SECTION ══════════ -->
+    <div class="dash-section" id="section-w9">
+      <div class="dash-section-header">
+        <h2><em>W-9</em> Tax Information</h2>
+        <button class="btn-back-dash">← Back to Dashboard</button>
+      </div>
+
+      <div class="w9-card" style="max-width:680px">
+        <p style="margin-bottom:28px">This form is required to issue tax documents (such as Form 1099) for payments you receive.</p>
+
+        <form id="w9Form" novalidate>
+
+          <!-- TAXPAYER INFO -->
+          <div class="w9-form-section">
+            <div class="w9-section-label">Taxpayer Information</div>
+
+            <div class="w9-field">
+              <label>Full name (as shown on your tax return)<span class="w9-req">*</span></label>
+              <input type="text" name="w9Name" required placeholder="John A. Smith">
+            </div>
+
+            <div class="w9-field">
+              <label>Business name<span class="w9-opt">optional</span></label>
+              <input type="text" name="w9Business" placeholder="If different from above">
+            </div>
+
+            <div class="w9-field">
+              <label>Federal tax classification<span class="w9-req">*</span></label>
+              <select name="w9Classification" required>
+                <option value="">Select one</option>
+                <option>Individual / Sole Proprietor</option>
+                <option>C Corporation</option>
+                <option>S Corporation</option>
+                <option>Partnership</option>
+                <option>Trust / Estate</option>
+                <option>LLC</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- TAX ID -->
+          <div class="w9-form-section">
+            <div class="w9-section-label">Taxpayer Identification Number</div>
+
+            <div class="w9-field">
+              <div class="w9-radio-row">
+                <label class="w9-radio"><input type="radio" name="w9TaxIdType" value="ssn" checked> SSN</label>
+                <label class="w9-radio"><input type="radio" name="w9TaxIdType" value="ein"> EIN</label>
+              </div>
+            </div>
+
+            <div class="w9-field">
+              <label id="w9TaxIdLabel">Social Security Number<span class="w9-req">*</span></label>
+              <input type="text" name="w9TaxId" id="w9TaxIdInput" required placeholder="XXX-XX-XXXX" maxlength="11">
+            </div>
+
+            <div class="w9-trust-line">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Your information is encrypted and securely stored. We use this only to issue required tax documents (Form 1099).</span>
+            </div>
+          </div>
+
+          <!-- ADDRESS -->
+          <div class="w9-form-section">
+            <div class="w9-section-label">Address</div>
+
+            <div class="w9-field">
+              <label>Street address<span class="w9-req">*</span></label>
+              <input type="text" name="w9Address" required placeholder="123 Main Street">
+            </div>
+
+            <div class="w9-row-3">
+              <div class="w9-field">
+                <label>City<span class="w9-req">*</span></label>
+                <input type="text" name="w9City" required>
+              </div>
+              <div class="w9-field">
+                <label>State<span class="w9-req">*</span></label>
+                <select name="w9State" required>
+                  <option value="">Select</option>
+                  <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+                </select>
+              </div>
+              <div class="w9-field">
+                <label>ZIP Code<span class="w9-req">*</span></label>
+                <input type="text" name="w9Zip" required maxlength="10" placeholder="90001">
+              </div>
+            </div>
+
+            <div class="w9-hint">Must match your tax return address</div>
+          </div>
+
+          <!-- EXEMPTIONS -->
+          <div class="w9-form-section">
+            <div class="w9-section-label">Exemptions <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--c-text-muted)">(if applicable)</span></div>
+
+            <div class="w9-row-2">
+              <div class="w9-field">
+                <label>Exempt payee code<span class="w9-opt">optional</span></label>
+                <input type="text" name="w9ExemptPayee" placeholder="N/A">
+              </div>
+              <div class="w9-field">
+                <label>FATCA exemption code<span class="w9-opt">optional</span></label>
+                <input type="text" name="w9Fatca" placeholder="N/A">
+              </div>
+            </div>
+
+            <div class="w9-hint">Most users can leave this as N/A</div>
+          </div>
+
+          <!-- CERTIFICATION -->
+          <div class="w9-form-section">
+            <div class="w9-section-label">Certification</div>
+
+            <div class="w9-cert-box">
+              <label class="w9-cert-label">
+                <input type="checkbox" name="w9Certify" id="w9Certify" required style="appearance:auto;-webkit-appearance:auto">
+                <div>
+                  <strong>I certify, under penalties of perjury, that:</strong>
+                  <ul class="w9-cert-list">
+                    <li>The number shown on this form is my correct taxpayer identification number, and</li>
+                    <li>I am not subject to backup withholding (or I am exempt), and</li>
+                    <li>I am a U.S. person (or other U.S. entity), and</li>
+                    <li>The FATCA code entered (if any) is correct.</li>
+                  </ul>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- SIGNATURE -->
+          <div class="w9-form-section">
+            <div class="w9-section-label">Electronic Signature</div>
+
+            <div class="w9-field">
+              <label>Signature (type your full name)<span class="w9-req">*</span></label>
+              <input type="text" name="w9Signature" id="w9Signature" required placeholder="Type your full legal name" style="font-family:var(--ff-display);font-style:italic;font-size:1.05rem">
+            </div>
+
+            <div class="w9-hint" style="margin-top:6px">By typing your name, you agree that this constitutes your electronic signature and that all information provided is accurate.</div>
+
+            <div class="w9-field" style="margin-top:14px">
+              <label>Date</label>
+              <input type="text" name="w9Date" readonly style="background:var(--c-cream);color:var(--c-text-muted)">
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <div style="margin-top:32px">
+            <button type="submit" class="btn-submit-w9" id="w9SubmitBtn" style="width:100%;padding:15px;font-size:1rem" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Submit W-9
+            </button>
+          </div>
+
+          <div class="w9-compliance-footer">
+            <p>Your information is handled in accordance with our <a href="legal/privacy_policy.html">Privacy Policy</a>.</p>
+            <p><a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" rel="noopener noreferrer">View the official IRS W-9 form</a></p>
+          </div>
+
+        </form>
+
+        <!-- SUCCESS STATE -->
+        <div id="w9Success" style="display:none;text-align:center;padding:40px 20px">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--c-teal-light);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--c-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:600;color:var(--c-charcoal);margin-bottom:8px">W-9 Submitted Successfully</h3>
+          <p style="font-size:0.9rem;color:var(--c-text-light);line-height:1.6;max-width:400px;margin:0 auto">Thank you! Your tax information has been securely received. We will use this to issue your 1099 tax documents.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════ REFER A FRIEND SECTION ══════════ -->
+    <div class="dash-section" id="section-refer">
+      <div class="dash-section-header">
+        <h2>Refer a <em>Friend</em></h2>
+        <button class="btn-back-dash">← Back to Dashboard</button>
+      </div>
+
+      <!-- Earnings Banner -->
+      <div class="refer-banner">
+        <div class="refer-banner-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="refer-banner-text">
+          <h3>Earn <em>$50</em> per Referral</h3>
+          <p>Refer a friend to become a host. When they complete their application and host their first student, you'll receive a <strong>$50 bonus</strong> added to your next payment.</p>
+        </div>
+        <div class="refer-earnings">
+          <div class="amount">$100</div>
+          <div class="label">Total Earned</div>
+        </div>
+      </div>
+
+      <!-- Send Invite Card -->
+      <div class="refer-card">
+        <div class="refer-card-title">Invite a New Friend</div>
+        <div class="refer-card-subtitle">Enter their details below and we'll send them an invitation to learn about hosting with USH.</div>
+
+        <div id="referFormWrap">
+          <div class="refer-form" id="referForm">
+            <input type="text" id="referName" placeholder="Friend's name">
+            <input type="email" id="referEmail" placeholder="Friend's email address">
+            <input type="tel" id="referPhone" placeholder="Phone (optional)">
+            <button class="btn-refer" id="btnSendReferral">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Invite
+            </button>
+          </div>
+          <div class="refer-success" id="referSuccess">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Invitation sent! We'll reach out to your friend with details about hosting.
+          </div>
+        </div>
+
+        <div class="refer-or">
+          <p>Or share your personal referral link:</p>
+          <div class="refer-link-box">
+            <input type="text" id="referLink" value="https://ushhost.com/refer?host=jane-doe" readonly>
+            <button class="btn-copy" id="btnCopyLink">Copy Link</button>
+          </div>
+        </div>
+
+        <div class="refer-share">
+          <div class="refer-share-label">Share with one click:</div>
+          <div class="share-buttons">
+
+            <!-- Facebook -->
+            <a class="share-btn share-fb" id="shareFacebook" href="javascript:void(0)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Share on Facebook
+            </a>
+
+            <!-- Instagram -->
+            <a class="share-btn share-ig" id="shareInstagram" href="javascript:void(0)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Copy for Instagram
+            </a>
+
+            <!-- Text / SMS -->
+            <a class="share-btn share-sms" id="shareSms" href="javascript:void(0)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              Send Text Message
+            </a>
+
+            <!-- Email -->
+            <a class="share-btn share-email" id="shareEmail" href="javascript:void(0)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Send Email
+            </a>
+
+          </div>
+
+          <!-- Message Preview -->
+          <div class="msg-preview">
+            <div class="msg-preview-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Preview message by platform
+            </div>
+            <div class="msg-preview-tabs">
+              <button class="msg-tab active" data-tab="sms">Text / WhatsApp</button>
+              <button class="msg-tab" data-tab="facebook">Facebook</button>
+              <button class="msg-tab" data-tab="instagram">Instagram</button>
+              <button class="msg-tab" data-tab="email">Email</button>
+            </div>
+            <div class="msg-preview-text" id="msgPreviewSms" style="display:block">Hi! I've been hosting international students with USH lately and it's been such a rewarding experience. It's a wonderful way to meet people from around the world, and the extra monthly income is a nice perk. The USH team is actually looking for more hosts right now. They handle all the vetting and billing, so the process is very simple. If you have a spare room, you should consider applying! Here is the link: <span class="highlight">https://ushhost.com/refer?host=jane-doe</span></div>
+            <div class="msg-preview-text" id="msgPreviewFacebook" style="display:none">We've really enjoyed hosting international students through Universal Student Housing (USH). It's been a meaningful way to bring new cultures into our home while earning some extra income from our spare room.
+
+The USH team is currently looking for more quality hosts to join their network. They are very professional and take care of all the logistics, including student vetting and matching. If you've ever thought about hosting, I highly recommend them!
+
+Learn more and apply here: <span class="highlight">https://ushhost.com/refer?host=jane-doe</span></div>
+            <div class="msg-preview-text" id="msgPreviewInstagram" style="display:none">We love being part of the host family community with @USHstudent! 🌎 It's such a rewarding way to share our home and meet amazing students from across the globe.
+
+The team at USH is looking for more hosts to join us! They make the process so easy by handling all the vetting and monthly billing. If you have a spare room and want to earn extra income while making a global connection, check out the link in my bio!
+
+<span class="highlight">https://ushhost.com/refer?host=jane-doe</span></div>
+            <div class="msg-preview-text" id="msgPreviewEmail" style="display:none"><strong>Subject:</strong> A rewarding opportunity you might enjoy
+
+Hi [Name],
+
+I wanted to reach out because I've been hosting international students through Universal Student Housing (USH) recently, and it has been such a positive experience. It's a wonderful way to use a spare bedroom to meet interesting people from around the world, all while earning some extra monthly income.
+
+USH is currently looking for more hosts, and I immediately thought of you. One of the reasons I enjoy working with them is their team — they handle all the vetting, matching, and billing, which makes everything very straightforward and professional.
+
+If you're curious about how it works, you can see the details and apply here: <span class="highlight">https://ushhost.com/refer?host=jane-doe</span>
+
+Best,
+[Your Name]</div>
+            <div class="msg-preview-note">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              This message is ready to go — just click a button above and send!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Referral Tracker -->
+      <div class="refer-tracker">
+        <div class="refer-tracker-header">
+          <h4>My Referrals</h4>
+          <div class="refer-summary">
+            <div class="refer-summary-item">
+              <div class="num">4</div>
+              <div class="lbl">Referred</div>
+            </div>
+            <div class="refer-summary-item">
+              <div class="num">3</div>
+              <div class="lbl">Applied</div>
+            </div>
+            <div class="refer-summary-item">
+              <div class="num">2</div>
+              <div class="lbl">Hosting</div>
+            </div>
+            <div class="refer-summary-item" style="background:rgba(110,183,163,0.1)">
+              <div class="num" style="color:var(--c-teal)">$100</div>
+              <div class="lbl">Earned</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-table-wrap" style="border:none;border-radius:0;box-shadow:none">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Friend</th>
+                <th>Date Referred</th>
+                <th>Progress</th>
+                <th>Bonus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Referral 1: Completed full cycle -->
+              <tr>
+                <td>
+                  <strong>Maria Lopez</strong>
+                  <div style="font-size:0.75rem;color:var(--c-text-muted)">maria.lopez@email.com</div>
+                </td>
+                <td>Jan 15, 2026</td>
+                <td>
+                  <div class="refer-status-steps">
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Invited</span>
+                    </div>
+                    <div class="refer-step-line" style="background:var(--c-teal)"></div>
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Applied</span>
+                    </div>
+                    <div class="refer-step-line" style="background:var(--c-teal)"></div>
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Hosting</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-paid">$50 Paid</span></td>
+              </tr>
+
+              <!-- Referral 2: Hosting first student -->
+              <tr>
+                <td>
+                  <strong>David Kim</strong>
+                  <div style="font-size:0.75rem;color:var(--c-text-muted)">david.k@email.com</div>
+                </td>
+                <td>Feb 8, 2026</td>
+                <td>
+                  <div class="refer-status-steps">
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Invited</span>
+                    </div>
+                    <div class="refer-step-line" style="background:var(--c-teal)"></div>
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Applied</span>
+                    </div>
+                    <div class="refer-step-line" style="background:var(--c-teal)"></div>
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Hosting</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-paid">$50 Paid</span></td>
+              </tr>
+
+              <!-- Referral 3: Applied, waiting to host -->
+              <tr>
+                <td>
+                  <strong>Rachel Green</strong>
+                  <div style="font-size:0.75rem;color:var(--c-text-muted)">rachel.g@email.com</div>
+                </td>
+                <td>Mar 20, 2026</td>
+                <td>
+                  <div class="refer-status-steps">
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Invited</span>
+                    </div>
+                    <div class="refer-step-line" style="background:var(--c-teal)"></div>
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Applied</span>
+                    </div>
+                    <div class="refer-step-line"></div>
+                    <div class="refer-step active">
+                      <div class="refer-step-dot"></div>
+                      <span>Hosting</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-eligible">Eligible on 1st student</span></td>
+              </tr>
+
+              <!-- Referral 4: Invited but hasn't applied yet -->
+              <tr>
+                <td>
+                  <strong>Tom Bradley</strong>
+                  <div style="font-size:0.75rem;color:var(--c-text-muted)">tom.b@email.com</div>
+                </td>
+                <td>Apr 5, 2026</td>
+                <td>
+                  <div class="refer-status-steps">
+                    <div class="refer-step complete">
+                      <div class="refer-step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <span>Invited</span>
+                    </div>
+                    <div class="refer-step-line"></div>
+                    <div class="refer-step active">
+                      <div class="refer-step-dot"></div>
+                      <span>Applied</span>
+                    </div>
+                    <div class="refer-step-line"></div>
+                    <div class="refer-step">
+                      <div class="refer-step-dot"></div>
+                      <span>Hosting</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-waiting">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<div class="footer-mini">
+  <p>&copy; 1998–2026 Universal Student Housing. <a href="become-a-host.html">Back to USH Host Home</a></p>
+</div>
+
+<script>
+// ── AVATAR UPLOAD ──
+function handleAvatarUpload(input){
+  if(input.files && input.files[0]){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = document.getElementById('hostAvatarImg');
+      img.src = e.target.result;
+      img.style.display = 'block';
+      document.getElementById('hostAvatarPlaceholder').style.display = 'none';
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+// ── REFERRAL ──
+function sendReferral(){
+  const name = document.getElementById('referName').value.trim();
+  const email = document.getElementById('referEmail').value.trim();
+  if(!name || !email){
+    alert('Please enter your friend\'s name and email.');
+    return;
+  }
+  document.getElementById('referForm').style.display = 'none';
+  const success = document.getElementById('referSuccess');
+  success.style.display = 'flex';
+  // Reset after 5 seconds
+  setTimeout(function(){
+    success.style.display = 'none';
+    document.getElementById('referForm').style.display = 'flex';
+    document.getElementById('referName').value = '';
+    document.getElementById('referEmail').value = '';
+  }, 5000);
+}
+
+function copyReferLink(){
+  const input = document.getElementById('referLink');
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
+  const btn = document.getElementById('btnCopyLink');
+  btn.textContent = 'Copied!';
+  btn.style.background = 'var(--c-teal)';
+  setTimeout(function(){
+    btn.textContent = 'Copy Link';
+    btn.style.background = '';
+  }, 2000);
+}
+
+// ── SOCIAL SHARING ──
+function shareRefer(platform){
+  const referUrl = document.getElementById('referLink').value;
+
+  switch(platform){
+    case 'facebook': {
+      const fbMsg = 'We\'ve really enjoyed hosting international students through Universal Student Housing (USH). It\'s been a meaningful way to bring new cultures into our home while earning some extra income from our spare room.\n\nThe USH team is currently looking for more quality hosts to join their network. They are very professional and take care of all the logistics, including student vetting and matching. If you\'ve ever thought about hosting, I highly recommend them!\n\nLearn more and apply here:';
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(referUrl) + '&quote=' + encodeURIComponent(fbMsg), '_blank', 'width=600,height=400');
+      break;
+    }
+    case 'instagram': {
+      const igMsg = 'We love being part of the host family community with @USHstudent! 🌎 It\'s such a rewarding way to share our home and meet amazing students from across the globe.\n\nThe team at USH is looking for more hosts to join us! They make the process so easy by handling all the vetting and monthly billing. If you have a spare room and want to earn extra income while making a global connection, check out the link in my bio!\n\n' + referUrl;
+      navigator.clipboard.writeText(igMsg);
+      showShareToast('Caption & link copied! Paste it into your Instagram story or post.');
+      break;
+    }
+    case 'sms': {
+      const smsMsg = 'Hi! I\'ve been hosting international students with USH lately and it\'s been such a rewarding experience. It\'s a wonderful way to meet people from around the world, and the extra monthly income is a nice perk. The USH team is actually looking for more hosts right now. They handle all the vetting and billing, so the process is very simple. If you have a spare room, you should consider applying! Here is the link: ' + referUrl;
+      window.location.href = 'sms:?&body=' + encodeURIComponent(smsMsg);
+      break;
+    }
+    case 'email': {
+      const subject = encodeURIComponent('A rewarding opportunity you might enjoy');
+      const body = encodeURIComponent('Hi,\n\nI wanted to reach out because I\'ve been hosting international students through Universal Student Housing (USH) recently, and it has been such a positive experience. It\'s a wonderful way to use a spare bedroom to meet interesting people from around the world, all while earning some extra monthly income.\n\nUSH is currently looking for more hosts, and I immediately thought of you. One of the reasons I enjoy working with them is their team — they handle all the vetting, matching, and billing, which makes everything very straightforward and professional.\n\nIf you\'re curious about how it works, you can see the details and apply here: ' + referUrl + '\n\nBest');
+      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+      break;
+    }
+  }
+}
+
+function showMsgTab(tab, clickedBtn){
+  const tabs = document.querySelectorAll('.msg-tab');
+  tabs.forEach(function(t){ t.classList.remove('active'); });
+  clickedBtn.classList.add('active');
+  document.getElementById('msgPreviewSms').style.display = tab === 'sms' ? 'block' : 'none';
+  document.getElementById('msgPreviewFacebook').style.display = tab === 'facebook' ? 'block' : 'none';
+  document.getElementById('msgPreviewInstagram').style.display = tab === 'instagram' ? 'block' : 'none';
+  document.getElementById('msgPreviewEmail').style.display = tab === 'email' ? 'block' : 'none';
+}
+
+function showShareToast(msg){
+  const toast = document.getElementById('shareToast');
+  const toastMsg = document.getElementById('shareToastMsg');
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(function(){ toast.classList.remove('show'); }, 3500);
+}
+
+// ── SECTION NAVIGATION ──
+function showSection(name){
+  document.getElementById('dashGrid').style.display = 'none';
+  document.getElementById('hostProfile').style.display = 'none';
+  document.querySelectorAll('.dash-section').forEach(function(s){ s.classList.remove('active'); });
+  const section = document.getElementById('section-' + name);
+  if(section) section.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showDashboard(){
+  document.querySelectorAll('.dash-section').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('dashGrid').style.display = 'grid';
+  document.getElementById('hostProfile').style.display = 'flex';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ── MESSAGES ──
+const conversations = [
+  {
+    name: 'Yuki Tanaka',
+    initials: 'YT',
+    avatarBg: 'var(--c-teal-light)',
+    avatarColor: 'var(--c-teal)',
+    status: 'Available',
+    messages: [
+      { from: 'host', text: 'Hi! Welcome — I\'m looking forward to meeting you. Let me know your arrival time and I\'ll have everything ready for you! 😊', time: '9:48 PM' },
+      { from: 'student', text: 'Thank you so much! My flight arrives at LAX at 3:15 PM on March 15th. I\'m so excited!', time: '10:02 PM' },
+      { from: 'host', text: 'Perfect! I\'ll be there to pick you up. Look for a blue Honda Civic. Safe travels! ✈️', time: '10:05 PM' }
+    ]
+  },
+  {
+    name: 'Sofia Martinez',
+    initials: 'SM',
+    avatarBg: 'var(--c-orange-light)',
+    avatarColor: 'var(--c-orange-dark)',
+    status: 'Available',
+    messages: [
+      { from: 'student', text: 'Hello! I\'m Sofia, your upcoming student from Colombia. I\'m really looking forward to staying with your family!', time: 'Apr 8' },
+      { from: 'host', text: 'Hi Sofia! We\'re so excited to have you. Is there anything you\'d like to know about the house or the area?', time: 'Apr 8' },
+      { from: 'student', text: 'Thank you! See you on May 1st 😊', time: 'Yesterday' }
+    ]
+  }
+];
+
+let currentConvo = 0;
+
+function renderMessages(idx){
+  const convo = conversations[idx];
+  const body = document.getElementById('chatBody');
+  body.innerHTML = '';
+  convo.messages.forEach(function(m){
+    const div = document.createElement('div');
+    div.className = 'msg-bubble ' + (m.from === 'host' ? 'sent' : 'received');
+    div.innerHTML = m.text + '<div class="msg-time">' + m.time + '</div>';
+    body.appendChild(div);
+  });
+  body.scrollTop = body.scrollHeight;
+}
+
+function selectConvo(idx){
+  currentConvo = idx;
+  const convo = conversations[idx];
+
+  // Update sidebar active state
+  document.querySelectorAll('.msg-contact').forEach(function(c, i){
+    c.classList.toggle('active', i === idx);
+  });
+
+  // Update chat header
+  document.getElementById('chatName').textContent = convo.name;
+  document.getElementById('chatStatus').textContent = convo.status;
+  const avatar = document.getElementById('chatAvatar');
+  avatar.textContent = convo.initials;
+  avatar.style.background = convo.avatarBg;
+  avatar.style.color = convo.avatarColor;
+
+  renderMessages(idx);
+}
+
+function sendMsg(){
+  const input = document.getElementById('msgInput');
+  const text = input.value.trim();
+  if(!text) return;
+
+  const now = new Date();
+  let hours = now.getHours();
+  const mins = String(now.getMinutes()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  const timeStr = hours + ':' + mins + ' ' + ampm;
+
+  conversations[currentConvo].messages.push({ from: 'host', text: text, time: timeStr });
+  renderMessages(currentConvo);
+  input.value = '';
+  input.focus();
+}
+
+// Init first conversation
+function initMessages(){
+  renderMessages(0);
+}
+
+// Override showSection to init messages
+const _origShowSection = showSection;
+showSection = function(name){
+  _origShowSection(name);
+  if(name === 'messages') initMessages();
+};
+
+// ── W9 FORM ──
+
+// Auto-set today's date
+(function(){
+  const d = new Date();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dateStr = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  const dateInput = document.querySelector('input[name="w9Date"]');
+  if(dateInput) dateInput.value = dateStr;
+})();
+
+// Toggle SSN/EIN label and format
+function updateTaxIdFormat(){
+  const type = document.querySelector('input[name="w9TaxIdType"]:checked').value;
+  const label = document.getElementById('w9TaxIdLabel');
+  const input = document.getElementById('w9TaxIdInput');
+  if(type === 'ssn'){
+    label.innerHTML = 'Social Security Number<span class="w9-req">*</span>';
+    input.placeholder = 'XXX-XX-XXXX';
+    input.maxLength = 11;
+  } else {
+    label.innerHTML = 'Employer Identification Number<span class="w9-req">*</span>';
+    input.placeholder = 'XX-XXXXXXX';
+    input.maxLength = 10;
+  }
+  input.value = '';
+}
+
+// W9 tax ID type radio buttons
+document.querySelectorAll('input[name="w9TaxIdType"]').forEach(function(radio){
+  radio.addEventListener('change', updateTaxIdFormat);
+});
+
+// Auto-format SSN/EIN as user types
+document.getElementById('w9TaxIdInput').addEventListener('input', function(){
+  const type = document.querySelector('input[name="w9TaxIdType"]:checked').value;
+  let digits = this.value.replace(/\D/g, '');
+  if(type === 'ssn'){
+    digits = digits.substring(0, 9);
+    let f = '';
+    if(digits.length > 0) f = digits.substring(0, 3);
+    if(digits.length >= 4) f += '-' + digits.substring(3, 5);
+    if(digits.length >= 6) f += '-' + digits.substring(5, 9);
+    this.value = f;
+  } else {
+    digits = digits.substring(0, 9);
+    let f = '';
+    if(digits.length > 0) f = digits.substring(0, 2);
+    if(digits.length >= 3) f += '-' + digits.substring(2, 9);
+    this.value = f;
+  }
+});
+
+// Enable/disable submit button
+function checkW9Ready(){
+  const form = document.getElementById('w9Form');
+  const certify = document.getElementById('w9Certify').checked;
+  const sig = document.getElementById('w9Signature').value.trim();
+  const name = form.querySelector('input[name="w9Name"]').value.trim();
+  const taxId = document.getElementById('w9TaxIdInput').value.trim();
+  const btn = document.getElementById('w9SubmitBtn');
+  btn.disabled = !(certify && sig && name && taxId);
+}
+document.getElementById('w9Form').addEventListener('input', checkW9Ready);
+document.getElementById('w9Form').addEventListener('change', checkW9Ready);
+
+// Validate and submit
+function submitW9(e){
+  e.preventDefault();
+  const form = document.getElementById('w9Form');
+  let errors = 0;
+
+  // Clear old errors
+  form.querySelectorAll('.w9-field.error').forEach(function(f){ f.classList.remove('error'); });
+  form.querySelectorAll('.w9-field .field-error').forEach(function(f){ f.remove(); });
+  document.querySelector('.w9-cert-box').classList.remove('error');
+
+  // Required fields
+  form.querySelectorAll('input[required], select[required]').forEach(function(inp){
+    if(inp.type === 'checkbox') return;
+    const field = inp.closest('.w9-field');
+    if(!field) return;
+    if(!inp.value.trim()){
+      field.classList.add('error');
+      const err = document.createElement('div');
+      err.className = 'field-error';
+      err.textContent = 'This field is required';
+      field.appendChild(err);
+      errors++;
+    }
+  });
+
+  // Validate SSN/EIN format
+  const type = document.querySelector('input[name="w9TaxIdType"]:checked').value;
+  const taxId = document.getElementById('w9TaxIdInput').value.trim();
+  const taxField = document.getElementById('w9TaxIdInput').closest('.w9-field');
+  if(taxId && !taxField.classList.contains('error')){
+    const ssnValid = /^\d{3}-\d{2}-\d{4}$/.test(taxId);
+    const einValid = /^\d{2}-\d{7}$/.test(taxId);
+    if((type === 'ssn' && !ssnValid) || (type === 'ein' && !einValid)){
+      taxField.classList.add('error');
+      const err = document.createElement('div');
+      err.className = 'field-error';
+      err.textContent = type === 'ssn' ? 'Format: XXX-XX-XXXX' : 'Format: XX-XXXXXXX';
+      taxField.appendChild(err);
+      errors++;
+    }
+  }
+
+  // Certification checkbox
+  if(!document.getElementById('w9Certify').checked){
+    document.querySelector('.w9-cert-box').classList.add('error');
+    errors++;
+  }
+
+  if(errors > 0){
+    form.querySelector('.error').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // Success
+  form.style.display = 'none';
+  document.getElementById('w9Success').style.display = 'block';
+}
+
+// W9 form submit
+document.getElementById('w9Form').addEventListener('submit', submitW9);
+
+// ── NAV SCROLL ──
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', function(){
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── addEventListener BINDINGS ──
+
+// Dashboard cards
+document.getElementById('cardStudents').addEventListener('click', function(){ showSection('students'); });
+document.getElementById('cardChecks').addEventListener('click', function(){ showSection('checks'); });
+document.getElementById('cardMessages').addEventListener('click', function(){ showSection('messages'); });
+document.getElementById('cardW9').addEventListener('click', function(){ showSection('w9'); });
+document.getElementById('cardRefer').addEventListener('click', function(){ showSection('refer'); });
+
+// Back to Dashboard buttons
+document.querySelectorAll('.btn-back-dash').forEach(function(btn){
+  btn.addEventListener('click', showDashboard);
+});
+
+// Message contacts
+document.querySelectorAll('.msg-contact[data-convo]').forEach(function(el){
+  el.addEventListener('click', function(){
+    selectConvo(parseInt(this.dataset.convo, 10));
+  });
+});
+
+// Message input enter key
+document.getElementById('msgInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') sendMsg();
+});
+
+// Message send button
+document.getElementById('msgSendBtn').addEventListener('click', sendMsg);
+
+// Referral send button
+document.getElementById('btnSendReferral').addEventListener('click', sendReferral);
+
+// Copy referral link
+document.getElementById('btnCopyLink').addEventListener('click', copyReferLink);
+
+// Share buttons
+document.getElementById('shareFacebook').addEventListener('click', function(){ shareRefer('facebook'); });
+document.getElementById('shareInstagram').addEventListener('click', function(){ shareRefer('instagram'); });
+document.getElementById('shareSms').addEventListener('click', function(){ shareRefer('sms'); });
+document.getElementById('shareEmail').addEventListener('click', function(){ shareRefer('email'); });
+
+// Message preview tabs
+document.querySelectorAll('.msg-tab[data-tab]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    showMsgTab(this.dataset.tab, this);
+  });
+});
+
+// Profile action buttons
+document.getElementById('btnEditProfile').addEventListener('click', function(){
+  document.getElementById('avatarUpload').click();
+});
+document.getElementById('btnLogOut').addEventListener('click', function(){
+  window.location.href = 'become-a-host.html';
+});
+
+// Login links
+document.getElementById('navLoginLink').addEventListener('click', function(e){
+  e.preventDefault();
+  openLoginModal();
+});
+document.getElementById('mobileLoginLink').addEventListener('click', function(e){
+  e.preventDefault();
+  openLoginModal();
+});
+</script>
+
+</main>
+
+<!-- ══════════ HOST LOGIN MODAL ══════════ -->
+<div class="login-overlay" id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle" style="display:none;position:fixed;inset:0;background:rgba(26,30,28,0.5);z-index:9999;justify-content:center;align-items:center">
+  <div style="background:var(--c-white);border-radius:var(--r-lg);padding:40px;max-width:400px;width:90%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.2)">
+    <button id="btnCloseLogin" aria-label="Close login dialog" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:var(--c-text-muted)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="loginTitle" style="font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:var(--c-charcoal);margin-bottom:6px">Access your Dashboard</div>
+    <div style="font-size:0.88rem;color:var(--c-text-light);margin-bottom:24px">Welcome back! Log in to manage your hosting.</div>
+    <div class="form-group" style="margin-bottom:14px">
+      <label>Email address</label>
+      <input type="email" id="host-login-email" placeholder="you@example.com">
+    </div>
+    <div class="form-group" style="margin-bottom:20px">
+      <label>Password</label>
+      <input type="password" id="host-login-pass" placeholder="Enter your password">
+    </div>
+    <button id="btnLoginSubmit" style="width:100%;padding:13px;border-radius:var(--r-full);background:var(--c-teal);color:var(--c-white);font-family:var(--ff-body);font-weight:700;font-size:0.95rem;border:none;cursor:pointer">Login</button>
+  </div>
+</div>
+<script>
+function openLoginModal(){
+  const overlay = document.getElementById('loginOverlay');
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal(){
+  const overlay = document.getElementById('loginOverlay');
+  overlay.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close modal on overlay click
+document.getElementById('loginOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeLoginModal();
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    const overlay = document.getElementById('loginOverlay');
+    if(overlay.style.display === 'flex') closeLoginModal();
+  }
+});
+
+// Login modal buttons
+document.getElementById('btnCloseLogin').addEventListener('click', closeLoginModal);
+document.getElementById('btnLoginSubmit').addEventListener('click', function(){
+  window.location.href = 'host-dashboard.html';
+});
+</script>
+
+<!-- Share Toast Notification -->
+<div class="share-toast" id="shareToast">
+  <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4.09 14.1 9 19 20.59 7.41 19.18 6z" fill="#4ade80"/></svg>
+  <span id="shareToastMsg">Link copied! Paste it into your Instagram story or bio.</span>
+</div>
+</body>
+</html>

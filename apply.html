@@ -3,11 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply — USH Homestay Application</title>
-<meta name="description" content="Apply for a USH homestay placement. Complete your application in 3 simple steps.">
+<title>Apply for Homestay USA — International Student Application | USH</title>
+<meta name="description" content="Apply for homestay in the USA with USH. Simple 3-step application for international students. Private room with a verified host family near your school, meals included.">
+<meta name="keywords" content="homestay USA, international student housing, homestay application, apply for homestay, student homestay program, homestay placement service USA, homestay near university, find a host family in America">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://usaish.com/apply">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apply for Homestay USA — USH Application">
+<meta property="og:description" content="Apply for homestay with a verified American host family in 3 simple steps. Private room, meals included, near your school.">
+<meta property="og:image" content="https://usaish.com/assets/homestay-hero.jpg">
+<meta property="og:url" content="https://usaish.com/apply">
+<meta property="og:site_name" content="Universal Student Housing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apply for Homestay USA — USH Application">
+<meta name="twitter:description" content="Apply for homestay with a verified American host family in 3 simple steps. Private room, meals included, near your school.">
+<meta name="twitter:image" content="https://usaish.com/assets/homestay-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 <link rel="stylesheet" href="assets/ush.css?v=7">
 <style>
 /* ── PAGE-SPECIFIC VARIABLE OVERRIDES ── */
@@ -212,12 +226,13 @@ input,select,textarea,button{font-family:var(--ff-body)}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ══════════ NAV ══════════ -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="assets/ushlogo.png" alt="USH">
+      <img src="assets/ushlogo.png" alt="USH" width="400" height="164">
     </a>
     <div class="nav-links">
       <a href="about.html">About</a>
@@ -261,6 +276,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
 });
 </script>
 
+<main id="main-content">
 <div class="page">
   <div class="form-container">
 
@@ -296,8 +312,8 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
         <div class="agent-toggle-wrap">
           <div class="agent-toggle-label">Are you an agent?</div>
           <div class="agent-toggle">
-            <button id="btn-agent-yes" onclick="setAgentMode(true)">YES</button>
-            <button id="btn-agent-no" class="active" onclick="setAgentMode(false)">NO</button>
+            <button id="btn-agent-yes">YES</button>
+            <button id="btn-agent-no" class="active">NO</button>
           </div>
         </div>
 
@@ -526,7 +542,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
         </div>
 
         <div class="form-actions">
-          <button class="btn-primary" onclick="goToStep(2)">
+          <button class="btn-primary" id="goToStep2Btn">
             Continue to Step 2 →
           </button>
           <div class="form-security">
@@ -666,10 +682,10 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
         </div>
 
         <div class="form-actions">
-          <button class="btn-primary" onclick="goToStep(3)">
+          <button class="btn-primary" id="goToStep3Btn">
             Continue to Step 3 →
           </button>
-          <button class="btn-back" onclick="goToStep(1)">← Go Back</button>
+          <button class="btn-back" id="backToStep1Btn">← Go Back</button>
         </div>
 
       </div>
@@ -787,10 +803,10 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
 
         <div class="form-actions">
           <!-- Backend: process payment and submit application to Laravel -->
-          <button class="btn-primary btn-submit" onclick="goToStep(4)">
+          <button class="btn-primary btn-submit" id="submitAppBtn">
             Submit Application
           </button>
-          <button class="btn-back" onclick="goToStep(2)">← Go Back</button>
+          <button class="btn-back" id="backToStep2Btn">← Go Back</button>
           <div class="form-security">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
             Your payment information is encrypted and secure.
@@ -840,6 +856,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
 
   </div><!-- /form-container -->
 </div><!-- /page -->
+</main>
 
 <div class="footer-mini">
   &copy; 2026 Universal Student Housing &nbsp;·&nbsp;
@@ -851,7 +868,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link) {
 // ══════════════════════════════════════
 // VALIDATION
 // ══════════════════════════════════════
-var step1Fields = [
+const step1Fields = [
   { id: 'school',            msg: 'Please select your school' },
   { id: 'first-name',        msg: 'First name is required (letters only)' },
   { id: 'last-name',         msg: 'Last name is required (letters only)' },
@@ -864,7 +881,7 @@ var step1Fields = [
   { id: 'password',          msg: 'Password is required' },
   { id: 'how-heard',         msg: 'Please tell us how you heard about us' }
 ];
-var step2Fields = [
+const step2Fields = [
   { id: 'move-in',   msg: 'Move-in date is required' },
   { id: 'move-out',  msg: 'Move-out date is required' },
   { id: 'room-type', msg: 'Please select a room type' },
@@ -875,7 +892,7 @@ var step2Fields = [
   { id: 'pets',      msg: 'Please select a preference' },
   { id: 'transport', msg: 'Please select how you will commute' }
 ];
-var step3Fields = [
+const step3Fields = [
   { id: 'card-name',       msg: 'Name on card is required' },
   { id: 'card-number',     msg: 'Credit card number is required' },
   { id: 'ccv',             msg: 'CCV is required' },
@@ -888,14 +905,14 @@ var step3Fields = [
 ];
 
 function validateStep(n) {
-  var stepEl = document.getElementById('step-' + n);
+  const stepEl = document.getElementById('step-' + n);
   // Clear previous errors in this step
   stepEl.querySelectorAll('.form-group').forEach(function(g) {
     g.classList.remove('error');
-    var e = g.querySelector('.field-error');
+    const e = g.querySelector('.field-error');
     if (e) e.remove();
   });
-  var fields = n === 1 ? step1Fields.slice() : n === 2 ? step2Fields.slice() : step3Fields;
+  let fields = n === 1 ? step1Fields.slice() : n === 2 ? step2Fields.slice() : step3Fields;
   // If agent mode is on, also require agent fields
   if (n === 1 && document.getElementById('btn-agent-yes').classList.contains('active')) {
     fields = [
@@ -906,11 +923,11 @@ function validateStep(n) {
     // Require email to be verified via the Verify button
     if (!agentEmailVerified) {
       hasError = true;
-      var emailEl  = document.getElementById('agent-email');
-      var emailGrp = emailEl.closest('.form-group');
+      const emailEl  = document.getElementById('agent-email');
+      const emailGrp = emailEl.closest('.form-group');
       emailGrp.classList.add('error');
       if (!emailGrp.querySelector('.field-error')) {
-        var vErr = document.createElement('div');
+        const vErr = document.createElement('div');
         vErr.className = 'field-error';
         vErr.textContent = 'Please enter your email and wait for verification';
         emailGrp.appendChild(vErr);
@@ -918,7 +935,7 @@ function validateStep(n) {
     }
 
     // If the registration block is visible, require its fields
-    var regBlock = document.getElementById('agent-register');
+    const regBlock = document.getElementById('agent-register');
     if (regBlock && regBlock.classList.contains('visible')) {
       [
         { id: 'agent-agency', msg: "Agency name is required" },
@@ -926,14 +943,14 @@ function validateStep(n) {
         { id: 'agent-last',   msg: "Agent's last name is required" },
         { id: 'agent-url',    msg: "Agent's URL is required" }
       ].forEach(function(f) {
-        var el = document.getElementById(f.id);
+        const el = document.getElementById(f.id);
         if (!el) return;
         if (!el.value.trim()) {
           hasError = true;
-          var grp = el.closest('.form-group');
+          const grp = el.closest('.form-group');
           grp.classList.add('error');
           if (!grp.querySelector('.field-error')) {
-            var e2 = document.createElement('div');
+            const e2 = document.createElement('div');
             e2.className = 'field-error';
             e2.textContent = f.msg;
             grp.appendChild(e2);
@@ -942,17 +959,17 @@ function validateStep(n) {
       });
     }
   }
-  var hasError = false;
+  let hasError = false;
   fields.forEach(function(f) {
-    var el = document.getElementById(f.id);
+    const el = document.getElementById(f.id);
     if (!el) return;
-    var val = el.value ? el.value.trim() : '';
+    const val = el.value ? el.value.trim() : '';
     if (!val) {
       hasError = true;
-      var group = el.closest('.form-group');
+      const group = el.closest('.form-group');
       group.classList.add('error');
       if (!group.querySelector('.field-error')) {
-        var err = document.createElement('div');
+        const err = document.createElement('div');
         err.className = 'field-error';
         err.textContent = f.msg;
         group.appendChild(err);
@@ -961,15 +978,15 @@ function validateStep(n) {
   });
   // Cross-check: move-out must be after move-in
   if (n === 2) {
-    var inVal  = document.getElementById('move-in').value;
-    var outVal = document.getElementById('move-out').value;
+    const inVal  = document.getElementById('move-in').value;
+    const outVal = document.getElementById('move-out').value;
     if (inVal && outVal && outVal <= inVal) {
       hasError = true;
-      var outEl    = document.getElementById('move-out');
-      var outGroup = outEl.closest('.form-group');
+      const outEl    = document.getElementById('move-out');
+      const outGroup = outEl.closest('.form-group');
       outGroup.classList.add('error');
       if (!outGroup.querySelector('.field-error')) {
-        var dateErr = document.createElement('div');
+        const dateErr = document.createElement('div');
         dateErr.className = 'field-error';
         dateErr.textContent = 'Move-out date must be after move-in date';
         outGroup.appendChild(dateErr);
@@ -977,7 +994,7 @@ function validateStep(n) {
     }
   }
   if (hasError) {
-    var first = stepEl.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea');
+    const first = stepEl.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea');
     if (first) first.focus();
     return false;
   }
@@ -986,20 +1003,20 @@ function validateStep(n) {
 
 // Clear error as soon as user interacts with a field
 document.addEventListener('DOMContentLoaded', function() {
-  var agentFields = [
+  const agentFields = [
     { id: 'group-select' }, { id: 'agent-email' },
     { id: 'agent-agency' }, { id: 'agent-first' },
     { id: 'agent-last'   }, { id: 'agent-url'   }
   ];
-  var allFields = agentFields.concat(step1Fields).concat(step2Fields).concat(step3Fields);
+  const allFields = agentFields.concat(step1Fields).concat(step2Fields).concat(step3Fields);
   allFields.forEach(function(f) {
-    var el = document.getElementById(f.id);
+    const el = document.getElementById(f.id);
     if (!el) return;
     ['input', 'change'].forEach(function(evt) {
       el.addEventListener(evt, function() {
-        var group = this.closest('.form-group');
+        const group = this.closest('.form-group');
         group.classList.remove('error');
-        var e = group.querySelector('.field-error');
+        const e = group.querySelector('.field-error');
         if (e) e.remove();
       });
     });
@@ -1007,10 +1024,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // First & Last name — letters, spaces, hyphens and apostrophes only
   ['first-name', 'last-name'].forEach(function(id) {
-    var el = document.getElementById(id);
+    const el = document.getElementById(id);
     el.addEventListener('input', function() {
-      var pos = this.selectionStart;
-      var cleaned = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s'\-]/g, '');
+      const pos = this.selectionStart;
+      const cleaned = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s'\-]/g, '');
       if (cleaned !== this.value) {
         this.value = cleaned;
         this.setSelectionRange(pos - 1, pos - 1);
@@ -1019,14 +1036,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Move-In must be today or later
-  var moveIn  = document.getElementById('move-in');
-  var moveOut = document.getElementById('move-out');
+  const moveIn  = document.getElementById('move-in');
+  const moveOut = document.getElementById('move-out');
   moveIn.min = new Date().toISOString().split('T')[0];
   moveIn.addEventListener('change', function() {
     if (!this.value) return;
-    var next = new Date(this.value);
+    const next = new Date(this.value);
     next.setDate(next.getDate() + 1);
-    var minDate = next.toISOString().split('T')[0];
+    const minDate = next.toISOString().split('T')[0];
     moveOut.min = minDate;
     // If move-out is already set and is now invalid, clear it
     if (moveOut.value && moveOut.value <= this.value) {
@@ -1037,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Move-Out calendar opens at move-in month when first clicked
   moveOut.addEventListener('focus', function() {
     if (!this.value && moveIn.value) {
-      var next = new Date(moveIn.value);
+      const next = new Date(moveIn.value);
       next.setDate(next.getDate() + 1);
       this.value = next.toISOString().split('T')[0];
     }
@@ -1048,18 +1065,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // AGENT EMAIL VERIFICATION
 // ══════════════════════════════════════
 // Demo list of pre-registered agent emails (replace with real API call when backend is ready)
-var registeredAgentEmails = [
+const registeredAgentEmails = [
   'agent@ush.com',
   'demo@agency.com',
   'test@studyabroad.com'
 ];
-var agentEmailVerified = false; // tracks whether email check has been completed
+let agentEmailVerified = false; // tracks whether email check has been completed
 
 function checkAgentEmail() {
-  var emailEl  = document.getElementById('agent-email');
-  var statusEl = document.getElementById('agent-email-status');
-  var regBlock = document.getElementById('agent-register');
-  var email    = emailEl.value.trim().toLowerCase();
+  const emailEl  = document.getElementById('agent-email');
+  const statusEl = document.getElementById('agent-email-status');
+  const regBlock = document.getElementById('agent-register');
+  const email    = emailEl.value.trim().toLowerCase();
 
   // clear previous status
   statusEl.innerHTML = '';
@@ -1068,10 +1085,10 @@ function checkAgentEmail() {
 
   // basic format check
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    var group = emailEl.closest('.form-group');
+    const group = emailEl.closest('.form-group');
     group.classList.add('error');
     if (!group.querySelector('.field-error')) {
-      var err = document.createElement('div');
+      const err = document.createElement('div');
       err.className = 'field-error';
       err.textContent = 'Please enter a valid email address';
       group.appendChild(err);
@@ -1096,7 +1113,7 @@ function checkAgentEmail() {
 
 // Auto-check on blur; reset when user edits the email
 document.addEventListener('DOMContentLoaded', function() {
-  var emailEl = document.getElementById('agent-email');
+  const emailEl = document.getElementById('agent-email');
   if (!emailEl) return;
   // Instantly verify when focus leaves the field
   emailEl.addEventListener('blur', function() {
@@ -1115,7 +1132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ══════════════════════════════════════
 function goToStep(n) {
   // Validate before advancing
-  var current = n - 1;
+  const current = n - 1;
   if (current >= 1 && current <= 3) {
     if (!validateStep(current)) return;
   }
@@ -1171,14 +1188,14 @@ function setPaymentTab(el, type) {
 // DATE OF BIRTH — open calendar at ~20 years ago
 // ══════════════════════════════════════
 (function() {
-  var dob = document.getElementById('dob');
+  const dob = document.getElementById('dob');
   // Set max to today so future dates can't be picked
-  var today = new Date();
+  const today = new Date();
   dob.max = today.toISOString().split('T')[0];
   // On first focus, pre-fill to 20 years ago so calendar opens there
   dob.addEventListener('focus', function() {
     if (!this.value) {
-      var d = new Date();
+      const d = new Date();
       d.setFullYear(d.getFullYear() - 20);
       this.value = d.toISOString().split('T')[0];
     }
@@ -1213,6 +1230,17 @@ document.getElementById('card-number').addEventListener('input', function(e) {
   input.setSelectionRange(cursorPos + diff, cursorPos + diff);
 });
 
+// ══════════════════════════════════════
+// BUTTON EVENT LISTENERS
+// ══════════════════════════════════════
+document.getElementById('btn-agent-yes').addEventListener('click', function() { setAgentMode(true); });
+document.getElementById('btn-agent-no').addEventListener('click', function() { setAgentMode(false); });
+document.getElementById('goToStep2Btn').addEventListener('click', function() { goToStep(2); });
+document.getElementById('goToStep3Btn').addEventListener('click', function() { goToStep(3); });
+document.getElementById('backToStep1Btn').addEventListener('click', function() { goToStep(1); });
+document.getElementById('submitAppBtn').addEventListener('click', function() { goToStep(4); });
+document.getElementById('backToStep2Btn').addEventListener('click', function() { goToStep(2); });
+
 </script>
 
 <!-- Chatbase (Sophie) -->
@@ -1225,11 +1253,11 @@ document.getElementById('card-number').addEventListener('input', function(e) {
 
 <!-- ══════════ SIGNUP MODAL ══════════ -->
 <div class="signup-overlay" id="signupOverlay">
-  <div class="signup-modal">
-    <button class="login-close" onclick="closeSignupModal()">
+  <div class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupModalTitle">
+    <button class="login-close" onclick="closeSignupModal()" aria-label="Close sign-up dialog">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <div id="signupFormFields"><div class="login-title">Student Sign Up</div>
+    <div id="signupFormFields"><div class="login-title" id="signupModalTitle">Student Sign Up</div>
     <div class="login-subtitle">Create your account to get started with USH.</div>
     <div class="signup-form">
       <div class="form-row">
@@ -1298,7 +1326,7 @@ document.getElementById('card-number').addEventListener('input', function(e) {
         <label for="su-questions">Do you have any questions? <span style="color:var(--c-text-muted);font-weight:400">Optional</span></label>
         <textarea id="su-questions" placeholder="Ask any questions"></textarea>
       </div>
-      <button class="login-btn" onclick="handleSignup()">Sign up</button>
+      <button class="login-btn" id="signupBtn">Sign up</button>
       <div class="signup-legal">By signing up, you agree with the <a href="legal/guest_terms_conditions.html">Guest Terms and Conditions</a>, <a href="legal/guests_cancellation_policy.html">Guest Cancellation Policy</a> and <a href="legal/privacy_policy.html">Privacy Policy</a></div>
       <div class="login-create" style="margin-top:4px">Already have an account? <a href="#" onclick="closeSignupModal();openLoginModal();return false;">Log in</a></div>
     </div>
@@ -1308,29 +1336,85 @@ document.getElementById('card-number').addEventListener('input', function(e) {
       <div style="font-family:var(--ff-display);font-size:1.5rem;font-weight:600;color:var(--c-charcoal);margin-bottom:12px">Thanks for signing up!</div>
       <p style="font-size:0.92rem;color:var(--c-text-light);line-height:1.65;margin-bottom:8px">We have sent an email to the address you provided. Please check your inbox.</p>
       <p style="font-size:0.92rem;color:var(--c-text-light);line-height:1.65;margin-bottom:28px">We look forward to helping you find a perfect homestay!</p>
-      <button class="login-btn" onclick="closeSignupModal();resetSignupModal();">Close Message</button>
+      <button class="login-btn" id="signupCloseBtn">Close Message</button>
     </div>
     </div>
   </div>
 </div>
 <script>
-function openSignupModal(){document.getElementById('signupOverlay').classList.add('open');document.body.style.overflow='hidden';populateDOB();}
-function closeSignupModal(){document.getElementById('signupOverlay').classList.remove('open');document.body.style.overflow='';}
-function resetSignupModal(){document.getElementById('signupFormFields').style.display='block';document.getElementById('signupSuccess').style.display='none';}
-document.getElementById('signupOverlay').addEventListener('click',function(e){if(e.target===this)closeSignupModal();});
-function populateDOB(){var d=document.getElementById('su-day'),y=document.getElementById('su-year');if(d.options.length>1)return;for(var i=1;i<=31;i++){var o=document.createElement('option');o.value=i;o.textContent=i;d.appendChild(o);}var cy=new Date().getFullYear();for(var j=cy-18;j>=cy-80;j--){var o=document.createElement('option');o.value=j;o.textContent=j;y.appendChild(o);}}
-function handleSignup(){var f=document.getElementById('su-first').value.trim();var l=document.getElementById('su-last').value.trim();var e=document.getElementById('su-email').value.trim();var p=document.getElementById('su-pass').value;var p2=document.getElementById('su-pass2').value;if(!f||!l||!e||!p||!p2){alert('Please fill in all required fields.');return;}if(p!==p2){alert('Passwords do not match.');return;}document.getElementById('signupFormFields').style.display='none';document.getElementById('signupSuccess').style.display='flex';}
+function openSignupModal() {
+  document.getElementById('signupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  populateDOB();
+}
+
+function closeSignupModal() {
+  document.getElementById('signupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function resetSignupModal() {
+  document.getElementById('signupFormFields').style.display = 'block';
+  document.getElementById('signupSuccess').style.display = 'none';
+}
+
+document.getElementById('signupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSignupModal();
+});
+
+function populateDOB() {
+  const d = document.getElementById('su-day');
+  const y = document.getElementById('su-year');
+  if (d.options.length > 1) return;
+  for (let i = 1; i <= 31; i++) {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = i;
+    d.appendChild(o);
+  }
+  const cy = new Date().getFullYear();
+  for (let j = cy - 18; j >= cy - 80; j--) {
+    const o = document.createElement('option');
+    o.value = j;
+    o.textContent = j;
+    y.appendChild(o);
+  }
+}
+
+function handleSignup() {
+  const f = document.getElementById('su-first').value.trim();
+  const l = document.getElementById('su-last').value.trim();
+  const e = document.getElementById('su-email').value.trim();
+  const p = document.getElementById('su-pass').value;
+  const p2 = document.getElementById('su-pass2').value;
+  if (!f || !l || !e || !p || !p2) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  if (p !== p2) {
+    alert('Passwords do not match.');
+    return;
+  }
+  document.getElementById('signupFormFields').style.display = 'none';
+  document.getElementById('signupSuccess').style.display = 'flex';
+}
+
+document.getElementById('signupBtn').addEventListener('click', handleSignup);
+document.getElementById('signupCloseBtn').addEventListener('click', function() {
+  closeSignupModal();
+  resetSignupModal();
+});
 </script>
 <!-- ══════════ LOGIN MODAL ══════════ -->
 <div class="login-overlay" id="loginOverlay">
-  <div class="login-modal">
-    <button class="login-close" onclick="closeLoginModal()">
+  <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <button class="login-close" onclick="closeLoginModal()" aria-label="Close login dialog">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
 
     <!-- Login View -->
     <div id="loginView">
-      <div class="login-title">Access your Dashboard</div>
+      <div class="login-title" id="loginModalTitle">Access your Dashboard</div>
       <div class="login-subtitle">Welcome back! Log in to manage your homestay.</div>
       <div class="login-form">
         <div class="form-group">
@@ -1342,7 +1426,7 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
           <input type="password" id="login-password" placeholder="Enter your password">
         </div>
         <div class="login-forgot"><a href="#" onclick="showResetView();return false;">Forgot your Password?</a></div>
-        <button class="login-btn" onclick="handleLogin()">Login</button>
+        <button class="login-btn" id="loginBtn">Login</button>
         <div class="login-divider"><span>or</span></div>
         <div class="login-create">Don't have an account? <a href="#" onclick="closeLoginModal();openSignupModal();return false;">Create an account</a></div>
       </div>
@@ -1357,7 +1441,7 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
           <label for="reset-email">Email address</label>
           <input type="email" id="reset-email" placeholder="you@example.com">
         </div>
-        <button class="login-btn" onclick="handleReset()">Send Reset Link</button>
+        <button class="login-btn" id="resetBtn">Send Reset Link</button>
         <div class="login-create" style="margin-top:8px"><a href="#" onclick="showLoginView();return false;">Cancel</a></div>
       </div>
     </div>
@@ -1365,11 +1449,101 @@ function handleSignup(){var f=document.getElementById('su-first').value.trim();v
   </div>
 </div>
 <script>
-function openLoginModal(){showLoginView();document.getElementById('loginOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeLoginModal(){document.getElementById('loginOverlay').classList.remove('open');document.body.style.overflow='';}
-document.getElementById('loginOverlay').addEventListener('click',function(e){if(e.target===this)closeLoginModal();});
-function showResetView(){document.getElementById('loginView').style.display='none';document.getElementById('resetView').style.display='block';}
-function showLoginView(){document.getElementById('loginView').style.display='block';document.getElementById('resetView').style.display='none';}
-function handleLogin(){document.querySelectorAll('#loginView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('login-email').value.trim();var pass=document.getElementById('login-password').value.trim();var hasErr=false;if(!email){hasErr=true;var g=document.getElementById('login-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);}if(!pass){hasErr=true;var g=document.getElementById('login-password').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Password is required';g.appendChild(e);}if(hasErr){document.querySelector('#loginView .form-group.error input').focus();return;}window.location.href='dashboard.html';}
-function handleReset(){document.querySelectorAll('#resetView .form-group').forEach(function(g){g.classList.remove('error');var e=g.querySelector('.field-error');if(e)e.remove();});var email=document.getElementById('reset-email').value.trim();if(!email){var g=document.getElementById('reset-email').closest('.form-group');g.classList.add('error');var e=document.createElement('div');e.className='field-error';e.textContent='Email address is required';g.appendChild(e);document.getElementById('reset-email').focus();return;}alert('A password reset link has been sent to '+email);showLoginView();}
+function openLoginModal() {
+  showLoginView();
+  document.getElementById('loginOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('loginOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeLoginModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    if (document.getElementById('signupOverlay').classList.contains('open')) closeSignupModal();
+    if (document.getElementById('loginOverlay').classList.contains('open')) closeLoginModal();
+  }
+});
+
+function showResetView() {
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('resetView').style.display = 'block';
+}
+
+function showLoginView() {
+  document.getElementById('loginView').style.display = 'block';
+  document.getElementById('resetView').style.display = 'none';
+}
+
+function handleLogin() {
+  document.querySelectorAll('#loginView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-password').value.trim();
+  let hasErr = false;
+
+  if (!email) {
+    hasErr = true;
+    const g = document.getElementById('login-email').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Email address is required';
+    g.appendChild(e);
+  }
+
+  if (!pass) {
+    hasErr = true;
+    const g = document.getElementById('login-password').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Password is required';
+    g.appendChild(e);
+  }
+
+  if (hasErr) {
+    document.querySelector('#loginView .form-group.error input').focus();
+    return;
+  }
+
+  window.location.href = 'dashboard.html';
+}
+
+function handleReset() {
+  document.querySelectorAll('#resetView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const e = g.querySelector('.field-error');
+    if (e) e.remove();
+  });
+
+  const email = document.getElementById('reset-email').value.trim();
+
+  if (!email) {
+    const g = document.getElementById('reset-email').closest('.form-group');
+    g.classList.add('error');
+    const e = document.createElement('div');
+    e.className = 'field-error';
+    e.textContent = 'Email address is required';
+    g.appendChild(e);
+    document.getElementById('reset-email').focus();
+    return;
+  }
+
+  alert('A password reset link has been sent to ' + email);
+  showLoginView();
+}
+
+document.getElementById('loginBtn').addEventListener('click', handleLogin);
+document.getElementById('resetBtn').addEventListener('click', handleReset);
 </script>

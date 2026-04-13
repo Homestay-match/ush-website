@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /host-dashboard.html
+Disallow: /dashboard.html
+Disallow: /legal/
+Disallow: /color-options.html
+Disallow: /dark-options.html
+
+Sitemap: https://ushhost.com/sitemap.xml
+Sitemap: https://usaish.com/sitemap-student.xml

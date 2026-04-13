@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Dashboard — USH</title>
+<title>Student Dashboard — USH Homestay</title>
+<meta name="description" content="Manage your homestay placement, documents, host family details, and support requests from your USH student dashboard.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://usaish.com/dashboard">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 <link rel="stylesheet" href="assets/ush.css?v=7">
 <style>
 /* ── DASHBOARD NAV ── */
@@ -198,20 +202,22 @@
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ══════════ DASHBOARD TOP BAR ══════════ -->
 <div class="dash-nav">
   <div class="dash-nav-inner">
     <a href="index.html" class="dash-nav-logo">
-      <img src="assets/ushlogo.png" alt="USH">
+      <img src="assets/ushlogo.png" alt="USH" width="400" height="164">
     </a>
     <div class="dash-nav-right">
-      <button class="dash-logout" onclick="window.location.href='index.html'">Logout</button>
+      <button class="dash-logout" id="logoutBtn">Logout</button>
     </div>
   </div>
 </div>
 
 <!-- ══════════ DASHBOARD CONTENT ══════════ -->
+<main id="main-content">
 <div class="dash-page">
   <div class="dash-container">
 
@@ -322,7 +328,7 @@
         <div id="msgActive" style="display:none">
           <div class="msg-chat">
             <div class="msg-host-bar">
-              <img class="msg-host-avatar" id="msgHostAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23e8e0d4' width='40' height='40'/%3E%3C/svg%3E" alt="Host">
+              <img class="msg-host-avatar" id="msgHostAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23e8e0d4' width='40' height='40'/%3E%3C/svg%3E" alt="Host" width="40" height="40">
               <div>
                 <div class="msg-host-name" id="msgHostName">Your Host</div>
                 <div class="msg-host-status">Available</div>
@@ -332,14 +338,14 @@
               <div class="msg-thread" id="msgThread">
                 <!-- Messages will appear here -->
               </div>
-              <button type="button" class="msg-new-pill" id="msgNewPill" onclick="scrollThreadToBottom(true)">
+              <button type="button" class="msg-new-pill" id="msgNewPill">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
                 New message
               </button>
             </div>
             <div class="msg-input-row">
-              <input type="text" class="msg-input" id="msgInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter')sendMessage()">
-              <button class="msg-send-btn" onclick="sendMessage()">
+              <input type="text" class="msg-input" id="msgInput" placeholder="Type your message...">
+              <button class="msg-send-btn" id="msgSendBtn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
               </button>
             </div>
@@ -394,7 +400,7 @@
             <div class="balance-amount due" id="balanceAmountText">$0.00 <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span></div>
           </div>
           <div class="balance-desc" id="balanceDescription"></div>
-          <button class="pay-btn active" id="payBtn" onclick="showCardSelection()">
+          <button class="pay-btn active" id="payBtn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
             Make a Payment
           </button>
@@ -413,11 +419,11 @@
           <p class="balance-note" style="margin-bottom:16px">Choose which card to use for your payment of <strong id="payAmountLabel">$0.00</strong>.</p>
           <div class="card-select-list" id="cardSelectList"></div>
           <div style="display:flex;gap:12px;margin-top:20px">
-            <button class="pay-btn active" id="confirmPayBtn" onclick="confirmPayment()" style="flex:1" disabled>
+            <button class="pay-btn active" id="confirmPayBtn" style="flex:1" disabled>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
               Confirm Payment
             </button>
-            <button class="pay-btn-outline" onclick="cancelCardSelection()">Cancel</button>
+            <button class="pay-btn-outline" id="cancelCardBtn">Cancel</button>
           </div>
         </div>
 
@@ -465,7 +471,7 @@
             </tr>
           </tbody>
         </table>
-        <button class="add-card-btn" id="addCardToggle" onclick="toggleAddCardForm()">
+        <button class="add-card-btn" id="addCardToggle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           Add New Card
         </button>
@@ -505,8 +511,8 @@
             <div></div>
           </div>
           <div class="form-actions">
-            <button class="save-card-btn" onclick="saveNewCard()">Save Card</button>
-            <button class="cancel-card-btn" onclick="toggleAddCardForm()">Cancel</button>
+            <button class="save-card-btn" id="saveCardBtn">Save Card</button>
+            <button class="cancel-card-btn" id="cancelCardFormBtn">Cancel</button>
           </div>
         </div>
       </div>
@@ -541,7 +547,7 @@
             <div class="upload-status" id="visa-status"></div>
           </div>
         </div>
-        <button class="send-docs-btn" onclick="alert('Documents submitted successfully!')">
+        <button class="send-docs-btn" id="sendDocsBtn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9z"/></svg>
           Send Documents
         </button>
@@ -588,6 +594,7 @@
     </div>
   </div>
 </div>
+</main>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer style="background:#3A4240;color:rgba(255,255,255,0.5);padding:24px 0;text-align:center;font-size:0.78rem">
@@ -600,12 +607,12 @@
 <script>
 function handleProfilePhoto(input) {
   if (input.files && input.files[0]) {
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = function(e) {
-      var avatar = document.getElementById('profileAvatar');
+      const avatar = document.getElementById('profileAvatar');
       avatar.innerHTML = '<img src="' + e.target.result + '" alt="Profile">';
       // Also update nav avatar
-      var navAvatar = document.querySelector('.dash-nav-avatar');
+      const navAvatar = document.querySelector('.dash-nav-avatar');
       if (navAvatar) {
         navAvatar.style.backgroundImage = 'url(' + e.target.result + ')';
         navAvatar.style.backgroundSize = 'cover';
@@ -620,8 +627,8 @@ function handleProfilePhoto(input) {
 
 function handleUpload(input, type) {
   if (input.files && input.files[0]) {
-    var fileName = input.files[0].name;
-    var statusEl = document.getElementById(type + '-status');
+    const fileName = input.files[0].name;
+    const statusEl = document.getElementById(type + '-status');
     statusEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> ' + fileName;
     input.closest('.upload-box').classList.add('uploaded');
   }
@@ -630,11 +637,11 @@ function handleUpload(input, type) {
 /* ── PAYMENT FLOW ── */
 
 // Credit cards data (would come from backend)
-var creditCards = [
+const creditCards = [
   { name: 'NORIMITSU IMOOKA', type: 'Visa', last4: '9535' },
   { name: 'NANAMI IMOOKA', type: 'Visa', last4: '5183' }
 ];
-var selectedCard = null;
+let selectedCard = null;
 
 // Call this to set a balance (simulating what happens when admin creates a balance)
 // Example: setBalance(1250.00, 'Fall 2026 Homestay Program — 4 months (Sep–Dec)')
@@ -644,7 +651,7 @@ function setBalance(amount, description) {
   document.getElementById('paySelectCard').style.display = 'none';
   document.getElementById('paySuccess').style.display = 'none';
 
-  var formatted = '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const formatted = '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   document.getElementById('balanceAmountText').innerHTML = formatted + ' <span style="font-size:0.75rem;font-weight:400;color:var(--c-text-muted)">USD</span>';
   document.getElementById('balanceDescription').textContent = description;
   document.getElementById('payAmountLabel').textContent = formatted;
@@ -663,11 +670,11 @@ function showCardSelection() {
   document.getElementById('paySelectCard').style.display = 'block';
   selectedCard = null;
 
-  var list = document.getElementById('cardSelectList');
+  const list = document.getElementById('cardSelectList');
   list.innerHTML = '';
 
   creditCards.forEach(function(card, i) {
-    var item = document.createElement('div');
+    const item = document.createElement('div');
     item.className = 'card-select-item';
     item.setAttribute('data-index', i);
     item.innerHTML = '<div class="card-select-radio"></div>' +
@@ -689,11 +696,11 @@ function showCardSelection() {
 
 function selectCard(index) {
   selectedCard = index;
-  var items = document.querySelectorAll('.card-select-item');
+  const items = document.querySelectorAll('.card-select-item');
   items.forEach(function(item) { item.classList.remove('selected'); });
   items[index].classList.add('selected');
 
-  var btn = document.getElementById('confirmPayBtn');
+  const btn = document.getElementById('confirmPayBtn');
   btn.disabled = false;
   btn.classList.remove('disabled');
   btn.classList.add('active');
@@ -716,7 +723,7 @@ function confirmPayment() {
 // Example: setHostInfo({ name:'Maria Garcia', welcomePdf:'assets/welcome-package.pdf' })
 /* ── ADD CARD FUNCTIONS ── */
 function toggleAddCardForm() {
-  var form = document.getElementById('addCardForm');
+  const form = document.getElementById('addCardForm');
   form.classList.toggle('open');
   if (!form.classList.contains('open')) {
     document.getElementById('cardName').value = '';
@@ -727,32 +734,32 @@ function toggleAddCardForm() {
 }
 
 function formatCardNumber(input) {
-  var v = input.value.replace(/\D/g, '').substring(0, 16);
+  const v = input.value.replace(/\D/g, '').substring(0, 16);
   input.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
 }
 
 function formatExpiry(input) {
-  var v = input.value.replace(/\D/g, '').substring(0, 4);
+  let v = input.value.replace(/\D/g, '').substring(0, 4);
   if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
   input.value = v;
 }
 
 function saveNewCard() {
-  var name = document.getElementById('cardName').value.trim();
-  var number = document.getElementById('cardNumber').value.replace(/\s/g, '');
-  var type = document.getElementById('cardType').value;
+  const name = document.getElementById('cardName').value.trim();
+  const number = document.getElementById('cardNumber').value.replace(/\s/g, '');
+  const type = document.getElementById('cardType').value;
 
   if (!name || number.length < 12) {
     alert('Please fill in the card name and a valid card number.');
     return;
   }
 
-  var last4 = number.slice(-4);
-  var masked = '************' + last4;
+  const last4 = number.slice(-4);
+  const masked = '************' + last4;
 
   // Add to table
-  var tbody = document.querySelector('.cards-table tbody');
-  var row = document.createElement('tr');
+  const tbody = document.querySelector('.cards-table tbody');
+  const row = document.createElement('tr');
   row.innerHTML = '<td>' + name.toUpperCase() + '</td><td><span class="card-type">' + type + '</span></td><td><span class="card-number">' + masked + '</span></td>';
   tbody.appendChild(row);
 
@@ -764,9 +771,9 @@ function saveNewCard() {
 }
 
 // Host info is stored but host section only shows when matched; details show when paid
-var hostData = null;
-var isPaid = false;
-var isMatched = false;
+let hostData = null;
+let isPaid = false;
+let isMatched = false;
 
 function setArrivalDates(moveIn, moveOut) {
   document.getElementById('arrivalMoveIn').textContent = moveIn || '—';
@@ -778,7 +785,7 @@ function setHostInfo(host) {
   isMatched = true;
   document.getElementById('hostName').textContent = host.name || '—';
   if (host.welcomePdf) {
-    var link = document.getElementById('welcomePkgLink');
+    const link = document.getElementById('welcomePkgLink');
     link.href = host.welcomePdf;
     link.setAttribute('target', '_blank');
     link.style.display = 'inline-flex';
@@ -792,11 +799,11 @@ function setStudentPaid() {
 }
 
 function checkShowHostCard() {
-  var hostSection = document.getElementById('hostSection');
-  var pendingPayment = document.getElementById('hostPendingPayment');
-  var matched = document.getElementById('hostMatched');
-  var badgeMatched = document.getElementById('hostBadgeMatched');
-  var badgePaid = document.getElementById('hostBadgePaid');
+  const hostSection = document.getElementById('hostSection');
+  const pendingPayment = document.getElementById('hostPendingPayment');
+  const matched = document.getElementById('hostMatched');
+  const badgeMatched = document.getElementById('hostBadgeMatched');
+  const badgePaid = document.getElementById('hostBadgePaid');
 
   // Update badge states
   if (isMatched) {
@@ -925,6 +932,27 @@ document.addEventListener('DOMContentLoaded', function(){
   thread.addEventListener('scroll', function(){
     if (isThreadAtBottom(thread)) pill.classList.remove('show');
   });
+});
+
+// ── BUTTON EVENT LISTENERS ──
+document.getElementById('logoutBtn').addEventListener('click', function() {
+  window.location.href = 'index.html';
+});
+document.getElementById('msgNewPill').addEventListener('click', function() {
+  scrollThreadToBottom(true);
+});
+document.getElementById('msgSendBtn').addEventListener('click', sendMessage);
+document.getElementById('msgInput').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') sendMessage();
+});
+document.getElementById('payBtn').addEventListener('click', showCardSelection);
+document.getElementById('confirmPayBtn').addEventListener('click', confirmPayment);
+document.getElementById('cancelCardBtn').addEventListener('click', cancelCardSelection);
+document.getElementById('addCardToggle').addEventListener('click', toggleAddCardForm);
+document.getElementById('saveCardBtn').addEventListener('click', saveNewCard);
+document.getElementById('cancelCardFormBtn').addEventListener('click', toggleAddCardForm);
+document.getElementById('sendDocsBtn').addEventListener('click', function() {
+  alert('Documents submitted successfully!');
 });
 
 // ── DEMO: for testing ──

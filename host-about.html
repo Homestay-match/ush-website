@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About USH — Host Family Program for Exchange Students Since 1998</title>
+<meta name="description" content="Universal Student Housing has connected host families with exchange students for 27+ years. 19,000+ students placed across 5 states. Every home visited in person by our team.">
+<meta name="keywords" content="host family, exchange students, extra income, spare room extra income, about USH, Universal Student Housing, host family program, homestay host family, international student housing, cultural exchange, host family support, safe homestay program, earn extra income hosting students">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ushhost.com/about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About USH — Host Family Program for Exchange Students Since 1998">
+<meta property="og:description" content="27+ years connecting host families with exchange students across 5 states. Meet our team and learn why 19,000+ students trust USH.">
+<meta property="og:image" content="https://ushhost.com/assets/team-photo.jpg">
+<meta property="og:url" content="https://ushhost.com/about">
+<meta property="og:site_name" content="Universal Student Housing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About USH — Host Family Program for Exchange Students Since 1998">
+<meta name="twitter:description" content="27+ years connecting host families with exchange students across 5 states. Meet our team and learn why 19,000+ students trust USH.">
+<meta name="twitter:image" content="https://ushhost.com/assets/team-photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/team-photo.jpg" fetchpriority="high">
+<link rel="preload" as="style" href="assets/ush.css?v=7">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ush.css?v=7">
+<script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
+<style>
+input,select,textarea,button{font-family:var(--ff-body)}
+
+/* ── TRANSPARENT NAV OVERRIDE ── */
+.nav{background:transparent}
+.nav.scrolled{background:rgba(251,248,243,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 12px rgba(0,0,0,0.06)}
+.nav-logo img{filter:brightness(0) invert(1)}
+.nav.scrolled .nav-logo img{filter:none}
+.nav-links a{color:rgba(255,255,255,0.85)}
+.nav-links a:hover{color:var(--c-white)}
+.nav.scrolled .nav-links a{color:var(--c-text)}
+.nav.scrolled .nav-links a:hover{color:var(--c-teal)}
+.nav-links a.active{color:var(--c-teal) !important}
+.nav-mobile-btn{color:var(--c-white)}
+.nav.scrolled .nav-mobile-btn{color:var(--c-text)}
+
+/* ── HERO ── */
+.hero{position:relative;height:72vh;min-height:520px;max-height:780px;display:flex;align-items:flex-end;overflow:hidden;background:var(--c-charcoal)}
+.hero-bg{position:absolute;inset:0;background:url('assets/team-photo.jpg') center center / cover no-repeat;transform:scale(1.04);transition:transform 8s ease}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,30,28,0.82) 0%,rgba(26,30,28,0.45) 45%,rgba(26,30,28,0.1) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:700px;padding-bottom:72px}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;color:var(--c-white);line-height:1.08;letter-spacing:-0.025em;margin-bottom:20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.hero p{font-size:clamp(0.95rem,1.7vw,1.1rem);color:rgba(255,255,255,0.78);line-height:1.7;max-width:580px;margin-bottom:32px}
+.hero p em{font-style:italic;color:var(--c-orange);font-weight:500}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15)}
+.hero-stat{text-align:left}
+.hero-stat .num{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--c-white)}
+.hero-stat .label{font-size:0.72rem;color:rgba(255,255,255,0.8);font-weight:400;margin-top:2px;letter-spacing:0.04em;text-transform:uppercase}
+@media(max-width:600px){
+  .hero{height:auto;min-height:680px;max-height:none}
+  .hero-inner{padding-bottom:40px;padding-top:20px}
+  .hero h1{font-size:2rem;margin-bottom:16px}
+  .hero p{font-size:0.92rem;line-height:1.6;margin-bottom:24px}
+  .hero-stats{gap:20px;padding-top:20px}
+  .hero-stat .num{font-size:1.3rem}
+}
+
+/* ── STAGGER ── */
+.hero-stagger>*:nth-child(1){animation-delay:.1s}
+.hero-stagger>*:nth-child(2){animation-delay:.25s}
+.hero-stagger>*:nth-child(3){animation-delay:.4s}
+.hero-stagger>*:nth-child(4){animation-delay:.55s}
+
+/* ── OUR STORY ── */
+.story-section{padding:96px 0;background:var(--c-cream)}
+.story-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:860px){.story-layout{grid-template-columns:1fr;gap:40px}}
+.story-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5}
+.story-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.story-text .section-label{margin-bottom:12px}
+.story-text h2{font-family:var(--ff-display);font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:700;color:var(--c-charcoal);line-height:1.08;letter-spacing:-0.022em;margin-bottom:20px}
+.story-text h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.story-text p{font-size:0.95rem;color:var(--c-text-light);line-height:1.75;margin-bottom:16px}
+.story-text p em{font-style:italic;color:var(--c-orange);font-weight:500}
+.story-text p strong{color:var(--c-orange)}
+
+/* ── WHY WE EXIST ── */
+.why-section{padding:96px 0;background:var(--c-white)}
+.why-header{text-align:center;max-width:640px;margin:0 auto 64px}
+.why-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px}
+.why-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.why-header p{font-size:1rem;color:var(--c-text-light);line-height:1.7}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr;gap:16px}}
+.why-card{background:var(--c-cream);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);transition:all 0.4s var(--ease-out);position:relative;overflow:hidden}
+.why-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:transparent}
+.why-card-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.why-card-icon svg{width:22px;height:22px}
+.icon-teal{background:rgba(110,183,163,0.12)}
+.icon-teal svg{color:var(--c-teal)}
+.icon-gold{background:var(--c-orange-light)}
+.icon-gold svg{color:var(--c-orange)}
+.icon-olive{background:#EAEDED}
+.icon-olive svg{color:var(--c-olive-dark)}
+.icon-green{background:#E8F8EE}
+.icon-green svg{color:#2D9A5A}
+.why-card h3{font-family:var(--ff-display);font-size:1.25rem;font-weight:600;margin-bottom:12px;color:var(--c-charcoal)}
+.why-card p{font-size:0.95rem;color:var(--c-text-light);line-height:1.65}
+
+/* ── MEET THE TEAM ── */
+.team-section{padding:96px 0;background:var(--c-cream)}
+.team-header{text-align:center;max-width:660px;margin:0 auto 56px}
+.team-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px}
+.team-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.team-header p{font-size:1rem;color:var(--c-text-light);line-height:1.7}
+.team-header p em{font-style:italic;color:var(--c-orange);font-weight:500}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:48px}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);gap:20px}}
+@media(max-width:480px){.team-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+.team-member{text-align:left}
+.team-member img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;border-radius:14px;margin-bottom:12px}
+.team-member-name{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--c-charcoal);margin-bottom:3px}
+.team-member-title{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--c-teal);margin-bottom:4px}
+.team-member-bio{font-size:0.82rem;color:var(--c-text-light);line-height:1.5}
+
+/* ── PARTNERS ── */
+.partners-section{padding:96px 0;background:var(--c-white)}
+.partners-header{text-align:center;max-width:640px;margin:0 auto 48px}
+.partners-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px}
+.partners-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.partners-header p{font-size:1rem;color:var(--c-text-light);line-height:1.7}
+.partners-header p em{font-style:italic;color:var(--c-orange);font-weight:500}
+.partners-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+@media(max-width:768px){.partners-stats{grid-template-columns:1fr;gap:16px}}
+.partner-stat-card{background:var(--c-cream);border-radius:var(--r-lg);padding:36px 32px;border:1px solid var(--c-border);text-align:center}
+.partner-stat-num{font-family:var(--ff-display);font-size:2.4rem;font-weight:700;color:var(--c-orange);margin-bottom:8px}
+.partner-stat-card h3{font-family:var(--ff-display);font-size:1.15rem;font-weight:600;margin-bottom:10px;color:var(--c-charcoal)}
+.partner-stat-card p{font-size:0.92rem;color:var(--c-text-light);line-height:1.65}
+
+/* ── LOCATIONS ── */
+.locations-section{padding:96px 0;background:var(--c-cream)}
+.locations-header{margin-bottom:48px}
+.locations-header h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--c-charcoal);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px}
+.locations-header h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.locations-header p{font-size:1rem;color:var(--c-text-light);line-height:1.7;max-width:620px}
+.locations-header p em{font-style:italic;color:var(--c-orange);font-weight:500}
+.locations-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+@media(max-width:900px){.locations-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.locations-grid{grid-template-columns:repeat(2,1fr)}}
+.location-card{display:block;border-radius:var(--r-lg);overflow:hidden;text-align:center;transition:all 0.4s var(--ease-out);text-decoration:none}
+.location-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.location-card-img{width:100%;aspect-ratio:3/2;overflow:hidden}
+.location-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease-out)}
+.location-card:hover .location-card-img img{transform:scale(1.06)}
+.location-card-body{padding:16px 12px 20px;background:var(--c-white);border:1px solid var(--c-border);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg)}
+.location-card h4{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--c-charcoal);margin:0}
+
+/* ── CTA BANNER ── */
+.cta-section{padding:80px 0;background:var(--c-white)}
+.cta-banner{background:var(--c-charcoal);border-radius:var(--r-xl);padding:56px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+@media(max-width:700px){.cta-banner{flex-direction:column;text-align:center;padding:40px 28px}}
+.cta-label{font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-teal);margin-bottom:8px}
+.cta-banner h2{font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--c-white);line-height:1.1;margin-bottom:10px}
+.cta-banner h2 em{font-style:italic;font-weight:400;color:var(--c-teal)}
+.cta-banner p{font-size:0.92rem;color:rgba(255,255,255,0.65);line-height:1.7;max-width:480px}
+.cta-actions{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.cta-note{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="become-a-host.html" class="nav-logo">
+      <img src="assets/ushlogo.png" alt="USH" width="400" height="164">
+    </a>
+    <div class="nav-links">
+      <a href="become-a-host.html">Home</a>
+      <a href="become-a-host.html#how-it-works">How It Works</a>
+      <a href="host-apply.html">Apply</a>
+
+      <a href="host-faq.html">FAQ</a>
+      <a href="javascript:void(0)" title="Blog — Coming Soon">Blog</a>
+      <a href="host-contact.html">Contact</a>
+      <a href="#" id="navLoginLink">Log In</a>
+    </div>
+    <button class="nav-mobile-btn" id="menuOpen" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="become-a-host.html">Home</a>
+  <a href="become-a-host.html#how-it-works">How It Works</a>
+  <a href="host-apply.html">Apply</a>
+
+  <a href="host-faq.html">FAQ</a>
+  <a href="javascript:void(0)" title="Blog — Coming Soon">Blog</a>
+  <a href="host-contact.html">Contact</a>
+  <a href="#" id="mobileLoginLink">Log In</a>
+</div>
+
+<main id="main-content">
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-inner hero-stagger">
+      <h1>Hosting International Students <em>Since&nbsp;1998</em></h1>
+      <p>For over <em>27 years,</em> USH has been connecting welcoming American families with international students. We are one of the few companies that still <em>personally visits every home</em> and hand-selects every match.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">27+</div>
+          <div class="label">Years of Service</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">19,000+</div>
+          <div class="label">Students Placed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">270+</div>
+          <div class="label">Partner Schools</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">5</div>
+          <div class="label">U.S. States</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OUR STORY ══════════ -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-layout" data-reveal>
+      <div class="story-img">
+        <img src="assets/safety-visual.jpg" alt="USH founder" loading="lazy" decoding="async" width="800" height="534">
+      </div>
+      <div class="story-text">
+        <div class="section-label">Our Story</div>
+        <h2>Built from Experience, <em>Driven by Mission</em></h2>
+        <p>In 1998, finding verified housing from abroad was nearly impossible, leaving students vulnerable to uncertainty. <strong>Decades later, the landscape has changed, but the risk remains the same.</strong> While many platforms offer thousands of unverified listings, most never step foot in the homes they advertise.</p>
+        <p><strong>We started USH to change that.</strong> We believe that an international student's focus should be on their education, not the stress of unverified housing. We are one of the few companies that still prioritizes the "Human Standard" — personally visiting every home, meeting every host, and hand-selecting every match.</p>
+        <p><strong>Nearly 30 years later, that mission has not changed.</strong> We remain a human-led company dedicated to providing the same high-quality vetting and support we would want for our own family.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHY WE EXIST ══════════ -->
+<section class="why-section">
+  <div class="container">
+    <div class="why-header" data-reveal>
+      <div class="section-label">Why Host with USH</div>
+      <h2>What makes us <em>different</em></h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card" data-reveal>
+        <div class="why-card-icon icon-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>100% In-Person Verification</h3>
+        <p>A USH coordinator visits every home in person to meet the host and inspect the accommodations. We never rely on self-reported information — your home is personally verified.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <div class="why-card-icon icon-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Human-Led Matching</h3>
+        <p>We hand-select every match based on lifestyle preferences, location, and student needs. Our team takes the time to find students who are a great fit for your household.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <div class="why-card-icon icon-olive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        </div>
+        <h3>Dedicated Support</h3>
+        <p>Our team is available Monday through Friday, 9am–5pm PST. If any issue arises with your student, we respond quickly and work with both parties to resolve it.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <div class="why-card-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        </div>
+        <h3>Reliable Payments</h3>
+        <p>You never have to discuss money with your student. Our team handles all billing and ensures your stipend is paid on time throughout the entire hosting period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MEET THE TEAM ══════════ -->
+<section class="team-section">
+  <div class="container">
+    <div class="team-header" data-reveal>
+      <div class="section-label">Our People</div>
+      <h2>Meet the <em>Team</em></h2>
+      <p>USH is built by professionals who <em>personally understand the journey</em> of international education. We are dedicated to providing every host family with the support and communication they deserve.</p>
+    </div>
+
+    <div class="team-grid" data-reveal>
+      <div class="team-member">
+        <img src="assets/team-emerson.jpg" alt="Emerson Torres" loading="lazy" decoding="async" width="800" height="800">
+        <div class="team-member-name">Emerson Torres</div>
+        <div class="team-member-title">Co-Founder &amp; CEO</div>
+        <p class="team-member-bio">Founded USH in 1998. Leads strategic growth and 270+ university partnerships nationwide.</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/team-ana-paula.jpg?v=2" alt="Ana Paula Oliveira" loading="lazy" decoding="async" width="573" height="860">
+        <div class="team-member-name">Ana Paula Oliveira</div>
+        <div class="team-member-title">Co-Founder &amp; Director of Operations</div>
+        <p class="team-member-bio">Manages the "USH Standard" of quality, housing logistics, and student-host matching.</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/team-estela.jpg" alt="Estela Franco" loading="lazy" decoding="async" width="800" height="800">
+        <div class="team-member-name">Estela Franco</div>
+        <div class="team-member-title">Housing Coordinator</div>
+        <p class="team-member-bio">Coordinates the student experience, providing professional support for hosts and students.</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/team-enzo.jpg" alt="Enzo Torres" loading="lazy" decoding="async" width="800" height="800">
+        <div class="team-member-name">Enzo Torres</div>
+        <div class="team-member-title">Marketing Associate</div>
+        <p class="team-member-bio">Assists with marketing initiatives, designing the media and brand materials for USH.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUSTED PARTNERSHIPS ══════════ -->
+<section class="partners-section">
+  <div class="container">
+    <div class="partners-header" data-reveal>
+      <div class="section-label">Our Network</div>
+      <h2>Trusted by schools <em>nationwide</em></h2>
+      <p>We work with <em>270+ partner institutions</em> across the United States and <em>700+ overseas agencies</em> in more than <em>50 countries</em>. Our host families are part of a trusted network serving students from around the world.</p>
+    </div>
+
+    <div class="partners-stats" data-reveal>
+      <div class="partner-stat-card">
+        <div class="partner-stat-num">270+</div>
+        <h3>U.S. Partner Schools</h3>
+        <p>Including UCLA, UC Berkeley, ASU, Santa Monica College, Miami Dade College, and many others.</p>
+      </div>
+      <div class="partner-stat-card">
+        <div class="partner-stat-num">700+</div>
+        <h3>Overseas Agencies</h3>
+        <p>Agencies across more than 50 countries send students to our host families every year.</p>
+      </div>
+      <div class="partner-stat-card">
+        <div class="partner-stat-num">19,000+</div>
+        <h3>Students Served</h3>
+        <p>Over 19,000 international students have called a USH host family their home away from home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHERE WE ARE ══════════ -->
+<section class="locations-section">
+  <div class="container">
+    <div class="locations-header" data-reveal>
+      <div class="section-label">Our Locations</div>
+      <h2>We place students with host families <em>across five states</em></h2>
+      <p>Our host families are located near major schools, colleges, and universities, always <em>within reach of public transportation.</em></p>
+    </div>
+    <div class="locations-grid" data-reveal>
+      <div class="location-card">
+        <div class="location-card-img"><img src="assets/regions/socal.jpg" alt="Southern California" loading="lazy" decoding="async" width="600" height="400"></div>
+        <div class="location-card-body"><h4>Southern California</h4></div>
+      </div>
+      <div class="location-card">
+        <div class="location-card-img"><img src="assets/regions/norcal.jpg" alt="Northern California" loading="lazy" decoding="async" width="600" height="338"></div>
+        <div class="location-card-body"><h4>Northern California</h4></div>
+      </div>
+      <div class="location-card">
+        <div class="location-card-img"><img src="assets/regions/arizona.jpg" alt="Arizona" loading="lazy" decoding="async" width="600" height="400"></div>
+        <div class="location-card-body"><h4>Arizona</h4></div>
+      </div>
+      <div class="location-card">
+        <div class="location-card-img"><img src="assets/regions/florida.jpg" alt="Florida" loading="lazy" decoding="async" width="600" height="900"></div>
+        <div class="location-card-body"><h4>Florida</h4></div>
+      </div>
+      <div class="location-card">
+        <div class="location-card-img"><img src="assets/regions/newyork.jpg" alt="Ohio" loading="lazy" decoding="async" width="600" height="400"></div>
+        <div class="location-card-body"><h4>Ohio</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <div>
+        <div class="cta-label">Ready to get started?</div>
+        <h2>Join our host <em>family community</em></h2>
+        <p>Applications are reviewed within 3–5 business days. Our team will reach out to schedule your home visit and answer any questions you may have.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="host-apply.html" class="btn btn-primary" style="font-size:1rem;padding:16px 36px">Apply to Host</a>
+        <div class="cta-note">Or email us at <a href="mailto:contact@usaish.com" style="color:var(--c-teal)">contact@usaish.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">USH Host Families</div>
+        <div class="footer-brand-desc">Join our network of trusted American host families. Open your home to international students and make a difference while earning extra income.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="become-a-host.html">Home</a>
+        <a href="host-apply.html">Apply</a>
+        <a href="host-faq.html">FAQ</a>
+        <a href="javascript:void(0)" title="Blog — Coming Soon">Blog</a>
+        <a href="host-contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#" id="footerLoginLink">Log In</a>
+        <a href="host-apply.html">Apply Now</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="legal/privacy_policy.html">Privacy Policy</a>
+        <a href="legal/guest_terms_conditions.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Universal Student Housing. All rights reserved.</span>
+      <span>Los Angeles, California</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ LOGIN MODAL ══════════ -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <button class="login-close" id="loginCloseBtn" aria-label="Close login dialog">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="loginView">
+      <div class="login-title" id="loginTitle">Access your Dashboard</div>
+      <div class="login-subtitle">Welcome back! Log in to manage your homestay.</div>
+      <div class="login-form">
+        <div class="form-group">
+          <label for="login-email">Email address</label>
+          <input type="email" id="login-email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Enter your password">
+        </div>
+        <div class="login-forgot"><a href="#" id="forgotPasswordLink">Forgot your Password?</a></div>
+        <button class="login-btn" id="loginBtn">Login</button>
+        <div class="login-divider"><span>or</span></div>
+        <div class="login-create">Don't have an account? <a href="host-apply.html">Apply to host</a></div>
+      </div>
+    </div>
+    <div id="resetView" style="display:none">
+      <div class="login-title">Reset Password</div>
+      <div class="login-subtitle">Please enter the email address associated with your account!</div>
+      <div class="login-form">
+        <div class="form-group">
+          <label for="reset-email">Email address</label>
+          <input type="email" id="reset-email" placeholder="you@example.com">
+        </div>
+        <button class="login-btn" id="resetBtn">Send Reset Link</button>
+        <div class="login-create" style="margin-top:8px"><a href="#" id="resetCancelLink">Cancel</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════ NAV SCROLL ══════════
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ══════════ MOBILE MENU ══════════
+document.getElementById('menuOpen').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('menuClose').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+
+// ══════════ HERO BG LOAD ══════════
+const heroBg = document.getElementById('heroBg');
+if (heroBg) {
+  const img = new Image();
+  img.src = 'assets/team-photo.jpg';
+  img.onload = () => heroBg.classList.add('loaded');
+}
+
+// ══════════ SCROLL REVEALS ══════════
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+      e.target.classList.add('revealed');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+
+// ══════════ LOGIN MODAL ══════════
+function openLoginModal() {
+  showLoginView();
+  document.getElementById('loginOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close overlay on background click (uses `this`, so kept as function expression)
+document.getElementById('loginOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeLoginModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('loginOverlay').classList.contains('open')) {
+    closeLoginModal();
+  }
+});
+
+function showResetView() {
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('resetView').style.display = 'block';
+}
+
+function showLoginView() {
+  document.getElementById('loginView').style.display = 'block';
+  document.getElementById('resetView').style.display = 'none';
+}
+
+function handleLogin() {
+  document.querySelectorAll('#loginView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const err = g.querySelector('.field-error');
+    if (err) err.remove();
+  });
+
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-password').value.trim();
+  let hasErr = false;
+
+  if (!email) {
+    hasErr = true;
+    const g = document.getElementById('login-email').closest('.form-group');
+    g.classList.add('error');
+    const errDiv = document.createElement('div');
+    errDiv.className = 'field-error';
+    errDiv.textContent = 'Email address is required';
+    g.appendChild(errDiv);
+  }
+
+  if (!pass) {
+    hasErr = true;
+    const g = document.getElementById('login-password').closest('.form-group');
+    g.classList.add('error');
+    const errDiv = document.createElement('div');
+    errDiv.className = 'field-error';
+    errDiv.textContent = 'Password is required';
+    g.appendChild(errDiv);
+  }
+
+  if (hasErr) {
+    document.querySelector('#loginView .form-group.error input').focus();
+    return;
+  }
+
+  window.location.href = 'host-dashboard.html';
+}
+
+function handleReset() {
+  document.querySelectorAll('#resetView .form-group').forEach(function(g) {
+    g.classList.remove('error');
+    const err = g.querySelector('.field-error');
+    if (err) err.remove();
+  });
+
+  const email = document.getElementById('reset-email').value.trim();
+
+  if (!email) {
+    const g = document.getElementById('reset-email').closest('.form-group');
+    g.classList.add('error');
+    const errDiv = document.createElement('div');
+    errDiv.className = 'field-error';
+    errDiv.textContent = 'Email address is required';
+    g.appendChild(errDiv);
+    document.getElementById('reset-email').focus();
+    return;
+  }
+
+  alert('A password reset link has been sent to ' + email);
+  showLoginView();
+}
+
+// ══════════ EVENT LISTENERS (replacing inline onclick) ══════════
+document.getElementById('navLoginLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  openLoginModal();
+});
+
+document.getElementById('mobileLoginLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  openLoginModal();
+});
+
+document.getElementById('loginCloseBtn').addEventListener('click', function() {
+  closeLoginModal();
+});
+
+document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  showResetView();
+});
+
+document.getElementById('loginBtn').addEventListener('click', function() {
+  handleLogin();
+});
+
+document.getElementById('resetBtn').addEventListener('click', function() {
+  handleReset();
+});
+
+document.getElementById('resetCancelLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  showLoginView();
+});
+
+document.getElementById('footerLoginLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  openLoginModal();
+});
+</script>
+
+</body>
+</html>
