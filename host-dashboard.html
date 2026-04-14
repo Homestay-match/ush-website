@@ -14,8 +14,8 @@
 <script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
 <style>
 :root{
-  --c-border:rgba(44,51,48,0.1);
-  --c-border-strong:rgba(44,51,48,0.18);
+  --c-border:rgba(44,51,48,0.18);
+  --c-border-strong:rgba(44,51,48,0.28);
 }
 body{min-height:100vh;background:var(--c-cream)}
 input,select,textarea,button{font-family:var(--ff-body)}
@@ -27,7 +27,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .dash-container{max-width:1000px;margin:0 auto}
 
 /* ── HOST PROFILE HEADER ── */
-.host-profile{display:flex;align-items:center;gap:24px;margin-bottom:40px;padding:32px;background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);box-shadow:var(--shadow-sm)}
+.host-profile{display:flex;align-items:center;gap:24px;margin-bottom:40px;padding:32px;background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border-strong);box-shadow:0 4px 18px rgba(44,51,48,0.08)}
 @media(max-width:600px){.host-profile{flex-direction:column;text-align:center;gap:16px;padding:24px}}
 .host-avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;border:3px solid var(--c-teal)}
 .host-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
@@ -57,8 +57,8 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
 @media(max-width:660px){.dash-grid{grid-template-columns:1fr}}
 
-.dash-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:32px;box-shadow:var(--shadow-sm);transition:all 0.3s var(--ease-out);cursor:pointer;text-decoration:none;display:flex;flex-direction:column;gap:16px}
-.dash-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--c-teal)}
+.dash-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border-strong);padding:32px;box-shadow:0 4px 18px rgba(44,51,48,0.08);transition:all 0.3s var(--ease-out);cursor:pointer;text-decoration:none;display:flex;flex-direction:column;gap:16px}
+.dash-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(44,51,48,0.14);border-color:var(--c-teal)}
 
 .dash-card-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .icon-teal{background:var(--c-teal-light);color:var(--c-teal)}
@@ -80,7 +80,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .btn-back-dash:hover{border-color:var(--c-teal);color:var(--c-teal)}
 
 /* ── TABLE STYLES ── */
-.dash-table-wrap{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);overflow:hidden;box-shadow:var(--shadow-sm)}
+.dash-table-wrap{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border-strong);overflow:hidden;box-shadow:0 4px 18px rgba(44,51,48,0.08)}
 .dash-table{width:100%;border-collapse:collapse;font-size:0.88rem}
 .dash-table thead{background:var(--c-cream)}
 .dash-table th{text-align:left;padding:14px 18px;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);border-bottom:1px solid var(--c-border)}
