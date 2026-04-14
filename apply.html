@@ -976,13 +976,34 @@ function validateStep(n) {
       }
     }
   });
-  // Cross-check: move-out must be after move-in
+  // Cross-check: move-in must be ≥ 3 days from today, and move-out must be after move-in
   if (n === 2) {
-    const inVal  = document.getElementById('move-in').value;
-    const outVal = document.getElementById('move-out').value;
+    const inEl   = document.getElementById('move-in');
+    const outEl  = document.getElementById('move-out');
+    const inVal  = inEl.value;
+    const outVal = outEl.value;
+
+    // Move-in must be at least 3 days from today
+    if (inVal) {
+      const earliest = new Date();
+      earliest.setDate(earliest.getDate() + 3);
+      const earliestStr = earliest.toISOString().split('T')[0];
+      if (inVal < earliestStr) {
+        hasError = true;
+        const inGroup = inEl.closest('.form-group');
+        inGroup.classList.add('error');
+        if (!inGroup.querySelector('.field-error')) {
+          const e = document.createElement('div');
+          e.className = 'field-error';
+          e.textContent = 'Move-in date must be at least 3 days from today';
+          inGroup.appendChild(e);
+        }
+      }
+    }
+
+    // Move-out must be after move-in
     if (inVal && outVal && outVal <= inVal) {
       hasError = true;
-      const outEl    = document.getElementById('move-out');
       const outGroup = outEl.closest('.form-group');
       outGroup.classList.add('error');
       if (!outGroup.querySelector('.field-error')) {
@@ -1035,16 +1056,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Move-In must be today or later
+  // Move-In must be at least 3 days from today; Move-Out must be after Move-In
   const moveIn  = document.getElementById('move-in');
   const moveOut = document.getElementById('move-out');
-  moveIn.min = new Date().toISOString().split('T')[0];
+
+  // Earliest allowed move-in = today + 3 days
+  const earliestMoveIn = new Date();
+  earliestMoveIn.setDate(earliestMoveIn.getDate() + 3);
+  const earliestMoveInStr = earliestMoveIn.toISOString().split('T')[0];
+  moveIn.min = earliestMoveInStr;
+
+  // Earliest allowed move-out (before move-in is picked) = earliest move-in + 1 day
+  const earliestMoveOut = new Date(earliestMoveIn);
+  earliestMoveOut.setDate(earliestMoveOut.getDate() + 1);
+  moveOut.min = earliestMoveOut.toISOString().split('T')[0];
+
+  // Clear any prefilled past values so the user re-picks a valid date
+  if (moveIn.value && moveIn.value < earliestMoveInStr) moveIn.value = '';
+  if (moveOut.value && moveOut.value <= (moveIn.value || earliestMoveInStr)) moveOut.value = '';
+
   moveIn.addEventListener('change', function() {
     if (!this.value) return;
+    // If somehow user typed a date earlier than allowed, snap back
+    if (this.value < earliestMoveInStr) {
+      this.value = '';
+      return;
+    }
     const next = new Date(this.value);
     next.setDate(next.getDate() + 1);
-    const minDate = next.toISOString().split('T')[0];
-    moveOut.min = minDate;
+    moveOut.min = next.toISOString().split('T')[0];
     // If move-out is already set and is now invalid, clear it
     if (moveOut.value && moveOut.value <= this.value) {
       moveOut.value = '';
