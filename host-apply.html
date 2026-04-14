@@ -119,6 +119,8 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .checkbox-list{display:flex;flex-direction:column;gap:12px;margin-top:4px}
 .checkbox-list-item{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.9rem;color:var(--c-text)}
 .checkbox-list-item input[type="checkbox"]{width:18px;height:18px;accent-color:var(--c-teal);cursor:pointer;appearance:auto;-webkit-appearance:auto;flex-shrink:0}
+.checkbox-list-item.is-disabled{color:var(--c-text-muted);cursor:not-allowed;opacity:0.55}
+.checkbox-list-item.is-disabled input[type="checkbox"]{cursor:not-allowed}
 
 /* ── INFO CARDS (matching info helper text) ── */
 .info-card{background:#f8faf9;border-left:3px solid var(--c-teal);border-radius:var(--r-sm);padding:14px 16px;margin-top:10px;font-size:0.82rem;color:var(--c-text-light);line-height:1.55}
@@ -469,7 +471,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
         <div class="form-section">
           <div class="form-section-label">A Little More About You</div>
 
-          <div class="form-row">
+          <div class="form-row cols-1">
             <div class="form-group">
               <label for="heardAbout">How did you hear about us?<span class="req">*</span></label>
               <select name="heardAbout" id="heardAbout" required>
@@ -481,10 +483,6 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
                 <option>Agent</option>
                 <option>Other</option>
               </select>
-            </div>
-            <div class="form-group">
-              <label for="company">Company Name<span class="optional">optional</span></label>
-              <input type="text" name="company" id="company">
             </div>
           </div>
 
@@ -514,14 +512,10 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
             </div>
           </div>
 
-          <div class="form-row">
+          <div class="form-row cols-1">
             <div class="form-group">
               <label for="occupation">Occupation<span class="optional">optional</span></label>
               <input type="text" name="occupation" id="occupation">
-            </div>
-            <div class="form-group">
-              <label for="languages">Other languages you speak<span class="optional">optional</span></label>
-              <input type="text" name="languages" id="languages" placeholder="e.g., Spanish, Mandarin">
             </div>
           </div>
 
@@ -578,14 +572,10 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
             </div>
           </div>
 
-          <div class="form-row">
+          <div class="form-row cols-1">
             <div class="form-group">
               <label for="spouseOccupation">Spouse Occupation</label>
               <input type="text" name="spouseOccupation" id="spouseOccupation">
-            </div>
-            <div class="form-group">
-              <label for="spouseCompany">Spouse Company</label>
-              <input type="text" name="spouseCompany" id="spouseCompany">
             </div>
           </div>
 
@@ -699,10 +689,10 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
           <div class="form-row cols-1" style="margin-top:20px">
             <div class="form-group">
               <label for="mealAlt">Any other meal plans you would provide<span class="optional">optional</span></label>
-              <div class="checkbox-list">
+              <div class="checkbox-list" id="mealAltList">
                 <label class="checkbox-list-item"><input type="checkbox" name="mealAlt" value="room-only"> No Meals (Room Only)</label>
                 <label class="checkbox-list-item"><input type="checkbox" name="mealAlt" value="breakfast"> Breakfast Only</label>
-                <label class="checkbox-list-item"><input type="checkbox" name="mealAlt" value="full"> Breakfast &amp; Dinner (Half Board)</label>
+                <label class="checkbox-list-item"><input type="checkbox" name="mealAlt" value="breakfast-dinner"> Breakfast &amp; Dinner (Half Board)</label>
               </div>
             </div>
           </div>
@@ -1241,6 +1231,31 @@ document.querySelectorAll('.file-upload-input input[type="file"]').forEach(funct
     }
   });
 });
+
+// ── MEAL PLAN: disable matching "other meal" checkbox when preferred plan is selected ──
+(function(){
+  const mealSelect = document.getElementById('mealPlan');
+  const mealAltList = document.getElementById('mealAltList');
+  if(!mealSelect || !mealAltList) return;
+
+  function syncMealAlt(){
+    const selected = mealSelect.value;
+    mealAltList.querySelectorAll('input[type="checkbox"]').forEach(function(cb){
+      const item = cb.closest('.checkbox-list-item');
+      if(cb.value === selected){
+        cb.checked = false;
+        cb.disabled = true;
+        if(item) item.classList.add('is-disabled');
+      } else {
+        cb.disabled = false;
+        if(item) item.classList.remove('is-disabled');
+      }
+    });
+  }
+
+  mealSelect.addEventListener('change', syncMealAlt);
+  syncMealAlt(); // run once on load in case a value is pre-selected
+})();
 
 // ── EVENT LISTENERS (replacing inline onclick/onsubmit handlers) ──
 document.getElementById('btnStep1Next').addEventListener('click', function(){ nextStep(1); });
