@@ -16,7 +16,7 @@
 /* ── DASHBOARD NAV ── */
 .dash-nav{background:var(--c-white);border-bottom:1px solid var(--c-border);padding:14px 0;position:sticky;top:0;z-index:100}
 .dash-nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-.dash-nav-logo img{height:40px}
+.dash-nav-logo img{height:40px;width:auto}
 .dash-nav-right{display:flex;align-items:center;gap:24px}
 .dash-nav-user{display:flex;align-items:center;gap:10px;font-size:0.88rem;font-weight:500;color:var(--c-text)}
 .dash-nav-avatar{width:36px;height:36px;border-radius:50%;background:var(--c-teal);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--c-white)}
@@ -81,8 +81,20 @@
 /* ── CREDIT CARDS TABLE ── */
 .cards-table{width:100%;border-collapse:collapse;margin-bottom:16px}
 .cards-table th{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--c-border)}
+.cards-table th.col-actions{text-align:right;width:1%;white-space:nowrap}
 .cards-table td{font-size:0.88rem;color:var(--c-text);padding:14px 12px;border-bottom:1px solid var(--c-border)}
+.cards-table td.card-actions{text-align:right;white-space:nowrap}
+.cards-table td.card-actions .actions-wrap{display:inline-flex;gap:6px;justify-content:flex-end}
 .cards-table tr:last-child td{border-bottom:none}
+.card-action-btn{background:var(--c-white);border:1px solid var(--c-border-strong);width:32px;height:32px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--c-text-muted);transition:all 0.2s;padding:0}
+.card-action-btn:hover{background:var(--c-cream);color:var(--c-charcoal);border-color:var(--c-text-muted)}
+.card-action-btn:focus-visible{outline:2px solid var(--c-teal);outline-offset:2px}
+.card-action-btn.danger:hover{background:#FEF2F2;color:#D9534F;border-color:#D9534F}
+.cards-empty{font-size:0.86rem;color:var(--c-text-muted);font-style:italic;text-align:center;padding:24px 12px}
+@media(max-width:560px){
+  .cards-table th:nth-child(3),.cards-table td:nth-child(3){display:none}
+  .cards-table td,.cards-table th{padding:12px 8px}
+}
 .card-type{display:inline-flex;align-items:center;gap:6px;font-weight:500}
 .card-type svg{width:20px;height:14px}
 .card-number{font-family:monospace;font-size:0.85rem;color:var(--c-text-muted)}
@@ -456,19 +468,11 @@
               <th>Name on Card</th>
               <th>Type</th>
               <th>Card Number</th>
+              <th class="col-actions">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>NORIMITSU IMOOKA</td>
-              <td><span class="card-type">Visa</span></td>
-              <td><span class="card-number">************9535</span></td>
-            </tr>
-            <tr>
-              <td>NANAMI IMOOKA</td>
-              <td><span class="card-type">Visa</span></td>
-              <td><span class="card-number">************5183</span></td>
-            </tr>
+          <tbody id="cardsTableBody">
+            <!-- rendered by renderCardsTable() -->
           </tbody>
         </table>
         <button class="add-card-btn" id="addCardToggle">
@@ -721,15 +725,99 @@ function confirmPayment() {
 // Call this to set host family info (when student is matched)
 // Example: setArrivalDates('April 12, 2026', 'August 10, 2026')
 // Example: setHostInfo({ name:'Maria Garcia', welcomePdf:'assets/welcome-package.pdf' })
-/* ── ADD CARD FUNCTIONS ── */
+/* ── CREDIT CARD CRUD ── */
+let editingCardIndex = null; // null = adding, number = editing this index
+
+const ICON_EDIT  = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>';
+const ICON_TRASH = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>';
+
+function renderCardsTable() {
+  const tbody = document.getElementById('cardsTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  if (creditCards.length === 0) {
+    const row = document.createElement('tr');
+    row.innerHTML = '<td colspan="4" class="cards-empty">No cards saved yet — click "Add New Card" below to add one.</td>';
+    tbody.appendChild(row);
+    return;
+  }
+
+  creditCards.forEach(function(card, i) {
+    const row = document.createElement('tr');
+    row.innerHTML = '<td>' + card.name + '</td>'
+      + '<td><span class="card-type">' + card.type + '</span></td>'
+      + '<td><span class="card-number">************' + card.last4 + '</span></td>'
+      + '<td class="card-actions"><div class="actions-wrap">'
+        + '<button type="button" class="card-action-btn" data-action="edit" data-index="' + i + '" aria-label="Edit ' + card.name + '" title="Edit">' + ICON_EDIT + '</button>'
+        + '<button type="button" class="card-action-btn danger" data-action="delete" data-index="' + i + '" aria-label="Delete ' + card.name + '" title="Delete">' + ICON_TRASH + '</button>'
+      + '</div></td>';
+    tbody.appendChild(row);
+  });
+}
+
+function editCard(index) {
+  const card = creditCards[index];
+  if (!card) return;
+  editingCardIndex = index;
+
+  // Pre-fill what we have. Card number/expiry/CVV stay blank — if user
+  // doesn't re-type a number, the existing last4 is preserved on save.
+  document.getElementById('cardName').value = card.name;
+  document.getElementById('cardType').value = card.type;
+  const numInput = document.getElementById('cardNumber');
+  numInput.value = '';
+  numInput.placeholder = '•••• •••• •••• ' + card.last4 + '  (leave blank to keep)';
+  document.getElementById('cardExpiry').value = '';
+  document.getElementById('cardCvv').value = '';
+
+  document.getElementById('saveCardBtn').textContent = 'Update Card';
+
+  // Open the form if it's not already
+  const form = document.getElementById('addCardForm');
+  if (!form.classList.contains('open')) form.classList.add('open');
+  form.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function deleteCard(index) {
+  const card = creditCards[index];
+  if (!card) return;
+  const ok = confirm('Delete card "' + card.name + ' — ending in ' + card.last4 + '"?\n\nThis cannot be undone.');
+  if (!ok) return;
+
+  creditCards.splice(index, 1);
+
+  // Keep selectedCard reference correct
+  if (selectedCard === index) {
+    selectedCard = null;
+  } else if (selectedCard !== null && selectedCard > index) {
+    selectedCard--;
+  }
+
+  // If we were editing the deleted card, reset the form
+  if (editingCardIndex === index) {
+    editingCardIndex = null;
+    const form = document.getElementById('addCardForm');
+    if (form.classList.contains('open')) toggleAddCardForm();
+  } else if (editingCardIndex !== null && editingCardIndex > index) {
+    editingCardIndex--;
+  }
+
+  renderCardsTable();
+}
+
 function toggleAddCardForm() {
   const form = document.getElementById('addCardForm');
   form.classList.toggle('open');
   if (!form.classList.contains('open')) {
+    // Reset form + edit state
     document.getElementById('cardName').value = '';
     document.getElementById('cardNumber').value = '';
+    document.getElementById('cardNumber').placeholder = '1234 5678 9012 3456';
     document.getElementById('cardExpiry').value = '';
     document.getElementById('cardCvv').value = '';
+    document.getElementById('saveCardBtn').textContent = 'Save Card';
+    editingCardIndex = null;
   }
 }
 
@@ -749,24 +837,32 @@ function saveNewCard() {
   const number = document.getElementById('cardNumber').value.replace(/\s/g, '');
   const type = document.getElementById('cardType').value;
 
+  // ── EDIT MODE ──
+  if (editingCardIndex !== null) {
+    if (!name) {
+      alert('Please enter a name on the card.');
+      return;
+    }
+    const card = creditCards[editingCardIndex];
+    card.name = name.toUpperCase();
+    card.type = type;
+    // Only update last4 if the user actually typed a new card number
+    if (number.length >= 12) {
+      card.last4 = number.slice(-4);
+    }
+    renderCardsTable();
+    toggleAddCardForm();
+    return;
+  }
+
+  // ── ADD MODE ──
   if (!name || number.length < 12) {
     alert('Please fill in the card name and a valid card number.');
     return;
   }
-
   const last4 = number.slice(-4);
-  const masked = '************' + last4;
-
-  // Add to table
-  const tbody = document.querySelector('.cards-table tbody');
-  const row = document.createElement('tr');
-  row.innerHTML = '<td>' + name.toUpperCase() + '</td><td><span class="card-type">' + type + '</span></td><td><span class="card-number">' + masked + '</span></td>';
-  tbody.appendChild(row);
-
-  // Add to credit cards data for payment selection
   creditCards.push({ name: name.toUpperCase(), type: type, last4: last4 });
-
-  // Close form
+  renderCardsTable();
   toggleAddCardForm();
 }
 
@@ -951,6 +1047,21 @@ document.getElementById('cancelCardBtn').addEventListener('click', cancelCardSel
 document.getElementById('addCardToggle').addEventListener('click', toggleAddCardForm);
 document.getElementById('saveCardBtn').addEventListener('click', saveNewCard);
 document.getElementById('cancelCardFormBtn').addEventListener('click', toggleAddCardForm);
+
+// Edit / Delete buttons inside the cards table (event delegation
+// because rows are dynamic — see renderCardsTable())
+document.querySelector('.cards-table').addEventListener('click', function(e) {
+  const btn = e.target.closest('.card-action-btn');
+  if (!btn) return;
+  const action = btn.getAttribute('data-action');
+  const idx = parseInt(btn.getAttribute('data-index'), 10);
+  if (Number.isNaN(idx)) return;
+  if (action === 'edit') editCard(idx);
+  else if (action === 'delete') deleteCard(idx);
+});
+
+// Initial render of the cards table from the creditCards array
+renderCardsTable();
 document.getElementById('sendDocsBtn').addEventListener('click', function() {
   alert('Documents submitted successfully!');
 });

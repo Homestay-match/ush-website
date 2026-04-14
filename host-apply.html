@@ -1076,9 +1076,8 @@ function validateStep3(){
 }
 
 function nextStep(current){
-  // TEMP: validation disabled for testing
-  // if(current === 1 && !validateStep1()) return;
-  // if(current === 2 && !validateStep2()) return;
+  if(current === 1 && !validateStep1()) return;
+  if(current === 2 && !validateStep2()) return;
   goToStep(current + 1);
 }
 
@@ -1088,8 +1087,7 @@ function prevStep(current){
 
 function submitApplication(e){
   e.preventDefault();
-  // TEMP: validation disabled for testing
-  // if(!validateStep3()) return;
+  if(!validateStep3()) return;
   goToStep('confirm');
 }
 

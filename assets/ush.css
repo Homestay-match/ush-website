@@ -31,8 +31,8 @@
   --c-olive-dark: #4A5250;
   --c-olive: #404846;
   --c-white: #FFFFFF;
-  --c-border: rgba(44,51,48,0.08);
-  --c-border-strong: rgba(44,51,48,0.14);
+  --c-border: rgba(44,51,48,0.18);
+  --c-border-strong: rgba(44,51,48,0.28);
   --ff-display: 'Fraunces', Georgia, serif;
   --ff-body: 'Work Sans', system-ui, sans-serif;
   --r-sm: 8px;
