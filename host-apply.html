@@ -25,8 +25,8 @@
 <script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
 <style>
 :root{
-  --c-border:rgba(44,51,48,0.1);
-  --c-border-strong:rgba(44,51,48,0.18);
+  --c-border:rgba(44,51,48,0.18);
+  --c-border-strong:rgba(44,51,48,0.28);
   --c-error:#E05252;
   --c-error-light:#FEF2F2;
   --max-w:760px;
@@ -63,7 +63,7 @@ input,select,textarea,button{font-family:var(--ff-body)}
 .step-time::before{content:'⏱'}
 
 /* ── FORM CARD ── */
-.form-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:40px;box-shadow:var(--shadow-sm)}
+.form-card{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border-strong);padding:40px;box-shadow:0 2px 12px rgba(44,51,48,0.06)}
 @media(max-width:600px){.form-card{padding:24px 20px;border-radius:var(--r-md)}}
 
 /* ── FORM SECTIONS ── */
@@ -1255,9 +1255,11 @@ document.getElementById('mobileLoginLink').addEventListener('click', function(e)
 </script>
 
 <!-- Google Places Autocomplete -->
-<!-- ⚠️ REPLACE YOUR_API_KEY below with your actual Google Maps API key -->
-<!-- Enable "Places API" and "Maps JavaScript API" in your Google Cloud Console -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+<!-- ⚠️ DISABLED until a real Google Maps API key is added.
+     To enable: uncomment the <script src=...> below and replace YOUR_API_KEY
+     with your actual key. Enable "Places API" and "Maps JavaScript API" in
+     your Google Cloud Console. -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script> -->
 <script>
 function initAutocomplete(){
   const input = document.getElementById('addressInput');
