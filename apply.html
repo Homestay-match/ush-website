@@ -1075,20 +1075,58 @@ document.addEventListener('DOMContentLoaded', function() {
   if (moveIn.value && moveIn.value < earliestMoveInStr) moveIn.value = '';
   if (moveOut.value && moveOut.value <= (moveIn.value || earliestMoveInStr)) moveOut.value = '';
 
+  // Helper: show inline error on a date field (used when iOS picker
+  // accepts an out-of-range date that the browser's `min` should have blocked)
+  function showDateError(inputEl, msg) {
+    const group = inputEl.closest('.form-group');
+    if (!group) return;
+    group.classList.add('error');
+    let err = group.querySelector('.field-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.className = 'field-error';
+      group.appendChild(err);
+    }
+    err.textContent = msg;
+  }
+  function clearDateError(inputEl) {
+    const group = inputEl.closest('.form-group');
+    if (!group) return;
+    group.classList.remove('error');
+    const err = group.querySelector('.field-error');
+    if (err) err.remove();
+  }
+
   moveIn.addEventListener('change', function() {
-    if (!this.value) return;
-    // If somehow user typed a date earlier than allowed, snap back
+    if (!this.value) { clearDateError(this); return; }
+    // If iOS picker accepted a date earlier than allowed, reject it
     if (this.value < earliestMoveInStr) {
       this.value = '';
+      showDateError(this, 'Move-in must be at least 3 days from today');
       return;
     }
+    clearDateError(this);
     const next = new Date(this.value);
     next.setDate(next.getDate() + 1);
     moveOut.min = next.toISOString().split('T')[0];
     // If move-out is already set and is now invalid, clear it
     if (moveOut.value && moveOut.value <= this.value) {
       moveOut.value = '';
+      showDateError(moveOut, 'Move-out must be after move-in — please pick a new date');
     }
+  });
+
+  moveOut.addEventListener('change', function() {
+    if (!this.value) { clearDateError(this); return; }
+    const minAllowed = moveIn.value || earliestMoveInStr;
+    if (this.value <= minAllowed) {
+      this.value = '';
+      showDateError(this, moveIn.value
+        ? 'Move-out must be after move-in date'
+        : 'Pick a Move-in date first, then Move-out');
+      return;
+    }
+    clearDateError(this);
   });
 
   // Move-Out calendar opens at move-in month when first clicked
