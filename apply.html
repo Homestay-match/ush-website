@@ -1145,12 +1145,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // ══════════════════════════════════════
 // AGENT EMAIL VERIFICATION
 // ══════════════════════════════════════
-// Demo list of pre-registered agent emails (replace with real API call when backend is ready)
-const registeredAgentEmails = [
-  'agent@ush.com',
-  'demo@agency.com',
-  'test@studyabroad.com'
-];
+// Pre-registered agent emails — populated by backend when available.
+// Until then, every agent goes through the registration flow below.
+const registeredAgentEmails = [];
 let agentEmailVerified = false; // tracks whether email check has been completed
 
 function checkAgentEmail() {
