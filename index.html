@@ -1411,33 +1411,22 @@ function animateCounters() {
   const els = document.querySelectorAll('[data-count]');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        const el = e.target;
-        const target = parseInt(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1800;
-        // If the element sits inside a [data-reveal] wrapper whose reveal
-        // transition hasn't finished yet, wait for it — otherwise the
-        // parent's translateY/opacity runs while the counter text reflows
-        // each frame, which looks like flicker.
-        const revealParent = el.closest('[data-reveal]');
-        const needsDelay = revealParent && !revealParent.classList.contains('revealed');
-        const startDelay = needsDelay ? 750 : 0;
-        const runAnim = () => {
-          const start = performance.now();
-          function update(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
-            if (progress < 1) requestAnimationFrame(update);
-          }
-          requestAnimationFrame(update);
-        };
-        setTimeout(runAnim, startDelay);
-        obs.unobserve(el);
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const start = performance.now();
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(update);
       }
+      requestAnimationFrame(update);
+      obs.unobserve(el);
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
   els.forEach(el => obs.observe(el));
 }
 
