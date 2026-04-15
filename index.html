@@ -55,7 +55,7 @@
 .hero-buttons{display:flex;flex-wrap:wrap;gap:14px}
 .hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.15)}
 .hero-stat{text-align:left}
-.hero-stat .num{font-family:var(--ff-display);font-size:2.2rem;font-weight:700;color:var(--c-white);white-space:nowrap}
+.hero-stat .num{font-family:var(--ff-display);font-size:2.2rem;font-weight:700;color:var(--c-white);white-space:nowrap;font-variant-numeric:tabular-nums}
 .hero-stat .label{font-size:0.78rem;color:rgba(255,255,255,0.8);font-weight:400;margin-top:2px;letter-spacing:0.04em;text-transform:uppercase}
 @media(max-width:600px){
   .hero{min-height:auto;padding:120px 0 60px;align-items:flex-start}
@@ -110,7 +110,7 @@
 .trusted-text p{color:rgba(255,255,255,0.85);font-size:1.15rem;line-height:1.7;max-width:560px}
 .trusted-metrics{display:flex;gap:40px;flex-wrap:wrap}
 .trusted-metric{text-align:left;padding:0}
-.trusted-metric .num{font-family:var(--ff-display);font-size:2.6rem;font-weight:700;color:var(--c-white);display:block}
+.trusted-metric .num{font-family:var(--ff-display);font-size:2.6rem;font-weight:700;color:var(--c-white);display:block;font-variant-numeric:tabular-nums}
 .trusted-metric .label{font-size:0.78rem;color:rgba(255,255,255,0.65);margin-top:4px;text-transform:capitalize;letter-spacing:0.02em;font-style:italic}
 @media(max-width:500px){.trusted-metrics{gap:24px}.trusted-metric .num{font-size:1.6rem}}
 
@@ -1416,14 +1416,24 @@ function animateCounters() {
         const target = parseInt(el.dataset.count);
         const suffix = el.dataset.suffix || '';
         const duration = 1800;
-        const start = performance.now();
-        function update(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
+        // If the element sits inside a [data-reveal] wrapper whose reveal
+        // transition hasn't finished yet, wait for it — otherwise the
+        // parent's translateY/opacity runs while the counter text reflows
+        // each frame, which looks like flicker.
+        const revealParent = el.closest('[data-reveal]');
+        const needsDelay = revealParent && !revealParent.classList.contains('revealed');
+        const startDelay = needsDelay ? 750 : 0;
+        const runAnim = () => {
+          const start = performance.now();
+          function update(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+        };
+        setTimeout(runAnim, startDelay);
         obs.unobserve(el);
       }
     });
